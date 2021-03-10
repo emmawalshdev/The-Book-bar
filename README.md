@@ -9,8 +9,12 @@
 ![Generated from Am I Responsive](assets/images/readme_files/amiresponsive.jpg)
 
 The Book bar website offers an online book review and recommendation service. 
-This project focuses on allowing users to share their own data with a community.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+This project is data focused, allowing users to share their own data with the greater
+community of users.
 
+The website has two main goals. For the user, finding a suitable book based on recommendations will be acheived.
+For the website owner, a link will be added to each book uploaded which will allow them to earn money through each purchase.
+sales pitch
 ----------------------------
 
 ## Contents
@@ -41,7 +45,22 @@ This project focuses on allowing users to share their own data with a community.
 
 ## UX
 
-### Overview
+### The five plane
+
+#### The Strategy plane
+* The target audience for this website will be book lovers, of an age between 15 and 55.
+The website aims to target tech-savy book lovers.
+
+#### The Scope plane
+
+#### The Structure plane
+
+#### The Skeleton plane
+
+#### The Surface Plane
+
+
+The book bar
 
 ### User Stories
 
