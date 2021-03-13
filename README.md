@@ -56,9 +56,16 @@ Below are the results.
 ![ivf](assets/images/readmeFiles/ivf.jpg) 
 
 #### The Scope plane
+Functional and content requirments were examined to deine what was in and what was out of scope.
+For functional requirements, the 3 why's were asked.
+What is said to be needed. What is the best solution to the problem. What is needed but not mentioned.
+For content requirements, the following were considered: What type of content would fulfil the need 
+(image, video, text, mixed) and whether or not there were adequate resources to produce the content.
+
 * What's on the table
 
 *What's off the table
+
 #### The Structure plane
 
 #### The Skeleton plane
@@ -72,20 +79,27 @@ The book bar
 
 #### External user’s goals:
 As an external user:
-*
-*
-*
-*
+* I want to be able to login or register for an account on the website, so that I can access my profile and add reviews.
+
+* I want to be able to upload a book (which does not already exist) to the website, so that I can then review it.
+
+* I want to able to give a book a thumbs up or thumbs down, so that other users can quickly see what I thought about it.
+
+* I want to be able to search for a book by name of by author, so that I can view it's rating. 
+
+* I want to be able to search the database by genre, so that I can find a suitable book.
+
 
 
 #### Site Owner Goals:
 As a current ESL Teacher:
 
-*
-*
-*
-*
-* 
+* I want to be able to manage the book genres so that this does not become disorganised.
+
+* I want to add an affiliate link to each book so that I can potentially make money off each book.
+
+* I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
+ 
 
 ### Project Scope
 Based on the above user stories, the following are features that will be included in this release:
