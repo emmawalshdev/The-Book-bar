@@ -55,26 +55,6 @@ The website aims to target tech-savy book lovers.
 Below are the results.
 ![ivf](assets/images/readmeFiles/ivf.jpg) 
 
-#### The Scope plane
-Functional and content requirments were examined to deine what was in and what was out of scope.
-For functional requirements, the 3 why's were asked.
-What is said to be needed. What is the best solution to the problem. What is needed but not mentioned.
-For content requirements, the following were considered: What type of content would fulfil the need 
-(image, video, text, mixed) and whether or not there were adequate resources to produce the content.
-
-* What's on the table
-
-*What's off the table
-
-#### The Structure plane
-
-#### The Skeleton plane
-
-#### The Surface Plane
-
-
-The book bar
-
 ### User Stories
 
 #### External user’s goals:
@@ -83,39 +63,67 @@ As an external user:
 
 * I want to be able to upload a book (which does not already exist) to the website, so that I can then review it.
 
-* I want to able to give a book a thumbs up or thumbs down, so that other users can quickly see what I thought about it.
+* I want to be able to add a review for a book and give it a thumbs up or thumbs down, so that other users can quickly see what I thought about it.
+
+* I want to be able to edit and delete books and reviews I have added, in case I have made a mistake.
 
 * I want to be able to search for a book by name of by author, so that I can view it's rating. 
 
 * I want to be able to search the database by genre, so that I can find a suitable book.
 
 
-
 #### Site Owner Goals:
-As a current ESL Teacher:
-
+As the website owner:
 * I want to be able to manage the book genres so that this does not become disorganised.
 
 * I want to add an affiliate link to each book so that I can potentially make money off each book.
 
 * I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
  
+* I only want registerd users to be able to add reviews and books, for monitoring reasons.
+
+* I want to be able edit and delete all content created on the website, for monitoring reasons.
+
+
+
+#### The Structure plane
+
+#### The Skeleton plane
+
+#### The Surface Plane
+
 
 ### Project Scope
-Based on the above user stories, the following are features that will be included in this release:
+Functional and content requirments were examined to define what was in and what was out of scope.
+For functional requirements, the problem was examined to find a best-fit solution.
+For content requirements, the following were considered: What type of content would fulfil the need 
+(image, video, text, mixed) and whether or not adequate resources were available to produce the content.
 
-*
-*
-*
-*
+In scope (features & content)
 
+* user login and account registration, only with this can books and reviews be added.
 
-The following is a list of features that will not be included in this release: 
+* An admin account for the website owener, this allows the user to edit & delete all content. The user can also manage the book genres.
 
-* 
-*
-*
-*
+* A search bar, where users can search for a book by title or author name.
+
+* A search by book genre functionality. 
+
+* Full CRUD functionality for users when dealing with the content they have created.
+
+* Content will be mostly text and imagery, this data is data-focused with less emphasis on front-end development.
+
+* A link will be added to each new book uploaded. This will demonstrate how the website owner could profit from book sales.
+
+Out of scope (features & content)
+
+* A star stating out of 5 for books. The user will only be able to upvote or downvote a book.
+
+* A sophisticated recommendation algorithm, based on books upvoted by user.  
+
+* A customised dashboard for users. The user will not be shown on their profile: recommendations or past reviews.
+
+* Video banners, striking imagery & dynamic front-end development. 
 
 ### Design
 
