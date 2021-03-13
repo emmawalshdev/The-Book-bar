@@ -50,9 +50,15 @@ sales pitch
 #### The Strategy plane
 * The target audience for this website will be book lovers, of an age between 15 and 55.
 The website aims to target tech-savy book lovers.
+* The content stored on each book will include only relevent fields such as title, author and  a link to a cover image.
+* Impportance v Feasibility was studied to ensure the most appropriate feature would be developed in this release.
+Below are the results.
+![ivf](assets/images/readmeFiles/ivf.jpg) 
 
 #### The Scope plane
+* What's on the table
 
+*What's off the table
 #### The Structure plane
 
 #### The Skeleton plane
