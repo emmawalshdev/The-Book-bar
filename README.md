@@ -84,15 +84,6 @@ As the website owner:
 
 * I want to be able edit and delete all content created on the website, for monitoring reasons.
 
-
-
-#### The Structure plane
-
-#### The Skeleton plane
-
-#### The Surface Plane
-
-
 ### Project Scope
 Functional and content requirments were examined to define what was in and what was out of scope.
 For functional requirements, the problem was examined to find a best-fit solution.
@@ -126,23 +117,25 @@ Out of scope (features & content)
 * Video banners, striking imagery & dynamic front-end development. 
 
 ### Design
+The website structure was designed to be consistent, predictable, learnable, visable and provide user feedback.
+A user journey was created to aid stucture design.
+
+![user journey](assets/images/readmeFiles/userjourney.PNG) 
+
 
 #### Typography
 All fonts used are from [Google Fonts](https://fonts.google.com/). 
 
 Fonts used include:
-* 
-*
+* Goudy Bookletter 1911
+* Raleway
 
 #### Colour Scheme
 A pink and blue colour palette was used in this design. Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.
 
-The following colour palette was used for inspiration.
-![colour palette](assets/images/readme_files/color-pal.png)
+The following colour palette was used for inspiration:
+![colour palette](assets/images/readmeFiles/colorpal.jpg)
 
-
-#### Imagery
-* 
 
 #### Design justifications
 * 
@@ -275,7 +268,7 @@ The images used on this website were obtained from the following sources:
 </strong>
 
 In README.md:
-* Colour palette: [Source](https://digitalsynopsis.com/design/color-schemes-palettes/)
+* Colour palette: [Source](https://www.pinterest.de/pin/490681321896937815/)
 
 In index.html: 
 * Students in a classroom: [Source](https://www.pexels.com/photo/three-toddler-eating-on-white-table-1001914/)
