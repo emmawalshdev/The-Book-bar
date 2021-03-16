@@ -120,7 +120,7 @@ Out of scope (features & content)
 The website structure was designed to be consistent, predictable, learnable, visable and provide user feedback.
 A user journey was created to aid stucture design.
 
-![user journey](assets/images/readmeFiles/userjourney.PNG) 
+![user journey](assets/images/readmeFiles/userjourney.jpg) 
 
 
 #### Typography
