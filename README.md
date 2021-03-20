@@ -8,6 +8,7 @@
 
 ![Generated from Am I Responsive](assets/images/readme_files/amiresponsive.jpg)
 
+
 The Book bar website offers an online book review and recommendation service. 
 This project is data focused, allowing users to share their own data with the greater
 community of users.
@@ -15,6 +16,7 @@ community of users.
 The website has two main goals. For the user, finding a suitable book based on recommendations will be acheived.
 For the website owner, a link will be added to each book uploaded which will allow them to earn money through each purchase.
 sales pitch
+
 ----------------------------
 
 ## Contents
@@ -149,7 +151,16 @@ Please note, the final website layout contains slight variations to the original
 Each of the following files contain wireframes for desktop, tablet, and mobile devices.
 </strong>
  
-* [Page](assets/wireframes/home.png)
+Users - not admin
+* [Home](assets/images/readmeFiles/wireframes/home.png)
+* [Login](assets/images/readmeFiles/wireframes/login.png)
+* [Register](assets/images/readmeFiles/wireframes/register.png)
+* [Profile](assets/images/readmeFiles/wireframes/profile.png)
+* [Add a book](assets/images/readmeFiles/wireframes/addABook.png)
+* [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
+
+User - admin only
+* [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
 
 --------------------------------------------------------------------------------------------
 
