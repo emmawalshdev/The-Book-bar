@@ -118,6 +118,26 @@ Out of scope (features & content)
 
 * Video banners, striking imagery & dynamic front-end development. 
 
+### Wireframes
+All wireframes were created using the software [Balsamiq](https://balsamiq.com/). 
+Layouts were created following research on the five planes of UX, and before coding.\
+\
+<strong>
+Please note, the final website layout contains slight variations to the original wireframes.
+Each of the following files contain wireframes for desktop, tablet, and mobile devices.
+</strong>
+ 
+Users - not admin
+* [Home](assets/images/readmeFiles/wireframes/home.png)
+* [Login](assets/images/readmeFiles/wireframes/login.png)
+* [Register](assets/images/readmeFiles/wireframes/register.png)
+* [Profile](assets/images/readmeFiles/wireframes/profile.png)
+* [Add a book](assets/images/readmeFiles/wireframes/addABook.png)
+* [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
+
+User - admin only
+* [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
+
 ### Design
 The website structure was designed to be consistent, predictable, learnable, visable and provide user feedback.
 A user journey was created to aid stucture design.
@@ -142,42 +162,18 @@ The following colour palette was used for inspiration:
 #### Design justifications
 * 
 
-### Wireframes
-All wireframes were created using the software [Balsamiq](https://balsamiq.com/). 
-Layouts were created following research on the five planes of UX, and before coding.\
-\
-<strong>
-Please note, the final website layout contains slight variations to the original wireframes.
-Each of the following files contain wireframes for desktop, tablet, and mobile devices.
-</strong>
- 
-Users - not admin
-* [Home](assets/images/readmeFiles/wireframes/home.png)
-* [Login](assets/images/readmeFiles/wireframes/login.png)
-* [Register](assets/images/readmeFiles/wireframes/register.png)
-* [Profile](assets/images/readmeFiles/wireframes/profile.png)
-* [Add a book](assets/images/readmeFiles/wireframes/addABook.png)
-* [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
-
-User - admin only
-* [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
-
 --------------------------------------------------------------------------------------------
 
 ## Features
 
 ### Existing Features 
 * **feature** 
-    * The navigation contains the brand logo (anchor tag to the homepage) with four links. 
-        3 links, connect to sections on index.html (home, about & contact us). 1 link, connects to a separate page (game.html). 
-    * For mobile devices, the navbar collapses to a toggler button.
-    * The navbar is fixed, disappears on scroll down, and reappears on scroll up. 
-    * The navigation was created using [Bootstrap](https://getbootstrap.com/) and [Javascript](https://www.w3schools.com/js/DEFAULT.asp).
+    * notes
 
 ### Features Left to Implement
 The following are features were not included in this release. These may be developed in the future:
 
-* 
+* feature
 
 ----------------------------
 
