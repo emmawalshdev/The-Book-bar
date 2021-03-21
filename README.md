@@ -151,6 +151,7 @@ All fonts used are from [Google Fonts](https://fonts.google.com/).
 Fonts used include:
 * Goudy Bookletter 1911
 * Raleway
+* Fredericka the Great (Logo)
 
 #### Colour Scheme
 A pink and blue colour palette was used in this design. Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.
