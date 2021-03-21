@@ -10,21 +10,38 @@
      color: #006064;
    }
    /* label focus color */
-   .input-field input[type=text]:focus + label {
+   .input-field input[type=text]:focus + label,
+   .input-field input[type=password]:focus + label {
      color: #00acc1;
    }
    /* label underline focus color */
-   .input-field input[type=text]:focus {
+   .input-field input[type=text]:focus,
+   .input-field input[type=password]:focus {
      border-bottom: 1px solid #00acc1;
      box-shadow: 0 1px 0 0 #006064;
    }
+ 
    /* valid color */
-   .input-field input[type=text].valid {
+   .input-field input[type=text].valid,
+   input.valid[type=text]:not(.browser-default), 
+   input.valid[type=text]:not(.browser-default):focus,
+   .input-field input[type=password].valid,
+   input.valid[type=password]:not(.browser-default), 
+   input.valid[type=password]:not(.browser-default):focus {
      border-bottom: 1px solid #00acc1;
      box-shadow: 0 1px 0 0 #00acc1;
    }
    /* invalid color */
-   .input-field input[type=text].invalid {
-     border-bottom: 1px solid rgb(252, 101, 101);
-     box-shadow: 0 1px 0 0 rgb(252, 101, 101);
+   .input-field input[type=text].invalid,
+    input.invalid[type=text]:not(.browser-default), 
+   input.invalid[type=text]:not(.browser-default):focus,
+   .input-field input[type=password].invalid,
+   input.invalid[type=password]:not(.browser-default), 
+   input.invalid[type=password]:not(.browser-default):focus{
+     border-bottom: 1px solid #e780a3;
+     box-shadow: 0 1px 0 0 #e780a3;
    }
+
+.flashes h4{
+    line-height: 2;
+}
