@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Register</h3>
+    <h3 class="center-align">Log in</h3>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel">
                 <!-- username-->
                 <div class="row">
@@ -24,18 +24,18 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <!--submit-->
+                <!--Login-submit-->
                 <div class="row">
                     <button type="submit" class="col s12 m6 offset-m3 btn-large cyan darken-1">
-                        Register
+                        Login                    
                     </button>
                 </div>
-                <!-- go to login page-->
+                <!---->
                 <div class="row">
                     <div class="col s12">
                         <p class="center-align">
-                            Already registered?  
-                            <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Login here.</a>
+                            New to The Book bar? 
+                            <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Register here.</a>
                         </p>
                     </div>
                 </div>
