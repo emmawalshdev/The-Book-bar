@@ -72,6 +72,8 @@ The following report was generated before changes were made:
 * feature
     * tested how
 
+
+Test logout by checking session cookie in application tab on dev tools
 #### index.html
 
 * feature
