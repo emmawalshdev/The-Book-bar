@@ -1,54 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <div class="row container">
     {% for book in books %}
-        {{book.book_name}}<br>
-        {{book.genre_name}}<br>
-        {{book.author}}<br>
-        {{book.description}}<br>
-        {{book.image_url}}<br>
-        {{book.is_upvoted}}
+        <div class="col s6 m4">
+            <div class="card">
+                <div class="card-image">
+                    <img class = "activator" src="{{ book.image_url }}">
+                </div>
+                <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ book.book_name }}
+                    <i class="material-icons right">more_vert</i>
+                <p>{{ book.author }}</p>
+                </span>
+                </div>   
+                <div class="card-reveal"> 
+                    <span class="card-title grey-text text-darken-4">
+                        <i class="material-icons right">close</i>
+                        <strong>{{ book.book_name }}</strong>
+                        <p> {{ book.genre_name }}</p>
+                        {% if book.is_upvoted == "on" %}
+                            <p>{{ book.is_upvoted }} </p>
+                        {% endif %}
+                    </span>
+                </div>
+                </div>
+        </div>
     {% endfor %}
-  <div class="row container">
-    <div class="col s6 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/sample-1.jpg">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>
-              some text here
-        </p>
-        </div>
-      </div>
     </div>
-        <div class="col s6 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/sample-1.jpg">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>
-              some text here
-        </p>
-        </div>
-      </div>
-    </div>
-        <div class="col s6 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/sample-1.jpg">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>
-              some text here
-        </p>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 {% endblock %}
