@@ -4,47 +4,59 @@
 <h3 class="center-align">
     Add Book
 </h3>
-  <div class="row">
+<p>
+    You searched our <a href="{{ url_for('get_books') }}" class="light-blue-text text-darken-4">database</a> & couldn't find the book you were looking for.
+    No problem! Add it below.
+</p>
+<div class="row card-panel">
     <form class="col s12" method="POST" action="">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="choose_genre" name="choose_genre" type="text" class="validate" required>
+                <label for="choose_genre">Choose Genre</label>
+            </div>
         </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="book_title" name="book_title" type="text" class="validate" maxlength="50" required>
+                <label for="book_title">Book Title</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="author" name="author" type="text" class="validate" min-length="5" max-length="30" required>
+                <label for="author">Author</label>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="image_url" name="image_url" type="text" class="validate">
+                <label for="image_url">Image Url</label>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="blurb" name="blurb" class="materialize-textarea"></textarea>
+                <label for="blurb">Blurb </label>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="buy_url" name="buy_url" type="text" class="validate">
+                <label for="buy_url">Buy now Url</label>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-          </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="switch">
+                    <i class="material-icons prefix">star_border</i>
+                    <label for="is_upvoted">
+                        <input type="checkbox" id="is_upvoted" name="is_upvoted">
+                        <span class="lever"></span>
+                        Is Upvoted
+                    </label>
+                </div>
+            </div>
         </div>
-      </div>
     </form>
-  </div>
+</div>
 
 {% endblock %}
