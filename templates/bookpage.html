@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Book Page</h3>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="book-image-wrapper col-12 col-md-4">
+                <img src="{{ get_book_image }}" alt="book cover image" class="book-image">
+            </div>
+        </div>
+        <div class="col s12 m4">
+            <div class="row">
+                <div class="col s12 m4">
+                    <h5 class="align-center">
+                        <span class="book-page-">
+                            {{ get_book_title }}
+                        </span>
+                    </h5>
+                </div>
+                <div class="col s12 m4">
+                    <p>
+                        Author: 
+                            {{ get_book_author }}
+                    </p>
+                </div>
+                <div class="col s12 m4">
+                    <p>
+                        <span class="">Description: </span><br>
+                            {{ get_book_description }}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
