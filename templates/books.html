@@ -23,6 +23,8 @@
                         {% if book.is_upvoted == "on" %}
                             <p>{{ book.is_upvoted }} </p>
                         {% endif %}
+                        <p><a href="{{ url_for( 'bookpage', book_name=book.book_name) }}">click</a></p>
+                        
                     </span>
                 </div>
                 </div>
