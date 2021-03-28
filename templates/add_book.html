@@ -19,6 +19,7 @@
                         <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
                     {% endfor %}
                 </select>
+                <label for="genre_name">Book Genre</label>
             </div>
         </div>
         <!-- book title & author -->
@@ -35,14 +36,14 @@
         <!-- image url -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="image_url" name="image_url" type="text" class="validate">
+                <input id="image_url" name="image_url" type="text" class="validate" required>
                 <label for="image_url">Image Url</label>
             </div>
         </div>
         <!-- book description -->
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                <textarea id="description" name="description" class="materialize-textarea validate" required></textarea>
                 <label for="description">Blurb </label>
             </div>
         </div>

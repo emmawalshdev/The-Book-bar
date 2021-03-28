@@ -9,7 +9,6 @@ font-family: 'Raleway', sans-serif;
      font-family: 'Fredericka the Great', cursive;
 }
 
-
 /* form materialise */
   /* label color */
    .input-field label {
@@ -17,12 +16,12 @@ font-family: 'Raleway', sans-serif;
    }
    /* label focus color */
    .input-field input[type=text]:focus + label,
-   .input-field input[type=password]:focus + label {
+   .input-field input[type=password]:focus + label{
      color: #00acc1;
    }
    /* label underline focus color */
    .input-field input[type=text]:focus,
-   .input-field input[type=password]:focus {
+   .input-field input[type=password]:focus{
      border-bottom: 1px solid #00acc1;
      box-shadow: 0 1px 0 0 #006064;
    }
@@ -33,7 +32,7 @@ font-family: 'Raleway', sans-serif;
    input.valid[type=text]:not(.browser-default):focus,
    .input-field input[type=password].valid,
    input.valid[type=password]:not(.browser-default), 
-   input.valid[type=password]:not(.browser-default):focus {
+   input.valid[type=password]:not(.browser-default):focus{
      border-bottom: 1px solid #00acc1;
      box-shadow: 0 1px 0 0 #00acc1;
    }
@@ -47,6 +46,22 @@ font-family: 'Raleway', sans-serif;
      border-bottom: 1px solid #e780a3;
      box-shadow: 0 1px 0 0 #e780a3;
    }
+
+   textarea.materialize-textarea.valid,
+   textarea.materialize-textarea.valid, 
+   textarea.materialize-textarea.valid:focus{
+    border-bottom: 1px solid #00acc1;
+    box-shadow: 0 1px 0 0 #00acc1;
+   }
+
+    textarea.materialize-textarea.invalid,
+    textarea.invalid, 
+    textarea.materialize-textarea.invalid:focus{
+    border-bottom: 1px solid #e780a3;
+     box-shadow: 0 1px 0 0 #e780a3;
+    }
+
+
 
 .flashes h4{
     line-height: 2;
