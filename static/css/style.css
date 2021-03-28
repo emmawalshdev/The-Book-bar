@@ -89,3 +89,29 @@ font-family: 'Raleway', sans-serif;
 .card .card-content p {
     font-style: italic;
 }
+
+/* book page */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-image {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  max-width: 400px;
+}
+
+.book-section {
+    padding-top:20px;
+}
+
+.book-name{
+    font-weight:bold
+}
+
+.bookpage-title{
+    font-weight:bold;
+    font-size:1.3rem;
+}

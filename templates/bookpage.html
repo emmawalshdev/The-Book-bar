@@ -1,38 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <h3 class="center-align">Book Page</h3>
-
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="book-image-wrapper col-12 col-md-4">
-                <img src="{{ get_book_image }}" alt="book cover image" class="book-image">
+<!-- book section-->
+    <div class="row book-section">
+        <div class="col s12 m5">
+            <div class="grid">
+                <img src="{{get_book.image_url }}" alt="book cover image" class="book-image" height="600" width="400">
             </div>
         </div>
-        <div class="col s12 m4">
+        <div class="col s12 m7">
             <div class="row">
-                <div class="col s12 m4">
-                    <h5 class="align-center">
-                        <span class="book-page-">
-                            {{ get_book_title }}
+                <div class="col s12">
+                    <h5 class="center">
+                        <span class="book-name">
+                            {{ get_book.book_name }}
                         </span>
                     </h5>
                 </div>
-                <div class="col s12 m4">
+                <div class="col s12">
                     <p>
-                        Author: 
-                            {{ get_book_author }}
+                        <span class= "bookpage-title">
+                        Author:                                   
+                        </span>
+                            {{ get_book.author }}
                     </p>
                 </div>
-                <div class="col s12 m4">
+                <div class="col s12">
                     <p>
-                        <span class="">Description: </span><br>
-                            {{ get_book_description }}
+                        <span class="bookpage-title">
+                        Genre:                                   
+                        </span>
+                            {{ get_book.genre_name }}
+                    </p>
+                </div>
+                <div class="col s12">
+                    <p class= "center">
+                        <span class="center bookpage-title">Description: </span>
+                        <br>
+                            {{ get_book.description }}
                     </p>
                 </div>
             </div>
 
         </div>
     </div>
-
+<!-- revie section -->
 {% endblock %}
