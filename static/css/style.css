@@ -115,3 +115,12 @@ font-family: 'Raleway', sans-serif;
     font-weight:bold;
     font-size:1.3rem;
 }
+
+.book-page-buttons{
+     margin-top: 20px;
+}
+
+/* edit & delete buttons*/
+.button-styling{
+    margin:5px;
+}
