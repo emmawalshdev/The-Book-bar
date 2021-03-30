@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     request, redirect, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -128,11 +128,14 @@ def add_book():
     return render_template("add_book.html", genres=genres)
 
 
-@app.route("/edit_book/<book_id>", methods=["GET", "POST"])
-def edit_book(book_id):
-    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+@app.route("/edit_book/<book_name>/<id>", methods=["GET", "POST"])
+def edit_book(book_name, id):
+    get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
+
     genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("edit_book.html", book=book, genres=genres)
+
+    return render_template(
+        "edit_book.html", get_book=get_book, genres=genres, id=id)
 
 
 if __name__ == "__main__":
