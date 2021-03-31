@@ -10,9 +10,13 @@
         <div class="row">            
             <div class="input-field col s12">
                 <select multiple id = "genre_name" name="genre_name" class="validate" required>
-                    <option value="" disabled selected>Choose Genre</option>
+                    <option value="" disabled>Choose Genre</option>
                     {% for genre in genres %}
-                        <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% if genre.genre_name == get_book.genre_name %}
+                            <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
+                        {% else %}
+                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="genre_name">Book Genre</label>
@@ -21,31 +25,35 @@
         <!-- book title & author -->
         <div class="row">
             <div class="input-field col s6">
-                <input id="book_name" name="book_name" type="text" class="validate" maxlength="50" required>
-                <label for="book_name">Book Title</label>
+                <input id="book_name" name="book_name" type="text" class="validate" maxlength="50" required
+                    value ="{{ get_book.book_name }}">
+                    <label for="book_name">Book Title</label>
             </div>
             <div class="input-field col s6">
-                <input id="author" name="author" type="text" class="validate" min-length="5" max-length="30" required>
+                <input id="author" name="author" type="text" class="validate" min-length="5" max-length="30" required
+                    value ="{{ get_book.author }}">
                 <label for="author">Author</label>
             </div>
         </div>
         <!-- image url -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="image_url" name="image_url" type="text" class="validate" required>
+                <input id="image_url" name="image_url" type="text" class="validate" required
+                    value ="{{ get_book.image_url }}">
                 <label for="image_url">Image Url</label>
             </div>
         </div>
         <!-- book description -->
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" name="description" class="materialize-textarea validate" required></textarea>
+                <textarea id="description" name="description" class="materialize-textarea validate" required>{{ get_book.description }}</textarea>
                 <label for="description">Blurb </label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="buy_url" name="buy_url" type="text" class="validate">
+                <input id="buy_url" name="buy_url" type="text" class="validate"
+                    value ="{{ get_book.buy_url }}">
                 <label for="buy_url">Buy now Url</label>
             </div>
         </div>
@@ -55,8 +63,12 @@
                 <div class="switch">
                     <i class="material-icons prefix">star_border</i>
                     <label for="is_upvoted">
-                        <input type="checkbox" id="is_upvoted" name="is_upvoted">
-                        <span class="lever"></span>
+                        {% if get_book.is_upvoted == "on" %}
+                            <input type="checkbox" id="is_upvoted" name="is_upvoted" checked>
+                        {% else %}
+                            <input type="checkbox" id="is_upvoted" name="is_upvoted">
+                        {% endif %}
+                            <span class="lever"></span>
                         Is Upvoted
                     </label>
                 </div>
@@ -65,8 +77,11 @@
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
+                <a href="{{ url_for('get_books') }}" class="waves-effect waves-light btn">
+                    Cancel
+                </a>
                 <button type="submit" class="waves-effect waves-light btn">
-                    Edit Book
+                    Save
                 </button>
             </div>
         </div>
