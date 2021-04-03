@@ -17,7 +17,7 @@
                     <span class="card-title">{{ genre.genre_name }}</span>
                 </div>
                 <div class="card-action">
-                <a class="waves-effect waves-light btn" href="#">Edit</a>
+                <a class="waves-effect waves-light btn" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
                 <a class="waves-effect waves-light btn" href="#">Delete</a>
                 </div>
   </div>
