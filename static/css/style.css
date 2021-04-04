@@ -124,3 +124,8 @@ font-family: 'Raleway', sans-serif;
 .button-styling{
     margin:5px;
 }
+
+/* search bar */
+.search-button{
+    margin-top:14px;
+}

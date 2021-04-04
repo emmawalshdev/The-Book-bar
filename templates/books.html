@@ -5,44 +5,47 @@
 
 <div class="">
     <!--search bar-->
-    <div class="row conatiner">
-        <!--search index-->
-        <form action= "{{ url_for('search') }}" method="POST" class = " input-field col s6 m4">
-                <input type="text" placeholder="Emma" name="query" id="query" minlength="3" class="validate" required>
-                <label for="query">Search Books</label>
-                <button type="submit" class = "waves-effect waves-light btn button-styling">
-                      <i class="material-icons">search</i>
-        </button>
-        </form>
-        <!-- Filter by genre -->
-        <form action="" method="POST" class="input-field col s6 m4">
-            <select multiple id="genre_name" name="genre_name" class="validate" required>
-                <option value="" disabled selected>Choose Genre</option>
-                {% for genre in genres %}
-                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
-                {% endfor %}
-            </select>
-            <label for="genre_name">Book Genre</label>
-        </form>
+    <div class="row container">
+        <form action= "{{ url_for('search') }}" method="POST" class = " card-panel col s12">
+            <div class="row">
+                <!--search index-->
+                <div class="col s12 m5 input-field">
+                    <input type="text" placeholder="Emma" name="query" id="query" minlength="3" class="validate" required>
+                    <label for="query">Search Books</label>
+                </div>
+                <!-- Filter by genre -->
+                <div class="input-field col s12 m5">
+                    <select multiple id="genre_name" name="genre_name" class="validate" required>
+                        <option value="" disabled selected>Choose Genre</option>
+                        {% for genre in genres %}
+                        <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="genre_name">Book Genre</label>
+                </div>
+                <div class="col s12 m2">
+                    <button type="submit" class = "waves-effect waves-light btn button-styling search-button">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+            </div>
         <!--sort by-->
-        <form action="" method="POST" class="input-field col s6 m4">
-            <select multiple>
-                <option value="" disabled selected>sort by</option>
-                <option value="1">A-Z</option>
-                <option value="2">Z-A</option>
-                <option value="3">Newest</option>
-                <option value="4">Oldest</option>
-            </select>
-            <label>Sort By</label>
+            <div class="row">
+                <div class="col">
+                 <!-- Dropdown Trigger -->
+                <a class="dropdown-trigger btn" data-target="dropdown1">Sort by</a>
+                
+                <!-- Dropdown Structure -->
+                <ul id="dropdown1" class= "dropdown-content">
+                    <li><a href="#!">A-Z</a></li>
+                    <li><a href="#!">Z-A</a></li>
+                    <li><a href="#!">Newly Added</a></li>
+                </ul>
+                </div>
+            <!-- buttons-->
+            </div>
         </form>
     </div>
-    <div class="row">
-        <div class="col s12 center-align">
-        <a href="{{ url_for('get_books') }}" class = "waves-effect waves-light btn button-styling">
-            Reset
-        </a>
-    </div>
-</div>
 
 {% if books|length > 0 %}
     <div class="row container">
@@ -75,6 +78,12 @@
     </div>
 {% else %}
     <h4 class="center-align"> No Results Found</h4>
+    <div class="col s12 m4 center-align">
+        <a href="{{ url_for('get_books') }}" class="waves-effect waves-light btn button-styling">
+            Reset
+        </a>
+    </div>
+
 {% endif %}
 
 {% endblock %}

@@ -29,7 +29,7 @@ def get_books():
 def search():
     query = request.form.get("query")
     books = list(mongo.db.books.find({"$text": {"$search": query}}))
-    return render_template("books.html", books= books)
+    return render_template("books.html", books=books)
 
 
 @app.route("/register", methods=["GET", "POST"])
