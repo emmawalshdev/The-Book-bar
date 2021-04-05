@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import math
 if os.path.exists("env.py"):
     import env
 
@@ -19,17 +20,36 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_books")
 def get_books():
     books = list(mongo.db.books.find())
-    return render_template("books.html", books=books)
+    genres = mongo.db.genres.find().sort("genres", 1)
+
+    return render_template("books.html", books=books, genres=genres)
+
+
+@app.route("/get_books")
+@app.route("/get_books/<int:page>")
+def get_books_all(page=1):
+    books = list(mongo.db.books.find())
+    if page == 1:
+        booklist = books[0:10]
+    else:
+        first = page * 10 - 10
+        last = first + 10
+        booklist = books[first:last]
+    counter = math.ceil((len(books))/(10))
+
+    return render_template(
+        "books.html", books=booklist, pages=counter)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    genres = mongo.db.genres.find().sort("genres", 1)
+
     query = request.form.get("query")
     books = list(mongo.db.books.find({"$text": {"$search": query}}))
-    return render_template("books.html", books=books)
+    return render_template("books.html", books=books, genres=genres)
 
 
 @app.route("/register", methods=["GET", "POST"])
