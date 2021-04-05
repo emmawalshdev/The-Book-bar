@@ -30,7 +30,6 @@
                 </div>
             </div>
         <!--sort by-->
-         {% if post is not defined %}
             <div class="row">
                 <div class="col">
                  <!-- Dropdown Trigger -->
@@ -38,12 +37,11 @@
                 
                 <!-- Dropdown Structure -->
                 <ul id="dropdown1" class= "dropdown-content">
-                    <li><a href="{{ url_for('books_a_to_z') }}">A-Z</a></li>
+                    <li><a href="#!">A-Z</a></li>
                     <li><a href="#!">Z-A</a></li>
                     <li><a href="#!">Newly Added</a></li>
                 </ul>
                 </div>
-            {% endif %}
             <!-- buttons-->
             </div>
         </form>
@@ -93,7 +91,7 @@
             {% if pages %}
                 {% for i in range(pages) %}
                     <li class="waves-effect">
-                        <a href="{{ url_for('get_books', page=loop.index) }}"
+                        <a href="{{ url_for('get_books') }}"
                             tabindex="-1">{{ loop.index }}
                         </a>
                     </li>

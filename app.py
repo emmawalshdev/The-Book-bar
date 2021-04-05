@@ -23,7 +23,9 @@ mongo = PyMongo(app)
 @app.route("/get_books")
 @app.route("/get_books/<int:page>")
 def get_books(page=1):
-    books = list(mongo.db.books.find())
+    books = list(mongo.db.books.find().sort("_id", -1))
+    genres = mongo.db.genres.find().sort("genres", 1)
+
     if page == 1:
         booklist = books[0:10]
     else:
@@ -33,16 +35,35 @@ def get_books(page=1):
     counter = math.ceil((len(books))/(10))
 
     return render_template(
-        "books.html", books=booklist, pages=counter)
+        "books.html", books=booklist, genres=genres, pages=counter)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     genres = mongo.db.genres.find().sort("genres", 1)
 
-    query = request.form.get("query")
-    books = list(mongo.db.books.find({"$text": {"$search": query}}))
-    return render_template("books.html", books=books, genres=genres)
+    booklist = list(mongo.db.books.find(
+        {"$text": {"$search": request.form.get("query")}}))
+    return render_template(
+        "books.html", books=booklist, genres=genres, post=True)
+
+
+@app.route("/books-a-to-z")
+@app.route("/books-a-to-z/<int:page>")
+def books_a_to_z(page=1):
+    books = list(mongo.db.books.find().sort("books", 1))
+    genres = mongo.db.genres.find().sort("genres", 1)
+
+    if page == 1:
+        booklist = books[0:10]
+    else:
+        first = page * 10 - 10
+        last = first + 10
+        booklist = books[first:last]
+    counter = math.ceil((len(books))/(10))
+
+    return render_template(
+        "books-a-to-z.html", books=booklist, genres=genres, pages=counter)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -138,7 +159,7 @@ def add_book():
             "description": request.form.get("description"),
             "buy_url": request.form.get("buy_url"),
             "is_upvoted": is_upvoted,
-            "created_by": session["user"]
+            "created_by": session["user"],
         }
         mongo.db.books.insert_one(book)
         flash("Book Successfully Added")
