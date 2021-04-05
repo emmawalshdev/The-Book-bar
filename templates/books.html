@@ -41,8 +41,8 @@
             <!-- Dropdown Structure -->
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href="{{ url_for('books_a_to_z') }}">A-Z</a></li>
-                <li><a href="#!">Z-A</a></li>
-                <li><a href="#!">Newly Added</a></li>
+                <li><a href="{{ url_for('books_z_to_a') }}">Z-A</a></li>
+                <li><a href="{{ url_for('books_new') }}">Newly Added</a></li>
             </ul>
         </div>
         {% endif %}
@@ -81,7 +81,7 @@
 {% else %}
     <h4 class="center-align"> No Results Found</h4>
     <div class="col s12 m4 center-align">
-        <a href="{{ url_for('get_books') }}" class="waves-effect waves-light btn button-styling">
+        <a href="{{ url_for('books_new') }}" class="waves-effect waves-light btn button-styling">
             Reset
         </a>
     </div>
@@ -93,7 +93,7 @@
             {% if pages %}
                 {% for i in range(pages) %}
                     <li class="waves-effect">
-                        <a href="{{ url_for('get_books', page=loop.index) }}"
+                        <a href="{{ url_for('books_new', page=loop.index) }}"
                             tabindex="-1">{{ loop.index }}
                         </a>
                     </li>

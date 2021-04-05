@@ -40,8 +40,8 @@
             <!-- Dropdown Structure -->
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href="{{ url_for('books_a_to_z') }}">A-Z</a></li>
-                <li><a href="{{ url_for('books_z_to_a') }}">Z-A</a></li>
-                <li><a href="{{ url_for('books_new') }}">Newly Added</a></li>
+                <li><a href="#!">Z-A</a></li>
+                <li><a href="#!">Newly Added</a></li>
             </ul>
         </div>
     </div>
@@ -90,7 +90,7 @@
             {% if pages %}
                 {% for i in range(pages) %}
                     <li class="waves-effect">
-                        <a href="{{ url_for('books_z_to_a', page=loop.index) }}"
+                        <a href="{{ url_for('books_a_to_z', page=loop.index) }}"
                             tabindex="-1">{{ loop.index }}
                         </a>
                     </li>

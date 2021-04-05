@@ -20,9 +20,9 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_books")
-@app.route("/get_books/<int:page>")
-def get_books(page=1):
+@app.route("/get_books/new_books")
+@app.route("/get_books/new_books/<int:page>")
+def books_new(page=1):
     books = list(mongo.db.books.find().sort("_id", -1))
     genres = mongo.db.genres.find().sort("genres", 1)
 
@@ -64,6 +64,24 @@ def books_a_to_z(page=1):
 
     return render_template(
         "books-a-to-z.html", books=booklist, genres=genres, pages=counter)
+
+
+@app.route("/get_books/z-to-a")
+@app.route("/get_books/z-to-a/<int:page>")
+def books_z_to_a(page=1):
+    books = list(mongo.db.books.find().sort("book_name", -1))
+    genres = mongo.db.genres.find().sort("genres", 1)
+
+    if page == 1:
+        booklist = books[0:10]
+    else:
+        first = page * 10 - 10
+        last = first + 10
+        booklist = books[first:last]
+    counter = math.ceil((len(books))/(10))
+
+    return render_template(
+        "books-z-to-a.html", books=booklist, genres=genres, pages=counter)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -163,7 +181,7 @@ def add_book():
         }
         mongo.db.books.insert_one(book)
         flash("Book Successfully Added")
-        return redirect(url_for("get_books"))
+        return redirect(url_for("books_new"))
 
     genres = mongo.db.genres.find().sort("genre_name", 1)
     return render_template("add_book.html", genres=genres)
@@ -196,7 +214,7 @@ def edit_book(book_name, id):
 def delete_book(book_name, id):
     mongo.db.books.remove({"_id": ObjectId(id)})
     flash("Book has sucessfully been deleted")
-    return redirect(url_for("get_books"))
+    return redirect(url_for("books_new"))
 
 
 @app.route("/get_genres")
