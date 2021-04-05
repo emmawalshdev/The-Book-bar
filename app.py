@@ -20,16 +20,9 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-def get_books():
-    books = list(mongo.db.books.find())
-    genres = mongo.db.genres.find().sort("genres", 1)
-
-    return render_template("books.html", books=books, genres=genres)
-
-
 @app.route("/get_books")
 @app.route("/get_books/<int:page>")
-def get_books_all(page=1):
+def get_books(page=1):
     books = list(mongo.db.books.find())
     if page == 1:
         booklist = books[0:10]

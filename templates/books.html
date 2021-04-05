@@ -86,12 +86,12 @@
 {% endif %}
     <!--pagination-->
     <div class="row">
-        <div class="col s4 offset-s4">
+        <div class="col s4 offset-s4 center-align">
             <ul class="pagination">
             {% if pages %}
                 {% for i in range(pages) %}
                     <li class="waves-effect">
-                        <a href="{{ url_for('get_books_all', page=loop.index) }}"
+                        <a href="{{ url_for('get_books', page=loop.index) }}"
                             tabindex="-1">{{ loop.index }}
                         </a>
                     </li>
