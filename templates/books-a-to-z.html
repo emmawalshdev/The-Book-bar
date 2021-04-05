@@ -29,25 +29,24 @@
                     </button>
                 </div>
             </div>
-        <!--sort by-->
-            <div class="row">
-                <div class="col">
-                 <!-- Dropdown Trigger -->
-                <a class="dropdown-trigger btn" data-target="dropdown1">Sort by</a>
-                
-                <!-- Dropdown Structure -->
-                <ul id="dropdown1" class= "dropdown-content">
-                    <li><a href="#!">A-Z</a></li>
-                    <li><a href="#!">Z-A</a></li>
-                    <li><a href="#!">Newly Added</a></li>
-                </ul>
-                </div>
-            <!-- buttons-->
-            </div>
         </form>
     </div>
-
-{% if books|length > 0 %}
+    <!--sort by-->
+    <div class="row container">
+        <div class="col">
+            <!-- Dropdown Trigger -->
+            <a class="dropdown-trigger btn" data-target="dropdown1">Sort by</a>
+    
+            <!-- Dropdown Structure -->
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="{{ url_for('books_a_to_z') }}">A-Z</a></li>
+                <li><a href="#!">Z-A</a></li>
+                <li><a href="#!">Newly Added</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    {% if books|length > 0 %}
     <div class="row container">
     {% for book in books %}
         <div class="col s6 m4">
@@ -91,7 +90,7 @@
             {% if pages %}
                 {% for i in range(pages) %}
                     <li class="waves-effect">
-                        <a href="{{ url_for('get_books') }}"
+                        <a href="{{ url_for('books_a_to_z', page=loop.index) }}"
                             tabindex="-1">{{ loop.index }}
                         </a>
                     </li>

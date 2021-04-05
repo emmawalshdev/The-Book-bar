@@ -48,10 +48,10 @@ def search():
         "books.html", books=booklist, genres=genres, post=True)
 
 
-@app.route("/books-a-to-z")
-@app.route("/books-a-to-z/<int:page>")
+@app.route("/get_books/a-to-z")
+@app.route("/get_books/a-to-z/<int:page>")
 def books_a_to_z(page=1):
-    books = list(mongo.db.books.find().sort("books", 1))
+    books = list(mongo.db.books.find().sort("book_name", 1))
     genres = mongo.db.genres.find().sort("genres", 1)
 
     if page == 1:
