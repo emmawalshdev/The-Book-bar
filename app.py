@@ -84,6 +84,14 @@ def books_z_to_a(page=1):
         "books-z-to-a.html", books=booklist, genres=genres, pages=counter)
 
 
+@app.route("/bookpage/review/<title>", methods=["POST"])
+def review_book(title):
+    get_book = mongo.db.find_one({"title": title})
+    review = get_book.get("review")
+    
+
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
