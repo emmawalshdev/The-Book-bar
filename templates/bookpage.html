@@ -77,7 +77,7 @@
                         Add a Review
                     </div>
                     <div class="card-body align-center">
-                        <form method="POST" ation="">
+                        <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
                             <textarea class="" maxlength="800" minlength="20" name="review" id="review" rows="6">
                              </textarea>
                             <div class="align-center"><button class="waves-effect waves-light btn-small button-styling"

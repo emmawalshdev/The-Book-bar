@@ -84,14 +84,6 @@ def books_z_to_a(page=1):
         "books-z-to-a.html", books=booklist, genres=genres, pages=counter)
 
 
-@app.route("/bookpage/review/<title>", methods=["POST"])
-def review_book(title):
-    get_book = mongo.db.find_one({"title": title})
-    review = get_book.get("review")
-    
-
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -223,6 +215,25 @@ def delete_book(book_name, id):
     mongo.db.books.remove({"_id": ObjectId(id)})
     flash("Book has sucessfully been deleted")
     return redirect(url_for("books_new"))
+
+
+@app.route("/bookpage/<book_name>", methods=["POST"])
+def review_book(book_name):
+    get_book = mongo.db.books.find_one({"book_name": book_name})
+    reviews = get_book.get("reviews")
+    if request.method == "POST":
+        if reviews:
+            for review in reviews:
+                if review["by_user"] == session["user"]:
+                    flash("review this book again?")
+                    return redirect(url_for(
+                        "bookpage", book_name=get_book.book_name))
+        mongo.db.books.update_one(
+            {"_id": ObjectId(get_book["_id"])}, {
+                "$addToSet": {"review": {
+                    "description": request.form.get("review")}}})
+        flash("review saved")
+    return render_template("bookpage.html", get_book=get_book)
 
 
 @app.route("/get_genres")
