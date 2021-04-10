@@ -148,3 +148,7 @@ font-family: 'Raleway', sans-serif;
     text-align:center;
 }
 
+/* review */
+.card .card-content {
+   height: 100%;
+}

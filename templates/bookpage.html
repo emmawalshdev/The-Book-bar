@@ -85,8 +85,14 @@
                     <span class="card-title">Add a Review</span>
                     <div class="card-body align-center">
                         <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
-                            <textarea class="" maxlength="800" minlength="20" name="review" id="review" rows="6">
-                             </textarea>
+                            <div class="input-field col s12">
+                                <input id="review_title" name= "review_title" type="text" class="validate">
+                                <label for="review_title">Title</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" maxlength="800" minlength="20" name="review" id="review" rows="6"></textarea>
+                                <label for="review">Summary</label>
+                            </div>
                             <div class="align-center"><button class="waves-effect waves-light btn-small button-styling"
                                     type="submit">Submit</button></div>
                         </form>

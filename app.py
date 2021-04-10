@@ -231,6 +231,7 @@ def review_book(book_name):
         mongo.db.books.update_one(
             {"_id": ObjectId(get_book["_id"])}, {
                 "$addToSet": {"review": {
+                    "title": request.form.get("review_title"),
                     "description": request.form.get("review"),
                     "username": session["user"]}}})
         flash("review saved")
