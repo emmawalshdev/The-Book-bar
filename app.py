@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 import math
+import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -141,11 +142,15 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # get the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    user = mongo.db.users.find_one({"username": session['user']})
+    today = datetime.date.today()
+    date_joined = user["_id"].generation_time.date()
+    diff = "%d days" % (today - date_joined).days
+
     # if true then return users profile
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html", user=user, diff=diff)
     # if untrue return user back to login
     return redirect(url_for("login"))
 
@@ -233,6 +238,7 @@ def review_book(book_name):
                 "$addToSet": {"review": {
                     "title": request.form.get("review_title"),
                     "description": request.form.get("review"),
+                    "date": datetime.datetime.today(),
                     "username": session["user"]}}})
         flash("review saved")
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))

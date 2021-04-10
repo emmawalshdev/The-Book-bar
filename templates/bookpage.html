@@ -59,14 +59,21 @@
     </div>
     <div class="row container">
         <div class="col s12">
+            {% if get_book.review %}
+            {% for eachreview in get_book.review %}
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                    <p>Posted by: name</p>
+                    <span class="card-title"><strong>{{ eachreview.title }}</strong></span>
+                    <p>{{ eachreview.description }}</p>
+                    <p>Posted by: {{ eachreview.username }} </p>
+                    <p>Posted by: {{ eachreview.date }} </p>
+                    <p> </p>
                 </div>
             </div>
+            {% endfor %}
+            {% else %}
+            <p> No reviews yet!</p>
+            {% endif %}
         </div>
     </div>
     {% if not session.user %}
@@ -74,7 +81,7 @@
         <div class="col s12">
             <div>
                 To add a review, please login.
-                <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Login.</a>
+                <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Login.</a>
         </div>
     </div>
     {% else %}
