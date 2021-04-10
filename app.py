@@ -220,20 +220,21 @@ def delete_book(book_name, id):
 @app.route("/bookpage/<book_name>", methods=["POST"])
 def review_book(book_name):
     get_book = mongo.db.books.find_one({"book_name": book_name})
-    reviews = get_book.get("reviews")
+    reviews = get_book.get("review")
     if request.method == "POST":
         if reviews:
             for review in reviews:
-                if review["by_user"] == session["user"]:
-                    flash("review this book again?")
+                if review["username"] == session["user"]:
+                    flash("You have already reviewed this book.")
                     return redirect(url_for(
-                        "bookpage", book_name=get_book.book_name))
+                        "bookpage", book_name=get_book.get("book_name")))
         mongo.db.books.update_one(
             {"_id": ObjectId(get_book["_id"])}, {
                 "$addToSet": {"review": {
-                    "description": request.form.get("review")}}})
+                    "description": request.form.get("review"),
+                    "username": session["user"]}}})
         flash("review saved")
-    return render_template("bookpage.html", get_book=get_book)
+    return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
 
 @app.route("/get_genres")
