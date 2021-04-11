@@ -226,6 +226,8 @@ def delete_book(book_name, id):
 def review_book(book_name):
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
+    date = str(datetime.date.today())
+    d = datetime.datetime.strptime(date, "%Y-%d-%m").strftime('%d/%m/%Y')
     if request.method == "POST":
         if reviews:
             for review in reviews:
@@ -238,7 +240,7 @@ def review_book(book_name):
                 "$addToSet": {"review": {
                     "title": request.form.get("review_title"),
                     "description": request.form.get("review"),
-                    "date": datetime.datetime.today(),
+                    "date": d,
                     "username": session["user"]}}})
         flash("review saved")
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
