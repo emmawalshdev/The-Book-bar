@@ -7,6 +7,8 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 import math
 import datetime
+import string
+import secrets
 if os.path.exists("env.py"):
     import env
 
@@ -235,25 +237,32 @@ def review_book(book_name):
                     flash("You have already reviewed this book.")
                     return redirect(url_for(
                         "bookpage", book_name=get_book.get("book_name")))
+        alphabet = string.ascii_letters + string.digits
+        password = ''.join(secrets.choice(alphabet) for i in range(8))
         mongo.db.books.update_one(
             {"_id": ObjectId(get_book["_id"])}, {
                 "$addToSet": {"review": {
                     "title": request.form.get("review_title"),
                     "description": request.form.get("review"),
                     "date": d,
+                    "review_id": password,
                     "username": session["user"]}}})
         flash("review saved")
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
 
-@app.route("/bookpage/<book_name>/<username>/editreview", methods=[
-    "GET", "POST"])
-def edit_review(book_name, username):
+@app.route("/<book_name>/<username>/<title>/<description>", methods=["GET", "POST"])
+def edit_review(username, title, description, book_name):
     user = mongo.db.users.find_one({"username": session['user']})
     get_book = mongo.db.books.find_one({"book_name": book_name})
-    if session["user"] == username:
+
+    if session["user"] == username or session["user"] == "admin":
         return render_template(
-            "editreview.html", get_book=get_book, username=user
+            "editreview.html",
+            get_book=get_book,
+            username=user,
+            title=title,
+            description=description
         )
     else:
         return redirect(url_for(

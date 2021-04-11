@@ -268,6 +268,8 @@ The following scripts/plugins were used in the project:
 The following code has been directly used in this project:
 
 * 
+https://docs.python.org/3/library/secrets.html
+generating passwords
 
 ###  Media
 The images used on this website were obtained from the following sources:
