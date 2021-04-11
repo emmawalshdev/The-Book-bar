@@ -63,12 +63,25 @@
             {% for eachreview in get_book.review %}
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title"><strong>{{ eachreview.title }}</strong></span>
+                    <span class="card-title"><strong>{{ eachreview.title }}</strong>
+                        {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
+                            <i class="material-icons right activator pointer">more_horiz</i>
+                        {% endif %}
+                    </span>
                     <p>{{ eachreview.description }}</p>
                     <p>Posted by: {{ eachreview.username }} </p>
                     <p>Date: {{ eachreview.date }} </p>
-                    <p> </p>
                 </div>
+                {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
+                <div class="card-reveal">
+                    <span class = "card-title">
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <a href="#">Edit</a>
+                    <br>
+                    <a href="#">Delete</a>
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
             {% else %}
