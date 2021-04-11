@@ -246,6 +246,20 @@ def review_book(book_name):
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
 
+@app.route("/bookpage/<book_name>/<username>/editreview", methods=[
+    "GET", "POST"])
+def edit_review(book_name, username):
+    user = mongo.db.users.find_one({"username": session['user']})
+    get_book = mongo.db.books.find_one({"book_name": book_name})
+    if session["user"] == username:
+        return render_template(
+            "editreview.html", get_book=get_book, username=user
+        )
+    else:
+        return redirect(url_for(
+            "bookpage", book_name=get_book.get("book_name")))
+
+
 @app.route("/get_genres")
 def get_genres():
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
