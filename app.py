@@ -229,7 +229,6 @@ def review_book(book_name):
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
     date = str(datetime.date.today())
-    d = datetime.datetime.strptime(date, "%Y-%d-%m").strftime('%d/%m/%Y')
     if request.method == "POST":
         if reviews:
             for review in reviews:
@@ -244,25 +243,33 @@ def review_book(book_name):
                 "$addToSet": {"review": {
                     "title": request.form.get("review_title"),
                     "description": request.form.get("review"),
-                    "date": d,
+                    "date": date,
                     "review_id": password,
                     "username": session["user"]}}})
         flash("review saved")
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
 
-@app.route("/<book_name>/<username>/<title>/<description>", methods=["GET", "POST"])
-def edit_review(username, title, description, book_name):
-    user = mongo.db.users.find_one({"username": session['user']})
+@app.route("/<book_name>/<username>/<id>/editreview", methods=["GET", "POST"])
+def edit_review(book_name, username, id):
+    username = mongo.db.users.find_one(
+        {"username": session['user']})["username"]
     get_book = mongo.db.books.find_one({"book_name": book_name})
-
+    reviewarray = list(mongo.db.books.find(
+        {'review': {"$elemMatch": {"review_id": id}}}, {
+            "review.$": 1}))
     if session["user"] == username or session["user"] == "admin":
+        new_dict = {}
+        for key, value in reviewarray[0].items():
+            if key == "review":
+                new_dict[key] = value
+        for k in new_dict:
+            for x in new_dict[k]:
+                review = x
         return render_template(
             "editreview.html",
             get_book=get_book,
-            username=user,
-            title=title,
-            description=description
+            review=review,
         )
     else:
         return redirect(url_for(
