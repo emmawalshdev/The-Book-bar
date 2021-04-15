@@ -77,7 +77,7 @@
                     <span class = "card-title">
                         <i class="material-icons right">close</i>
                     </span>
-                    <a href="{{ url_for('edit_review', book_name=get_book.book_name, username=eachreview.username, id=eachreview.review_id) }}">Edit</a>
+                    <a href="{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Edit</a>
                     <br>
                     <a href="#">Delete</a>
                 </div>

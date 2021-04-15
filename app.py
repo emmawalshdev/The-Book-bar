@@ -246,22 +246,35 @@ def review_book(book_name):
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
 
-@app.route("/<book_name>/<username>/<id>/editreview", methods=["GET", "POST"])
-def edit_review(book_name, username, id):
+@app.route("/<book_name>/<book_id>/<username>/<id>/editreview", methods=[
+    "GET", "POST"])
+def edit_review(book_name, book_id, username, id):
     username = mongo.db.users.find_one(
         {"username": session['user']})["username"]
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviewarray = list(mongo.db.books.find(
         {'review': {"$elemMatch": {"review_id": id}}}, {
             "review.$": 1}))
-    if session["user"] == username or session["user"] == "admin":
-        new_dict = {}
-        for key, value in reviewarray[0].items():
-            if key == "review":
-                new_dict[key] = value
+    new_dict = {}
+    for key, value in reviewarray[0].items():
+        if key == "review":
+            new_dict[key] = value
         for k in new_dict:
             for x in new_dict[k]:
                 review = x
+
+    if request.method == "POST":
+        mongo.db.books.update(
+            {"_id": ObjectId(book_id), "review.review_id": id},
+            {"$set": {
+                "review.$.title": request.form.get("review_title"),
+                "review.$.description": request.form.get("review")}}
+        )
+        flash("review Successfully Updated")
+        return redirect(url_for(
+            "bookpage", book_name=get_book.get("book_name")))
+
+    if session["user"] == username or session["user"] == "admin":
         return render_template(
             "editreview.html",
             get_book=get_book,
