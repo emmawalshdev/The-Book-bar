@@ -175,7 +175,6 @@ def bookpage(book_name):
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":
-        is_upvoted = "on" if request.form.get("is_upvoted") else "off"
         book = {
             "genre_name": request.form.get("genre_name"),
             "book_name": request.form.get("book_name"),
@@ -183,7 +182,6 @@ def add_book():
             "image_url": request.form.get("image_url"),
             "description": request.form.get("description"),
             "buy_url": request.form.get("buy_url"),
-            "is_upvoted": is_upvoted,
             "created_by": session["user"],
         }
         mongo.db.books.insert_one(book)
@@ -197,18 +195,16 @@ def add_book():
 @app.route("/edit_book/<book_name>/<id>", methods=["GET", "POST"])
 def edit_book(book_name, id):
     if request.method == "POST":
-        is_upvoted = "on" if request.form.get("is_upvoted") else "off"
-        save = {
+        mongo.db.books.update({"_id": ObjectId(id)}, {"$set": {
             "genre_name": request.form.get("genre_name"),
             "book_name": request.form.get("book_name"),
             "author": request.form.get("author"),
             "image_url": request.form.get("image_url"),
             "description": request.form.get("description"),
             "buy_url": request.form.get("buy_url"),
-            "is_upvoted": is_upvoted,
             "created_by": session["user"]
-        }
-        mongo.db.books.update({"_id": ObjectId(id)}, save)
+            }}
+        )
         flash("Book Successfully Updated")
 
     get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
