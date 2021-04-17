@@ -105,17 +105,43 @@
                     <span class="card-title">Add a Review</span>
                     <div class="card-body align-center">
                         <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
-                            <div class="input-field col s12">
-                                <input id="review_title" name= "review_title" type="text" class="validate">
-                                <label for="review_title">Title</label>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="review_title" name="review_title" type="text" class="validate">
+                                    <label for="review_title">Title</label>
+                                </div>
                             </div>
-                            <div class="input-field col s12">
-                                <textarea class="materialize-textarea" maxlength="800" minlength="20" name="review" id="review" rows="6"></textarea>
-                                <label for="review">Summary</label>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" maxlength="800" minlength="20" name="review"
+                                        id="review" rows="6"></textarea>
+                                    <label for="review">Summary</label>
+                                </div>
                             </div>
-                            <div class="align-center"><button class="waves-effect waves-light btn-small button-styling"
-                                    type="submit">Submit</button></div>
-                            <span>* Please note, only one user review for each book is permitted.</span>
+                            <div class="row">
+                                <div class="col s12 m4 offset-m4 rating-wrapper">
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate" value="5" />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rate" value="4" />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rate" value="3" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rate" value="2" />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rate" value="1" />
+                                        <label for="star1" title="text">1 star</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="align-center"><button class="waves-effect waves-light btn-small button-styling"
+                                            type="submit">Submit</button>
+                                    </div>
+                                    <span>* Please note, only one user review for each book is permitted.</span>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
