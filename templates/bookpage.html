@@ -79,7 +79,7 @@
                     </span>
                     <a href="{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Edit</a>
                     <br>
-                    <a href="#">Delete</a>
+                    <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Delete</a>
                 </div>
                 {% endif %}
             </div>
@@ -115,6 +115,7 @@
                             </div>
                             <div class="align-center"><button class="waves-effect waves-light btn-small button-styling"
                                     type="submit">Submit</button></div>
+                            <span>* Please note, only one user review for each book is permitted.</span>
                         </form>
                     </div>
                 </div>

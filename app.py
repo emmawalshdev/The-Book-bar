@@ -194,6 +194,7 @@ def add_book():
 
 @app.route("/edit_book/<book_name>/<id>", methods=["GET", "POST"])
 def edit_book(book_name, id):
+    get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
     if request.method == "POST":
         mongo.db.books.update({"_id": ObjectId(id)}, {"$set": {
             "genre_name": request.form.get("genre_name"),
@@ -206,8 +207,9 @@ def edit_book(book_name, id):
             }}
         )
         flash("Book Successfully Updated")
+        return redirect(url_for(
+            "bookpage", book_name=get_book.get("book_name")))
 
-    get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
     genres = mongo.db.genres.find().sort("genre_name", 1)
     return render_template(
         "edit_book.html", get_book=get_book, genres=genres, id=id)
@@ -283,6 +285,18 @@ def edit_review(book_name, book_id, username, id):
     else:
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
+
+
+@app.route("/<book_name>/<book_id>/<username>/<id>/deletereview")
+def delete_review(book_name, book_id, username, id):
+    mongo.db.books.update(
+        {"_id": ObjectId(book_id), "review.review_id": id},
+        {"$pull": {"review": {"review_id": id}}})
+    flash('Review Successfully Removed')
+    {"_id": ObjectId(book_id), "review.review_id": id}
+    get_book = mongo.db.books.find_one({"book_name": book_name})
+    return redirect(url_for(
+        "bookpage", book_name=get_book.get("book_name")))
 
 
 @app.route("/get_genres")
