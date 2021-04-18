@@ -86,6 +86,8 @@ Test logout by checking session cookie in application tab on dev tools
 Issue
 resolution 
 
+remove top:-9999px from star rating, stops page jumping to the top.
+
 #### Unsolved
 1. <strong>name</strong>
 Issue
