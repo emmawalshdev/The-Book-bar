@@ -271,7 +271,9 @@ def edit_review(book_name, book_id, username, id):
             {"_id": ObjectId(book_id), "review.review_id": id},
             {"$set": {
                 "review.$.title": request.form.get("review_title"),
-                "review.$.description": request.form.get("review")}}
+                "review.$.description": request.form.get("review"),
+                "review.$.rating": request.form.get("rate")
+                }}
         )
         flash("review Successfully Updated")
         return redirect(url_for(
