@@ -280,8 +280,8 @@ The images used on this website were obtained from the following sources:
 In README.md:
 * Colour palette: [Source](https://www.pinterest.de/pin/490681321896937815/)
 
-In index.html: 
-* Students in a classroom: [Source](https://www.pexels.com/photo/three-toddler-eating-on-white-table-1001914/)
+In bookpage.html: 
+* star [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
 
 ### Acknowledgments
 * 
