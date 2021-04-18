@@ -241,6 +241,7 @@ def review_book(book_name):
                 "$addToSet": {"review": {
                     "title": request.form.get("review_title"),
                     "description": request.form.get("review"),
+                    "rating": request.form.get("rate"),
                     "date": date,
                     "review_id": password,
                     "username": session["user"]}}})
