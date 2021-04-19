@@ -168,6 +168,7 @@ def logout():
 @app.route("/bookpage/<book_name>")
 def bookpage(book_name):
     get_book = mongo.db.books.find_one({"book_name": book_name})
+
     return render_template(
         "bookpage.html", get_book=get_book)
 
@@ -241,7 +242,7 @@ def review_book(book_name):
                 "$addToSet": {"review": {
                     "title": request.form.get("review_title"),
                     "description": request.form.get("review"),
-                    "rating": request.form.get("rate"),
+                    "rating": int(request.form.get("rate")),
                     "date": date,
                     "review_id": password,
                     "username": session["user"]}}})
@@ -272,7 +273,7 @@ def edit_review(book_name, book_id, username, id):
             {"$set": {
                 "review.$.title": request.form.get("review_title"),
                 "review.$.description": request.form.get("review"),
-                "review.$.rating": request.form.get("rate")
+                "review.$.rating": int(request.form.get("rate"))
                 }}
         )
         flash("review Successfully Updated")

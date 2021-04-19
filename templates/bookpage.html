@@ -29,6 +29,7 @@
                         </span>
                             {{ get_book.author }}
                     </p>
+                    <p>rating: {{ review }}</p>
                 </div>
                 <div class="col s12">
                     <p>
@@ -71,15 +72,15 @@
                     <p>{{ eachreview.description }}</p>
                     <p>Posted by: {{ eachreview.username }} </p>
                     <p>Date: {{ eachreview.date }} </p>
-                    {% if eachreview.rating == "5" %} 
+                    {% if eachreview.rating == 5 %} 
                         <img src="../static/images/5stars.jpg" width="100px" alt="5 stars">
-                    {% elif eachreview.rating =="4" %}
+                    {% elif eachreview.rating == 4 %}
                         <img src="../static/images/4stars.jpg" width="100px" alt="4 stars">
-                    {% elif eachreview.rating =="3" %}
+                    {% elif eachreview.rating == 3 %}
                         <img src="../static/images/3stars.jpg" width="100px" alt="3 stars">
-                    {% elif eachreview.rating =="2" %}
+                    {% elif eachreview.rating == 2 %}
                         <img src="../static/images/2stars.jpg" width="100px" alt="2 stars">
-                    {% elif eachreview.rating =="1" %}
+                    {% elif eachreview.rating == 1 %}
                         <img src="../static/images/1star.jpg" width="100px" alt="5 stars">
                     {% endif %}
                 </div>
@@ -132,7 +133,7 @@
                             <div class="row">
                                 <div class="col s12 m4 offset-m4 rating-wrapper">
                                     <div class="rate">
-                                        <input type="radio" id="star5" name="rate" value="5" required/>
+                                        <input type="radio" id="star5" name="rate" value= "5" required/>
                                         <label for="star5" title="text">5 stars</label>
                                         <input type="radio" id="star4" name="rate" value="4" />
                                         <label for="star4" title="text">4 stars</label>
