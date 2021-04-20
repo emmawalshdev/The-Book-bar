@@ -168,9 +168,20 @@ def logout():
 @app.route("/bookpage/<book_name>")
 def bookpage(book_name):
     get_book = mongo.db.books.find_one({"book_name": book_name})
+    reviews = get_book.get("review")
+    if reviews:
+        for review in reviews:
+            x = review["bookid"]
+    review = list(mongo.db.books.aggregate([{
+        "$unwind": "$review"},
+        {"$match": {'review.bookid': x}},
+        {"$group": {
+            "_id": "$_id", "averageRating": {
+                "$avg": '$review.rating'}}}
+    ]))
 
     return render_template(
-        "bookpage.html", get_book=get_book)
+        "bookpage.html", get_book=get_book, review=review)
 
 
 @app.route("/add_book", methods=["GET", "POST"])

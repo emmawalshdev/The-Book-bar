@@ -68,9 +68,6 @@
                         <i class="material-icons right">close</i>
                         <strong>{{ book.book_name }}</strong>
                         <p> {{ book.genre_name }}</p>
-                        {% if book.is_upvoted == "on" %}
-                            <p>{{ book.is_upvoted }} </p>
-                        {% endif %}
                         <p><a href="{{ url_for( 'bookpage', book_name=book.book_name) }}">click</a></p>                
                     </span>
                 </div>
