@@ -172,16 +172,19 @@ def bookpage(book_name):
     if reviews:
         for review in reviews:
             x = review["bookid"]
-    review = list(mongo.db.books.aggregate([{
-        "$unwind": "$review"},
-        {"$match": {'review.bookid': x}},
-        {"$group": {
-            "_id": "$_id", "averageRating": {
-                "$avg": '$review.rating'}}}
-    ]))
-
+            review = list(mongo.db.books.aggregate([{
+                "$unwind": "$review"},
+                {"$match": {'review.bookid': x}},
+                {"$group": {
+                    "_id": "$_id", "averageRating": {
+                        "$avg": '$review.rating'}}}
+            ]))
+            review = review[0]
+    else:
+        review = "No star ratings yet"
     return render_template(
-        "bookpage.html", get_book=get_book, review=review)
+        "bookpage.html", get_book=get_book, review=review
+    )
 
 
 @app.route("/add_book", methods=["GET", "POST"])
@@ -256,6 +259,7 @@ def review_book(book_name):
                     "rating": int(request.form.get("rate")),
                     "date": date,
                     "review_id": password,
+                    "bookid": str(get_book["_id"]),
                     "username": session["user"]}}})
         flash("review saved")
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
@@ -284,7 +288,8 @@ def edit_review(book_name, book_id, username, id):
             {"$set": {
                 "review.$.title": request.form.get("review_title"),
                 "review.$.description": request.form.get("review"),
-                "review.$.rating": int(request.form.get("rate"))
+                "review.$.rating": int(request.form.get("rate")),
+                "review.$.bookid": str(get_book["_id"])  # remove this after
                 }}
         )
         flash("review Successfully Updated")

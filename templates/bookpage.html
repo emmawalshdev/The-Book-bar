@@ -23,13 +23,24 @@
                     </h5>
                 </div>
                 <div class="col s12">
+                    <div class="center">
+                        <span class="bookpage-rating">
+                            {% if review.averageRating %}
+                                <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                    {{ review.averageRating }} 
+                            {% else %}
+                                <i class="material-icons star-icon-black small tooltipped " data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                <div class="col s12">
                     <p>
                         <span class= "bookpage-title">
                         Author:                                   
                         </span>
                             {{ get_book.author }}
                     </p>
-                    <p>rating: {{ review[0].averageRating }}</p>
                 </div>
                 <div class="col s12">
                     <p>

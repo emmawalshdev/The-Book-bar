@@ -116,6 +116,12 @@ font-family: 'Raleway', sans-serif;
     font-size:1.3rem;
 }
 
+.bookpage-rating{
+    font-size:1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
 .book-page-buttons{
      margin-top: 20px;
 }
@@ -196,4 +202,12 @@ font-family: 'Raleway', sans-serif;
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
+}
+
+.star-icon-gold{
+    color:#ffc700;
+}
+
+.star-icon-black{
+    color:#7a7a7a;
 }
