@@ -74,20 +74,31 @@ font-family: 'Raleway', sans-serif;
 }
 
 .card .card-content {
-    padding: 24px;
+    padding: 10px 20px;
     border-radius: 0 0 2px 2px;
     height: 160px;
-}
-.card .card-title {
-    font-size: 1.3rem;
 }
 
 .custom-text{
     font-family: 'Raleway', sans-serif;
 }
 
-.card .card-content p {
-    font-style: italic;
+.card{
+    position: relative;
+}
+
+.books-button{
+    text-transform: capitalize;
+    width:90%;
+    height:32px;
+    position: absolute;
+    bottom:10px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.books-book-title{
+    font-size:17px;
 }
 
 /* book page */
@@ -122,6 +133,13 @@ font-family: 'Raleway', sans-serif;
     justify-content: center;
 }
 
+.books-rating{
+    font-size:1.5rem;
+    display: flex;
+    justify-content: left;
+
+}
+
 .book-page-buttons{
      margin-top: 20px;
 }
@@ -154,23 +172,12 @@ font-family: 'Raleway', sans-serif;
     text-align:center;
 }
 
-.card{
-    position: relative;
-}
 /* review */
 
 .activator{
   cursor: pointer;
 }
 
-.tag {
-    float: left;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 1000;
-    padding: 5px;
- }
 /* CREDIT https://codepen.io/hesguru/pen/BaybqXv*/
 
 *{
