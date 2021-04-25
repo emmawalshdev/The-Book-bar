@@ -48,12 +48,14 @@
         {% endif %}
         <!-- buttons-->
     </div>
-    
     {% if books|length > 0 %}
     <div class="row container">
     {% for book in books %}
         <div class="col s6 m4">
-            <div class="card">
+            <div class="card medium">
+                <div class="tag">
+                    {{ review }}
+                </div>
                 <div class="card-image">
                     <img class = "activator" src="{{ book.image_url }}">
                 </div>

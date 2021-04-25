@@ -28,7 +28,6 @@ mongo = PyMongo(app)
 def books_new(page=1):
     books = list(mongo.db.books.find().sort("_id", -1))
     genres = mongo.db.genres.find().sort("genres", 1)
-
     if page == 1:
         booklist = books[0:10]
     else:
@@ -36,9 +35,9 @@ def books_new(page=1):
         last = first + 10
         booklist = books[first:last]
     counter = math.ceil((len(books))/(10))
-
     return render_template(
-        "books.html", books=booklist, genres=genres, pages=counter)
+        "books.html", books=booklist,
+        genres=genres, pages=counter)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -169,6 +168,7 @@ def logout():
 def bookpage(book_name):
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
+    #  add average rating aggregation to a new collection
     if reviews:
         for review in reviews:
             x = review["bookid"]
@@ -177,9 +177,16 @@ def bookpage(book_name):
                 {"$match": {'review.bookid': x}},
                 {"$group": {
                     "_id": "$_id", "averageRating": {
-                        "$avg": '$review.rating'}}}
+                        "$avg": '$review.rating'}}},
+                {"$merge": {
+                    "into": "avgRatingAgg",
+                    "on": "_id",
+                    "whenMatched": "replace",
+                    "whenNotMatched": "insert"}}
             ]))
-            review = review[0]
+            review = mongo.db.avgRatingAgg.find_one({
+                "_id": ObjectId(get_book["_id"])
+            })
     else:
         review = "No star ratings yet"
     return render_template(
@@ -242,13 +249,16 @@ def review_book(book_name):
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
     date = str(datetime.date.today())
+    #  save the review if method is post
     if request.method == "POST":
         if reviews:
             for review in reviews:
+                #  if user has already posted a review, stop them
                 if review["username"] == session["user"]:
                     flash("You have already reviewed this book.")
                     return redirect(url_for(
                         "bookpage", book_name=get_book.get("book_name")))
+        #  else allow user to post review
         alphabet = string.ascii_letters + string.digits
         password = ''.join(secrets.choice(alphabet) for i in range(8))
         mongo.db.books.update_one(
@@ -261,6 +271,8 @@ def review_book(book_name):
                     "review_id": password,
                     "bookid": str(get_book["_id"]),
                     "username": session["user"]}}})
+    else:
+        review = "No star ratings yet"
         flash("review saved")
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
