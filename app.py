@@ -326,6 +326,9 @@ def delete_review(book_name, book_id, username, id):
         {"$pull": {"review": {"review_id": id}}})
     flash('Review Successfully Removed')
     {"_id": ObjectId(book_id), "review.review_id": id}
+    mongo.db.avgRatingAgg.remove({
+        "_id": ObjectId(book_id)
+        })
     get_book = mongo.db.books.find_one({"book_name": book_name})
     return redirect(url_for(
         "bookpage", book_name=get_book.get("book_name")))
