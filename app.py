@@ -28,7 +28,7 @@ mongo = PyMongo(app)
 def books_new(page=1):
     books = list(mongo.db.books.find().sort("_id", -1))
     genres = mongo.db.genres.find().sort("genres", 1)
-    review = list(mongo.db.avgRatingAgg.find().sort("id", -1))
+    avgratings = list(mongo.db.avgRatingAgg.find().sort("id", -1))
     if page == 1:
         booklist = books[0:10]
     else:
@@ -38,7 +38,7 @@ def books_new(page=1):
     counter = math.ceil((len(books))/(10))
     return render_template(
         "books.html", books=booklist,
-        genres=genres, pages=counter, review=review)
+        genres=genres, pages=counter, avgratings=avgratings)
 
 
 @app.route("/search", methods=["GET", "POST"])

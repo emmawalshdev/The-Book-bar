@@ -268,6 +268,10 @@ The following scripts/plugins were used in the project:
 The following code has been directly used in this project:
 
 * 
+
+/* CREDIT https://codepen.io/dimitrisraptis96/pen/NWrrRLB*/
+body background
+
 https://docs.python.org/3/library/secrets.html
 generating passwords
 

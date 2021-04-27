@@ -1,6 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Raleway&display=swap');
 
+/* CREDIT https://codepen.io/dimitrisraptis96/pen/NWrrRLB*/
+html{ 
+    background: 
+      linear-gradient(180deg, rgba(13, 78, 65, 0) 20%, rgba(54, 168, 159, 0.1) 20%, rgba(120, 197, 207, 0.1) 40%, rgba(128, 191, 207, 0.493) 40%, rgba(126, 171, 207, 0.2) 60%, rgba(166, 182, 235, 0.4) 60%, rgba(117, 162, 199, 0.4) 80%, rgba(121, 150, 187, 0.5) 80%),
+      linear-gradient(45deg, rgba(105, 151, 140, 0.3) 20%, rgba(5, 58, 107, 0.4) 20%, rgba(101, 175, 194, 0.4) 40%, rgba(149, 196, 218, 0.5) 40%, rgba(153, 180, 211, 0.5) 60%, rgba(156, 212, 238, 0.6) 60%, rgba(163, 213, 236, 0.6) 80%, rgba(133, 168, 197, 0.7) 80%),
+      linear-gradient(-45deg, rgba(45, 89, 102, 0) 20%, rgba(90, 153, 168, 0.1) 20%, rgba(89, 154, 170, 0.1) 40%, rgba(110, 171, 173, 0.2) 40%, rgba(143, 216, 198, 0.2) 60%, rgba(122, 172, 201, 0.4) 60%, rgba(130, 166, 190, 0.4) 80%, rgba(107, 143, 167, 0.6) 80%),
+      linear-gradient(90deg, rgba(55, 99, 175, 0) 20%, rgba(178, 206, 254,.3) 20%, rgba(76, 101, 145, 0.3) 40%, rgba(178, 206, 254,.5) 40%, rgba(178, 206, 254,.5) 60%, rgba(178, 206, 254,.7) 60%, rgba(178, 206, 254,.7) 80%, rgba(116, 169, 182, 0.8) 80%),
+      linear-gradient(-90deg, rgba(202, 115, 191, 0) 20%, rgba(226, 143, 215, 0.4) 20%, rgba(180, 110, 171, 0.4) 40%, rgba(242, 162, 232,.5) 40%, rgba(242, 162, 232,.5) 60%, rgba(235, 173, 226, 0.6) 60%, rgba(242, 162, 232,.6) 80%, rgba(206, 126, 195, 0.8) 80%),
+      linear-gradient(180deg, rgba(233, 174, 203, 0) 20%, rgba(218, 119, 127, 0.4) 20%, rgba(226, 169, 174, 0.4) 40%, rgba(228, 163, 168, 0.6) 40%, rgba(223, 165, 170, 0.6) 60%, rgba(254, 163, 170,.8) 60%, rgba(254, 163, 170,.8) 80%, rgba(204, 150, 155, 0.9) 80%)
+  ;
+    background-color: rgb(109, 206, 209);
+    background-size: 100% 100%;
+    min-height: 100%;
+  }
 /*
 font-family: 'Goudy Bookletter 1911', serif;
 font-family: 'Raleway', sans-serif;
@@ -138,7 +152,7 @@ font-family: 'Raleway', sans-serif;
     font-size:1.5rem;
     display: flex;
     justify-content: left;
-
+    height:30px;
 }
 
 .book-page-buttons{

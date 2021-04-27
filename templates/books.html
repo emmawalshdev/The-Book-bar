@@ -59,10 +59,10 @@
                 <div class="card-content black">
                     <span class="white-text custom-text">
                         <div class="books-rating">
-                            {% for reviews in review %}
-                                {% if reviews._id == book._id %}
+                            {% for avgrating in avgratings %}
+                                {% if avgrating._id == book._id %}
                                     <i class="material-icons star-icon-gold small">star</i>&nbsp;
-                                    {{ reviews.averageRating }}
+                                    {{ avgrating.averageRating }}
                                 {% endif %}
                             {% endfor %}
                         </div>
