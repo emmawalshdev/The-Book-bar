@@ -19,9 +19,6 @@ html{
 font-family: 'Goudy Bookletter 1911', serif;
 font-family: 'Raleway', sans-serif;
 */
-.logo-font{
-     font-family: 'Fredericka the Great', cursive;
-}
 
 /* form materialise */
   /* label color */
@@ -75,7 +72,25 @@ font-family: 'Raleway', sans-serif;
      box-shadow: 0 1px 0 0 #e780a3;
     }
 
+/* navbar styling */
+nav ul a,
+nav a {
+    color: #024bae;
+    font-weight:bold;
+}
 
+nav ul a:hover,
+.sidenav li>a:hover {
+    background-color: rgb(159 46 135 / 12%);
+}
+
+.sidenav li .mobile-brand-logo>.a:hover  {
+    background-color:white !important;
+}
+
+.sidenav li .mobile-brand-logo>.a {
+    height: 100px;
+}
 
 .flashes h4{
     line-height: 2;
