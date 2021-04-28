@@ -20,12 +20,12 @@ font-family: 'Goudy Bookletter 1911', serif;
 font-family: 'Raleway', sans-serif;
 */
 
-h3 {
+h3, h4 {
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
-    background-color: #fcfcfca3;
+    background-color: rgb(240, 91, 189);
     color: transparent;
-    text-shadow: 1.5px 1.5px 1px #db0086;
+    text-shadow: 3px 2px #ffffff;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -47,9 +47,30 @@ h3 {
      box-shadow: 0 1px 0 0 #006064;
    }
  
-   .form-label-style{
-    font-size:20px;
-   }
+.books-button-styling{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+}
+.books-button-styling:hover{
+    color:white;
+    background-color:#db0086;
+}
+
+@media all and (max-width:30em){
+    .books-button-styling{
+        display:block;
+        margin:0.4em auto;
+    }
+}
    /* valid color */
    .input-field input[type=text].valid,
    input.valid[type=text]:not(.browser-default), 
@@ -117,12 +138,12 @@ nav ul a:hover,
 }
 
 /* Home page */
-.card .card-image img {
+.book-card .card-image img {
     max-height: 370px;
     min-height: 270px;
 }
 
-.card .card-content {
+.book-card .book-card-content {
     padding: 10px 20px;
     border-radius: 0 0 2px 2px;
     height: 160px;
@@ -132,7 +153,7 @@ nav ul a:hover,
     font-family: 'Raleway', sans-serif;
 }
 
-.card{
+.book-card{
     position: relative;
 }
 

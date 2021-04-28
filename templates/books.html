@@ -45,11 +45,11 @@
     <div class="row container">
     {% for book in books %}
         <div class="col s6 m4">
-            <div class="card medium">
+            <div class="card medium book-card">
                 <div class="card-image">
                     <img class = "activator" src="{{ book.image_url }}">
                 </div>
-                <div class="card-content black">
+                <div class="card-content book-card-content black">
                     <span class="white-text custom-text">
                         <div class="books-rating">
                             {% for avgrating in avgratings %}
@@ -89,7 +89,7 @@
                             {% endif %}
                         </p>
                         <div>
-                            <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="grey small waves-effect waves-light btn books-button">
+                            <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="books-button-styling books-button">
                                 read more
                             </a>
                         </div>
