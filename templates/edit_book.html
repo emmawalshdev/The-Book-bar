@@ -57,30 +57,13 @@
                 <label for="buy_url">Buy now Url</label>
             </div>
         </div>
-        <!-- is upvoted-->
-        <div class="row">
-            <div class="input-field col s12">
-                <div class="switch">
-                    <i class="material-icons prefix">star_border</i>
-                    <label for="is_upvoted">
-                        {% if get_book.is_upvoted == "on" %}
-                            <input type="checkbox" id="is_upvoted" name="is_upvoted" checked>
-                        {% else %}
-                            <input type="checkbox" id="is_upvoted" name="is_upvoted">
-                        {% endif %}
-                            <span class="lever"></span>
-                        Is Upvoted
-                    </label>
-                </div>
-            </div>
-        </div>
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
-                <a href="{{ url_for('books_new') }}" class="waves-effect waves-light btn">
+                <a href="{{ url_for('books_new') }}" class="waves-effect waves-light pink accent-1 btn">
                     Cancel
                 </a>
-                <button type="submit" class="waves-effect waves-light btn">
+                <button type="submit" class="waves-effect waves-light pink accent-1 btn">
                     Save
                 </button>
             </div>

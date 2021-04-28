@@ -6,27 +6,20 @@
 <div class="">
     <!--search bar-->
     <div class="row container">
-        <form action= "{{ url_for('search') }}" method="POST" class = " card-panel col s12">
-            <div class="row">
-                <!--search index-->
-                <div class="col s12 m5 input-field">
-                    <input type="text" placeholder="Emma" name="query" id="query" minlength="3" class="validate" required>
-                    <label for="query">Search Books</label>
-                </div>
-                <!-- Filter by genre -->
-                <div class="input-field col s12 m5">
-                    <select multiple id="genre_name" name="genre_name" class="validate" required>
-                        <option value="" disabled selected>All</option>
-                        {% for genre in genres %}
-                        <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
-                        {% endfor %}
-                    </select>
-                    <label for="genre_name">Book Genre</label>
-                </div>
-                <div class="col s12 m2">
-                    <button type="submit" class = "waves-effect waves-light btn button-styling search-button">
-                        <i class="material-icons">search</i>
-                    </button>
+        <form action= "{{ url_for('search') }}" method="POST" class = "col s12">
+            <div class="card-panel">
+                <div class="row">
+                    <!--search index-->
+                    <div class="col s12 m10 input-field">
+                        <input type="text" placeholder="Search by Author or Book Title" name="query" id="query" minlength="3" class="validate" required>
+                        <label for="query" class="form-label-style">Enter a Keyword</label>
+                    </div>
+                    <!-- Submit button -->
+                    <div class="col s12 m2">
+                        <button type="submit" class = "waves-effect waves-light btn button-styling search-button pink accent-1">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -36,7 +29,7 @@
     <div class="row container">
         <div class="col">
             <!-- Dropdown Trigger -->
-            <a class="dropdown-trigger btn" data-target="dropdown1">Sort by</a>
+            <a class="dropdown-trigger btn waves-effect waves-light pink accent-1" data-target="dropdown1">Sort by</a>
     
             <!-- Dropdown Structure -->
             <ul id="dropdown1" class="dropdown-content">
