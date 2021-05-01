@@ -20,6 +20,10 @@ font-family: 'Goudy Bookletter 1911', serif;
 font-family: 'Raleway', sans-serif;
 */
 
+html body{
+    font-family: 'Goudy Bookletter 1911', serif;
+}
+
 h3, h4 {
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
@@ -149,6 +153,10 @@ nav ul a:hover,
     height: 160px;
 }
 
+.col-padding-mobile{
+    padding: 0 .25rem !important;
+}
+
 .custom-text{
     font-family: 'Raleway', sans-serif;
 }
@@ -160,7 +168,7 @@ nav ul a:hover,
 .books-button{
     text-transform: capitalize;
     width:90%;
-    height:32px;
+    height:35px;
     position: absolute;
     bottom:10px;
     left:50%;
@@ -169,6 +177,12 @@ nav ul a:hover,
 
 .books-book-title{
     font-size:17px;
+}
+
+.elipsed-text{
+    overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
 }
 
 /* book page */
