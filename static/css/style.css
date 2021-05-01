@@ -22,6 +22,12 @@ font-family: 'Raleway', sans-serif;
 
 html body{
     font-family: 'Goudy Bookletter 1911', serif;
+    font-size: 17px;
+    color: #263238;
+}
+
+.custom-font-weight{
+    font-weight:bolder;
 }
 
 h3, h4 {
@@ -33,6 +39,10 @@ h3, h4 {
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
+}
+
+.brand-logo img{
+    padding:2px 0 0 10px;
 }
 /* form materialise */
   /* label color */
@@ -67,6 +77,10 @@ h3, h4 {
 .books-button-styling:hover{
     color:white;
     background-color:#db0086;
+}
+
+.page-title-margin{
+    margin:50px 0 40px;
 }
 
 @media all and (max-width:30em){
@@ -111,14 +125,13 @@ h3, h4 {
     }
 
 /* navbar styling */
-nav.nav-extended {
-    padding: 10px;
-}
 
+.sidenav li>a,
 nav ul a,
 nav a {
     color: #024bae;
     font-weight:bold;
+    font-size:20px;
 }
 
 nav ul a:hover,
@@ -198,6 +211,9 @@ text-overflow: ellipsis;
   max-width: 400px;
 }
 
+.shadow-box-none{
+    box-shadow: none;
+}
 .book-section {
     padding-top:20px;
 }
@@ -211,11 +227,26 @@ text-overflow: ellipsis;
     font-size:1.3rem;
 }
 
-.bookpage-rating{
-    font-size:1.5rem;
+.margin-after-title{
+    margin-top:20px;
+}
+.flexbox-container-bookpage-title {
     display: flex;
-    justify-content: center;
-    height:30px;
+    justify-content: space-between;
+    height: 30px;
+    align-items: flex-end;
+    align-content: space-around;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.flex-item{
+    display: flex;
+    align-items: center;
+}
+
+.card.medium .bookpage-card-image{
+    max-height:400px;
 }
 
 .books-rating{

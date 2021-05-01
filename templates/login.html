@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Log in</h3>
+    <h3 class="center page-title-margin">Log in</h3>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
+        <form class="col s12 m8 offset-m2 l6 offset-l3" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel">
                 <!-- username-->
                 <div class="row">
@@ -35,7 +35,9 @@
                     <div class="col s12">
                         <p class="center-align">
                             New to The Book bar? 
-                            <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Register here.</a>
+                            <a href="{{ url_for('register') }}" class="blue-text text-darken-4 custom-font-weight">
+                                Register here.
+                            </a>
                         </p>
                     </div>
                 </div>

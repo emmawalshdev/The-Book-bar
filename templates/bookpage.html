@@ -4,63 +4,63 @@
     <div class="row book-section container">
         <!-- book image-->
         <div class="col s12 m5">
-            <div class="grid card transparent">
-                <img src="{{get_book.image_url }}" alt="book cover image" class="book-image card-image" height="600" width="400">
+            <div class="grid card medium transparent shadow-box-none">
+                <img src="{{get_book.image_url }}" alt="book cover image" class="book-image bookpage-card-image">
             </div>
         </div>
         <!--book description and info-->
         <div class="col s12 m7">
             <div class="card medium row">
                 <div class="card-content">
-                <!--edit and delete buttons for admin or book creater-->
-                {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
-                    <div class="col col s6 offset-s6 m4 offset-m8 book-page-buttons">
-                       <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1">Edit</a>
-                        <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1">Delete</a>
+                    <!--edit and delete buttons for admin or book creater-->
+                    {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
+                        <div class="col col s6 offset-s6 m4 offset-m8 book-page-buttons">
+                        <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1">Edit</a>
+                            <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1">Delete</a>
+                        </div>
+                    {% endif %}
+                    <div class="col s12">
+                        <div class="flexbox-container-bookpage-title">
+                            <div class="book-name">
+                                <h5 class="book-name">
+                                    {{ get_book.book_name }}
+                                </h5>
+                            </div>
+                            <div class="flex-item">
+                                {% if review.averageRating %}
+                                    <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                        <h5>{{ review.averageRating }}</h5>
+                                {% else %}
+                                    <i class="material-icons star-icon-black small tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                {% endif %}
-                <div class="col s12">
-                    <h5 class="center">
-                        <span class="book-name">
-                            {{ get_book.book_name }}
-                        </span>
-                    </h5>
-                </div>
-                <div class="col s12">
-                    <div class="center">
-                        <span class="bookpage-rating">
-                            {% if review.averageRating %}
-                                <i class="material-icons star-icon-gold small">star</i>&nbsp;
-                                    {{ review.averageRating }} 
-                            {% else %}
-                                <i class="material-icons star-icon-black small tooltipped " data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
-                            {% endif %}
-                        </span>
+                    <div class="col s12 margin-after-title">
+                        <p>
+                            <span class= "bookpage-title">
+                            Author:                                   
+                            </span>
+                                {{ get_book.author }}
+                        </p>
                     </div>
-                </div>
-                <div class="col s12">
-                    <p>
-                        <span class= "bookpage-title">
-                        Author:                                   
-                        </span>
-                            {{ get_book.author }}
-                    </p>
-                </div>
-                <div class="col s12">
-                    <p>
-                        <span class="bookpage-title">
-                        Genre:                                   
-                        </span>
-                            {{ get_book.genre_name }}
-                    </p>
-                </div>
-                <div class="col s12">
-                    <p class= "center">
-                        <span class="center bookpage-title">Description: </span>
+                    <div class="col s12">
+                        <p>
+                            <span class="bookpage-title">
+                            Genre:                                   
+                            </span>
+                                {{ get_book.genre_name }}
+                        </p>
+                    </div>
+                    <div class="col s12">
+                        <p>
                         <br>
-                            {{ get_book.description }}
-                    </p>
-                </div>
+                        <span class="center bookpage-title">Description:
+                        </span>
+                            <br>
+                                {{ get_book.description }}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
