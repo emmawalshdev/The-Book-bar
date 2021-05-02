@@ -149,13 +149,22 @@ def profile(username):
     date_joined = user["_id"].generation_time.date()
     diff = "%d days" % (today - date_joined).days
     books = list(mongo.db.books.find().sort("book_name", 1))
-    count1 = mongo.db.books.find({"created_by": username})
-    countf = count1.count()
+    booksbyuser = mongo.db.books.find({"created_by": username})
+    count = booksbyuser.count()
+    for book in books:
+        if 'review':
+            for ereview in 'review':
+                review = list(mongo.db.books.aggregate([{
+                    "$unwind": "$review"},
+                    {"$match": {'review.username': username}},
+                    {"$count": "reviewcount"}
+                ]))
 
     # if true then return users profile
     if session["user"]:
         return render_template(
-            "profile.html", user=user, diff=diff, books=books, count=countf)
+            "profile.html", user=user, diff=diff,
+            books=books, count=count, review=review[0])
     # if untrue return user back to login
     return redirect(url_for("login"))
 
