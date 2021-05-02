@@ -19,9 +19,9 @@
                         Your Activity
                     </h5>
                     <h6>Joined {{ diff }} ago</h6>
-                    <h6>Books Added: {{ count }}</h6>
+                    <h6>Books Added: {{ bookcount }}</h6>
                     <span></span>
-                    <h6>Reviews Added: {{review}}</h6>
+                    <h6>Reviews Added: {{ reviewcount }}</h6>
                     <span></span>
                 </div>
                 <div class="col s12 m4 center">
@@ -41,12 +41,14 @@
             <h4 class = "center-align">
                 Your Contributions
             </h4>
-            <p> book added</p>
+            <!--books added count-->
+            {% if bookcount > 0 %}
+                <h5>books added</h5>
+            {% else %}
+                <h5>No books added yet</h5>
+            {% endif %}
             {% for book in books %}
             {% if book.created_by|lower == session.user|lower %}
-            {% if books.created_by|lower|length > 0 %}
-            <p>books added</p>
-            {% endif %}
             <!--show books added by user-->
             <div class="col s6 m4 xl3 col-padding-mobile">
                 <div class="book-card">
@@ -110,7 +112,12 @@
             </div>
             {% endif %}
             {% endfor %}
-
+            <!--review count-->
+            {% if reviewcount > 0 %}
+                <h5>Reviews added</h5>
+            {% else %}
+                <h5>No reviews added yet</h5>
+            {% endif %}
             {% for book in books %}
             {% if book.review %}
             {% for eachreview in book.review %}
