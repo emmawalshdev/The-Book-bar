@@ -21,19 +21,16 @@
                     <h6>Joined {{ diff }} ago</h6>
                     <h6>Books Added: {{ count }}</h6>
                     <span></span>
-                    <h6>Reviews Added:{{review.reviewcount}}</h6>
+                    <h6>Reviews Added: {{review}}</h6>
                     <span></span>
                 </div>
                 <div class="col s12 m4 center">
                     <img src="../static/images/user.png" alt="stacked books" height="150">
                 </div>
                 <div class="col s12 m4 center">
-                    <h5>
-                        The book Bar
-                    </h5>
                     <img src="../static/images/stackedbooks.png" alt="stacked books" height="100">
                     <h5>
-                        <a href="{{ url_for('books_new') }}">Take me there!</a>
+                        <a href="{{ url_for('books_new') }}">Search the Book bar</a>
                     </h5>
                 </div>
             </div>
@@ -44,8 +41,12 @@
             <h4 class = "center-align">
                 Your Contributions
             </h4>
+            <p> book added</p>
             {% for book in books %}
             {% if book.created_by|lower == session.user|lower %}
+            {% if books.created_by|lower|length > 0 %}
+            <p>books added</p>
+            {% endif %}
             <!--show books added by user-->
             <div class="col s6 m4 xl3 col-padding-mobile">
                 <div class="book-card">
@@ -55,7 +56,15 @@
                         </div>
                         <div class="card-content book-card-content black">
                             <div class="white-text custom-text">
-
+                                <!-- average rating-->
+                                <div class="books-rating">
+                                    {% for avgrating in avgratings %}
+                                        {% if avgrating._id == book._id %}
+                                            <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                            {{ avgrating.averageRating }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                                 <!--book title-->
                                 <p class="elipsed-text books-book-title">
                                     {{ book.book_name }}
@@ -99,6 +108,17 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
+            {% endfor %}
+
+            {% for book in books %}
+            {% if book.review %}
+            {% for eachreview in book.review %}
+            {% if eachreview.username|lower == session.user|lower %}
+            <!--show books added by user-->
+            <p>{{eachreview.title}}</p>
+            {% endif %}
+            {% endfor %}
             {% endif %}
             {% endfor %}
         </div>

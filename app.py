@@ -151,6 +151,7 @@ def profile(username):
     books = list(mongo.db.books.find().sort("book_name", 1))
     booksbyuser = mongo.db.books.find({"created_by": username})
     count = booksbyuser.count()
+    avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
     for book in books:
         if 'review':
             for ereview in 'review':
@@ -159,12 +160,15 @@ def profile(username):
                     {"$match": {'review.username': username}},
                     {"$count": "reviewcount"}
                 ]))
-
+                if review:
+                    review = review[0]["reviewcount"]
+                else:
+                    review = 0
     # if true then return users profile
     if session["user"]:
         return render_template(
             "profile.html", user=user, diff=diff,
-            books=books, count=count, review=review[0])
+            books=books, count=count, review=review, avgratings=avgrating)
     # if untrue return user back to login
     return redirect(url_for("login"))
 
