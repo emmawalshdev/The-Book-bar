@@ -19,7 +19,7 @@
                         Your Activity
                     </h5>
                     <h6>Joined {{ diff }} ago</h6>
-                    <h6>Books Added:</h6>
+                    <h6>Books Added: {{ count }}</h6>
                     <span></span>
                     <h6>Reviews Added:</h6>
                     <span></span>
@@ -46,6 +46,7 @@
             </h4>
             {% for book in books %}
             {% if book.created_by|lower == session.user|lower %}
+            <!--show books added by user-->
             <div class="col s6 m4 xl3 col-padding-mobile">
                 <div class="book-card">
                     <div class="card medium black">

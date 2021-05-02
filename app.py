@@ -149,11 +149,13 @@ def profile(username):
     date_joined = user["_id"].generation_time.date()
     diff = "%d days" % (today - date_joined).days
     books = list(mongo.db.books.find().sort("book_name", 1))
+    count1 = mongo.db.books.find({"created_by": username})
+    countf = count1.count()
 
     # if true then return users profile
     if session["user"]:
         return render_template(
-            "profile.html", user=user, diff=diff, books=books)
+            "profile.html", user=user, diff=diff, books=books, count=countf)
     # if untrue return user back to login
     return redirect(url_for("login"))
 
