@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    request, redirect, session, url_for)
+    redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -119,16 +119,16 @@ def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
+        print("username found")
 
         if existing_user:
             # make sure hashed password equals user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
                     return redirect(url_for(
-                        "profile", username=session["user"]))
+                        "profile", username=session["user"],
+                        _external=True, _scheme='https'))
             # if pw input != hashed password
             else:
                 flash("Password and/or Username is incorrect")
@@ -148,11 +148,12 @@ def profile(username):
     today = datetime.date.today()
     date_joined = user["_id"].generation_time.date()
     diff = "%d days" % (today - date_joined).days
+    books = list(mongo.db.books.find().sort("book_name", 1))
 
     # if true then return users profile
     if session["user"]:
         return render_template(
-            "profile.html", user=user, diff=diff)
+            "profile.html", user=user, diff=diff, books=books)
     # if untrue return user back to login
     return redirect(url_for("login"))
 
@@ -162,7 +163,7 @@ def logout():
     # remove user from session cookies
     flash("You have been logged out")
     session.pop("user")
-    return redirect(url_for("login"))
+    return redirect(url_for("login", _external=True, _scheme='https'))
 
 
 @app.route("/bookpage/<book_name>")

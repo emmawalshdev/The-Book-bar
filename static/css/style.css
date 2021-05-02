@@ -41,6 +41,11 @@ h3, h4 {
     background-clip: text;
 }
 
+h5,
+h6{
+    font-weight:bolder
+}
+
 .brand-logo img{
     padding:2px 0 0 10px;
 }
@@ -259,6 +264,9 @@ text-overflow: ellipsis;
 .book-page-buttons{
      margin-top: 20px;
 }
+
+/* profile */
+
 
 /* edit & delete buttons*/
 .button-styling{

@@ -8,28 +8,35 @@
                 <h3 class="center-align">
                     Welcome, {{ user.username }}.
                 </h3>
-                <p> You've been a member for: {{ diff }} </p>
              </div>
         </div>
     </div>
     <div class="row container">
-        <div class="col s12 m4">
-            <h4>
-                Your Activity
-            </h4>
-            <h5>Books Added:</h5> 
-            <h5>Reviews Added:</h5>
-        </div>
-        <div class="col s12 m4">
-            <i class="material-icons large custom-icon">fast_forward</i>
-        </div>
-        <div class="col s12 m4">
-            <h4>
-                The book Bar
-            </h4>
-            <h5>
-                <a href="{{ url_for('books_new') }}">Let's go!</a>
-            </h5>
+        <div class="col s12 card">
+            <div class="card-content">
+                <div class="col s12 m4 center">
+                    <h5>
+                        Your Activity
+                    </h5>
+                    <h6>Joined {{ diff }} ago</h6>
+                    <h6>Books Added:</h6>
+                    <span></span>
+                    <h6>Reviews Added:</h6>
+                    <span></span>
+                </div>
+                <div class="col s12 m4 center">
+                    <img src="../static/images/user.png" alt="stacked books" height="150">
+                </div>
+                <div class="col s12 m4 center">
+                    <h5>
+                        The book Bar
+                    </h5>
+                    <img src="../static/images/stackedbooks.png" alt="stacked books" height="100">
+                    <h5>
+                        <a href="{{ url_for('books_new') }}">Take me there!</a>
+                    </h5>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row container">
@@ -37,6 +44,62 @@
             <h4 class = "center-align">
                 Your Contributions
             </h4>
+            {% for book in books %}
+            {% if book.created_by|lower == session.user|lower %}
+            <div class="col s6 m4 xl3 col-padding-mobile">
+                <div class="book-card">
+                    <div class="card medium black">
+                        <div class="card-image">
+                            <img class = "activator" src="{{ book.image_url }}" width="400px">
+                        </div>
+                        <div class="card-content book-card-content black">
+                            <div class="white-text custom-text">
+
+                                <!--book title-->
+                                <p class="elipsed-text books-book-title">
+                                    {{ book.book_name }}
+                                </p>
+                                <!--book author-->
+                                <p class="left elipsed-text">
+                                        - {{ book.author }}
+                                </p>
+                                <!--read more button-->
+                                <div>
+                                    <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="books-button-styling books-button">
+                                        read more
+                                                                        <!--genre icon-->
+                                    <div class="book-genre-icon right">
+                                        {% if book.genre_name == "Romance" %}
+                                        <p class="material-icons">
+                                            favorite_border
+                                        </p>
+                                        {% elif book.genre_name == "Children's Books" %}
+                                        <p class="material-icons-outlined">
+                                            accessibility
+                                        </p>
+                                        {% elif book.genre_name == "Fantasy & Sci-fi" %}
+                                        <p class="material-icons-outlined">
+                                            android
+                                        </p>
+                                        {% elif book.genre_name == "Crime & Thriller" %}
+                                        <p class="material-icons-outlined">
+                                            sports_kabaddi
+                                        </p>
+                                        {% elif book.genre_name == "Religious & Self-help" %}
+                                        <p class="material-icons-outlined">
+                                            self_improvement
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>                   
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
     {% if contributions|length > 0 %}

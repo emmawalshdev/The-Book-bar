@@ -12,13 +12,6 @@
         <div class="col s12 m7">
             <div class="card medium row">
                 <div class="card-content">
-                    <!--edit and delete buttons for admin or book creater-->
-                    {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
-                        <div class="col col s6 offset-s6 m4 offset-m8 book-page-buttons">
-                        <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1">Edit</a>
-                            <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1">Delete</a>
-                        </div>
-                    {% endif %}
                     <div class="col s12">
                         <div class="flexbox-container-bookpage-title">
                             <div class="book-name">
@@ -61,6 +54,13 @@
                                 {{ get_book.description }}
                         </p>
                     </div>
+                    <!--edit and delete buttons for admin or book creater-->
+                    {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
+                    <div class="col s12 book-page-buttons">
+                        <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1">Edit</a>
+                        <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1">Delete</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
