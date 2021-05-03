@@ -266,7 +266,9 @@ text-overflow: ellipsis;
 }
 
 /* profile */
-
+.card-panel-reviews{
+    height: 300px;
+}
 
 /* edit & delete buttons*/
 .button-styling{

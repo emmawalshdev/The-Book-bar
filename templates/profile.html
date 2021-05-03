@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
-    
+ 
     <div class="row conatiner">
         <div class="col s12 m8 offset-m2">
             <div>
@@ -38,96 +37,157 @@
     </div>
     <div class="row container">
         <div class="col s12">
-            <h4 class = "center-align">
-                Your Contributions
-            </h4>
-            <!--books added count-->
-            {% if bookcount > 0 %}
-                <h5>books added</h5>
-            {% else %}
-                <h5>No books added yet</h5>
-            {% endif %}
-            {% for book in books %}
-            {% if book.created_by|lower == session.user|lower %}
-            <!--show books added by user-->
-            <div class="col s6 m4 xl3 col-padding-mobile">
-                <div class="book-card">
-                    <div class="card medium black">
-                        <div class="card-image">
-                            <img class = "activator" src="{{ book.image_url }}" width="400px">
+            <!--contributions title-->
+            <div class="row">
+                <div class="col s12">
+                    <h4 class = "center-align">
+                        Your Recent Contributions
+                    </h4>
+                </div>
+            </div>
+            <!--recent books added row-->
+            <div class="row">
+                <div class="col s12">
+                    <!--section title-->
+                    <div class="row">
+                        <div class="col s12">
+                            {% if bookcount > 0 %}
+                            <h5>Books added</h5>
+                            {% else %}
+                            <h5>No books added yet</h5>
+                            {% endif %}
                         </div>
-                        <div class="card-content book-card-content black">
-                            <div class="white-text custom-text">
-                                <!-- average rating-->
-                                <div class="books-rating">
-                                    {% for avgrating in avgratings %}
-                                        {% if avgrating._id == book._id %}
-                                            <i class="material-icons star-icon-gold small">star</i>&nbsp;
-                                            {{ avgrating.averageRating }}
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <!--book title-->
-                                <p class="elipsed-text books-book-title">
-                                    {{ book.book_name }}
-                                </p>
-                                <!--book author-->
-                                <p class="left elipsed-text">
-                                        - {{ book.author }}
-                                </p>
-                                <!--read more button-->
-                                <div>
-                                    <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="books-button-styling books-button">
-                                        read more
-                                                                        <!--genre icon-->
-                                    <div class="book-genre-icon right">
-                                        {% if book.genre_name == "Romance" %}
-                                        <p class="material-icons">
-                                            favorite_border
-                                        </p>
-                                        {% elif book.genre_name == "Children's Books" %}
-                                        <p class="material-icons-outlined">
-                                            accessibility
-                                        </p>
-                                        {% elif book.genre_name == "Fantasy & Sci-fi" %}
-                                        <p class="material-icons-outlined">
-                                            android
-                                        </p>
-                                        {% elif book.genre_name == "Crime & Thriller" %}
-                                        <p class="material-icons-outlined">
-                                            sports_kabaddi
-                                        </p>
-                                        {% elif book.genre_name == "Religious & Self-help" %}
-                                        <p class="material-icons-outlined">
-                                            self_improvement
-                                        </p>
-                                        {% endif %}
+                    </div>
+                    <div class="row">
+                    <!--book cards-->
+                        {% for book in books[:4] %}
+                            {% if book.created_by|lower == session.user|lower %}
+                                <!--if exists show max 4 books-->
+                                <div class="col s6 m6 xl3 ">
+                                    <div class="book-card">
+                                        <div class="card medium black">
+                                            <div class="card-image">
+                                                <img class = "activator" src="{{ book.image_url }}" width="400px">
+                                            </div>
+                                            <div class="card-content book-card-content black">
+                                                <div class="white-text custom-text">
+                                                    <!-- average rating-->
+                                                    <div class="books-rating">
+                                                        {% for avgrating in avgratings %}
+                                                            {% if avgrating._id == book._id %}
+                                                                <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                                                {{ avgrating.averageRating }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                    <!--book title-->
+                                                    <p class="elipsed-text books-book-title">
+                                                        {{ book.book_name }}
+                                                    </p>
+                                                    <!--book author-->
+                                                    <p class="left elipsed-text">
+                                                            - {{ book.author }}
+                                                    </p>
+                                                    <!--read more button-->
+                                                    <div>
+                                                        <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="books-button-styling books-button">
+                                                            read more
+                                                                                            <!--genre icon-->
+                                                        <div class="book-genre-icon right">
+                                                            {% if book.genre_name == "Romance" %}
+                                                            <p class="material-icons">
+                                                                favorite_border
+                                                            </p>
+                                                            {% elif book.genre_name == "Children's Books" %}
+                                                            <p class="material-icons-outlined">
+                                                                accessibility
+                                                            </p>
+                                                            {% elif book.genre_name == "Fantasy & Sci-fi" %}
+                                                            <p class="material-icons-outlined">
+                                                                android
+                                                            </p>
+                                                            {% elif book.genre_name == "Crime & Thriller" %}
+                                                            <p class="material-icons-outlined">
+                                                                sports_kabaddi
+                                                            </p>
+                                                            {% elif book.genre_name == "Religious & Self-help" %}
+                                                            <p class="material-icons-outlined">
+                                                                self_improvement
+                                                            </p>
+                                                            {% endif %}
+                                                        </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>                   
+                                        </div>
                                     </div>
-                                    </a>
                                 </div>
-                            </div>
-                        </div>                   
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            {% endif %}
-            {% endfor %}
-            <!--review count-->
-            {% if reviewcount > 0 %}
-                <h5>Reviews added</h5>
-            {% else %}
-                <h5>No reviews added yet</h5>
-            {% endif %}
-            {% for book in books %}
-            {% if book.review %}
-            {% for eachreview in book.review %}
-            {% if eachreview.username|lower == session.user|lower %}
-            <!--show books added by user-->
-            <p>{{eachreview.title}}</p>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
+            <!--recent reviews added row-->
+            <div class="row">
+                <div class="col s12">
+                    <!--review section title-->
+                    <div class="row">
+                        <div class="col s12">
+                            {% if reviewcount > 0 %}
+                                <h5>Reviews added</h5>
+                            {% else %}
+                                <h5>No reviews added yet</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!--recent reviews-->
+                    <div class="row">
+                        {% for book in books %}
+                            {% if book.review %}
+                                {% for eachreview in book.review[:4] %}
+                                    {% if eachreview.username|lower == session.user|lower %}
+                                        <!--show books added by user-->
+                                        <div class="col s12 m6">
+                                            <div class="card medium black">
+                                                <div class="card-content white-text custom-text">
+                                                    <!--book title-->
+                                                    <h5>
+                                                        {{book.book_name}}
+                                                    </h5>
+                                                    <!--date-->
+                                                    <p>
+                                                        Reviewed by {{ eachreview.username }} on {{ eachreview.date}}
+                                                    </p>
+                                                    <p>
+                                                        <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                                        {{ eachreview.rating }}/5
+                                                    </p>
+                                                    <!--review title & rating-->
+                                                    <h6 class="elipsed-text books-book-title">
+                                                        {{eachreview.title}}
+                                                    </h6>
+                                                    <!--review description-->
+                                                    <p>
+                                                        {{eachreview.description}}
+                                                    </p>
+                                                    <!--read more button-->
+                                                    <div>
+                                                        <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}"
+                                                            class="books-button-styling books-button">
+                                                            visit page
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     {% if contributions|length > 0 %}
