@@ -30,7 +30,7 @@ html body{
     font-weight:bolder;
 }
 
-h3, h4 {
+h3, h4{
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     background-color: rgb(240, 91, 189);
@@ -41,9 +41,8 @@ h3, h4 {
     background-clip: text;
 }
 
-h5,
-h6{
-    font-weight:bolder
+ h5, h6{
+    font-weight:bolder;
 }
 
 .brand-logo img{
@@ -269,6 +268,17 @@ text-overflow: ellipsis;
 .card-panel-reviews{
     height: 300px;
 }
+
+.trimmed-paragraph{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* .wrapper{
+    max-width:500px;
+} */
 
 /* edit & delete buttons*/
 .button-styling{

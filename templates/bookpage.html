@@ -77,54 +77,64 @@
     <div class="row container">
         <div class="col s12">
             {% if get_book.review %}
-            {% for eachreview in get_book.review %}
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title"><strong>{{ eachreview.title }}</strong>
-                        {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
-                            <i class="material-icons right activator pointer">more_horiz</i>
+                {% for eachreview in get_book.review %}
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title"><strong>{{ eachreview.title }}</strong>
+                            {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
+                                <i class="material-icons right activator pointer">more_horiz</i>
+                            {% endif %}
+                        </span>
+                        <p>{{ eachreview.description }}</p>
+                        <p>Posted by: {{ eachreview.username }} </p>
+                        <p>Date: {{ eachreview.date }} </p>
+                        {% if eachreview.rating == 5 %} 
+                            <img src="../static/images/5stars.jpg" width="100px" alt="5 stars">
+                        {% elif eachreview.rating == 4 %}
+                            <img src="../static/images/4stars.jpg" width="100px" alt="4 stars">
+                        {% elif eachreview.rating == 3 %}
+                            <img src="../static/images/3stars.jpg" width="100px" alt="3 stars">
+                        {% elif eachreview.rating == 2 %}
+                            <img src="../static/images/2stars.jpg" width="100px" alt="2 stars">
+                        {% elif eachreview.rating == 1 %}
+                            <img src="../static/images/1star.jpg" width="100px" alt="5 stars">
                         {% endif %}
-                    </span>
-                    <p>{{ eachreview.description }}</p>
-                    <p>Posted by: {{ eachreview.username }} </p>
-                    <p>Date: {{ eachreview.date }} </p>
-                    {% if eachreview.rating == 5 %} 
-                        <img src="../static/images/5stars.jpg" width="100px" alt="5 stars">
-                    {% elif eachreview.rating == 4 %}
-                        <img src="../static/images/4stars.jpg" width="100px" alt="4 stars">
-                    {% elif eachreview.rating == 3 %}
-                        <img src="../static/images/3stars.jpg" width="100px" alt="3 stars">
-                    {% elif eachreview.rating == 2 %}
-                        <img src="../static/images/2stars.jpg" width="100px" alt="2 stars">
-                    {% elif eachreview.rating == 1 %}
-                        <img src="../static/images/1star.jpg" width="100px" alt="5 stars">
+                    </div>
+                    {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
+                    <div class="card-reveal">
+                        <span class = "card-title">
+                            <i class="material-icons right">close</i>
+                        </span>
+                        <a href="{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Edit</a>
+                        <br>
+                        <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Delete</a>
+                    </div>
                     {% endif %}
                 </div>
-                {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
-                <div class="card-reveal">
-                    <span class = "card-title">
-                        <i class="material-icons right">close</i>
-                    </span>
-                    <a href="{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Edit</a>
-                    <br>
-                    <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Delete</a>
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
+                {% endfor %}
             {% else %}
-            <p> No reviews yet!</p>
+            <div class="card">
+                <div class="card-title center">No reviews yet!</div>
+                <div class="card-content">
+                    <!--lottie file-->
+                    <p> Why not give it a go?! By submitting reviews, you're helping the entire Book bar community. More reviews = better book finds and We'll drink to that.</p>
+                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_twYDL9.json"  background="transparent"  speed="1"  style="width: 300px; height: 100px;margin:auto;" hover   autoplay></lottie-player>
+                </div>
+            </div>
             {% endif %}
         </div>
     </div>
+    <!--if user is not logged in, state they must be logged in to add a review-->
     {% if not session.user %}
     <div class="row container">
         <div class="col s12">
             <div>
-                To add a review, please login.
+                To add a review, please
                 <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Login.</a>
         </div>
     </div>
+    <!--if user is logged in, show add a review card-->
     {% else %}
     <div class="row container">
         <div class="col s12">
