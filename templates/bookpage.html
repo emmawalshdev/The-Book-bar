@@ -119,29 +119,29 @@
                     <!--lottie file-->
                     <p> Why not give it a go?! By submitting reviews, you're helping the entire Book bar community. More reviews = better book finds and We'll drink to that.</p>
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_twYDL9.json"  background="transparent"  speed="1"  style="width: 300px; height: 100px;margin:auto;" hover   autoplay></lottie-player>
+                    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_twYDL9.json"  background="transparent"  speed="1"  style="width: 150px; height: 100px;margin:auto;" hover   autoplay></lottie-player>
+                <!-- login-->
+                    {% if not session.user %}
+                    <p class="center">
+                        To add a review, please
+                        <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Login.</a>
+                    </p>
+                    {% endif %}
                 </div>
             </div>
             {% endif %}
         </div>
     </div>
     <!--if user is not logged in, state they must be logged in to add a review-->
-    {% if not session.user %}
-    <div class="row container">
-        <div class="col s12">
-            <div>
-                To add a review, please
-                <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Login.</a>
-        </div>
-    </div>
     <!--if user is logged in, show add a review card-->
-    {% else %}
+    {% if session.user %}
     <div class="row container">
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">Add a Review</span>
                     <div class="card-body align-center">
+                        <span>* Please note, only one user review for each book is permitted.</span>
                         <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
                             <div class="row">
                                 <div class="input-field col s12">
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col s12 m4 offset-m4 rating-wrapper">
+                                <div class="col s12 rating-wrapper">
                                     <div class="rate">
                                         <input type="radio" id="star5" name="rate" value= "5" required/>
                                         <label for="star5" title="text">5 stars</label>
@@ -174,10 +174,9 @@
                             </div>
                             <div class="row">
                                 <div class="col s12">
-                                    <div class="align-center"><button class="waves-effect waves-light btn-small button-styling pink accent-1"
+                                    <div class="align-center center"><button class="waves-effect waves-light btn-small button-styling pink accent-1"
                                             type="submit">Submit</button>
                                     </div>
-                                    <span>* Please note, only one user review for each book is permitted.</span>
                                 </div>
                             </div>
                         </form>
