@@ -206,6 +206,7 @@ text-overflow: ellipsis;
 .grid {
   display: flex;
   flex-wrap: wrap;
+  align-content: space-between;
 }
 
 .book-image {
@@ -283,6 +284,7 @@ text-overflow: ellipsis;
 /* edit & delete buttons*/
 .button-styling{
     margin:5px;
+    width:100px;
 }
 
 /* search bar */

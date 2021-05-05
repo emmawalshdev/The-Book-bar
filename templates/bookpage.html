@@ -3,13 +3,13 @@
 <!-- book section-->
     <div class="row book-section container">
         <!-- book image-->
-        <div class="col s12 m5">
-            <div class="grid card medium transparent shadow-box-none">
+        <div class="col s12 m4">
+            <div class="grid card transparent shadow-box-none">
                 <img src="{{get_book.image_url }}" alt="book cover image" class="book-image bookpage-card-image">
             </div>
         </div>
         <!--book description and info-->
-        <div class="col s12 m7">
+        <div class="col s12 m8">
             <div class="card medium row">
                 <div class="card-content">
                     <div class="col s12">
@@ -54,15 +54,17 @@
                                 {{ get_book.description }}
                         </p>
                     </div>
-                    <!--edit and delete buttons for admin or book creater-->
-                    {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
-                    <div class="col s12 book-page-buttons">
-                        <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1">Edit</a>
-                        <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1">Delete</a>
-                    </div>
-                    {% endif %}
                 </div>
             </div>
+             <!--edit and delete buttons for admin or book creater-->
+             {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
+             <div class="col s12 book-page-buttons">
+                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1">
+                    Edit
+                </a>
+                 <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1">Delete</a>
+             </div>
+             {% endif %}
         </div>
     </div>
     <!--review section title-->
