@@ -10,7 +10,7 @@
         </div>
         <!--book description and info-->
         <div class="col s12 m8">
-            <div class="card medium row">
+            <div class="card row">
                 <div class="card-content">
                     <div class="col s12">
                         <div class="flexbox-container-bookpage-title">
@@ -45,7 +45,7 @@
                                 {{ get_book.genre_name }}
                         </p>
                     </div>
-                    <div class="col s12">
+                    <div class="col s12 book-card-padding">
                         <p>
                         <br>
                         <span class="center bookpage-title">Description:
@@ -116,8 +116,8 @@
                 {% endfor %}
             {% else %}
             <div class="card">
-                <div class="card-title center">No reviews yet!</div>
                 <div class="card-content">
+                    <div class="card-title center">No reviews yet!</div>
                     <!--lottie file-->
                     <p> Why not give it a go?! By submitting reviews, you're helping the entire Book bar community. More reviews = better book finds and We'll drink to that.</p>
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -147,13 +147,13 @@
                         <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="review_title" name="review_title" type="text" class="validate">
+                                    <input id="review_title" name="review_title" type="text" class="validate" min-length="2" max-length="25">
                                     <label for="review_title">Title</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" maxlength="800" minlength="20" name="review"
+                                    <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review"
                                         id="review" rows="6"></textarea>
                                     <label for="review">Summary</label>
                                 </div>

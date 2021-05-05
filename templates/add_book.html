@@ -40,20 +40,20 @@
         <!-- image url -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="image_url" name="image_url" type="text" class="validate" required>
+                <input id="image_url" name="image_url" type="text" class="validate" min-length="5" max-length="150" required>
                 <label for="image_url">Image Url</label>
             </div>
         </div>
         <!-- book description -->
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" name="description" class="materialize-textarea validate" min-length="20" max-length="380" required></textarea>
+                <textarea id="description" name="description" class="materialize-textarea validate" min-length="20" max-length="790" required></textarea>
                 <label for="description">Blurb </label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="buy_url" name="buy_url" type="text" class="validate">
+                <input id="buy_url" name="buy_url" type="text" class="validate" min-length="5" max-length="150">
                 <label for="buy_url">Buy now Url</label>
             </div>
         </div>

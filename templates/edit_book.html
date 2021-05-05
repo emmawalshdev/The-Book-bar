@@ -46,13 +46,13 @@
         <!-- book description -->
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" name="description" class="materialize-textarea validate" required>{{ get_book.description }}</textarea>
+                <textarea id="description" name="description" class="materialize-textarea validate" min-length="20" max-length="790" required>{{ get_book.description }}</textarea>
                 <label for="description">Blurb </label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="buy_url" name="buy_url" type="text" class="validate"
+                <input id="buy_url" name="buy_url" type="text" class="validate" min-length="5" max-length="150"
                     value ="{{ get_book.buy_url }}">
                 <label for="buy_url">Buy now Url</label>
             </div>

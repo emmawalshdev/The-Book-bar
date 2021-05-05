@@ -59,14 +59,14 @@
                         <form method="POST">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="review_title" name="review_title" type="text" class="validate"
+                                    <input id="review_title" name="review_title" type="text" class="validate" min-length="2" max-length="25"
                                         value="{{ review.title }}">
                                     <label for="review_title">Title</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" maxlength="800" minlength="20" name="review" id="review"
+                                    <textarea class="materialize-textarea" minlength="20" maxlength="800"  name="review" id="review"
                                         rows="6"> {{ review.description }}</textarea>
                                     <label for="">Summary</label>
                                 </div>
