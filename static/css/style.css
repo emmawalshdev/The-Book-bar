@@ -48,6 +48,25 @@ h3, h4{
 .brand-logo img{
     padding:2px 0 0 10px;
 }
+
+.footer-container{
+    background-color: rgb(255, 195, 228, 0.85);
+    margin:30px 0 0;
+    padding: 50px 0;
+}
+
+.footer-container span {
+    font-size: 1.7rem;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+.copyright-wrapper .material-icons,
+.social-media-wrapper> i{
+    font-size:30px;
+    vertical-align: middle;
+    margin: 0 10px;
+    color: #16488c;
+}
 /* form materialise */
   /* label color */
    .input-field label {
