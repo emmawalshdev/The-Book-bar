@@ -50,7 +50,7 @@ h3, h4{
 }
 
 .footer-container{
-    background-color: rgb(255, 195, 228, 0.85);
+    background-color: rgba(255, 256,255, 0.78);
     margin:30px 0 0;
     padding: 50px 0;
 }
@@ -59,13 +59,20 @@ h3, h4{
     font-size: 1.7rem;
     padding-right: 10px;
     vertical-align: middle;
+    color: #024bae;
 }
 .copyright-wrapper .material-icons,
-.social-media-wrapper> i{
+.social-media-wrapper a i{
     font-size:30px;
     vertical-align: middle;
     margin: 0 10px;
-    color: #16488c;
+    color: #024bae;
+}
+
+.copyright-text:hover + .name-github,
+.name-github:hover + .copyright-text,
+.social-media-wrapper a i:hover{
+color: #db0086;
 }
 /* form materialise */
   /* label color */
