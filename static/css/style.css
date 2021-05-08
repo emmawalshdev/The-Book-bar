@@ -70,7 +70,7 @@ h3, h4{
 }
 
 .copyright-text:hover + .name-github,
-.name-github:hover + .copyright-text,
+.name-github:hover,
 .social-media-wrapper a i:hover{
 color: #db0086;
 }
