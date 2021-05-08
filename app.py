@@ -35,10 +35,11 @@ def books_new(page=1):
         first = page * 12 - 12
         last = first + 12
         booklist = books[first:last]
+        psge=page
     counter = math.ceil((len(books))/(12))
     return render_template(
         "books.html", books=booklist,
-        genres=genres, pages=counter, avgratings=avgratings)
+        genres=genres, pages=counter, avgratings=avgratings, page=page)
 
 
 @app.route("/search", methods=["GET", "POST"])

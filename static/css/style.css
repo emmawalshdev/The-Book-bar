@@ -109,6 +109,10 @@ color: #db0086;
     background-color:#db0086;
 }
 
+.active-pagination{
+    background-color: #eb3573 !important;
+}
+
 .page-title-margin{
     margin:50px 0 40px;
 }
@@ -119,7 +123,7 @@ color: #db0086;
     font-size: 1.3rem;
     padding: 0 10px;
     background-color: #ff80ab;
-
+}
 @media all and (max-width:30em){
     .books-button-styling{
         display:block;
