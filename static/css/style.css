@@ -113,6 +113,13 @@ color: #db0086;
     margin:50px 0 40px;
 }
 
+.pagination li a {
+    color: #fff;
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: 0 10px;
+    background-color: #ff80ab;
+
 @media all and (max-width:30em){
     .books-button-styling{
         display:block;

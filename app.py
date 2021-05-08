@@ -30,12 +30,12 @@ def books_new(page=1):
     genres = mongo.db.genres.find().sort("genres", 1)
     avgratings = list(mongo.db.avgRatingAgg.find().sort("id", -1))
     if page == 1:
-        booklist = books[0:10]
+        booklist = books[0:12]
     else:
-        first = page * 10 - 10
-        last = first + 10
+        first = page * 12 - 12
+        last = first + 12
         booklist = books[first:last]
-    counter = math.ceil((len(books))/(10))
+    counter = math.ceil((len(books))/(12))
     return render_template(
         "books.html", books=booklist,
         genres=genres, pages=counter, avgratings=avgratings)
@@ -58,12 +58,12 @@ def books_a_to_z(page=1):
     genres = mongo.db.genres.find().sort("genres", 1)
 
     if page == 1:
-        booklist = books[0:10]
+        booklist = books[0:12]
     else:
-        first = page * 10 - 10
-        last = first + 10
+        first = page * 12 - 12
+        last = first + 12
         booklist = books[first:last]
-    counter = math.ceil((len(books))/(10))
+    counter = math.ceil((len(books))/(12))
 
     return render_template(
         "books-a-to-z.html", books=booklist, genres=genres, pages=counter)
@@ -78,10 +78,10 @@ def books_z_to_a(page=1):
     if page == 1:
         booklist = books[0:10]
     else:
-        first = page * 10 - 10
-        last = first + 10
+        first = page * 12 - 12
+        last = first + 12
         booklist = books[first:last]
-    counter = math.ceil((len(books))/(10))
+    counter = math.ceil((len(books))/(12))
 
     return render_template(
         "books-z-to-a.html", books=booklist, genres=genres, pages=counter)
