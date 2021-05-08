@@ -1,41 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align"> Search Books</h3>
+<h3 class="center page-title-margin"> Search Books</h3>
 
 <div class="">
     <!--search bar-->
     <div class="row container">
-        <form action= "{{ url_for('search') }}" method="POST" class = " card-panel col s12">
-            <div class="row">
-                <!--search index-->
-                <div class="col s12 m5 input-field">
-                    <input type="text" placeholder="Emma" name="query" id="query" minlength="3" class="validate" required>
-                    <label for="query">Search Books</label>
-                </div>
-                <!-- Filter by genre -->
-                <div class="input-field col s12 m5">
-                    <select multiple id="genre_name" name="genre_name" class="validate" required>
-                        <option value="" disabled selected>All</option>
-                        {% for genre in genres %}
-                        <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
-                        {% endfor %}
-                    </select>
-                    <label for="genre_name">Book Genre</label>
-                </div>
-                <div class="col s12 m2">
-                    <button type="submit" class = "waves-effect waves-light btn button-styling search-button pink accent-1">
-                        <i class="material-icons">search</i>
-                    </button>
+        <form action= "{{ url_for('search') }}" method="POST" class = "col s12">
+            <div class="card-panel">
+                <div class="row">
+                    <!--search index-->
+                    <div class="col s12 m10 input-field">
+                        <input type="text" placeholder="Search by Author or Book Title" name="query" id="query" minlength="3" class="validate" required>
+                        <label for="query" class="form-label-style">Enter a Keyword</label>
+                    </div>
+                    <!-- Submit button -->
+                    <div class="col s12 m2">
+                        <button type="submit" class = "waves-effect waves-light btn button-styling search-button pink accent-1">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
     <!--sort by-->
+    {% if post is not defined %}
     <div class="row container">
         <div class="col">
             <!-- Dropdown Trigger -->
-            <a class="dropdown-trigger waves-effect waves-light btn pink accent-1" data-target="dropdown1">Sort by</a>
+            <a class="dropdown-trigger btn waves-effect waves-light pink accent-1" data-target="dropdown1">Sort by</a>
     
             <!-- Dropdown Structure -->
             <ul id="dropdown1" class="dropdown-content">
@@ -44,34 +38,71 @@
                 <li><a href="{{ url_for('books_new') }}">Newly Added</a></li>
             </ul>
         </div>
+        {% endif %}
+        <!-- buttons-->
     </div>
-    
     {% if books|length > 0 %}
     <div class="row container">
     {% for book in books %}
-        <div class="col s6 m4">
-            <div class="card">
-                <div class="card-image">
-                    <img class = "activator" src="{{ book.image_url }}">
+        <div class="col s6 m4 xl3 col-padding-mobile">
+            <div class="book-card">
+                <div class="card medium black">
+                    <div class="card-image">
+                        <img class = "activator" src="{{ book.image_url }}" width="400px">
+                    </div>
+                    <div class="card-content book-card-content black">
+                        <div class="white-text custom-text">
+                            <!-- average rating-->
+                            <div class="books-rating">
+                                {% for avgrating in avgratings %}
+                                    {% if avgrating._id == book._id %}
+                                        <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                        {{ avgrating.averageRating }}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <!--book title-->
+                            <p class="elipsed-text books-book-title">
+                                {{ book.book_name }}
+                            </p>
+                            <!--book author-->
+                            <p class="left elipsed-text">
+                                    - {{ book.author }}
+                            </p>
+                            <!--read more button-->
+                            <div>
+                                <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="books-button-styling books-button">
+                                    read more
+                                                                    <!--genre icon-->
+                                <div class="book-genre-icon right">
+                                    {% if book.genre_name == "Romance" %}
+                                    <p class="material-icons">
+                                        favorite_border
+                                    </p>
+                                    {% elif book.genre_name == "Children's Books" %}
+                                    <p class="material-icons-outlined">
+                                        accessibility
+                                    </p>
+                                    {% elif book.genre_name == "Fantasy & Sci-fi" %}
+                                    <p class="material-icons-outlined">
+                                        android
+                                    </p>
+                                    {% elif book.genre_name == "Crime & Thriller" %}
+                                    <p class="material-icons-outlined">
+                                        sports_kabaddi
+                                    </p>
+                                    {% elif book.genre_name == "Religious & Self-help" %}
+                                    <p class="material-icons-outlined">
+                                        self_improvement
+                                    </p>
+                                    {% endif %}
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>                   
                 </div>
-                <div class="card-content cyan darken-1">
-                <span class="card-title activator white-text custom-text">{{ book.book_name }}
-                    <i class="material-icons right">more_vert</i>
-                <p>{{ book.author }}</p>
-                </span>
-                </div>   
-                <div class="card-reveal cyan darken-1"> 
-                    <span class="card-title white-text custom-text">
-                        <i class="material-icons right">close</i>
-                        <strong>{{ book.book_name }}</strong>
-                        <p> {{ book.genre_name }}</p>
-                        {% if book.is_upvoted == "on" %}
-                            <p>{{ book.is_upvoted }} </p>
-                        {% endif %}
-                        <p><a href="{{ url_for( 'bookpage', book_name=book.book_name) }}">click</a></p>                
-                    </span>
-                </div>
-                </div>
+            </div>
         </div>
     {% endfor %}
     </div>
@@ -90,7 +121,7 @@
             {% if pages %}
                 {% for i in range(pages) %}
                     <li class="waves-effect">
-                        <a href="{{ url_for('books_z_to_a', page=loop.index) }}"
+                        <a href="{{ url_for('books_new', page=loop.index) }}"
                             tabindex="-1">{{ loop.index }}
                         </a>
                     </li>
