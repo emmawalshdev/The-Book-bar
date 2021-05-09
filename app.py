@@ -31,11 +31,12 @@ def books_new(page=1):
     avgratings = list(mongo.db.avgRatingAgg.find().sort("id", -1))
     if page == 1:
         booklist = books[0:12]
+        page = page
     else:
         first = page * 12 - 12
         last = first + 12
         booklist = books[first:last]
-        psge=page
+        page = page
     counter = math.ceil((len(books))/(12))
     return render_template(
         "books.html", books=booklist,
@@ -60,14 +61,17 @@ def books_a_to_z(page=1):
 
     if page == 1:
         booklist = books[0:12]
+        page = page
     else:
         first = page * 12 - 12
         last = first + 12
         booklist = books[first:last]
+        page = page
     counter = math.ceil((len(books))/(12))
 
     return render_template(
-        "books-a-to-z.html", books=booklist, genres=genres, pages=counter)
+        "books-a-to-z.html", books=booklist,
+        genres=genres, pages=counter, page=page)
 
 
 @app.route("/get_books/z-to-a")
@@ -78,14 +82,17 @@ def books_z_to_a(page=1):
 
     if page == 1:
         booklist = books[0:10]
+        page = page
     else:
         first = page * 12 - 12
         last = first + 12
         booklist = books[first:last]
+        page = page
     counter = math.ceil((len(books))/(12))
 
     return render_template(
-        "books-z-to-a.html", books=booklist, genres=genres, pages=counter)
+        "books-z-to-a.html", books=booklist,
+        genres=genres, pages=counter, page=page)
 
 
 @app.route("/register", methods=["GET", "POST"])
