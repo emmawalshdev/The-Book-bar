@@ -29,16 +29,26 @@
     {% if post is not defined %}
     <section class="row container">
         <div class="col s12">
-            <!-- Dropdown Trigger -->
-            <a class="dropdown-trigger btn waves-effect waves-light pink accent-1" data-target="dropdown1">
-                Sort by
-            </a>
-            <!-- Dropdown Structure -->
-            <ul id="dropdown1" class="dropdown-content">
-                <li><a href="{{ url_for('books_a_to_z') }}">A-Z</a></li>
-                <li><a href="{{ url_for('books_z_to_a') }}">Z-A</a></li>
-                <li><a href="{{ url_for('books_new') }}">Newly Added</a></li>
-            </ul>
+            <div class="custom-card-panel">
+                <div class="row flex-container">
+                    <div class="col s12 m10 ">
+                        <p>No keyword in mind?<br> Sort & view the entire collection.
+                        </p>
+                    </div>
+                    <!-- sort by button -->
+                    <div class="col s12 m2 ">
+                            <a class="dropdown-trigger btn waves-effect waves-light pink accent-1" data-target="dropdown1">
+                                Sort by
+                            </a>
+                            <!-- Dropdown Structure -->
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="{{ url_for('books_a_to_z') }}">A-Z</a></li>
+                                <li><a href="{{ url_for('books_z_to_a') }}">Z-A</a></li>
+                                <li><a href="{{ url_for('books_new') }}">New-Old</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     {% endif %}
@@ -113,6 +123,12 @@
                 </div>
             {% endfor %}
             </section>
+            <!--show current sort by selection-->
+            <div class="row container">
+                <div class="col s12">
+                    <h6 class="right">Sorted: A to Z</h6>
+                </div>
+            </div>
     <!--else show "no results found"-->
     {% else %}
         <section class="row container">

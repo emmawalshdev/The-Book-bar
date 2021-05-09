@@ -81,7 +81,7 @@ def books_z_to_a(page=1):
     genres = mongo.db.genres.find().sort("genres", 1)
 
     if page == 1:
-        booklist = books[0:10]
+        booklist = books[0:12]
         page = page
     else:
         first = page * 12 - 12
