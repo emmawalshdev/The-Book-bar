@@ -2,12 +2,12 @@
 {% block content %}
 
     <!--page title-->
-    <h3 class="center page-title-margin">Log in</h3>
+    <h2 class="center page-title-margin">Log in</h2>
 
     <!--login card-->
     <div class="row">
         <form class="col s12 m8 offset-m2 l6 offset-l3" method="POST" action="{{ url_for('login') }}">
-            <div class="card-panel">
+            <div class="card-panel center">
                 <!--username row-->
                 <div class="row center">
                     <div class="input-field col s11">
@@ -35,7 +35,7 @@
                 <!--link to register page-->
                 <div class="row">
                     <div class="col s12">
-                        <p class="center-align">
+                        <p>
                             New to The Book bar? 
                             <a href="{{ url_for('register') }}" class="blue-text">
                                 Register here.

@@ -30,7 +30,7 @@ html body{
     font-weight:bolder;
 }
 
-h3, h4{
+h2, h3, h4{
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     background-color: rgb(240, 91, 189);
@@ -226,9 +226,9 @@ nav ul a:hover,
     padding: 0 .25rem !important;
 }
 
-.custom-text{
+/*.custom-text{
     font-family: 'Raleway', sans-serif;
-}
+} */
 
 .book-card{
     position: relative;
