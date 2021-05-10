@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <!--page title-->
-    <h3 class="center page-title-margin"> Search Books</h3>
+    <h1 class="center page-title-margin"> Search Books</h1>
 
     <!--search bar section-->
     <section class="row container">
@@ -10,12 +10,12 @@
                 <!-- search bar & button row-->
                 <div class="row">
                     <!--search index-->
-                    <div class="col s12 m10 input-field">
+                    <div class="col s12 m9 l10 input-field">
                         <input type="text" placeholder="Search by Author or Book Title" name="query" id="query" minlength="3" class="validate" required>
                         <label for="query" class="form-label-style">Enter a Keyword</label>
                     </div>
                     <!-- Submit button -->
-                    <div class="col s12 m2">
+                    <div class="col s12 m3 l2">
                         <button type="submit" class = "waves-effect waves-light btn button-styling search-button pink accent-1">
                             <i class="material-icons">search</i>
                         </button>
@@ -31,13 +31,13 @@
         <div class="col s12">
             <div class="custom-card-panel">
                 <div class="row flex-container">
-                    <div class="col s12 m10 ">
+                    <div class="col s12 m9 l10">
                         <p>No keyword in mind?<br> Sort & view the entire collection.
                         </p>
                     </div>
                     <!-- sort by button -->
-                    <div class="col s12 m2 ">
-                            <a class="dropdown-trigger btn waves-effect waves-light pink accent-1" data-target="dropdown1">
+                    <div class="col s12 m3 l2">
+                            <a class="dropdown-trigger btn waves-effect waves-light button-styling pink accent-1" data-target="dropdown1">
                                 Sort by
                             </a>
                             <!-- Dropdown Structure -->

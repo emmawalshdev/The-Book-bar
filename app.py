@@ -49,8 +49,9 @@ def search():
 
     booklist = list(mongo.db.books.find(
         {"$text": {"$search": request.form.get("query")}}))
+    query = request.form.get("query")
     return render_template(
-        "books.html", books=booklist, genres=genres, post=True)
+        "books.html", books=booklist, genres=genres, query=query, post=True)
 
 
 @app.route("/get_books/a-to-z")

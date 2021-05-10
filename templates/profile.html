@@ -1,52 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
     
-    
-    <div class="row conatiner">
+    <!--page title-->
+    <section class="row conatiner">
         <div class="col s12 m8 offset-m2 center">
             <div>
-                <h3>
+                <h1>
                     Welcome, {{ user.username }}.
-                </h3>
-                <p class="white-text">Joined {{ diff }} ago</p>
-             </div>
+                </h1>
+                <p>Joined {{ diff }} ago</p>
+            </div>
         </div>
-    </div>
-    <div class="row container">
-        <div class="col s12 card white">
+    </section>
+
+    <!--3 col card-->
+    <section class="row container">
+        <div class="col s12 card card-margin-top">
+            <!--card row-->
             <div class="row card-content">
+                <!--activity col-->
                 <div class="col s12 m4 center">
-                    <h5 class="blue-text">
+                    <p class="custom-p-title">
                         Your Activity
-                    </h5>
+                    </p>
                     <p>
                         Books Added: {{ bookcount }}<br>
                         Reviews Added: {{ reviewcount }}<br>
                     
                     </p>
                 </div>
+                <!--user image-->
                 <div class="col s12 m4 center">
                     <img src="../static/images/user.png" alt="stacked books" height="150">
                 </div>
+                <!--link to search books page-->
                 <div class="col s12 m4 center">
-                    <h5 class="blue-text">
-                        <a href="{{ url_for('books_new') }}">Search Books</a>
-                    </h5>
-                    <img src="../static/images/stackedbooks.png" alt="stacked books" height="80">
+                    <p class="custom-p-title">
+                        <a href="{{ url_for('books_new') }}" class="hover-link">Search Books</a>
+                    </p>
+                    <a href="{{ url_for('books_new') }}">
+                        <img src="../static/images/stackedbooks.png" alt="stacked books" height="80">
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row container contributions-container">
+    </section>
+
+    <!--recent contributions section-->
+    <section class="row container contributions-container">
         <div class="col s12">
             <!--contributions title-->
             <div class="row">
-                <div class="col s12">
-                    <h4 class = "center-align">
+                <div class="col s12 center">
+                    <h2>
                         Your Recent Contributions
-                    </h4>
+                    </h2>
                 </div>
             </div>
+
             <!--recent books added row-->
             <div class="row">
                 <div class="col s12">
@@ -54,12 +65,13 @@
                     <div class="row">
                         <div class="col s12">
                             {% if bookcount > 0 %}
-                            <h5>Books added</h5>
+                            <h3>Books added:</h3>
                             {% else %}
-                            <h5>No books added yet</h5>
+                            <h3>No books added yet</h3>
                             {% endif %}
                         </div>
                     </div>
+                    <!--book cards row-->
                     <div class="row">
                     <!--book cards-->
                         {% for book in books[:4] %}
@@ -130,6 +142,7 @@
                     </div>
                 </div>
             </div>
+
             <!--recent reviews added row-->
             <div class="row">
                 <div class="col s12">
@@ -137,9 +150,9 @@
                     <div class="row">
                         <div class="col s12">
                             {% if reviewcount > 0 %}
-                                <h5>Reviews added</h5>
+                                <h3>Reviews added:</h3>
                             {% else %}
-                                <h5>No reviews added yet</h5>
+                                <h3>No reviews added yet</h3>
                             {% endif %}
                         </div>
                     </div>
@@ -154,23 +167,24 @@
                                             <div class="card medium black">
                                                 <div class="card-content white-text custom-text">
                                                     <!--book title-->
-                                                    <h5>
+                                                    <p>
                                                         {{book.book_name}}
-                                                    </h5>
+                                                    </p>
                                                     <!--date-->
                                                     <p>
-                                                        Reviewed by {{ eachreview.username }} on {{ eachreview.date}}
+                                                        Reviewed by {{ eachreview.username }}<br>- {{ eachreview.date}}
                                                     </p>
+                                                    <!--star rating-->
                                                     <p>
                                                         <i class="material-icons star-icon-gold small">star</i>&nbsp;
                                                         {{ eachreview.rating }}/5
                                                     </p>
-                                                    <!--review title & rating-->
-                                                    <h6 class="elipsed-text books-book-title">
+                                                    <!--review title-->
+                                                    <p class="elipsed-text books-book-title">
                                                         {{eachreview.title}}
-                                                    </h6>
+                                                    </p>
                                                     <!--review description-->
-                                                    <div class="wrapper">
+                                                    <div>
                                                         <p class ="trimmed-paragraph">
                                                             {{eachreview.description}}
                                                         </p>
@@ -192,6 +206,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 {% endblock %}

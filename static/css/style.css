@@ -26,11 +26,19 @@ html body{
     color: #263238;
 }
 
-.custom-font-weight{
+p{
+    font-size: 1.3rem;
+}
+
+.custom-bold{
     font-weight:bolder;
 }
 
-h2, h3, h4{
+.hover-link:hover{
+    color: #db0086;
+}
+
+h1, h4{
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     background-color: rgb(240, 91, 189);
@@ -41,14 +49,36 @@ h2, h3, h4{
     background-clip: text;
 }
 
- h5, h6{
-    color:white;
+h2{
+    font-size:40px;
+    color:#042e56;
+
 }
+
+h3{
+    font-size:1.7rem;
+    color:#042e56;
+}
+
+.custom-h{
+    font-size:26px;
+    color: #4576e6;
+}
+
+.custom-p-title{
+    font-size:24px !important;
+    color:#2196F3;
+    margin-bottom:10px important !important;
+}
+
+.card-margin-top{
+    margin-top: 20px;
+}
+
 
 .custom-card-panel{
     box-shadow: none;
     padding: 10px 24px;
-    color: white;
 }
 
 .flex-container{
