@@ -38,6 +38,10 @@ p{
     color: #db0086;
 }
 
+.p-margin-bottom{
+    margin-bottom:30px !important;
+}
+
 h1, h4{
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
@@ -216,7 +220,6 @@ color: #db0086;
 nav ul a,
 nav a {
     color: #024bae;
-    font-weight:bold;
     font-size:20px;
 }
 

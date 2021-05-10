@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
     <!--page title-->
-    <h1 class="center page-title-margin"> Search Books</h1>
+    <section class="row container">
+        <div class="col s12 center">
+            <h1 class="center page-title-margin"> Search Books</h1>
+        </div>
+    </section>
 
     <!--search bar section-->
     <section class="row container">
@@ -122,34 +127,40 @@
                     </div>
                 </div>
             {% endfor %}
-            </section>
-            <!--show current sort by selection-->
-            <div class="row container">
-                <div class="col s12">
-                    <h6 class="right">Sorted: Z to A</h6>
-                </div>
+        </section>
+        <!--show current sort by selection-->
+        <div class="row container">
+            <div class="col s12">
+                <p class="right">Sorted: New to Old</p>
             </div>
+        </div>
     <!--else show "no results found"-->
     {% else %}
         <section class="row container">
             <div class="col s12">
-                <!--title row-->
-                <div class="row">
-                    <div class="col s12">
-                        <h4 class="center"> No Results Found</h4>
+                <div class="card-margin-top">
+                    <!--title row-->
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h2 class="custom-h2"> Results for: <span class="custom-bold">{{ query }}</span></h2>
+                            <p>We couldn't match any books to the keyword you entered. <br>please reset the search and try again.</p>
+                            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                            <lottie-player src="https://assets7.lottiefiles.com/temp/lf20_aKAfIn.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 200px; margin:auto;"  loop  autoplay></lottie-player>
+                        </div>
                     </div>
-                </div>
-                <!--message row-->
-                <div class="row">
-                    <div class="col s12 center">
-                        <a href="{{ url_for('books_new') }}" class="btn waves-effect waves-light pink accent-1">
-                            Reset
-                        </a>
+                    <!--message row-->
+                    <div class="row">
+                        <div class="col s12 center">
+                            <a href="{{ url_for('books_new') }}" class="btn waves-effect waves-light pink accent-1 button-styling">
+                                Reset
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     {% endif %}
+
     <!--pagination-->
     <section class="row container">
         <div class="col s12 center">
