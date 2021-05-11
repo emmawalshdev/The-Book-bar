@@ -1,40 +1,76 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align"> Manage Genres</h3>
-    <!--title-->
-    <div class="row">
+    <!--page title-->
+    <section class="row container">
         <div class="col s12 center">
-            <a href="{{ url_for('add_genre') }}" class="waves-effect waves-light pink accent-1 btn">
-                Add Genre
-            </a>
+            <h1 > Manage Genres</h1>
         </div>
-    </div>
-    <!--add genre section-->
-    <div class="row container">
-        <div class = "col s12">
-            <p class = "center">
-                Add a Genre below.
-            </p>
+    </section>
+
+  
+    <!--description section-->
+    <section>
+        <!--genre description section-->
+        <div class="row container">
+            <div class = "col s12">
+                <p>
+                    All genres currently on the database are listed below. From here, you can easily edit or delete each item in the collection.
+                    
+                </p>
+            </div>
         </div>
-    </div>
+        <!--add genre button-->
+        <div class="row container">
+            <div class="col s12 m9 l10">
+                <p>
+                    To add a new genre, please click on the following button:
+                </p>
+            </div>
+            <div class="col s12 m3 l2">
+                <a href="{{ url_for('add_genre') }}" class="waves-effect waves-light pink accent-1 btn">
+                    Add Genre
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!--genre cards-->
+    <section class="row container">
     {% for genre in genres %}
-    <div class="row container">
-        <div class="col s12 card-panel blue-grey darken-1 white-text">
-            <div class="row flex-container">
-                <div class="col s6">
+        <div class="col s3 card-panel blue-grey darken-1 white-text">
+            <div class="row">
+                <div class="col s12">
                     <span class="card-title">{{ genre.genre_name }}</span>
                 </div>
-                <div class="col s6">
-                    <a class="waves-effect waves-light pink accent-1 btn" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
-                    <a class="waves-effect waves-light pink accent-1 btn" href="{{ url_for('delete_genre', genre_id=genre._id) }}">Delete</a>
+                
+            </div>
+        </div> 
+    {% endfor %}
+</section> 
+
+<section class="row container">
+    <!--book card for each result-->
+    {% for genre in genres %}
+        <div class="col s6 m4 xl3 col-padding-mobile">
+            <div class="book-card">
+                <div class="card medium black">
+                    <!--book image-->
+                    <div class="card-image">
+                    </div>
+                    <!--card content-->
+                    <div class="card-content book-card-content black white-text custom-text">
+                    {{ genre.genre_name}}
+                    </div>
+                    <div class="col s12">
+                        <a class="waves-effect waves-light pink accent-1 btn button-styling" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
+                        <a class="waves-effect waves-light pink accent-1 btn button-styling" href="{{ url_for('delete_genre', genre_id=genre._id) }}">Delete</a>
+                    </div>                   
                 </div>
             </div>
         </div>
-    </div>  
     {% endfor %}
+</section>
 
 
 {% endblock %}

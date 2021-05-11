@@ -212,6 +212,8 @@ The following are features were not included in this release. These may be devel
 
 * [LamdaTest](https://www.lambdatest.com/) - Used for monitoring the responsiveness of the website.
 
+https://favicon.io/favicon-converter/ used to create flavicon
+
 ----------------------------
 ## Testing
 All testing documentation is stored in a separate testing file, which can be accessed [here](https://github).
