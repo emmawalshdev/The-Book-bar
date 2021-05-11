@@ -59,10 +59,10 @@
              <!--edit and delete buttons for admin or book creater-->
              {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
              <div class="col s12 book-page-buttons">
-                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1">
+                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1 edit-button-color">
                     Edit
                 </a>
-                 <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1">Delete</a>
+                 <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1 delete-button-color">Delete</a>
              </div>
              {% endif %}
         </div>
@@ -106,10 +106,16 @@
                     <div class="card-reveal">
                         <span class = "card-title">
                             <i class="material-icons right">close</i>
+                            Alter Review
                         </span>
-                        <a href="{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Edit</a>
-                        <br>
-                        <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}">Delete</a>
+                        <p class="p-margin-bottom"> To make a change to this review, please choose from the options below.
+                        </p>
+                        <a href = "{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1 edit-button-color">
+                            Edit
+                        </a>
+                         <a href = "{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1 delete-button-color">
+                             Delete
+                            </a>
                     </div>
                     {% endif %}
                 </div>
@@ -126,7 +132,7 @@
                     {% if not session.user %}
                     <p class="center">
                         To add a review, please
-                        <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Login.</a>
+                        <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4 add-button-color">Login.</a>
                     </p>
                     {% endif %}
                 </div>
@@ -176,7 +182,7 @@
                             </div>
                             <div class="row">
                                 <div class="col s12">
-                                    <div class="align-center center"><button class="waves-effect waves-light btn-small button-styling pink accent-1"
+                                    <div class="align-center center"><button class="waves-effect waves-light btn-small button-styling pink accent-1 add-button-color"
                                             type="submit">Submit</button>
                                     </div>
                                 </div>
