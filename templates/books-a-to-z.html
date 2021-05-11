@@ -98,27 +98,13 @@
                                         read more
                                         <!--genre icon-->
                                         <div class="book-genre-icon right">
-                                            {% if book.genre_name == "Romance" %}
-                                            <p class="material-icons">
-                                                favorite_border
-                                            </p>
-                                            {% elif book.genre_name == "Children's Books" %}
-                                            <p class="material-icons-outlined">
-                                                accessibility
-                                            </p>
-                                            {% elif book.genre_name == "Fantasy & Sci-fi" %}
-                                            <p class="material-icons-outlined">
-                                                android
-                                            </p>
-                                            {% elif book.genre_name == "Crime & Thriller" %}
-                                            <p class="material-icons-outlined">
-                                                sports_kabaddi
-                                            </p>
-                                            {% elif book.genre_name == "Religious & Self-help" %}
-                                            <p class="material-icons-outlined">
-                                                self_improvement
-                                            </p>
+                                        {% for genre in genres %}
+                                            {% if genre.genre_name == book.genre_name %}
+                                                <p class="material-icons">
+                                                    {{ genre.genre_icon}}
+                                                </p>
                                             {% endif %}
+                                        {% endfor %}
                                         </div>
                                     </a>
                                 </div>

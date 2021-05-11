@@ -27,7 +27,7 @@ mongo = PyMongo(app)
 @app.route("/get_books/new_books/<int:page>")
 def books_new(page=1):
     books = list(mongo.db.books.find().sort("_id", -1))
-    genres = mongo.db.genres.find().sort("genres", 1)
+    genres = list(mongo.db.genres.find().sort("genres", 1))
     avgratings = list(mongo.db.avgRatingAgg.find().sort("id", -1))
     if page == 1:
         booklist = books[0:12]
@@ -58,7 +58,7 @@ def search():
 @app.route("/get_books/a-to-z/<int:page>")
 def books_a_to_z(page=1):
     books = list(mongo.db.books.find().sort("book_name", 1))
-    genres = mongo.db.genres.find().sort("genres", 1)
+    genres = list(mongo.db.genres.find().sort("genres", 1))
 
     if page == 1:
         booklist = books[0:12]
@@ -79,7 +79,7 @@ def books_a_to_z(page=1):
 @app.route("/get_books/z-to-a/<int:page>")
 def books_z_to_a(page=1):
     books = list(mongo.db.books.find().sort("book_name", -1))
-    genres = mongo.db.genres.find().sort("genres", 1)
+    genres = list(mongo.db.genres.find().sort("genres", 1))
 
     if page == 1:
         booklist = books[0:12]
