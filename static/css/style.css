@@ -42,6 +42,9 @@ p{
     margin-bottom:30px !important;
 }
 
+.small-font{
+    font-size:1rem;
+}
 h1, h4{
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
@@ -263,10 +266,23 @@ nav ul a:hover,
     font-family: 'Raleway', sans-serif;
 } */
 
+.genre-card-height{
+    height:200px !important;
+}
 .book-card{
     position: relative;
 }
+.delete-button-color:hover{
+    background-color:#e91e63 !important;
+}
 
+.edit-button-color:hover{
+    background-color:#1c3db2 !important;
+}
+
+.add-button-color:hover{
+    background-color: #1e8276 !important;
+}
 .books-button{
     text-transform: capitalize;
     width:90%;

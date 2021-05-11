@@ -1,35 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">
-    Edit Genre
-</h3>
-<p>
-    Once you have altered the name of this genre, click save to submit your changes.
-To go back, press cancel. 
-</p>
-<div class="row card-panel">
-    <form class="col s12" method="POST" action="{{ url_for('edit_genre', genre_id=genre._id) }}">
+    <!--page title-->
+    <section class="row container">
+        <div class="col s12 center">
+            <h1>Edit Genre</h1>
+        </div>
+    </section>
 
-        <!-- Add Genre -->
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="genre_name" name="genre_name" type="text" value="{{ genre.genre_name }}" class="validate" min-length="2" max-length="50" required>
-                <label for="genre_name">Genre Name</label>
+    <!--edit genre card-->
+    <div class="row container">
+        <form class="col s12 card" method="POST" action="{{ url_for('edit_genre', genre_id=genre._id) }}">
+            <div class="card-content center">
+                <!--card description-->
+                <div class="row">
+                    <div class="col s12">
+                        <p class="p-margin-bottom">
+                            Once you have altered the name of this genre, click save to submit your changes.
+                            To go back, press cancel.
+                        </p>
+                    </div>
+                </div>
+                <!--genre name-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="genre_name" name="genre_name" type="text" value="{{ genre.genre_name }}" class="validate"
+                            min-length="2" max-length="50" required>
+                        <label for="genre_name">Genre Name</label>
+                    </div>
+                </div>
+                <!--genre icon-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="genre_icon" name="genre_icon" type="text" class="validate" min-length="2" max-length="20"
+                            placeholder="favorite_border" required>
+                        <label for="genre_icon">Icon Name</label>
+                        <p class="small-font">*Please note: only <a href="https://fonts.google.com/icons" class="hover-link"> Google
+                                icon</a> names can be used. </p>
+                    </div>
+                </div>
+                <!-- submit button -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="waves-effect waves-light pink accent-1 btn">
+                            Save
+                        </button>
+                        <a href="{{ url_for('get_genres') }}" class="waves-effect waves-light pink accent-1 btn">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- submit button -->
-        <div class="row">
-            <div class="col s12 center-align">
-                <button type="submit" class="waves-effect waves-light pink accent-1 btn">
-                    Save
-                </button>
-                <a href="{{ url_for('get_genres') }}" class="waves-effect waves-light pink accent-1 btn">
-                    Cancel
-                </a>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 
 {% endblock %}
