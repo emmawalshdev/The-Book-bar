@@ -29,6 +29,15 @@
                             </div>
                         </div>
                     </div>
+                    {% if (get_book.buy_url != "") %}
+                    <div class="col s12 margin-after-title">
+                        <p>
+                            <span class= "bookpage-title">
+                            <a href="{{get_book.buy_url}}" class="hover-link">Buy Now</a>                                  
+                            </span>
+                        </p>
+                    </div>
+                    {% endif %}
                     <div class="col s12 margin-after-title">
                         <p>
                             <span class= "bookpage-title">
@@ -47,11 +56,12 @@
                     </div>
                     <div class="col s12 book-card-padding">
                         <p>
-                        <br>
-                        <span class="center bookpage-title">Description:
-                        </span>
                             <br>
-                                {{ get_book.description }}
+                            <span class="center bookpage-title">
+                                Description:
+                            </span>
+                            <br>
+                            {{ get_book.description }}
                         </p>
                     </div>
                 </div>
