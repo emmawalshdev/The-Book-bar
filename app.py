@@ -15,6 +15,7 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
+
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -140,11 +141,11 @@ def login():
                         _external=True, _scheme='https'))
             # if pw input != hashed password
             else:
-                flash("Password and/or Username is incorrect")
+                flash('Password and/or Username is incorrect', 'error')
                 return redirect(url_for("login"))
         # if username does not exist in db
         else:
-            flash("Username and/or Password incorrect")
+            flash("Username and/or Password incorrect", 'error')
             return redirect(url_for("login"))
 
     return render_template("login.html")

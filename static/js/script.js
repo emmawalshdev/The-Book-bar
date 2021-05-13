@@ -5,6 +5,7 @@
     $('#textarea1').val('New Text');
     M.textareaAutoResize($('#textarea1'));
     $('.tooltipped').tooltip();
+    $('#modal1').modal().modal('open');
     
 
    validateMaterializeSelect();

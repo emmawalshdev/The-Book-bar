@@ -80,6 +80,9 @@ Test logout by checking session cookie in application tab on dev tools
     * how tested
     
 ### Bugs 
+delay in modal pop up solved by stack overflow
+https://stackoverflow.com/questions/42430062/materialize-model-not-working
+
 
 #### Solved
 1. <strong>name</strong>

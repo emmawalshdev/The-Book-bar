@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <!--font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!--css stylesheet-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <!--flavicon-->
@@ -85,17 +86,31 @@
 
         <!-- flash messages-->
         <section>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flashes">
-                        <h4 class="cyan lighten-3 center-align">{{ message }}</h4>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class="modal" id="modal1">
+                        <div class="modal-content">
+                            {% for category, message in messages %}
+                                {% if category =="error" %}
+                                    <h4 class="{{ category }}-flash-title">
+                                        Error
+                                    </h4>
+                                {% else %}
+                                    <h4 class="{{ category }}-flash title">
+                                        Success
+                                    </h4>
+                                {% endif %}
+                                <p class="">{{ message }}</p>
+                                <div class="modal-footer">
+                                    <a href= "{{ request.path }}" class="modal-close">Agree</a>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+                    {% endif %}
+                {% endwith %}
         </section>
-
+        
         <!--inherit block content-->
         {% block content %}
         {% endblock %}
@@ -133,6 +148,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <!--materialise-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
         <!--js script-->
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <!--inherit scripts-->
