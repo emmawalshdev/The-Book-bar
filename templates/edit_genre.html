@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block title %}
+    Edit Genre
+{% endblock %}
 {% block content %}
 
     <!--page title-->
@@ -33,7 +36,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="genre_icon" name="genre_icon" type="text" class="validate" min-length="2" max-length="20"
-                            placeholder="favorite_border" required>
+                            placeholder="favorite_border" value="{{ genre.genre_icon }}" required>
                         <label for="genre_icon">Icon Name</label>
                         <p class="small-font">*Please note: only <a href="https://fonts.google.com/icons" class="hover-link"> Google
                                 icon</a> names can be used. </p>
