@@ -118,7 +118,8 @@ def register():
 
         # put user into session cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration successful")
+        flash("Registration successful. Please login to gain" +
+              "full access to the Book Bar site.", "success")
         return render_template("login.html")
     return render_template("register.html")
 
@@ -141,11 +142,12 @@ def login():
                         _external=True, _scheme='https'))
             # if pw input != hashed password
             else:
-                flash('Password and/or Username is incorrect', 'error')
+                flash("Password and/or Username is incorrect", "error")
                 return redirect(url_for("login"))
         # if username does not exist in db
         else:
-            flash("Username and/or Password incorrect", 'error')
+            flash("Username and/or password is incorrect." +
+                  "Please try again.", "error")
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -187,7 +189,7 @@ def profile(username):
 @app.route("/logout")
 def logout():
     # remove user from session cookies
-    flash("You have been logged out")
+    flash("You have successfully been logged out", "success")
     session.pop("user")
     return redirect(url_for("login", _external=True, _scheme='https'))
 
@@ -235,7 +237,7 @@ def add_book():
             "created_by": session["user"],
         }
         mongo.db.books.insert_one(book)
-        flash("Book Successfully Added")
+        flash("Book was successfully added", "success")
         return redirect(url_for("books_new"))
 
     genres = mongo.db.genres.find().sort("genre_name", 1)
@@ -256,7 +258,7 @@ def edit_book(book_name, id):
             "created_by": session["user"]
             }}
         )
-        flash("Book Successfully Updated")
+        flash("Book was successfully updated", "success")
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
 
@@ -268,7 +270,7 @@ def edit_book(book_name, id):
 @app.route("/delete_book/<book_name>/<id>")
 def delete_book(book_name, id):
     mongo.db.books.remove({"_id": ObjectId(id)})
-    flash("Book has sucessfully been deleted")
+    flash("Book was sucessfully deleted", "success")
     return redirect(url_for("books_new"))
 
 
@@ -283,7 +285,9 @@ def review_book(book_name):
             for review in reviews:
                 #  if user has already posted a review, stop them
                 if review["username"] == session["user"]:
-                    flash("You have already reviewed this book.")
+                    flash(
+                        "You previously reviewed this book," +
+                        "Please edit or remove the existing review.", "error")
                     return redirect(url_for(
                         "bookpage", book_name=get_book.get("book_name")))
         #  else allow user to post review
@@ -301,7 +305,7 @@ def review_book(book_name):
                     "username": session["user"]}}})
     else:
         review = "No star ratings yet"
-        flash("review saved")
+        flash("review was successfully saved", "success")
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
 
@@ -332,7 +336,7 @@ def edit_review(book_name, book_id, username, id):
                 "review.$.bookid": str(get_book["_id"])  # remove this after
                 }}
         )
-        flash("review Successfully Updated")
+        flash("Review was successfully updated", "success")
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
 
@@ -352,7 +356,7 @@ def delete_review(book_name, book_id, username, id):
     mongo.db.books.update(
         {"_id": ObjectId(book_id), "review.review_id": id},
         {"$pull": {"review": {"review_id": id}}})
-    flash('Review Successfully Removed')
+    flash('Review was successfully removed', "success")
     {"_id": ObjectId(book_id), "review.review_id": id}
     mongo.db.avgRatingAgg.remove({
         "_id": ObjectId(book_id)
@@ -376,7 +380,7 @@ def add_genre():
             "genre_icon": request.form.get("genre_icon")
         }
         mongo.db.genres.insert_one(genre)
-        flash("New Genre Added")
+        flash("Genre was successfully added", "success")
         return redirect(url_for("get_genres"))
 
     return render_template("add_genre.html")
@@ -390,7 +394,7 @@ def edit_genre(genre_id):
             "genre_icon": request.form.get("genre_icon")
         }
         mongo.db.genres.update({"_id": ObjectId(genre_id)}, save)
-        flash("Genre Successfully Updated")
+        flash("Genre was successfully updated.", "success")
         return redirect(url_for("get_genres"))
 
     genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
@@ -400,7 +404,7 @@ def edit_genre(genre_id):
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
-    flash("Genre Successfully Deleted")
+    flash("Genre was successfully deleted.", "Success")
     return redirect(url_for("get_genres"))
 
 
