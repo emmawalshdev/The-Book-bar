@@ -45,6 +45,7 @@ p{
 .small-font{
     font-size:1rem;
 }
+
 h1, h4{
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
@@ -305,7 +306,17 @@ nav ul a:hover,
     font-size:17px;
 }
 
+.success-flash{
+    font-size: 1.8rem;
+    color: #1e8276;
+    margin-bottom:10px;
+}
 
+.error-flash{
+    font-size: 1.8rem;
+    color: #db0086;
+    margin-bottom:10px;
+}
 
 .elipsed-text{
     overflow: hidden;

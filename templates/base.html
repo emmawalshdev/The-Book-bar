@@ -85,33 +85,33 @@
         </header>
 
         <!-- flash messages-->
-        <section>
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    <div class="modal" id="flash-modal">
-                        <div class="modal-content">
-                            {% for category, message in messages %}
-                                {% if category =="error" %}
-                                    <h4 class="{{ category }}-flash-title">
-                                        Error
-                                    </h4>
-                                {% else %}
-                                    <h4 class="{{ category }}-flash title">
-                                        Success
-                                    </h4>
-                                {% endif %}
-                                <p class="">{{ message }}</p>
-                                <div class="modal-footer">
-                                    <a href= "{{ request.path }}" class="modal-close">Agree</a>
-                                </div>
-                            {% endfor %}
-                        </div>
+        <section class="flash-messages-modal">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="modal" id="modal1">
+                    <div class="modal-content center">
+                        {% for category, message in messages %}
+                            {% if category =="error" %}
+                                <p class="{{ category }}-flash title">
+                                    Error
+                                </p>
+                            {% else %}
+                                <p class="{{ category }}-flash title">
+                                    Success
+                                </p>
+                            {% endif %}
+                            <p>{{ message }}</p>
+                            <div class="modal-footer">
+                                <a href="{{ request.path }}" class="modal-close hover-link">Close</a>
+                            </div>
+                        {% endfor %}
                     </div>
-                    {% endif %}
-                {% endwith %}
+                </div>
+                {% endif %}
+            {% endwith %}
         </section>
         
-        <!--inherit block content-->
+        <!--inherit block content from template-->
         {% block content %}
         {% endblock %}
 
