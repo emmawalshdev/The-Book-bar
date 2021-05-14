@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Raleway&display=swap');
 
-/* CREDIT https://codepen.io/dimitrisraptis96/pen/NWrrRLB*/
+/* CREDIT code for background gradient - https://codepen.io/dimitrisraptis96/pen/NWrrRLB 
+modified to create a custom design */
 html{ 
     background: 
       linear-gradient(180deg, rgba(13, 78, 65, 0) 20%, rgba(54, 168, 159, 0.1) 20%, rgba(120, 197, 207, 0.1) 40%, rgba(128, 191, 207, 0.493) 40%, rgba(126, 171, 207, 0.2) 60%, rgba(166, 182, 235, 0.4) 60%, rgba(117, 162, 199, 0.4) 80%, rgba(121, 150, 187, 0.5) 80%),
@@ -15,38 +16,16 @@ html{
     background-size: 100% 100%;
     min-height: 100%;
   }
-/*
-font-family: 'Goudy Bookletter 1911', serif;
-font-family: 'Raleway', sans-serif;
-*/
 
+
+/* ---------------------------font styling-------------------------------------*/
 html body{
     font-family: 'Lato', sans-serif;
-    font-size: 17px;
+    font-size: 1.0625rem;
     color: #263238;
 }
-
-p{
-    font-size: 1.3rem;
-}
-
-.custom-bold{
-    font-weight:bolder;
-}
-
-.hover-link:hover{
-    color: #db0086;
-}
-
-.p-margin-bottom{
-    margin-bottom:30px !important;
-}
-
-.small-font{
-    font-size:1rem;
-}
-
-h1, h4{
+ /* h1-h6 */
+h1{
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     background-color: rgb(240, 91, 189);
@@ -57,51 +36,6 @@ h1, h4{
     background-clip: text;
 }
 
-h2{
-    font-size:40px;
-    color:#042e56;
-
-}
-
-h3{
-    font-size:1.7rem;
-    color:#042e56;
-}
-
-.custom-h{
-    font-size:26px;
-    color: #4576e6;
-}
-
-.custom-p-title{
-    font-size:24px !important;
-    color:#2196F3;
-    margin-bottom:10px important !important;
-}
-
-.card-margin-top{
-    margin-top: 20px;
-}
-
-
-.custom-card-panel{
-    box-shadow: none;
-    padding: 10px 24px;
-}
-
-.flex-container{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.custom-card-panel p{
-    font-size: 1.3rem;
-}
-
-.brand-logo img{
-    padding:2px 0 0 10px;
-}
-
 .inner-page-h1{
     font-size:2rem;
     color:black;
@@ -110,121 +44,67 @@ h3{
     margin: 0.7rem 0 0.7rem 0;
 }
 
-.footer-container{
-    background-color: white;
-    margin:30px 0 0;
-    padding: 50px 0;
+h2{
+    font-size: 2.5rem;
+    color: #042e56;
 }
 
-.footer-container span {
+h3{
     font-size: 1.7rem;
-    padding-right: 10px;
-    vertical-align: middle;
-    color: #024bae;
-}
-.copyright-wrapper .material-icons,
-.social-media-wrapper a i{
-    font-size:30px;
-    vertical-align: middle;
-    margin: 0 10px;
-    color: #024bae;
+    color: #042e56;
 }
 
-.copyright-text:hover + .name-github,
-.name-github:hover,
-.social-media-wrapper a i:hover{
-color: #db0086;
-}
-/* form materialise */
-  /* label color */
-   .input-field label {
-     color: #006064;
-   }
-   /* label focus color */
-   .input-field input[type=text]:focus + label,
-   .input-field input[type=password]:focus + label{
-     color: #00acc1;
-   }
-   /* label underline focus color */
-   .input-field input[type=text]:focus,
-   .input-field input[type=password]:focus{
-     border-bottom: 1px solid #00acc1;
-     box-shadow: 0 1px 0 0 #006064;
-   }
- 
-.books-button-styling{
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    border-radius:0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align: center;
-    transition: all 0.2s;
-}
-.books-button-styling:hover{
-    color:white;
-    background-color:#db0086;
+/* general font text styling */
+p{
+    font-size: 1.2rem;
 }
 
-.active-pagination{
-    background-color: #db0086 !important;
+.blue-title-p{
+    font-size: 1.5rem !important;
+    color: #2196F3;
+    margin-bottom: 10px !important;
 }
 
-.page-title-margin{
+.bold{
+    font-weight:bolder;
+}
+
+.small-font{
+    font-size:1rem;
+}
+/* custom margins */
+.mb3{
+    margin-bottom:30px !important;
+}
+
+.mt2{
+    margin-top: 20px;
+}
+
+.m504{
     margin:50px 0 40px;
 }
 
-.pagination li a {
-    color: #fff;
-    display: inline-block;
+/* links */
+.pink-hover:hover{
+    color: #db0086;
+}
+
+/* cards */
+.custom-card-panel{
+    box-shadow: none;
+    padding: 10px 24px;
+}
+
+.custom-card-panel p{
     font-size: 1.3rem;
-    padding: 0 10px;
-    background-color: #ff80ab;
 }
-@media all and (max-width:30em){
-    .books-button-styling{
-        display:block;
-        margin:0.4em auto;
-    }
+
+/* navbar */
+
+.brand-logo img{
+    padding:2px 0 0 10px;
 }
-   /* valid color */
-   .input-field input[type=text].valid,
-   input.valid[type=text]:not(.browser-default), 
-   input.valid[type=text]:not(.browser-default):focus,
-   .input-field input[type=password].valid,
-   input.valid[type=password]:not(.browser-default), 
-   input.valid[type=password]:not(.browser-default):focus{
-     border-bottom: 1px solid #00acc1;
-     box-shadow: 0 1px 0 0 #00acc1;
-   }
-   /* invalid color */
-   .input-field input[type=text].invalid,
-    input.invalid[type=text]:not(.browser-default), 
-   input.invalid[type=text]:not(.browser-default):focus,
-   .input-field input[type=password].invalid,
-   input.invalid[type=password]:not(.browser-default), 
-   input.invalid[type=password]:not(.browser-default):focus{
-     border-bottom: 1px solid #e780a3;
-     box-shadow: 0 1px 0 0 #e780a3;
-   }
-
-   textarea.materialize-textarea.valid,
-   textarea.materialize-textarea.valid, 
-   textarea.materialize-textarea.valid:focus{
-    border-bottom: 1px solid #00acc1;
-    box-shadow: 0 1px 0 0 #00acc1;
-   }
-
-    textarea.materialize-textarea.invalid,
-    textarea.invalid, 
-    textarea.materialize-textarea.invalid:focus{
-    border-bottom: 1px solid #e780a3;
-     box-shadow: 0 1px 0 0 #e780a3;
-    }
 
 /* navbar styling */
 
@@ -249,11 +129,147 @@ nav ul a:hover,
 .sidenav .mobile-brand-logo .brand-logo:hover {
     background-color: white;
 }
+/* search books - homepage*/
 
+.flex-container-center{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
+/* footer */
+.footer-container{
+    background-color: white;
+    margin:30px 0 0;
+    padding: 50px 0;
+}
+
+.footer-container span {
+    font-size: 1.7rem;
+    padding-right: 10px;
+    vertical-align: middle;
+    color: #024bae;
+}
+
+.copyright-wrapper .material-icons,
+.social-media-wrapper a i{
+    font-size:30px;
+    vertical-align: middle;
+    margin: 0 10px;
+    color: #024bae;
+}
+
+.copyright-text:hover + .name-github,
+.name-github:hover,
+.social-media-wrapper a i:hover{
+    color: #db0086;
+}
+
+/* materialise from overwrite colors */
+/* CREDIT https://stackoverflow.com/questions/44942347/change-the-default-color-of-materialize-css-input-fields-i-have-attached-screen 
+modiefied slightly*/
+
+/* label color */
+.input-field label {
+    color: #006064;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label,
+.input-field input[type=password]:focus + label{
+    color: #00acc1;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus{
+    border-bottom: 1px solid #00acc1;
+    box-shadow: 0 1px 0 0 #006064;
+}
+
+/* valid color */
+.input-field input[type=text].valid,
+input.valid[type=text]:not(.browser-default), 
+input.valid[type=text]:not(.browser-default):focus,
+.input-field input[type=password].valid,
+input.valid[type=password]:not(.browser-default), 
+input.valid[type=password]:not(.browser-default):focus{
+    border-bottom: 1px solid #00acc1;
+    box-shadow: 0 1px 0 0 #00acc1;
+}
+
+/* invalid color */
+.input-field input[type=text].invalid,
+input.invalid[type=text]:not(.browser-default), 
+input.invalid[type=text]:not(.browser-default):focus,
+.input-field input[type=password].invalid,
+input.invalid[type=password]:not(.browser-default), 
+input.invalid[type=password]:not(.browser-default):focus{
+    border-bottom: 1px solid #e780a3;
+    box-shadow: 0 1px 0 0 #e780a3;
+}
+
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid, 
+textarea.materialize-textarea.valid:focus{
+    border-bottom: 1px solid #00acc1;
+    box-shadow: 0 1px 0 0 #00acc1;
+}
+
+textarea.materialize-textarea.invalid,
+textarea.invalid, 
+textarea.materialize-textarea.invalid:focus{
+    border-bottom: 1px solid #e780a3;
+    box-shadow: 0 1px 0 0 #e780a3;
+}
+
+/* end credit*/
+
+ /* book cards styling*/
+ 
+.read-more-btn{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    color:#FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+}
+.read-more-btn:hover{
+    color:white;
+    background-color:#db0086;
+}
+
+/* pagination */
+
+.pagination li a {
+    color: #fff;
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: 0 10px;
+    background-color: #ff80ab;
+}
+
+.active{
+    background-color: #db0086 !important;
+}
+
+/*
+@media all and (max-width:30em){
+    .books-button-styling{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+*/
+
+/*
 .flashes h4{
     line-height: 2;
 }
+*/
 
 /* Home page */
 .book-card .card-image img {
@@ -278,6 +294,7 @@ nav ul a:hover,
 .genre-card-height{
     height:200px !important;
 }
+
 .book-card{
     position: relative;
 }
@@ -391,6 +408,10 @@ text-overflow: ellipsis;
      margin-top: 20px;
 }
 
+.activator{
+    cursor: pointer;
+  }
+
 /* profile */
 .card-panel-reviews{
     height: 300px;
@@ -438,11 +459,9 @@ text-overflow: ellipsis;
 
 /* review */
 
-.activator{
-  cursor: pointer;
-}
 
-/* CREDIT https://codepen.io/hesguru/pen/BaybqXv*/
+/* star ratings for review */
+/* CREDIT https://codepen.io/hesguru/pen/BaybqXv */
 
 *{
     margin: 0;

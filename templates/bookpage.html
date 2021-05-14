@@ -40,7 +40,7 @@
                         <div class="col s12 margin-after-title">
                             <p>
                                 <span class= "bookpage-title">
-                                    <a href="{{get_book.buy_url}}" class="hover-link">
+                                    <a href="{{get_book.buy_url}}" class="pink-hover">
                                         Buy Now
                                     </a>                                  
                                 </span>
@@ -92,8 +92,8 @@
 
     <!--review section title-->
     <div class="row container">
-        <div class="col s12">
-            <h2 class = "center-align">
+        <div class="col s12 center">
+            <h2>
                 User Reviews
             </h2>
         </div>
@@ -131,7 +131,7 @@
                             <i class="material-icons right">close</i>
                             Alter Review
                         </span>
-                        <p class="p-margin-bottom"> To make a change to this review, please choose from the options below.
+                        <p class="mb3"> To make a change to this review, please choose from the options below.
                         </p>
                         <a href = "{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1 edit-button-color">
                             Edit

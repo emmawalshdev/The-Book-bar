@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    USer Profile
+    User Profile
 {% endblock %}
 {% block content %}
     
@@ -18,12 +18,12 @@
 
     <!--3 col card-->
     <section class="row container">
-        <div class="col s12 card card-margin-top">
+        <div class="col s12 card mt2">
             <!--card row-->
             <div class="row card-content">
                 <!--activity col-->
                 <div class="col s12 m4 center">
-                    <p class="custom-p-title">
+                    <p class="blue-title-p">
                         Your Activity
                     </p>
                     <p>
@@ -38,8 +38,8 @@
                 </div>
                 <!--link to search books page-->
                 <div class="col s12 m4 center">
-                    <p class="custom-p-title">
-                        <a href="{{ url_for('books_new') }}" class="hover-link">Search Books</a>
+                    <p class="blue-title-p">
+                        <a href="{{ url_for('books_new') }}" class="pink-hover">Search Books</a>
                     </p>
                     <a href="{{ url_for('books_new') }}">
                         <img src="../static/images/stackedbooks.png" alt="stacked books" height="80">

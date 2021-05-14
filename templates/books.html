@@ -7,7 +7,7 @@
     <!--page title-->
     <section class="row container">
         <div class="col s12 center">
-            <h1 class="center page-title-margin"> Search Books</h1>
+            <h1 class="center m504"> Search Books</h1>
         </div>
     </section>
 
@@ -38,7 +38,7 @@
     <section class="row container">
         <div class="col s12">
             <div class="custom-card-panel">
-                <div class="row flex-container">
+                <div class="row flex-container-center">
                     <div class="col s12 m9 l10">
                         <p>No keyword in mind?<br> Sort & view the entire collection.
                         </p>
@@ -97,7 +97,7 @@
                                 <!--read more button & genre icon-->
                                 <div class="read-more-button-wrapper">
                                     <!--read more button-->
-                                    <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="books-button-styling books-button">
+                                    <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="read-more-btn books-button">
                                         read more
                                         <!--genre icon-->
                                         <div class="book-genre-icon right">
@@ -127,11 +127,11 @@
     {% else %}
         <section class="row container">
             <div class="col s12">
-                <div class="card-margin-top">
+                <div class="mt2">
                     <!--title row-->
                     <div class="row">
                         <div class="col s12 center">
-                            <h2 class="custom-h2"> Results for: <span class="custom-bold">{{ query }}</span></h2>
+                            <h2> Results for: <span class="bold">{{ query }}</span></h2>
                             <p>We couldn't match any books to the keyword you entered. <br>please reset the search and try again.</p>
                             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                             <lottie-player src="https://assets7.lottiefiles.com/temp/lf20_aKAfIn.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 200px; margin:auto;"  loop  autoplay></lottie-player>
@@ -158,7 +158,7 @@
                     {% for i in range(pages) %}
                         {% if page == loop.index %}
                         <li>
-                            <a href="{{ url_for('books_new', page=loop.index) }}" class = "active-pagination"> {{ loop.index }}
+                            <a href="{{ url_for('books_new', page=loop.index) }}" class = "active"> {{ loop.index }}
                             </a>
                         </li>
                         {% else %}
