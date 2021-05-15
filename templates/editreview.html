@@ -3,49 +3,93 @@
     Edit Review
 {% endblock %}
 {% block content %}
-<!-- book section-->
-    <div class="row book-section container">
-        <div class="col s12 m5">
-            <div class="grid">
-                <img src="{{get_book.image_url }}" alt="book cover image" class="book-image" height="600" width="400">
+    <!-- book section-->
+    <section class="row pt2 container">
+        <!-- book image-->
+        <div class="col s12 m4">
+            <div class="grid card transparent shadow-box-none">
+                <img src="{{get_book.image_url }}" alt="book cover image" class="book-image bookpage-card-image">
             </div>
         </div>
-        <div class="col s12 m7">
-            <div class="row">
-                <div class="col s12">
-                    <h5 class="center">
-                        <span class="book-name" id="book_name_id">
-                            {{ get_book.book_name }}
-                        </span>
-                    </h5>
-                </div>
-                <div class="col s12">
-                    <p>
-                        <span class= "bookpage-title">
-                        Author:                                   
-                        </span>
-                            {{ get_book.author }}
-                    </p>
-                </div>
-                <div class="col s12">
-                    <p>
-                        <span class="bookpage-title">
-                        Genre:                                   
-                        </span>
-                            {{ get_book.genre_name }}
-                    </p>
-                </div>
-                <div class="col s12">
-                    <p class= "center">
-                        <span class="center bookpage-title">Description: </span>
-                        <br>
+        <!--book description and info-->
+        <div class="col s12 m8">
+            <div class="card row">
+                <div class="card-content">
+                    <div class="col s12">
+                        <div class="flexbox-container-row">
+                            <!--book name-->
+                            <div class="book-name">
+                                <h1 class="inner-page-h1">
+                                    {{ get_book.book_name }}
+                                </h1>
+                            </div>
+                            <!--avg rating-->
+                            <div class="flex-item-center">
+                                {% if review.averageRating %}
+                                    <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                        <h5>{{ review.averageRating }}</h5>
+                                {% else %}
+                                    <i class="material-icons star-icon-black small tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <!--buy now url-->
+                    {% if (get_book.buy_url != "") %}
+                        <div class="col s12 mt2">
+                            <p>
+                                <span class= "bookpage-title">
+                                    <a href="{{get_book.buy_url}}" class="pink-hover">
+                                        Buy Now
+                                    </a>                                  
+                                </span>
+                            </p>
+                        </div>
+                    {% endif %}
+                    <!--author-->
+                    <div class="col s12 mt2">
+                        <p>
+                            <span class= "bookpage-title">
+                            Author:                                   
+                            </span>
+                                {{ get_book.author }}
+                        </p>
+                    </div>
+                    <!--genre name-->
+                    <div class="col s12">
+                        <p>
+                            <span class="bold">
+                            Genre:                                   
+                            </span>
+                                {{ get_book.genre_name }}
+                        </p>
+                    </div>
+                    <!--book description-->
+                    <div class="col s12 pb1">
+                        <p>
+                            <br>
+                            <span class="center bold">
+                                Description:
+                            </span>
+                            <br>
                             {{ get_book.description }}
-                    </p>
+                        </p>
+                    </div>
                 </div>
             </div>
+             <!--edit and delete buttons for admin or book creater-->
+             {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
+             <div class="col s12 mt2">
+                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect btn edit-button">
+                    Edit
+                </a>
+                 <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect btn delete-button ">Delete</a>
+             </div>
+             {% endif %}
         </div>
-    </div>
-<!-- edit your review section -->
+    </section>
+
+    <!-- edit your review section -->
     <div class="row container">
         <div class="col s12 center">
             <h2>
@@ -92,9 +136,9 @@
                             </div>
                             <div class="row">
                                 <div class="col s12">
-                                    <button class="waves-effect waves-light btn button-styling pink accent-1 add-button-color modal-trigger" href="#modal1" type="submit">Submit
+                                    <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">Submit
                                     </button>
-                                    <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}" class="waves-effect waves-light pink accent-1 btn delete-button-color">
+                                    <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}" class="waves-effect btn delete-button">
                                         Cancel
                                     </a>
                                 </div>

@@ -5,7 +5,7 @@
 {% block content %}
 
     <!-- book section-->
-    <section class="row book-section container">
+    <section class="row pt2 container">
         <!-- book image-->
         <div class="col s12 m4">
             <div class="grid card transparent shadow-box-none">
@@ -17,7 +17,7 @@
             <div class="card row">
                 <div class="card-content">
                     <div class="col s12">
-                        <div class="flexbox-container-bookpage-title">
+                        <div class="flexbox-container-row">
                             <!--book name-->
                             <div class="book-name">
                                 <h1 class="inner-page-h1">
@@ -25,7 +25,7 @@
                                 </h1>
                             </div>
                             <!--avg rating-->
-                            <div class="flex-item">
+                            <div class="flex-item-center">
                                 {% if review.averageRating %}
                                     <i class="material-icons star-icon-gold small">star</i>&nbsp;
                                         <h5>{{ review.averageRating }}</h5>
@@ -37,9 +37,9 @@
                     </div>
                     <!--buy now url-->
                     {% if (get_book.buy_url != "") %}
-                        <div class="col s12 margin-after-title">
+                        <div class="col s12 mt2">
                             <p>
-                                <span class= "bookpage-title">
+                                <span class= "bold">
                                     <a href="{{get_book.buy_url}}" class="pink-hover">
                                         Buy Now
                                     </a>                                  
@@ -48,7 +48,7 @@
                         </div>
                     {% endif %}
                     <!--author-->
-                    <div class="col s12 margin-after-title">
+                    <div class="col s12 mt2">
                         <p>
                             <span class= "bookpage-title">
                             Author:                                   
@@ -59,17 +59,17 @@
                     <!--genre name-->
                     <div class="col s12">
                         <p>
-                            <span class="bookpage-title">
+                            <span class="bold">
                             Genre:                                   
                             </span>
                                 {{ get_book.genre_name }}
                         </p>
                     </div>
                     <!--book description-->
-                    <div class="col s12 book-card-padding">
+                    <div class="col s12 pb1">
                         <p>
                             <br>
-                            <span class="center bookpage-title">
+                            <span class="center bold">
                                 Description:
                             </span>
                             <br>
@@ -80,11 +80,11 @@
             </div>
              <!--edit and delete buttons for admin or book creater-->
              {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
-             <div class="col s12 book-page-buttons">
-                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1 edit-button-color">
+             <div class="col s12 mt2">
+                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect btn-small edit-button">
                     Edit
                 </a>
-                 <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1 delete-button-color ">Delete</a>
+                 <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect btn delete-button ">Delete</a>
              </div>
              {% endif %}
         </div>
@@ -133,10 +133,10 @@
                         </span>
                         <p class="mb3"> To make a change to this review, please choose from the options below.
                         </p>
-                        <a href = "{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}" class="waves-effect waves-light btn-small button-styling pink accent-1 edit-button-color">
+                        <a href = "{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}" class="waves-effect btn edit-button">
                             Edit
                         </a>
-                         <a href = "{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}"  class="waves-effect waves-light btn-small button-styling pink accent-1 delete-button-color">
+                         <a href = "{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}"  class="waves-effect btn delete-button">
                              Delete
                             </a>
                     </div>
@@ -206,7 +206,7 @@
                             <div class="row">
                                 <div class="col s12">
                                     <div class="align-center center">
-                                        <button class="waves-effect waves-light btn-small button-styling pink accent-1 add-button-color modal-trigger" href="#modal1" type="submit">
+                                        <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">
                                             Submit
                                         </button>
                                     </div>

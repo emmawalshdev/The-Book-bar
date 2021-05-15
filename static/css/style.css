@@ -72,32 +72,50 @@ p{
 .small-font{
     font-size:1rem;
 }
+
+.trimmed{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.elipsed{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 /* custom margins */
 .mb3{
     margin-bottom:30px !important;
 }
 
-.mt2{
-    margin-top: 20px;
-}
 
 .m504{
     margin:50px 0 40px;
 }
 
+.mt2{
+    margin-top:20px !important;
+}
+/* custom padding */
+
+.prl4{
+    padding: 0 4px !important;
+}
+
+.pt2 {
+    padding-top:20px;
+}
+
+.pb1{
+    padding-bottom:1.0933333333rem !important;
+}
+
 /* links */
 .pink-hover:hover{
     color: #db0086;
-}
-
-/* cards */
-.custom-card-panel{
-    box-shadow: none;
-    padding: 10px 24px;
-}
-
-.custom-card-panel p{
-    font-size: 1.3rem;
 }
 
 /* navbar */
@@ -106,7 +124,15 @@ p{
     padding:2px 0 0 10px;
 }
 
-/* navbar styling */
+.brand-logo,
+.sidenav .mobile-brand-logo .brand-logo{
+    height:100px;
+    padding:15px 0;
+}
+
+.sidenav .mobile-brand-logo .brand-logo:hover {
+    background-color: white;
+}
 
 .sidenav li>a,
 nav ul a,
@@ -120,21 +146,9 @@ nav ul a:hover,
     background-color: rgb(159 46 135 / 12%);
 }
 
-.brand-logo,
-.sidenav .mobile-brand-logo .brand-logo{
-    height:100px;
-    padding:15px 0;
-}
-
-.sidenav .mobile-brand-logo .brand-logo:hover {
-    background-color: white;
-}
-/* search books - homepage*/
-
-.flex-container-center{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+/* heights */
+.height-200{
+    height:200px !important;
 }
 
 /* footer */
@@ -163,6 +177,204 @@ nav ul a:hover,
 .name-github:hover,
 .social-media-wrapper a i:hover{
     color: #db0086;
+}
+
+
+/* pagination */
+
+.pagination li a {
+    color: #fff;
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: 0 10px;
+    background-color: #ff80ab;
+}
+
+.active-pag{
+    background-color: #db0086 !important;
+}
+
+/* cards */
+
+.activator{
+    cursor: pointer;
+}
+
+.book-card{
+    position: relative;
+}
+
+.book-card .card-image img {
+    max-height: 420px;
+    min-height: 270px;
+}
+
+.book-card .book-card-content {
+    padding: 10px 20px;
+    border-radius: 0 0 2px 2px;
+    height: 170px;
+}
+
+.book-image {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    max-width: 400px;
+  }
+  
+  .shadow-box-none{
+      box-shadow: none;
+  }
+
+  .book-name{
+    font-weight:bold
+}
+
+.card.medium .bookpage-card-image{
+    max-height:400px;
+}
+
+/* buttons */
+
+
+.delete-button,
+.edit-button,
+.add-button{
+    background-color: #ff80ab !important;
+    margin:5px;
+    width:100px;
+}
+
+.delete-button:hover{
+    background-color:#e91e63 !important;
+}
+
+.edit-button:hover{
+    background-color:#1c3db2 !important;
+}
+
+.add-button:hover{
+    background-color: #1e8276 !important;
+}
+
+.read-more-btn{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    color:#FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+    text-transform: capitalize;
+    width:90%;
+    height:35px;
+    position: absolute;
+    bottom:10px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.read-more-btn:hover{
+    color:white;
+    background-color:#db0086;
+}
+/* flash messages*/
+.success-flash{
+    font-size: 1.8rem;
+    color: #1e8276;
+    margin-bottom:10px;
+}
+
+.error-flash{
+    font-size: 1.8rem;
+    color: #db0086;
+    margin-bottom:10px;
+}
+
+/* Flex & grid */
+
+.flex-container-center{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.flexbox-container-row {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+    align-content: space-around;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.flex-item-center{
+    display: flex;
+    align-items: center;
+}
+
+/* avg star rating on cards */
+.book-rating{
+    font-size:1.5rem;
+    display: flex;
+    justify-content: left;
+    height:30px;
+}
+
+/* star ratings for review */
+/* CREDIT https://codepen.io/hesguru/pen/BaybqXv */
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.star-icon-gold{
+    color:#ffc700;
+}
+
+.star-icon-black{
+    color:#7a7a7a;
 }
 
 /* materialise from overwrite colors */
@@ -222,40 +434,6 @@ textarea.materialize-textarea.invalid:focus{
 }
 
 /* end credit*/
-
- /* book cards styling*/
- 
-.read-more-btn{
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    border-radius:0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    color:#FFFFFF;
-    text-align: center;
-    transition: all 0.2s;
-}
-.read-more-btn:hover{
-    color:white;
-    background-color:#db0086;
-}
-
-/* pagination */
-
-.pagination li a {
-    color: #fff;
-    display: inline-block;
-    font-size: 1.3rem;
-    padding: 0 10px;
-    background-color: #ff80ab;
-}
-
-.active{
-    background-color: #db0086 !important;
-}
-
 /*
 @media all and (max-width:30em){
     .books-button-styling{
@@ -271,173 +449,14 @@ textarea.materialize-textarea.invalid:focus{
 }
 */
 
-/* Home page */
-.book-card .card-image img {
-    max-height: 420px;
-    min-height: 270px;
-}
-
-.book-card .book-card-content {
-    padding: 10px 20px;
-    border-radius: 0 0 2px 2px;
-    height: 170px;
-}
-
-.col-padding-mobile{
-    padding: 0 .25rem !important;
-}
-
 /*.custom-text{
     font-family: 'Raleway', sans-serif;
 } */
 
-.genre-card-height{
-    height:200px !important;
-}
+/* card */
 
-.book-card{
-    position: relative;
-}
-.delete-button-color:hover{
-    background-color:#e91e63 !important;
-}
 
-.edit-button-color:hover{
-    background-color:#1c3db2 !important;
-}
-
-.add-button-color:hover{
-    background-color: #1e8276 !important;
-}
-.books-button{
-    text-transform: capitalize;
-    width:90%;
-    height:35px;
-    position: absolute;
-    bottom:10px;
-    left:50%;
-    transform: translateX(-50%);
-}
-
-.books-book-title{
-    font-size:17px;
-}
-
-.success-flash{
-    font-size: 1.8rem;
-    color: #1e8276;
-    margin-bottom:10px;
-}
-
-.error-flash{
-    font-size: 1.8rem;
-    color: #db0086;
-    margin-bottom:10px;
-}
-
-.elipsed-text{
-    overflow: hidden;
-white-space: nowrap;
-text-overflow: ellipsis;
-}
-
-/* book page */
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
-}
-
-.book-image {
-  width: 100%;
-  height: auto;
-  margin: auto;
-  max-width: 400px;
-}
-
-.shadow-box-none{
-    box-shadow: none;
-}
-.book-section {
-    padding-top:20px;
-}
-
-.book-name{
-    font-weight:bold
-}
-
-.bookpage-title{
-    font-weight:bold;
-    font-size:1.3rem;
-}
-
-.book-card-padding{
-    padding-bottom:1.0933333333rem !important;
-}
-
-.margin-after-title{
-    margin-top:20px;
-}
-.flexbox-container-bookpage-title {
-    display: flex;
-    justify-content: space-between;
-    height: 30px;
-    align-items: flex-end;
-    align-content: space-around;
-    flex-wrap: nowrap;
-    flex-direction: row;
-}
-
-.flex-item{
-    display: flex;
-    align-items: center;
-}
-
-.card.medium .bookpage-card-image{
-    max-height:400px;
-}
-
-.books-rating{
-    font-size:1.5rem;
-    display: flex;
-    justify-content: left;
-    height:30px;
-}
-
-.book-page-buttons{
-     margin-top: 20px;
-}
-
-.activator{
-    cursor: pointer;
-  }
-
-/* profile */
-.card-panel-reviews{
-    height: 300px;
-}
-
-.trimmed-paragraph{
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-}
-
-/* .wrapper{
-    max-width:500px;
-} */
-
-/* edit & delete buttons*/
-.button-styling{
-    margin:5px;
-    width:100px;
-}
-
-/* search bar */
-.search-button{
-    margin-top:14px;
-}
+/*
 
 .page-link {
     border-radius: 5px;
@@ -450,62 +469,52 @@ text-overflow: ellipsis;
     color: #eceff1;
     background-color: #263238;
 }
-
-/* profile */
+*/
+/* profile 
 .custom-icon{
     width:100%;
     text-align:center;
 }
-
+*/
 /* review */
 
-
-/* star ratings for review */
-/* CREDIT https://codepen.io/hesguru/pen/BaybqXv */
-
-*{
+/* *{
     margin: 0;
     padding: 0;
 }
-.rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
-    color: #ffc700;    
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+*/
+/* .wrapper{
+    max-width:500px;
+} */
+
+/*.height-300{
+    height: 300px;
+} */
+
+/* was panel under search bar */
+/* .custom-card-panel{
+    box-shadow: none;
+    padding: 10px 24px;
 }
 
-.star-icon-gold{
-    color:#ffc700;
+.custom-card-panel p{
+    font-size: 1.3rem;
+}
+*/
+/*.books-book-title{
+    font-size: 1.0625rem;
 }
 
-.star-icon-black{
-    color:#7a7a7a;
+.bookpage-title{
+    font-weight:bold;
+    font-size:1.3rem;
 }
+/*.mt2{
+    margin-top: 20px;
+
+.button-styling{
+    margin:5px;
+    width:100px;
+}
+
+}*/

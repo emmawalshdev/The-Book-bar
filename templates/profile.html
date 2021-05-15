@@ -89,7 +89,7 @@
                                             <div class="card-content book-card-content black">
                                                 <div class="white-text custom-text">
                                                     <!-- average rating-->
-                                                    <div class="books-rating">
+                                                    <div class="book-rating">
                                                         {% for avgrating in avgratings %}
                                                             {% if avgrating._id == book._id %}
                                                                 <i class="material-icons star-icon-gold small">star</i>&nbsp;
@@ -98,16 +98,16 @@
                                                         {% endfor %}
                                                     </div>
                                                     <!--book title-->
-                                                    <p class="elipsed-text books-book-title">
+                                                    <p class="elipsed">
                                                         {{ book.book_name }}
                                                     </p>
                                                     <!--book author-->
-                                                    <p class="left elipsed-text">
+                                                    <p class="elipsed">
                                                             - {{ book.author }}
                                                     </p>
                                                     <!--read more button-->
                                                     <div>
-                                                        <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="books-button-styling books-button">
+                                                        <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="read-more-btn">
                                                             read more
                                                                                             <!--genre icon-->
                                                         <div class="book-genre-icon right">
@@ -183,18 +183,18 @@
                                                         {{ eachreview.rating }}/5
                                                     </p>
                                                     <!--review title-->
-                                                    <p class="elipsed-text books-book-title">
+                                                    <p class="elipsed">
                                                         {{eachreview.title}}
                                                     </p>
                                                     <!--review description-->
                                                     <div>
-                                                        <p class ="trimmed-paragraph">
+                                                        <p class ="trimmed">
                                                             {{eachreview.description}}
                                                         </p>
                                                     </div>
                                                     <!--read more button-->
                                                     <div>
-                                                        <a href="{{ url_for('edit_review', book_name=book.book_name, book_id=book._id, username=eachreview.username, id=eachreview.review_id) }}" class="books-button-styling books-button">
+                                                        <a href="{{ url_for('edit_review', book_name=book.book_name, book_id=book._id, username=eachreview.username, id=eachreview.review_id) }}" class="read-more-btn">
                                                             Edit
                                                         </a>
                                                     </div>

@@ -30,7 +30,7 @@
                 </p>
             </div>
             <div class="col s12 m3 l2">
-                <a href="{{ url_for('add_genre') }}" class="waves-effect waves-light pink accent-1 btn add-button-color right">
+                <a href="{{ url_for('add_genre') }}" class="waves-effect btn add-button right">
                     Add Genre
                 </a>
             </div>
@@ -41,8 +41,8 @@
     <section class="row container">
         <!--genre card for each result-->
         {% for genre in genres %}
-            <div class="col s6 m4 xl3 col-padding-mobile">
-                <div class= "card small genre-card-height black center">
+            <div class="col s6 m4 xl3 prl4">
+                <div class= "card small height-200 black center">
                     <!--card content-->
                     <div class="card-content black white-text">
                         <!--genre-name-->
@@ -54,8 +54,8 @@
                     </div>
                     <!-- edit & delete buttons-->
                     <div class="card-action">
-                        <a class="waves-effect waves-light pink accent-1 btn edit-button-color" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
-                        <a class="waves-effect waves-light pink accent-1 btn delete-button-color" href="{{ url_for('delete_genre', genre_id=genre._id) }}">Delete</a>
+                        <a class="waves-effect btn edit-button" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
+                        <a class="waves-effect btn delete-button" href="{{ url_for('delete_genre', genre_id=genre._id) }}">Delete</a>
                     </div>                   
                 </div>
             </div>
