@@ -12,21 +12,29 @@ import secrets
 if os.path.exists("env.py"):
     import env
 
-
+# create instances of flask and asign it to app
 app = Flask(__name__)
 
-
+# mongo db config to build connection from env variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+# use PyMongo to connect to the MongoDB server
 mongo = PyMongo(app)
 
 
+# homepage: include pagination pages
 @app.route("/")
 @app.route("/get_books/new_books")
 @app.route("/get_books/new_books/<int:page>")
 def books_new(page=1):
+    """
+    Checks the page number. If page = 1, the first 12 books in db are shown.
+    if page != 1, a calculation is preformed which decides the list of books
+    to be shown.
+    The user is redirected to the books.html page.
+    """
     books = list(mongo.db.books.find().sort("_id", -1))
     genres = list(mongo.db.genres.find().sort("genres", 1))
     avgratings = list(mongo.db.avgRatingAgg.find().sort("id", -1))
@@ -44,20 +52,31 @@ def books_new(page=1):
         genres=genres, pages=counter, avgratings=avgratings, page=page)
 
 
+# home
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    genres = mongo.db.genres.find().sort("genres", 1)
+    """
+    Returns a list of books once a user searches by book name or author name.
 
-    booklist = list(mongo.db.books.find(
+    """
+    genres = mongo.db.genres.find().sort("genres", 1)
+    books = list(mongo.db.books.find(
         {"$text": {"$search": request.form.get("query")}}))
     query = request.form.get("query")
     return render_template(
-        "books.html", books=booklist, genres=genres, query=query, post=True)
+        "books.html", books=books, genres=genres, query=query, post=True)
 
 
+# A-Z sort by in homepage
 @app.route("/get_books/a-to-z")
 @app.route("/get_books/a-to-z/<int:page>")
 def books_a_to_z(page=1):
+    """
+    Checks the page number. If page = 1, the first 12 books in db are shown.
+    if page != 1, a calculation is preformed which decides the list of books
+    to be shown.
+    The user is redirected to the books-a-to-z.html page.
+    """
     books = list(mongo.db.books.find().sort("book_name", 1))
     genres = list(mongo.db.genres.find().sort("genres", 1))
 
@@ -76,9 +95,16 @@ def books_a_to_z(page=1):
         genres=genres, pages=counter, page=page)
 
 
+# A-Z sort by in homepage
 @app.route("/get_books/z-to-a")
 @app.route("/get_books/z-to-a/<int:page>")
 def books_z_to_a(page=1):
+    """
+    Checks the page number. If page = 1, the first 12 books in db are shown.
+    if page != 1, a calculation is preformed which decides the list of books
+    to be shown.
+    The user is redirected to the books-z-to-a.html
+    """
     books = list(mongo.db.books.find().sort("book_name", -1))
     genres = list(mongo.db.genres.find().sort("genres", 1))
 
@@ -97,8 +123,17 @@ def books_z_to_a(page=1):
         genres=genres, pages=counter, page=page)
 
 
+# register page
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Checks if method is post.
+    if true, checks if the username already exists. If also true,
+    a flash message is shown & user is reditected back to register page.
+    if username is not in use, the data is saved in db & the user is redirected
+    to the login page.
+
+    """
     if request.method == "POST":
         # check if username already exists
         existing_user = mongo.db.users.find_one(
@@ -125,13 +160,20 @@ def register():
     return render_template("register.html")
 
 
+# login page
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Checks if method = POST.
+    If true, the username & password are checked.
+    If both are correct, the user is logged in and redirected to profile.html.
+    if one or both are incorrect, the user is redirected back to login.html.
+    If the username does not exist in db, the user is redirected to login.html.
+    """
     # check if username already exists in db
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        print("username found")
 
         if existing_user:
             # make sure hashed password equals user input
@@ -154,8 +196,15 @@ def login():
     return render_template("login.html")
 
 
+# profile page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Checks if the user is session.
+    If true, the count of reviews created by the user is calculated.
+    Then the user is redirected to profile.html.
+    If the user is not in sesion, they are redirected to login.html.
+    """
     # get the session user's username from db
     user = mongo.db.users.find_one({"username": session['user']})
     today = datetime.date.today()
@@ -166,59 +215,80 @@ def profile(username):
     booksbyuser = mongo.db.books.find({"created_by": username})
     bookcount = booksbyuser.count()
     avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
-    for book in books:
-        if 'review':
-            for ereview in 'review':
-                reviewcountdict = list(mongo.db.books.aggregate([{
-                    "$unwind": "$review"},
-                    {"$match": {'review.username': username}},
-                    {"$count": "reviewcount"}
-                ]))
-                if reviewcountdict:
-                    reviewcount = reviewcountdict[0]["reviewcount"]
-                else:
-                    reviewcount = 0
     # if true then return users profile
     if session["user"]:
+        for book in books:
+            if 'review':
+                for ereview in 'review':
+                    reviewcountdict = list(mongo.db.books.aggregate([{
+                        "$unwind": "$review"},
+                        {"$match": {'review.username': username}},
+                        {"$count": "reviewcount"}
+                    ]))
+                    if reviewcountdict:
+                        reviewcount = reviewcountdict[0]["reviewcount"]
+                    else:
+                        reviewcount = 0
         return render_template(
-            "profile.html", user=user, diff=diff,
-            books=books, bookcount=bookcount,
-            reviewcount=reviewcount, genres=genres, avgratings=avgrating)
+            "profile.html",
+            user=user,
+            diff=diff,
+            books=books,
+            bookcount=bookcount,
+            reviewcount=reviewcount,
+            genres=genres,
+            avgratings=avgrating)
     # if untrue return user back to login
     return redirect(url_for("login"))
 
 
+# logout link
 @app.route("/logout")
 def logout():
+    """
+    On click, end the users session.
+    redirect the user to login.html.
+    """
     # remove user from session cookies
     flash("You have successfully been logged out.", "success")
     session.pop("user")
     return redirect(url_for("login", _external=True, _scheme='https'))
 
 
+# bookpage for each book
 @app.route("/bookpage/<book_name>")
 def bookpage(book_name):
+    """
+    Checks in the book has reviews.
+    If true, the array is checked and an average rating is calculated.
+    If the review array is empty, no average rating is calculated,
+    If there is no review document, no average rating is calculated.
+    the user is redirected to the bookpage
+    """
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
     #  add average rating aggregation to a new collection
     if reviews:
         for review in reviews:
-            x = review["bookid"]
-            review = list(mongo.db.books.aggregate([{
-                "$unwind": "$review"},
-                {"$match": {'review.bookid': x}},
-                {"$group": {
-                    "_id": "$_id", "averageRating": {
-                        "$avg": '$review.rating'}}},
-                {"$merge": {
-                    "into": "avgRatingAgg",
-                    "on": "_id",
-                    "whenMatched": "replace",
-                    "whenNotMatched": "insert"}}
-            ]))
-            review = mongo.db.avgRatingAgg.find_one({
-                "_id": ObjectId(get_book["_id"])
-            })
+            if review:
+                x = review["bookid"]
+                review = list(mongo.db.books.aggregate([{
+                    "$unwind": "$review"},
+                    {"$match": {'review.bookid': x}},
+                    {"$group": {
+                        "_id": "$_id", "averageRating": {
+                            "$avg": '$review.rating'}}},
+                    {"$merge": {
+                        "into": "avgRatingAgg",
+                        "on": "_id",
+                        "whenMatched": "replace",
+                        "whenNotMatched": "insert"}}
+                ]))
+                review = mongo.db.avgRatingAgg.find_one({
+                    "_id": ObjectId(get_book["_id"])
+                })
+            else:
+                review = "No star ratings added yet"
     else:
         review = "No star ratings added yet."
     return render_template(
@@ -226,8 +296,15 @@ def bookpage(book_name):
     )
 
 
+#  add book page
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
+    """
+    Checks if method = POST.
+    if true, the data entered on the form is saved to db.
+    The user is redirected to books.html.
+    If method != POST, the user is redirected to add_book.html.
+    """
     if request.method == "POST":
         book = {
             "genre_name": request.form.get("genre_name"),
@@ -248,6 +325,11 @@ def add_book():
 
 @app.route("/edit_book/<book_name>/<id>", methods=["GET", "POST"])
 def edit_book(book_name, id):
+    """
+    Checks if method = POST.
+    If true, the form data is used to update db.
+    User is redirected to bookpage.html.
+    """
     get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
     if request.method == "POST":
         mongo.db.books.update({"_id": ObjectId(id)}, {"$set": {
@@ -271,6 +353,8 @@ def edit_book(book_name, id):
 
 @app.route("/delete_book/<book_name>/<id>")
 def delete_book(book_name, id):
+    """
+    """
     mongo.db.books.remove({"_id": ObjectId(id)})
     flash("Book was sucessfully deleted.", "success")
     return redirect(url_for("books_new"))
@@ -278,6 +362,11 @@ def delete_book(book_name, id):
 
 @app.route("/bookpage/<book_name>", methods=["POST"])
 def review_book(book_name):
+    """
+    Checks if method = POST.
+    If true, checks if user has already posted a review on the book.
+    If false, the form data is saved to db
+    """
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
     date = str(datetime.date.today())
@@ -314,6 +403,14 @@ def review_book(book_name):
 @app.route("/<book_name>/<book_id>/<username>/<id>/editreview", methods=[
     "GET", "POST"])
 def edit_review(book_name, book_id, username, id):
+    """
+    Checks if user is admin or is the review author.
+    If true, edit review.html is rendered.
+    Checks if method = POST:
+    If true, the form data is used to update the review & the user is
+    redirected to bookpage.html.
+    If user is not admin or review author, redirect to bookpage.html.
+    """
     username = mongo.db.users.find_one(
         {"username": session['user']})["username"]
     get_book = mongo.db.books.find_one({"book_name": book_name})
@@ -328,6 +425,12 @@ def edit_review(book_name, book_id, username, id):
             for x in new_dict[k]:
                 review = x
 
+    if session["user"] == username or session["user"] == "admin":
+        return render_template(
+            "editreview.html",
+            get_book=get_book,
+            review=review,
+        )
     if request.method == "POST":
         mongo.db.books.update(
             {"_id": ObjectId(book_id), "review.review_id": id},
@@ -335,19 +438,13 @@ def edit_review(book_name, book_id, username, id):
                 "review.$.title": request.form.get("review_title"),
                 "review.$.description": request.form.get("review"),
                 "review.$.rating": int(request.form.get("rate")),
-                "review.$.bookid": str(get_book["_id"])  # remove this after
-                }}
+                "review.$.bookid": str(
+                    get_book["_id"])  # remove this after
+                 }}
         )
         flash("Review was successfully updated.", "success")
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
-
-    if session["user"] == username or session["user"] == "admin":
-        return render_template(
-            "editreview.html",
-            get_book=get_book,
-            review=review,
-        )
     else:
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
@@ -355,6 +452,13 @@ def edit_review(book_name, book_id, username, id):
 
 @app.route("/<book_name>/<book_id>/<username>/<id>/deletereview")
 def delete_review(book_name, book_id, username, id):
+    """
+    On click, the review data from the book document is removed.
+    the average rating value for that book is also removed.
+    The user is redirected to bookpage.html.
+
+    """
+    get_book = mongo.db.books.find_one({"book_name": book_name})
     mongo.db.books.update(
         {"_id": ObjectId(book_id), "review.review_id": id},
         {"$pull": {"review": {"review_id": id}}})
@@ -363,7 +467,6 @@ def delete_review(book_name, book_id, username, id):
     mongo.db.avgRatingAgg.remove({
         "_id": ObjectId(book_id)
         })
-    get_book = mongo.db.books.find_one({"book_name": book_name})
     return redirect(url_for(
         "bookpage", book_name=get_book.get("book_name")))
 
@@ -376,6 +479,12 @@ def get_genres():
 
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
+    """
+    Checks if method = POST.
+    If true, the data from the form is added to db.
+    The user is redirected to genres.html.
+    if methos != POST, add_genre.html is rendered.
+    """
     if request.method == "POST":
         genre = {
             "genre_name": request.form.get("genre_name"),
@@ -388,8 +497,13 @@ def add_genre():
     return render_template("add_genre.html")
 
 
+# edit genre
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
+    """
+    checks if method = POST.
+    if true, the genre is updated with the form data.
+    """
     if request.method == "POST":
         save = {
             "genre_name": request.form.get("genre_name"),
@@ -403,8 +517,13 @@ def edit_genre(genre_id):
     return render_template("edit_genre.html", genre=genre)
 
 
+# delete genre
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
+    """
+    on click, remove the genre from db.
+    Redirect the user back to genres.html
+    """
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
     flash("Genre was successfully deleted.", "Success")
     return redirect(url_for("get_genres"))
