@@ -162,6 +162,7 @@ def profile(username):
     date_joined = user["_id"].generation_time.date()
     diff = "%d days" % (today - date_joined).days
     books = list(mongo.db.books.find().sort("book_name", 1))
+    genres = list(mongo.db.genres.find().sort("genre", 1))
     booksbyuser = mongo.db.books.find({"created_by": username})
     bookcount = booksbyuser.count()
     avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
@@ -182,7 +183,7 @@ def profile(username):
         return render_template(
             "profile.html", user=user, diff=diff,
             books=books, bookcount=bookcount,
-            reviewcount=reviewcount, avgratings=avgrating)
+            reviewcount=reviewcount, genres=genres, avgratings=avgrating)
     # if untrue return user back to login
     return redirect(url_for("login"))
 

@@ -9,7 +9,7 @@
         <!-- book image-->
         <div class="col s12 m4">
             <div class="grid card transparent shadow-box-none">
-                <img src="{{get_book.image_url }}" alt="book cover image" class="book-image bookpage-card-image">
+                <img src="{{get_book.image_url }}" alt="book cover image" class="bookpage-cover-image">
             </div>
         </div>
         <!--book description and info-->
@@ -19,7 +19,7 @@
                     <div class="col s12">
                         <div class="flexbox-container-row">
                             <!--book name-->
-                            <div class="book-name">
+                            <div>
                                 <h1 class="inner-page-h1">
                                     {{ get_book.book_name }}
                                 </h1>
@@ -27,10 +27,10 @@
                             <!--avg rating-->
                             <div class="flex-item-center">
                                 {% if review.averageRating %}
-                                    <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                    <i class="material-icons star-icon-gold">star</i>&nbsp;
                                         <h5>{{ review.averageRating }}</h5>
                                 {% else %}
-                                    <i class="material-icons star-icon-black small tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
+                                    <i class="material-icons star-icon-black tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
                                 {% endif %}
                             </div>
                         </div>
@@ -38,22 +38,20 @@
                     <!--buy now url-->
                     {% if (get_book.buy_url != "") %}
                         <div class="col s12 mt2">
-                            <p>
-                                <span class= "bold">
-                                    <a href="{{get_book.buy_url}}" class="pink-hover">
-                                        Buy Now
-                                    </a>                                  
-                                </span>
+                            <p class="bold">
+                                <a href="{{get_book.buy_url}}" class="pink-hover">
+                                    Buy Now
+                                </a>                                  
                             </p>
                         </div>
                     {% endif %}
                     <!--author-->
                     <div class="col s12 mt2">
                         <p>
-                            <span class= "bookpage-title">
-                            Author:                                   
-                            </span>
-                                {{ get_book.author }}
+                            <span class="bold">
+                                Author: 
+                            </span>                                  
+                            {{ get_book.author }}
                         </p>
                     </div>
                     <!--genre name-->
@@ -62,7 +60,7 @@
                             <span class="bold">
                             Genre:                                   
                             </span>
-                                {{ get_book.genre_name }}
+                            {{ get_book.genre_name }}
                         </p>
                     </div>
                     <!--book description-->
@@ -107,7 +105,7 @@
                     <div class="card-content">
                         <span class="card-title"><strong>{{ eachreview.title }}</strong>
                             {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
-                                <i class="material-icons right activator pointer">more_horiz</i>
+                                <i class="material-icons right activator">more_horiz</i>
                             {% endif %}
                         </span>
                         <p>{{ eachreview.description }}</p>
@@ -155,7 +153,7 @@
                     {% if not session.user %}
                     <p class="center">
                         To add a review, please
-                        <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4 add-button-color">Login.</a>
+                        <a href="{{ url_for('login') }}" class="pink-hover">Login.</a>
                     </p>
                     {% endif %}
                 </div>
@@ -171,49 +169,48 @@
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">Add a Review</span>
-                    <div class="card-body align-center">
-                        <span>* Please note, only one user review for each book is permitted.</span>
-                        <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="review_title" name="review_title" type="text" class="validate" min-length="2" max-length="25" required>
-                                    <label for="review_title">Title</label>
+                    <span>* Please note, only one user review for each book is permitted.</span>
+                    <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="review_title" name="review_title" type="text" class="validate" min-length="2" max-length="25"
+                                    required>
+                                <label for="review_title">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review" id="review"
+                                    rows="6"></textarea>
+                                <label for="review">Summary</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 rating-wrapper">
+                                <div class="rate">
+                                    <input type="radio" id="star5" name="rate" value="5" required />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review"
-                                        id="review" rows="6"></textarea>
-                                    <label for="review">Summary</label>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="center">
+                                    <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">
+                                        Submit
+                                    </button>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col s12 rating-wrapper">
-                                    <div class="rate">
-                                        <input type="radio" id="star5" name="rate" value= "5" required/>
-                                        <label for="star5" title="text">5 stars</label>
-                                        <input type="radio" id="star4" name="rate" value="4" />
-                                        <label for="star4" title="text">4 stars</label>
-                                        <input type="radio" id="star3" name="rate" value="3" />
-                                        <label for="star3" title="text">3 stars</label>
-                                        <input type="radio" id="star2" name="rate" value="2" />
-                                        <label for="star2" title="text">2 stars</label>
-                                        <input type="radio" id="star1" name="rate" value="1" />
-                                        <label for="star1" title="text">1 star</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <div class="align-center center">
-                                        <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">
-                                            Submit
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

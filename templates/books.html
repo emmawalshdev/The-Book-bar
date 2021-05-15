@@ -81,7 +81,7 @@
                                 <div class="book-rating">
                                     {% for avgrating in avgratings %}
                                         {% if avgrating._id == book._id %}
-                                            <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                            <i class="material-icons star-icon-gold">star</i>&nbsp;
                                             {{ avgrating.averageRating }}
                                         {% endif %}
                                     {% endfor %}
@@ -95,12 +95,12 @@
                                     - {{ book.author }}
                                 </p>
                                 <!--read more button & genre icon-->
-                                <div class="read-more-button-wrapper">
+                                <div class="read-more-btn-wrapper">
                                     <!--read more button-->
                                     <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="read-more-btn">
                                         read more
                                         <!--genre icon-->
-                                        <div class="book-genre-icon right">
+                                        <div class="right">
                                         {% for genre in genres %}
                                             {% if genre.genre_name == book.genre_name %}
                                                 <p class="material-icons">
@@ -158,7 +158,7 @@
                     {% for i in range(pages) %}
                         {% if page == loop.index %}
                         <li>
-                            <a href="{{ url_for('books_new', page=loop.index) }}" class = "active-pag"> {{ loop.index }}
+                            <a href="{{ url_for('books_new', page=loop.index) }}" class="active-pag"> {{ loop.index }}
                             </a>
                         </li>
                         {% else %}

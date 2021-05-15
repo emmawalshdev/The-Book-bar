@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Raleway&display=swap');
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@300;700&display=swap');
 
+/* ---------------------------background-------------------------------------*/
 /* CREDIT code for background gradient - https://codepen.io/dimitrisraptis96/pen/NWrrRLB 
 modified to create a custom design */
 html{ 
@@ -16,7 +17,7 @@ html{
     background-size: 100% 100%;
     min-height: 100%;
   }
-
+/* end credit */
 
 /* ---------------------------font styling-------------------------------------*/
 html body{
@@ -42,6 +43,7 @@ h1{
     text-shadow: none;
     background-color:transparent;
     margin: 0.7rem 0 0.7rem 0;
+    font-weight: bolder;
 }
 
 h2{
@@ -54,7 +56,7 @@ h3{
     color: #042e56;
 }
 
-/* general font text styling */
+/* general font styling */
 p{
     font-size: 1.2rem;
 }
@@ -86,7 +88,7 @@ p{
     text-overflow: ellipsis;
 }
 
-/* custom margins */
+/* custom margin & padding */
 .mb3{
     margin-bottom:30px !important;
 }
@@ -113,12 +115,17 @@ p{
     padding-bottom:1.0933333333rem !important;
 }
 
+/* custom heights */
+.height-200{
+    height:200px !important;
+}
+
 /* links */
 .pink-hover:hover{
     color: #db0086;
 }
 
-/* navbar */
+/* ---------------------------navbar-------------------------------------*/
 
 .brand-logo img{
     padding:2px 0 0 10px;
@@ -144,11 +151,6 @@ nav a {
 nav ul a:hover,
 .sidenav li>a:hover {
     background-color: rgb(159 46 135 / 12%);
-}
-
-/* heights */
-.height-200{
-    height:200px !important;
 }
 
 /* footer */
@@ -180,7 +182,7 @@ nav ul a:hover,
 }
 
 
-/* pagination */
+/* ---------------------------pagination-------------------------------------*/
 
 .pagination li a {
     color: #fff;
@@ -194,49 +196,46 @@ nav ul a:hover,
     background-color: #db0086 !important;
 }
 
-/* cards */
+/* ---------------------------card styling-------------------------------------*/
 
 .activator{
     cursor: pointer;
 }
 
+/* set position for read more btn */
 .book-card{
     position: relative;
 }
-
+/* book card image */
 .book-card .card-image img {
     max-height: 420px;
     min-height: 270px;
 }
 
+/* book card content */
 .book-card .book-card-content {
     padding: 10px 20px;
     border-radius: 0 0 2px 2px;
     height: 170px;
 }
 
-.book-image {
+/* only in inner page*/
+.bookpage-cover-image {
     width: 100%;
     height: auto;
     margin: auto;
     max-width: 400px;
-  }
-  
-  .shadow-box-none{
+    max-height: 400px;
+}
+
+
+.shadow-box-none{
       box-shadow: none;
-  }
-
-  .book-name{
-    font-weight:bold
 }
 
-.card.medium .bookpage-card-image{
-    max-height:400px;
-}
+/* ---------------------------buttons-------------------------------------*/
 
-/* buttons */
-
-
+/* color for all btns */
 .delete-button,
 .edit-button,
 .add-button{
@@ -244,7 +243,7 @@ nav ul a:hover,
     margin:5px;
     width:100px;
 }
-
+/* apply diff hover color for edit/delete/add */
 .delete-button:hover{
     background-color:#e91e63 !important;
 }
@@ -257,6 +256,7 @@ nav ul a:hover,
     background-color: #1e8276 !important;
 }
 
+/* read more button on search books (cards)*/
 .read-more-btn{
     display:inline-block;
     padding:0.35em 1.2em;
@@ -281,7 +281,9 @@ nav ul a:hover,
     color:white;
     background-color:#db0086;
 }
-/* flash messages*/
+
+/* ---------------------------flash messages-------------------------------------*/
+
 .success-flash{
     font-size: 1.8rem;
     color: #1e8276;
@@ -294,7 +296,7 @@ nav ul a:hover,
     margin-bottom:10px;
 }
 
-/* Flex & grid */
+/* ---------------------------flex & grid-------------------------------------*/
 
 .flex-container-center{
     display: flex;
@@ -302,6 +304,7 @@ nav ul a:hover,
     align-items: center;
 }
 
+/* bookpage book image & description grid */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -323,6 +326,8 @@ nav ul a:hover,
     align-items: center;
 }
 
+/* ---------------------------star rating-------------------------------------*/
+
 /* avg star rating on cards */
 .book-rating{
     font-size:1.5rem;
@@ -331,7 +336,7 @@ nav ul a:hover,
     height:30px;
 }
 
-/* star ratings for review */
+/* star rating on "add a review" card */
 /* CREDIT https://codepen.io/hesguru/pen/BaybqXv */
 
 .rate {
@@ -339,9 +344,11 @@ nav ul a:hover,
     height: 46px;
     padding: 0 10px;
 }
+
 .rate:not(:checked) > input {
     position:absolute;
 }
+
 .rate:not(:checked) > label {
     float:right;
     width:1em;
@@ -351,16 +358,20 @@ nav ul a:hover,
     font-size:30px;
     color:#ccc;
 }
+
 .rate:not(:checked) > label:before {
     content: '★ ';
 }
+
 .rate > input:checked ~ label {
     color: #ffc700;    
 }
+
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
     color: #deb217;  
 }
+
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
@@ -377,7 +388,7 @@ nav ul a:hover,
     color:#7a7a7a;
 }
 
-/* materialise from overwrite colors */
+/* ---------------------------materialise form colors-------------------------------------*/
 /* CREDIT https://stackoverflow.com/questions/44942347/change-the-default-color-of-materialize-css-input-fields-i-have-attached-screen 
 modiefied slightly*/
 
@@ -517,4 +528,12 @@ textarea.materialize-textarea.invalid:focus{
     width:100px;
 }
 
-}*/
+.book-name{
+    font-weight:bold
+}
+}
+
+ /*.card.medium .bookpage-card-image{
+    max-height:400px;
+} */
+

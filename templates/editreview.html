@@ -8,7 +8,7 @@
         <!-- book image-->
         <div class="col s12 m4">
             <div class="grid card transparent shadow-box-none">
-                <img src="{{get_book.image_url }}" alt="book cover image" class="book-image bookpage-card-image">
+                <img src="{{get_book.image_url }}" alt="book cover image" class="bookpage-cover-image">
             </div>
         </div>
         <!--book description and info-->
@@ -18,7 +18,7 @@
                     <div class="col s12">
                         <div class="flexbox-container-row">
                             <!--book name-->
-                            <div class="book-name">
+                            <div class="bold">
                                 <h1 class="inner-page-h1">
                                     {{ get_book.book_name }}
                                 </h1>
@@ -26,10 +26,10 @@
                             <!--avg rating-->
                             <div class="flex-item-center">
                                 {% if review.averageRating %}
-                                    <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                    <i class="material-icons star-icon-gold">star</i>&nbsp;
                                         <h5>{{ review.averageRating }}</h5>
                                 {% else %}
-                                    <i class="material-icons star-icon-black small tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
+                                    <i class="material-icons star-icon-black tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
                                 {% endif %}
                             </div>
                         </div>
@@ -37,22 +37,20 @@
                     <!--buy now url-->
                     {% if (get_book.buy_url != "") %}
                         <div class="col s12 mt2">
-                            <p>
-                                <span class= "bookpage-title">
-                                    <a href="{{get_book.buy_url}}" class="pink-hover">
-                                        Buy Now
-                                    </a>                                  
-                                </span>
+                            <p class="bold">
+                                <a href="{{get_book.buy_url}}" class="pink-hover">
+                                    Buy Now
+                                </a>                       
                             </p>
                         </div>
                     {% endif %}
                     <!--author-->
                     <div class="col s12 mt2">
                         <p>
-                            <span class= "bookpage-title">
-                            Author:                                   
-                            </span>
-                                {{ get_book.author }}
+                            <span class= "bold">
+                                Author:
+                            </span>                                  
+                            {{ get_book.author }}
                         </p>
                     </div>
                     <!--genre name-->
@@ -61,7 +59,7 @@
                             <span class="bold">
                             Genre:                                   
                             </span>
-                                {{ get_book.genre_name }}
+                            {{ get_book.genre_name }}
                         </p>
                     </div>
                     <!--book description-->
@@ -101,50 +99,53 @@
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
-                    <div class="card-body align-center">
-            
-                        <form method="POST">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="review_title" name="review_title" type="text" class="validate" min-length="2" max-length="25"
-                                        value="{{ review.title }}">
-                                    <label for="review_title">Title</label>
+                    <form method="POST">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="review_title" name="review_title" type="text" class="validate" min-length="2"
+                                    max-length="25" value="{{ review.title }}">
+                                <label for="review_title">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review" id="review"
+                                    rows="6">{{ review.description }}</textarea>
+                                <label for="review">Summary</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m4 offset-m4 rating-wrapper">
+                                <div class="rate">
+                                    <input type="radio" id="star5" name="rate" value="5" required {% if review.rating==5 %}
+                                        checked{% endif %} />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" {% if review.rating==4 %} checked{% endif
+                                        %} />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" {% if review.rating==3 %} checked{% endif
+                                        %} />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" {% if review.rating==2 %} checked{% endif
+                                        %} />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" {% if review.rating==1 %} checked{% endif
+                                        %} />
+                                    <label for="star1" title="text"></label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" minlength="20" maxlength="800"  name="review" id="review"
-                                        rows="6"> {{ review.description }}</textarea>
-                                    <label for="">Summary</label>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">Submit
+                                </button>
+                                <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}"
+                                    class="waves-effect btn delete-button">
+                                    Cancel
+                                </a>
                             </div>
-                            <div class="row">
-                                <div class="col s12 m4 offset-m4 rating-wrapper">
-                                    <div class="rate">
-                                        <input type="radio" id="star5" name="rate" value="5" required {% if review.rating == 5 %} checked{% endif %}/>
-                                        <label for="star5" title="text">5 stars</label>
-                                        <input type="radio" id="star4" name="rate" value="4" {% if review.rating == 4 %} checked{% endif %}/>
-                                        <label for="star4" title="text">4 stars</label>
-                                        <input type="radio" id="star3" name="rate" value="3" {% if review.rating == 3 %} checked{% endif %}/>
-                                        <label for="star3" title="text">3 stars</label>
-                                        <input type="radio" id="star2" name="rate" value="2" {% if review.rating == 2 %} checked{% endif %}/>
-                                        <label for="star2" title="text">2 stars</label>
-                                        <input type="radio" id="star1" name="rate" value="1" {% if review.rating == 1 %} checked{% endif %}/>
-                                        <label for="star1" title="text" ></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">Submit
-                                    </button>
-                                    <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}" class="waves-effect btn delete-button">
-                                        Cancel
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
