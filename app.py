@@ -212,36 +212,39 @@ def profile(username):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
-        books = list(mongo.db.books.find().sort("book_name", 1))
-        for book in books:
-            user = mongo.db.users.find_one({"username": session['user']})
-            today = datetime.date.today()
-            date_joined = user["_id"].generation_time.date()
-            diff = "%d days" % (today - date_joined).days
-            genres = list(mongo.db.genres.find().sort("genre", 1))
-            booksbyuser = mongo.db.books.find({"created_by": username})
-            bookcount = booksbyuser.count()
-            avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
-            if 'review':
-                for ereview in 'review':
-                    reviewcountdict = list(mongo.db.books.aggregate([{
-                        "$unwind": "$review"},
-                        {"$match": {'review.username': username}},
-                        {"$count": "reviewcount"}
-                    ]))
-                    if reviewcountdict:
-                        reviewcount = reviewcountdict[0]["reviewcount"]
-                    else:
-                        reviewcount = 0
-        return render_template(
-            "profile.html",
-            user=user,
-            diff=diff,
-            books=books,
-            bookcount=bookcount,
-            reviewcount=reviewcount,
-            genres=genres,
-            avgratings=avgrating)
+        if username == session["user"]:
+            books = list(mongo.db.books.find().sort("book_name", 1))
+            for book in books:
+                user = mongo.db.users.find_one({"username": session['user']})
+                today = datetime.date.today()
+                date_joined = user["_id"].generation_time.date()
+                diff = "%d days" % (today - date_joined).days
+                genres = list(mongo.db.genres.find().sort("genre", 1))
+                booksbyuser = mongo.db.books.find({"created_by": username})
+                bookcount = booksbyuser.count()
+                avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
+                if 'review':
+                    for ereview in 'review':
+                        reviewcountdict = list(mongo.db.books.aggregate([{
+                            "$unwind": "$review"},
+                            {"$match": {'review.username': username}},
+                            {"$count": "reviewcount"}
+                        ]))
+                        if reviewcountdict:
+                            reviewcount = reviewcountdict[0]["reviewcount"]
+                        else:
+                            reviewcount = 0
+            return render_template(
+                "profile.html",
+                user=user,
+                diff=diff,
+                books=books,
+                bookcount=bookcount,
+                reviewcount=reviewcount,
+                genres=genres,
+                avgratings=avgrating)
+        else:
+            return redirect(url_for("access_denied"))
 
 
 # logout
