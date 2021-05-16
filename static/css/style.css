@@ -20,10 +20,13 @@ html{
 /* end credit */
 
 /* ---------------------------font styling-------------------------------------*/
+
 html body{
     font-family: 'Lato', sans-serif;
     font-size: 1.0625rem;
     color: #263238;
+    overflow-y: scroll;
+    overflow: scroll !important;
 }
  /* h1-h6 */
 h1{
