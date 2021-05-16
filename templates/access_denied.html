@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse books and view user recommendations, in English">
+    <meta name="author" content="Emma Harte">
+    <!--materialise-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!--css stylesheet-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <!--flavicon-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='flavicon.ico') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"/>
+    <!--inherit styles-->
+    {% block styles %}
+    {% endblock %}
+    <title>Access Denied | The Book bar</title>
+</head>
+
+<body>
+    <div class="row container">
+        <div class="col s12">
+            <h1>Access Denied</h1>
+            <hr>
+            <h2>Oops! it seems you do not have the required permissions to be on this page.</h2>
+            <p>Want to search our database instead?</p>
+            <a href="{{ url_for('books_new') }}" class="btn waves-effect add-button">Home</a>
+        </div>
+    </div>
+</body>
+<!--jquery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--materialise-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!--js script-->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<!--inherit scripts-->
+{% block scripts %}
+{% endblock %}
+</html>

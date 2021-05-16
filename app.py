@@ -547,6 +547,12 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
+# access denied page
+@app.route("/access_denied.html")
+def access_denied():
+    return render_template("access_denied.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
