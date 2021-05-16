@@ -206,18 +206,22 @@ def profile(username):
     If the user is not in sesion, they are redirected to login.html.
     """
     # get the session user's username from db
-    user = mongo.db.users.find_one({"username": session['user']})
-    today = datetime.date.today()
-    date_joined = user["_id"].generation_time.date()
-    diff = "%d days" % (today - date_joined).days
-    books = list(mongo.db.books.find().sort("book_name", 1))
-    genres = list(mongo.db.genres.find().sort("genre", 1))
-    booksbyuser = mongo.db.books.find({"created_by": username})
-    bookcount = booksbyuser.count()
-    avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
-    # if true then return users profile
-    if session["user"]:
+
+    loggedIn = True if 'user' in session else False
+
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        books = list(mongo.db.books.find().sort("book_name", 1))
         for book in books:
+            user = mongo.db.users.find_one({"username": session['user']})
+            today = datetime.date.today()
+            date_joined = user["_id"].generation_time.date()
+            diff = "%d days" % (today - date_joined).days
+            genres = list(mongo.db.genres.find().sort("genre", 1))
+            booksbyuser = mongo.db.books.find({"created_by": username})
+            bookcount = booksbyuser.count()
+            avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
             if 'review':
                 for ereview in 'review':
                     reviewcountdict = list(mongo.db.books.aggregate([{
@@ -238,8 +242,6 @@ def profile(username):
             reviewcount=reviewcount,
             genres=genres,
             avgratings=avgrating)
-    # if untrue return user back to login
-    return redirect(url_for("login"))
 
 
 # logout
