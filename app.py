@@ -52,7 +52,7 @@ def books_new(page=1):
         genres=genres, pages=counter, avgratings=avgratings, page=page)
 
 
-# home
+# homepage search bar
 @app.route("/search", methods=["GET", "POST"])
 def search():
     """
@@ -67,7 +67,7 @@ def search():
         "books.html", books=books, genres=genres, query=query, post=True)
 
 
-# A-Z sort by in homepage
+# A-Z sort by in homepage: include pagination pages
 @app.route("/get_books/a-to-z")
 @app.route("/get_books/a-to-z/<int:page>")
 def books_a_to_z(page=1):
@@ -95,7 +95,7 @@ def books_a_to_z(page=1):
         genres=genres, pages=counter, page=page)
 
 
-# A-Z sort by in homepage
+# A-Z sort by in homepage:: include pagination pages
 @app.route("/get_books/z-to-a")
 @app.route("/get_books/z-to-a/<int:page>")
 def books_z_to_a(page=1):
@@ -242,7 +242,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-# logout link
+# logout
 @app.route("/logout")
 def logout():
     """
@@ -296,7 +296,7 @@ def bookpage(book_name):
     )
 
 
-#  add book page
+#  add a book page
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     """
@@ -323,6 +323,7 @@ def add_book():
     return render_template("add_book.html", genres=genres)
 
 
+# edit a book page
 @app.route("/edit_book/<book_name>/<id>", methods=["GET", "POST"])
 def edit_book(book_name, id):
     """
@@ -351,6 +352,7 @@ def edit_book(book_name, id):
         "edit_book.html", get_book=get_book, genres=genres, id=id)
 
 
+# delete a book page
 @app.route("/delete_book/<book_name>/<id>")
 def delete_book(book_name, id):
     """
@@ -360,6 +362,7 @@ def delete_book(book_name, id):
     return redirect(url_for("books_new"))
 
 
+# add a review in bookpage
 @app.route("/bookpage/<book_name>", methods=["POST"])
 def review_book(book_name):
     """
@@ -400,6 +403,7 @@ def review_book(book_name):
     return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
 
 
+# edit a review page
 @app.route("/<book_name>/<book_id>/<username>/<id>/editreview", methods=[
     "GET", "POST"])
 def edit_review(book_name, book_id, username, id):
@@ -450,6 +454,7 @@ def edit_review(book_name, book_id, username, id):
             "bookpage", book_name=get_book.get("book_name")))
 
 
+# delete a review
 @app.route("/<book_name>/<book_id>/<username>/<id>/deletereview")
 def delete_review(book_name, book_id, username, id):
     """
@@ -471,12 +476,18 @@ def delete_review(book_name, book_id, username, id):
         "bookpage", book_name=get_book.get("book_name")))
 
 
+# manage genres page
 @app.route("/get_genres")
 def get_genres():
+    """
+    Returns a list of gneres sorted alphabetically
+    on genres.html.
+    """
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template("genres.html", genres=genres)
 
 
+# add a genre page
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     """
@@ -497,7 +508,7 @@ def add_genre():
     return render_template("add_genre.html")
 
 
-# edit genre
+# edit a  genre page
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     """
@@ -517,7 +528,7 @@ def edit_genre(genre_id):
     return render_template("edit_genre.html", genre=genre)
 
 
-# delete genre
+# delete a genre
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
     """
@@ -525,7 +536,7 @@ def delete_genre(genre_id):
     Redirect the user back to genres.html
     """
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
-    flash("Genre was successfully deleted.", "Success")
+    flash("Genre was successfully deleted.", "success")
     return redirect(url_for("get_genres"))
 
 

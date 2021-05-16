@@ -285,17 +285,22 @@ nav ul a:hover,
 /* ---------------------------flash messages-------------------------------------*/
 
 .success-flash{
-    font-size: 1.8rem;
     color: #1e8276;
-    margin-bottom:10px;
 }
 
 .error-flash{
-    font-size: 1.8rem;
     color: #db0086;
-    margin-bottom:10px;
 }
 
+.warning-flash{
+    color: #ef6f14;
+}
+
+.flash-title{
+    margin-bottom:10px;
+    text-transform: capitalize;
+    font-size: 1.8rem;
+}
 /* ---------------------------flex & grid-------------------------------------*/
 
 .flex-container-center{

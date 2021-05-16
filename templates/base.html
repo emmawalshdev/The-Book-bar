@@ -84,33 +84,27 @@
         </ul>
         </header>
 
-        <!-- flash messages-->
+        <!-- sucess & warning flash messages-->
         <section class="flash-messages-modal">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                 <div class="modal" id="modal1">
                     <div class="modal-content center">
                         {% for category, message in messages %}
-                            {% if category =="error" %}
-                                <p class="{{ category }}-flash title">
-                                    Error
+                                <p class="{{ category }}-flash flash-title">
+                                    {{ category }}
                                 </p>
-                            {% else %}
-                                <p class="{{ category }}-flash title">
-                                    Success
-                                </p>
-                            {% endif %}
-                            <p>{{ message }}</p>
-                            <div class="modal-footer">
-                                <a href="{{ request.path }}" class="modal-close pink-hover">Close</a>
-                            </div>
+                                <p>{{ message }}</p>
+                                <div class="modal-footer">
+                                    <a href="{{ request.path }}" class="modal-close pink-hover">Close</a>
+                                </div>
                         {% endfor %}
                     </div>
                 </div>
                 {% endif %}
             {% endwith %}
         </section>
-        
+
         <!--inherit block content from template-->
         {% block content %}
         {% endblock %}

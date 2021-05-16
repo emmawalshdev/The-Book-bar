@@ -54,12 +54,11 @@
                     <!-- edit & delete buttons-->
                     <div class="card-action">
                         <a class="waves-effect btn edit-button" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
-                        <a class="waves-effect btn delete-button" href="{{ url_for('delete_genre', genre_id=genre._id) }}">Delete</a>
-                    </div>                   
+                    </div>                                
                 </div>
             </div>
         {% endfor %}
-    </section>
-
+        </section>
+    
 
 {% endblock %}

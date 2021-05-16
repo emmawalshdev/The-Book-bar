@@ -56,10 +56,30 @@
                         <a href="{{ url_for('get_genres') }}" class="waves-effect btn delete-button">
                             Cancel
                         </a>
+                        <button type="submit" class="btn delete-button modal-trigger" href="#modal-{{ genre._id }}">
+                            Delete
+                        </button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+
+    <!--confirm deletion modal -->
+    <div id="modal-{{ genre._id }}" class="modal">
+        <div class="modal-content center">
+            <p class="flash-title warning-flash">
+                Confirm Deletion
+            </p>
+            <p>Once a genre is deleted, it's gone for good.
+                <br> Are you sure?
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect btn add-button">No</a>
+            <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="modal-close btn delete-button">Yes</a>
+        </div>
+    </div>
+        
 
 {% endblock %}
