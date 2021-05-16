@@ -83,6 +83,8 @@ Test logout by checking session cookie in application tab on dev tools
 delay in modal pop up solved by stack overflow
 https://stackoverflow.com/questions/42430062/materialize-model-not-working
 
+overflow:hidden getting added to the page - added script to css
+
 
 #### Solved
 1. <strong>name</strong>

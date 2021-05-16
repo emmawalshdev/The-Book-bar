@@ -6,7 +6,7 @@
     M.textareaAutoResize($('#textarea1'));
     $('.tooltipped').tooltip();
     $('#modal1').modal().modal('open');
-    $('.modal').modal().modal('close');
+    $('.modalconfirm').modal().modal('close');
 
     
 
