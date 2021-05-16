@@ -429,12 +429,6 @@ def edit_review(book_name, book_id, username, id):
             for x in new_dict[k]:
                 review = x
 
-    if session["user"] == username or session["user"] == "admin":
-        return render_template(
-            "editreview.html",
-            get_book=get_book,
-            review=review,
-        )
     if request.method == "POST":
         mongo.db.books.update(
             {"_id": ObjectId(book_id), "review.review_id": id},
@@ -449,6 +443,13 @@ def edit_review(book_name, book_id, username, id):
         flash("Review was successfully updated.", "success")
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
+
+    if session["user"] == username or session["user"] == "admin":
+        return render_template(
+            "editreview.html",
+            get_book=get_book,
+            review=review,
+        )
     else:
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))

@@ -137,12 +137,16 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">Submit
+                                <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
+                                    Submit
                                 </button>
                                 <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}"
                                     class="waves-effect btn delete-button">
                                     Cancel
                                 </a>
+                                <button class="btn delete-button modal-trigger" href="#modal-{{ review.review_id }}">
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -151,5 +155,21 @@
         </div>
     </div>
 
+        <!--confirm deletion modal -->
+    <div id="modal-{{ review.review_id }}" class="modal">
+        <div class="modal-content center">
+            <p class="flash-title warning-flash">
+                Confirm Deletion
+            </p>
+            <p>Once a review is deleted, it's gone for good.
+                <br> Are you sure?
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect btn add-button">No</a>
+            <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=review.username, id=review.review_id) }}" class="modal-close btn delete-button">Yes</a>
+        </div>
+    </div>
+        
 
 {% endblock %}
