@@ -310,22 +310,27 @@ def add_book():
     The user is redirected to books.html.
     If method != POST, the user is redirected to add_book.html.
     """
-    if request.method == "POST":
-        book = {
-            "genre_name": request.form.get("genre_name"),
-            "book_name": request.form.get("book_name"),
-            "author": request.form.get("author"),
-            "image_url": request.form.get("image_url"),
-            "description": request.form.get("description"),
-            "buy_url": request.form.get("buy_url"),
-            "created_by": session["user"],
-        }
-        mongo.db.books.insert_one(book)
-        flash("Book was successfully added.", "success")
-        return redirect(url_for("books_new"))
+    loggedIn = True if 'user' in session else False
 
-    genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("add_book.html", genres=genres)
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        if request.method == "POST":
+            book = {
+                "genre_name": request.form.get("genre_name"),
+                "book_name": request.form.get("book_name"),
+                "author": request.form.get("author"),
+                "image_url": request.form.get("image_url"),
+                "description": request.form.get("description"),
+                "buy_url": request.form.get("buy_url"),
+                "created_by": session["user"],
+            }
+            mongo.db.books.insert_one(book)
+            flash("Book was successfully added.", "success")
+            return redirect(url_for("books_new"))
+
+        genres = mongo.db.genres.find().sort("genre_name", 1)
+        return render_template("add_book.html", genres=genres)
 
 
 # edit a book page
