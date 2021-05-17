@@ -270,8 +270,10 @@ def bookpage(book_name):
     If there is no review document, no average rating is calculated.
     the user is redirected to the bookpage
     """
+
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
+
     #  add average rating aggregation to a new collection
     if reviews:
         for review in reviews:
@@ -392,37 +394,44 @@ def review_book(book_name):
     If true, checks if user has already posted a review on the book.
     If false, the form data is saved to db
     """
-    get_book = mongo.db.books.find_one({"book_name": book_name})
-    reviews = get_book.get("review")
-    date = str(datetime.date.today())
-    #  save the review if method is post
-    if request.method == "POST":
-        if reviews:
-            for review in reviews:
-                #  if user has already posted a review, stop them
-                if review["username"] == session["user"]:
-                    flash(
-                        "You previously reviewed this book." +
-                        " Please edit or remove the existing review.", "error")
-                    return redirect(url_for(
-                        "bookpage", book_name=get_book.get("book_name")))
-        #  else allow user to post review
-        alphabet = string.ascii_letters + string.digits
-        password = ''.join(secrets.choice(alphabet) for i in range(8))
-        mongo.db.books.update_one(
-            {"_id": ObjectId(get_book["_id"])}, {
-                "$addToSet": {"review": {
-                    "title": request.form.get("review_title"),
-                    "description": request.form.get("review"),
-                    "rating": int(request.form.get("rate")),
-                    "date": date,
-                    "review_id": password,
-                    "bookid": str(get_book["_id"]),
-                    "username": session["user"]}}})
-        flash("Review was successfully saved.", "success")
+    loggedIn = True if 'user' in session else False
+
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
     else:
-        review = "No star ratings yet"
-    return redirect(url_for("bookpage", book_name=get_book.get("book_name")))
+        get_book = mongo.db.books.find_one({"book_name": book_name})
+        reviews = get_book.get("review")
+        date = str(datetime.date.today())
+        #  save the review if method is post
+        if request.method == "POST":
+            if reviews:
+                for review in reviews:
+                    #  if user has already posted a review, stop them
+                    if review["username"] == session["user"]:
+                        flash(
+                            "You previously reviewed this book." +
+                            " Please edit or" +
+                            "remove the existing review.", "error")
+                        return redirect(url_for(
+                            "bookpage", book_name=get_book.get("book_name")))
+            #  else allow user to post review
+            alphabet = string.ascii_letters + string.digits
+            password = ''.join(secrets.choice(alphabet) for i in range(8))
+            mongo.db.books.update_one(
+                {"_id": ObjectId(get_book["_id"])}, {
+                    "$addToSet": {"review": {
+                        "title": request.form.get("review_title"),
+                        "description": request.form.get("review"),
+                        "rating": int(request.form.get("rate")),
+                        "date": date,
+                        "review_id": password,
+                        "bookid": str(get_book["_id"]),
+                        "username": session["user"]}}})
+            flash("Review was successfully saved.", "success")
+        else:
+            review = "No star ratings yet"
+        return redirect(url_for(
+            "bookpage", book_name=get_book.get("book_name")))
 
 
 # edit a review page
@@ -437,44 +446,49 @@ def edit_review(book_name, book_id, username, id):
     redirected to bookpage.html.
     If user is not admin or review author, redirect to bookpage.html.
     """
-    username = mongo.db.users.find_one(
-        {"username": session['user']})["username"]
-    get_book = mongo.db.books.find_one({"book_name": book_name})
-    reviewarray = list(mongo.db.books.find(
-        {'review': {"$elemMatch": {"review_id": id}}}, {
-            "review.$": 1}))
-    new_dict = {}
-    for key, value in reviewarray[0].items():
-        if key == "review":
-            new_dict[key] = value
-        for k in new_dict:
-            for x in new_dict[k]:
-                review = x
+    loggedIn = True if 'user' in session else False
 
-    if request.method == "POST":
-        mongo.db.books.update(
-            {"_id": ObjectId(book_id), "review.review_id": id},
-            {"$set": {
-                "review.$.title": request.form.get("review_title"),
-                "review.$.description": request.form.get("review"),
-                "review.$.rating": int(request.form.get("rate")),
-                "review.$.bookid": str(
-                    get_book["_id"])  # remove this after
-                 }}
-        )
-        flash("Review was successfully updated.", "success")
-        return redirect(url_for(
-            "bookpage", book_name=get_book.get("book_name")))
-
-    if session["user"] == username or session["user"] == "admin":
-        return render_template(
-            "editreview.html",
-            get_book=get_book,
-            review=review,
-        )
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
     else:
-        return redirect(url_for(
-            "bookpage", book_name=get_book.get("book_name")))
+        username = mongo.db.users.find_one(
+            {"username": session['user']})["username"]
+        get_book = mongo.db.books.find_one({"book_name": book_name})
+        reviewarray = list(mongo.db.books.find(
+            {'review': {"$elemMatch": {"review_id": id}}}, {
+                "review.$": 1}))
+        new_dict = {}
+        for key, value in reviewarray[0].items():
+            if key == "review":
+                new_dict[key] = value
+            for k in new_dict:
+                for x in new_dict[k]:
+                    review = x
+
+        if request.method == "POST":
+            mongo.db.books.update(
+                {"_id": ObjectId(book_id), "review.review_id": id},
+                {"$set": {
+                    "review.$.title": request.form.get("review_title"),
+                    "review.$.description": request.form.get("review"),
+                    "review.$.rating": int(request.form.get("rate")),
+                    "review.$.bookid": str(
+                        get_book["_id"])  # remove this after
+                    }}
+            )
+            flash("Review was successfully updated.", "success")
+            return redirect(url_for(
+                "bookpage", book_name=get_book.get("book_name")))
+
+        if session["user"] == username or session["user"] == "admin":
+            return render_template(
+                "editreview.html",
+                get_book=get_book,
+                review=review,
+            )
+        else:
+            return redirect(url_for(
+                "bookpage", book_name=get_book.get("book_name")))
 
 
 # delete a review
