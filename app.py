@@ -587,9 +587,14 @@ def delete_genre(genre_id):
     on click, remove the genre from db.
     Redirect the user back to genres.html
     """
-    mongo.db.genres.remove({"_id": ObjectId(genre_id)})
-    flash("Genre was successfully deleted.", "success")
-    return redirect(url_for("get_genres"))
+    loggedIn = True if 'user' in session else False
+
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+        flash("Genre was successfully deleted.", "success")
+        return redirect(url_for("get_genres"))
 
 
 # 404 error
