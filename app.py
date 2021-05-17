@@ -371,10 +371,17 @@ def edit_book(book_name, id):
 @app.route("/delete_book/<book_name>/<id>")
 def delete_book(book_name, id):
     """
+    On click, deletes the book data from db.
+    User is redirected back to the homepage.
     """
-    mongo.db.books.remove({"_id": ObjectId(id)})
-    flash("Book was sucessfully deleted.", "success")
-    return redirect(url_for("books_new"))
+    loggedIn = True if 'user' in session else False
+
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        mongo.db.books.remove({"_id": ObjectId(id)})
+        flash("Book was sucessfully deleted.", "success")
+        return redirect(url_for("books_new"))
 
 
 # add a review in bookpage
