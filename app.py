@@ -500,17 +500,22 @@ def delete_review(book_name, book_id, username, id):
     The user is redirected to bookpage.html.
 
     """
-    get_book = mongo.db.books.find_one({"book_name": book_name})
-    mongo.db.books.update(
-        {"_id": ObjectId(book_id), "review.review_id": id},
-        {"$pull": {"review": {"review_id": id}}})
-    flash('Review was successfully removed.', "success")
-    {"_id": ObjectId(book_id), "review.review_id": id}
-    mongo.db.avgRatingAgg.remove({
-        "_id": ObjectId(book_id)
-        })
-    return redirect(url_for(
-        "bookpage", book_name=get_book.get("book_name")))
+    loggedIn = True if 'user' in session else False
+
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        get_book = mongo.db.books.find_one({"book_name": book_name})
+        mongo.db.books.update(
+            {"_id": ObjectId(book_id), "review.review_id": id},
+            {"$pull": {"review": {"review_id": id}}})
+        flash('Review was successfully removed.', "success")
+        {"_id": ObjectId(book_id), "review.review_id": id}
+        mongo.db.avgRatingAgg.remove({
+            "_id": ObjectId(book_id)
+            })
+        return redirect(url_for(
+            "bookpage", book_name=get_book.get("book_name")))
 
 
 # manage genres page
