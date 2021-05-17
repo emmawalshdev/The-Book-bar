@@ -562,17 +562,22 @@ def edit_genre(genre_id):
     checks if method = POST.
     if true, the genre is updated with the form data.
     """
-    if request.method == "POST":
-        save = {
-            "genre_name": request.form.get("genre_name"),
-            "genre_icon": request.form.get("genre_icon")
-        }
-        mongo.db.genres.update({"_id": ObjectId(genre_id)}, save)
-        flash("Genre was successfully updated.", "success")
-        return redirect(url_for("get_genres"))
+    loggedIn = True if 'user' in session else False
 
-    genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
-    return render_template("edit_genre.html", genre=genre)
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        if request.method == "POST":
+            save = {
+                "genre_name": request.form.get("genre_name"),
+                "genre_icon": request.form.get("genre_icon")
+            }
+            mongo.db.genres.update({"_id": ObjectId(genre_id)}, save)
+            flash("Genre was successfully updated.", "success")
+            return redirect(url_for("get_genres"))
+
+        genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
+        return render_template("edit_genre.html", genre=genre)
 
 
 # delete a genre
