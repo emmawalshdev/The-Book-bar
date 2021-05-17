@@ -341,25 +341,30 @@ def edit_book(book_name, id):
     If true, the form data is used to update db.
     User is redirected to bookpage.html.
     """
-    get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
-    if request.method == "POST":
-        mongo.db.books.update({"_id": ObjectId(id)}, {"$set": {
-            "genre_name": request.form.get("genre_name"),
-            "book_name": request.form.get("book_name"),
-            "author": request.form.get("author"),
-            "image_url": request.form.get("image_url"),
-            "description": request.form.get("description"),
-            "buy_url": request.form.get("buy_url"),
-            "created_by": session["user"]
-            }}
-        )
-        flash("Book was successfully updated.", "success")
-        return redirect(url_for(
-            "bookpage", book_name=get_book.get("book_name")))
+    loggedIn = True if 'user' in session else False
 
-    genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template(
-        "edit_book.html", get_book=get_book, genres=genres, id=id)
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
+        if request.method == "POST":
+            mongo.db.books.update({"_id": ObjectId(id)}, {"$set": {
+                "genre_name": request.form.get("genre_name"),
+                "book_name": request.form.get("book_name"),
+                "author": request.form.get("author"),
+                "image_url": request.form.get("image_url"),
+                "description": request.form.get("description"),
+                "buy_url": request.form.get("buy_url"),
+                "created_by": session["user"]
+                }}
+            )
+            flash("Book was successfully updated.", "success")
+            return redirect(url_for(
+                "bookpage", book_name=get_book.get("book_name")))
+
+        genres = mongo.db.genres.find().sort("genre_name", 1)
+        return render_template(
+            "edit_book.html", get_book=get_book, genres=genres, id=id)
 
 
 # delete a book page
