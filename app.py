@@ -538,16 +538,21 @@ def add_genre():
     The user is redirected to genres.html.
     if methos != POST, add_genre.html is rendered.
     """
-    if request.method == "POST":
-        genre = {
-            "genre_name": request.form.get("genre_name"),
-            "genre_icon": request.form.get("genre_icon")
-        }
-        mongo.db.genres.insert_one(genre)
-        flash("Genre was successfully added.", "success")
-        return redirect(url_for("get_genres"))
+    loggedIn = True if 'user' in session else False
 
-    return render_template("add_genre.html")
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        if request.method == "POST":
+            genre = {
+                "genre_name": request.form.get("genre_name"),
+                "genre_icon": request.form.get("genre_icon")
+            }
+            mongo.db.genres.insert_one(genre)
+            flash("Genre was successfully added.", "success")
+            return redirect(url_for("get_genres"))
+
+        return render_template("add_genre.html")
 
 
 # edit a  genre page
