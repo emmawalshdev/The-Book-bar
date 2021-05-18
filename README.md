@@ -168,36 +168,138 @@ The following colour palette was used for inspiration:
 
 ### Existing Features 
 
-Elements on all pages
+#### Elements on all pages
 
 * **NavBar**
     - The navigation features The Book bar logo in the top left corner in desktop view. This switches to a center position on smaller screen sizes.
-    - For users who are not logged in, the following links are viewable:
+
+    - '''if 'user' in session''' is used by Python to check the logged-in status of the user, before allowing access to the page. This information is then passed to the jinja template.
+
+    To determine which links are shown to the user, the Flask session object is used.
+    Below are the lists of links shown for each user status.
+
+    - For non admin users who **are not** logged in, the following links are viewable:
     1. Home 
     2. Login
     3. Register
 
-    - For users who are logged in, the following links are viewable:
-    1. 
-    2. 
+    - For non admin users who **are** logged in, the following links are viewable:
+    1. Home
+    2. Profile
+    3. Add a Book
+    4. Logout
+
+    - For admin users who **are** logged in, the following links are viewable:
+    1. Home
+    2. Profile
+    3. Add a Book
+    4. Manage Genres
+    4. Logout
 
 
 * **Footer**
-    - For u
-    - 
-Elements on homepage
+    - The footer includes:
+      - Copyright formation with a Github link
+      - Social media links
+
+#### Homepage
 
 * **Search bar**
-    * 
+    - The user is able to search by author or book name
+    - To search the entire database, a sort by function is available. The user can sort: 
+      1. A-Z
+      2. Z-A
+      3. New-Old
 
-* **Sort by**
-    * 
+    - Once a user makes a serach, the following occurs:
+
+    - No results found:
+      - No book cars are returned
+      - The 'Sort by' button disapears
+      - A no results message is displayed
+      - A 'Reset' button is displayed, which redirects the user back to the homepage
+
+    - Results found:
+    - The matching book cards are returned
+    - The 'Sort by' button disapears
+    - A 'Reset' button is displayed, which redirects the user back to the homepage
 
 * **Pagination**
-    * 
+    - Pagination is present on all three versions of the homepage. These include:
+    Sorted by
+    1. A-Z
+    2. Z-A
+    3. New-Old
+
+    - On each page, 12 book cards are displayed 
+    - This allows for faster page-load time and a better user experience
 
 * **Book cards**
-    * 
+    - The book cards feature the book image, an average star rating, the book name, author and a genre icon.
+    - The average review rating is updated once a review is uploaded or edited.
+    - All card information is updated once a book is uploaded or edited.
+    - The cards are styled with a dark-mode theme for easy viewing.
+
+#### Bookpage
+* **Book section**
+  - The book image and book data are displayed in the first section
+  - The book data section contains the following:
+    * Book title
+    * Average star rating
+    * 'Buy Now' URL
+    * Author
+    * Description
+
+  - Only if a **user** or **Admin** is logged in, the 'Edit' button will show. 
+
+
+* **Posted Reviews section**
+  - Each review posted is displayed on a card. The following are included:
+  1. Review title
+  2. Summary
+  3. Review author
+  4. Date posted
+  5. Star rating
+
+  - If a user is either **'Admin'** or the **review author** and they are logged in, the **edit** button is shown.
+
+
+* **Add a review section**
+- The 'Add a Review' form is only accessible to users who are **logged in**
+  - if a user is **not logged in**, a message is displayed stating that they must log in to add a review.
+
+- A user can only review one book, one time.
+- The form contains the following fields
+  1. Title
+  2. Summary
+  3. Select a star rating
+
+
+#### Edit bookpage
+* **Search bar**
+* **Search bar**
+
+
+#### Edit review page
+* **Search bar**
+* **Search bar**
+
+
+#### Login page
+* **Search bar**
+* **Search bar**
+
+#### Register page
+* **Search bar**
+* **Search bar**
+
+#### Bookpage
+* **Search bar**
+* **Search bar**
+
+#### Profile
+* **Search bar**
+* **Search bar**
 
 
 ### Features Left to Implement
