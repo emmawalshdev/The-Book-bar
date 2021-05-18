@@ -149,9 +149,8 @@ A user journey was created to aid stucture design.
 All fonts used are from [Google Fonts](https://fonts.google.com/). 
 
 Fonts used include:
-* Goudy Bookletter 1911
-* Raleway
-* Fredericka the Great (Logo)
+* [Lato](https://fonts.google.com/specimen/Lato?query=lato)
+* [Raleway](https://fonts.google.com/specimen/Raleway?query=raleway)
 
 #### Colour Scheme
 A pink and blue colour palette was used in this design. Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.
@@ -168,8 +167,38 @@ The following colour palette was used for inspiration:
 ## Features
 
 ### Existing Features 
-* **feature** 
-    * notes
+
+Elements on all pages
+
+* **NavBar**
+    - The navigation features The Book bar logo in the top left corner in desktop view. This switches to a center position on smaller screen sizes.
+    - For users who are not logged in, the following links are viewable:
+    1. Home 
+    2. Login
+    3. Register
+
+    - For users who are logged in, the following links are viewable:
+    1. 
+    2. 
+
+
+* **Footer**
+    - For u
+    - 
+Elements on homepage
+
+* **Search bar**
+    * 
+
+* **Sort by**
+    * 
+
+* **Pagination**
+    * 
+
+* **Book cards**
+    * 
+
 
 ### Features Left to Implement
 The following are features were not included in this release. These may be developed in the future:
