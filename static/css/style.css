@@ -64,6 +64,11 @@ p{
     font-size: 1.2rem;
 }
 
+.card-genre-title{
+    font-size:20px;
+    padding-bottom:5px;
+}
+
 .blue-title-p{
     font-size: 1.5rem !important;
     color: #2196F3;

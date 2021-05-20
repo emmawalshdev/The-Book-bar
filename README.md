@@ -268,38 +268,95 @@ The following colour palette was used for inspiration:
 - The 'Add a Review' form is only accessible to users who are **logged in**
   - if a user is **not logged in**, a message is displayed stating that they must log in to add a review.
 
-- A user can only review one book, one time.
+- A user can only review each book, one time. This is noted on the review form. If a user tries to add a second review, they will also be notified
 - The form contains the following fields
   1. Title
   2. Summary
   3. Select a star rating
 
+- Upon saving, the average star rating value is also updated through a python function upon rending the bookpage template.
 
-#### Edit bookpage
-* **Search bar**
-* **Search bar**
 
+#### Edit book page
+- The edit book page for each book is only accessible to logged in users. The user must be either the creater of the book or 'admin'.
+- Three pathways are possible on this page: 
+  - Save
+  - Cancel (go back)
+  - Delete
+- The 'Save' option updates the book document with the users' input in the form. All of the following fields can be edited and saved:
+  - Book Genre
+  - Book Title
+  - Author
+  - Image URL
+  - Blurb
+  - Buy Now URL
+- The cancel button redirects the user back to the bookpage.
+- The delete button removes the book document from the collection. on click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
+
+- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
 
 #### Edit review page
-* **Search bar**
-* **Search bar**
+- The edit review page for each review is only accessible to logged in users. The user must be either the creater of the review or 'admin'. 
+- As the book information may be useful for review editing, this section has been included in the template.
+- Three pathways are possible on this page: 
+  - Save
+  - Cancel (go back)
+  - Delete
+- The 'Save' option updates the review array object within the book document with the users' input in the form. All of the following fields can be edited and saved:
+  - Title
+  - Summary
+  - Star rating
 
+- Upon saving, the average star rating value is also updated through a python function upon rending the bookpage template. 
+
+- The cancel button redirects the user back to the bookpage
+
+- The delete button removes the review object from the book collection. On click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
+
+- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
 
 #### Login page
-* **Search bar**
-* **Search bar**
+- A link to the registration page is displayed for easy access
+
+- If the username exists in db, the password is checked.
+  - if the password inputted matches the hashed password, the user is directed to the profile page.
+  - If the password inputted does not match the hashed password, an error flash message is displayed and the usr is redirected to the login page
+
+- if the username does not exist in db, an error flash message is displayed and the usr is redirected to the login page
 
 #### Register page
-* **Search bar**
-* **Search bar**
+- If the username does not exists in db:
+  - A unique hashed password is generated
+  - The username and hashed password are inserted as a new document to the users collection
+  - The user is redirected to the login page
 
-#### Bookpage
-* **Search bar**
-* **Search bar**
+- if the username exist in db
+  - An error flash message is displayed and the user is redirected to the login page
 
-#### Profile
-* **Search bar**
-* **Search bar**
+#### Manage genres
+- The Manage Genres page is only accessible to the user 'admin', who must be logged in
+- Users have the option to 'Add' a genre or manage the existing genres. These are shown on cards
+
+* **Genre cards**
+- The genre title & materialise icon is shown on each card, along with an 'Edit button'
+
+#### Profile page
+- The profile book page is only accessible to that particular logged in user. Python checks the authentifivation of the user by running if 
+''' if username == session["user"]:''''
+- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted
+
+* **Welcome section**
+- The user is adressed by their usrname and is notified of how many days they have been a member of the bookbar
+
+* **Profile card**
+- A summary of the users activity is displayed. Two statistics are included:
+  - **Books added:** An aggregation operation calcualted the count of books created by the user 
+  - **Review:** An aggregation operation calcualted the count of reviews created by the user 
+- A quick link to the homepage is provided
+
+* **Books added**
+
+* **Reviews added**
 
 
 ### Features Left to Implement
