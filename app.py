@@ -213,7 +213,7 @@ def profile(username):
         return redirect(url_for("access_denied"))
     else:
         if username == session["user"]:
-            books = list(mongo.db.books.find().sort("book_name", 1))
+            books = list(mongo.db.books.find().sort('_id', -1))
             for book in books:
                 user = mongo.db.users.find_one({"username": session['user']})
                 today = datetime.date.today()
@@ -238,7 +238,7 @@ def profile(username):
                 "profile.html",
                 user=user,
                 diff=diff,
-                books=books,
+                books=books[:4],
                 bookcount=bookcount,
                 reviewcount=reviewcount,
                 genres=genres,

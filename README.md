@@ -355,6 +355,8 @@ The following colour palette was used for inspiration:
 - A quick link to the homepage is provided
 
 * **Books added**
+- This section shows the 8 most recent books added by the user.
+- 
 
 * **Reviews added**
 
