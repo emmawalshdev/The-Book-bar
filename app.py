@@ -239,6 +239,7 @@ def profile(username):
                 user=user,
                 diff=diff,
                 books=books[:4],
+                reviewedbooks=books,
                 bookcount=bookcount,
                 reviewcount=reviewcount,
                 genres=genres,

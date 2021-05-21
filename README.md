@@ -356,14 +356,21 @@ The following colour palette was used for inspiration:
 
 * **Books added**
 If a user has added books:
-- The 4 most recent books added by the user are shown. 
-- This view automatically updates once the user adds a new book.
+- The 4 most recent books added by the user are shown
+- This view automatically updates once the user adds a new book
 
 If a user has not added any books:
-- 
+- A card is dispalyed which notifies the user that the 4 most recent book uploads will appear in this section
+- A quick link to the book upload page is added
 
 * **Reviews added**
+If a user has added reviews:
+- The 4 most recent reviews added by the user are shown
+- This view automatically updates once the user adds a new review
 
+If a user has not added any reviews:
+- A card is dispalyed which notifies the user that the 4 most recent reviews will appear in this section
+- A quick link to the homepage is added
 
 ### Features Left to Implement
 The following are features were not included in this release. These may be developed in the future:
