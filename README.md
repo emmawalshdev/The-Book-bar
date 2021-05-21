@@ -355,7 +355,11 @@ The following colour palette was used for inspiration:
 - A quick link to the homepage is provided
 
 * **Books added**
-- This section shows the 8 most recent books added by the user.
+If a user has added books:
+- The 4 most recent books added by the user are shown. 
+- This view automatically updates once the user adds a new book.
+
+If a user has not added any books:
 - 
 
 * **Reviews added**
@@ -484,5 +488,9 @@ user image on profile : https://www.flaticon.com/free-icon/user_747545?term=user
 * lottie file: https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json
 
 lottie file book: https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets7.lottiefiles.com%2Ftemp%2Flf20_aKAfIn.json
+
+profile - books section boy https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260
+
+
 ### Acknowledgments
 * 

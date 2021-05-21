@@ -70,7 +70,19 @@
                             {% if bookcount > 0 %}
                                 <h3>Books added:</h3>
                             {% else %}
-                                <h3>No books added yet</h3>
+                            <div class="row card-panel">
+                                <div class="col s12 l6 center">
+                                    <h3 class="bold">No books added yet!</h3>
+                                    <p> Once you have uploaded a book, you'll find it here. 
+                                        We'll update this section to show your 4 most recent uploads.
+                                    <br>
+                                    <a href="{{ url_for('add_book') }}" class="pink-hover">Upload a book now</a>
+                                    </p>
+                                </div>
+                                <div class="col s12 l6 center">
+                                    <img src="https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="a child reading a book" width="340">
+                                </div>
+                            </div>
                             {% endif %}
                         </div>
                     </div>
@@ -141,7 +153,20 @@
                             {% if reviewcount > 0 %}
                                 <h3>Reviews added:</h3>
                             {% else %}
-                                <h3>No reviews added yet</h3>
+                                <div class="row card-panel">
+                                    <div class="col s12 l6 center">
+                                        <img src="https://images.pexels.com/photos/1542252/pexels-photo-1542252.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="leaving a review on a phone" width="340">
+                                    </div>
+                                    <div class="col s12 l6 center">
+                                        <h3 class="bold">No reviews added yet!</h3>
+                                        <p>
+                                            Once you have reviewed a book, you'll find it here. 
+                                            We'll update this section to show your 4 most recent uploads.
+                                            <br>
+                                            <a href="{{ url_for('books_new') }}" class="pink-hoverr">Review a book now</a>
+                                        </p>
+                                    </div>
+                                </div>
                             {% endif %}
                         </div>
                     </div>
@@ -152,7 +177,7 @@
                                 {% for eachreview in book.review %}
                                     {% if eachreview.username|lower == session.user|lower %}
                                         <!--show books added by user-->
-                                        <div class="col s12 m6">
+                                        <div class="col s12 l6">
                                             <div class="card medium black">
                                                 <div class="card-content white-text custom-text">
                                                     <!--book title-->
