@@ -201,47 +201,50 @@ def login():
 def profile(username):
     """
     Checks if the user is session.
-    If true, the count of reviews created by the user is calculated.
+    If true, the member time duration is calculated.
+    Next, it is checked if the user document contains 'books_added'.
+    If true, the length is calculated & the first 4 books are returned.
+    If false, the length is set to 0 & no books are returned.
+    This same process if followed for 'reviews_added'.
     Then the user is redirected to profile.html.
     If the user is not in sesion, they are redirected to login.html.
     """
-    # get the session user's username from db
-
     loggedIn = True if 'user' in session else False
 
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
         if username == session["user"]:
+            user = mongo.db.users.find_one({"username": session['user']})
+            today = datetime.date.today()
+            date_joined = user["_id"].generation_time.date()
+            user_duration = "%d days" % (today - date_joined).days
             books = list(mongo.db.books.find().sort('_id', -1))
-            for book in books:
-                user = mongo.db.users.find_one({"username": session['user']})
-                today = datetime.date.today()
-                date_joined = user["_id"].generation_time.date()
-                diff = "%d days" % (today - date_joined).days
-                genres = list(mongo.db.genres.find().sort("genre", 1))
-                booksbyuser = mongo.db.books.find({"created_by": username})
-                bookcount = booksbyuser.count()
-                avgrating = list(mongo.db.avgRatingAgg.find().sort("id", -1))
-                if 'review':
-                    for ereview in 'review':
-                        reviewcountdict = list(mongo.db.books.aggregate([{
-                            "$unwind": "$review"},
-                            {"$match": {'review.username': username}},
-                            {"$count": "reviewcount"}
-                        ]))
-                        if reviewcountdict:
-                            reviewcount = reviewcountdict[0]["reviewcount"]
-                        else:
-                            reviewcount = 0
+            genres = list(mongo.db.genres.find().sort("genre", 1))
+            avgrating = list(mongo.db.avgRatingAgg.find())
+            if "books_added" in user:
+                books_added = user.get("books_added")
+                total_books = len(user['books_added'])
+                books_added = books_added[:4]
+            else:
+                books_added = 0
+                total_books = 0
+            if "reviews_added" in user:
+                reviews_added = user.get("reviews_added")
+                total_reviews = len(user['reviews_added'])
+                reviews_added = reviews_added[:2]
+            else:
+                reviews_added = 0
+                total_reviews = 0
             return render_template(
                 "profile.html",
                 user=user,
-                diff=diff,
-                books=books[:4],
-                reviewedbooks=books,
-                bookcount=bookcount,
-                reviewcount=reviewcount,
+                books=books,
+                user_duration=user_duration,
+                books_added=books_added,
+                reviews_added=reviews_added,
+                bookcount=total_books,
+                reviewcount=total_reviews,
                 genres=genres,
                 avgratings=avgrating)
         else:
