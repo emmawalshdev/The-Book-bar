@@ -329,7 +329,7 @@ def add_book():
                 "created_by": session["user"],
             }
             mongo.db.books.insert_one(book)
-            updateuserbooks(book["created_by"], book["_id"])
+            update_user_books(book["created_by"], book["_id"])
             flash("Book was successfully added.", "success")
             return redirect(url_for("books_new"))
 
@@ -340,7 +340,7 @@ def add_book():
 
 
 # add book to user
-def updateuserbooks(username, bookid):
+def update_user_books(username, bookid):
     mongo.db.users.update_one(
                 {"username": username}, {
                     "$addToSet": {"books_added": {
@@ -395,17 +395,16 @@ def delete_book(book_name, id):
     else:
         username = session["user"]
         mongo.db.books.remove({"_id": ObjectId(id)})
-        deleteuserbooks(username, id)
+        delete_user_books(username, id)
         flash("Book was sucessfully deleted.", "success")
         return redirect(url_for("books_new"))
 
 
-def deleteuserbooks(username, id):
+def delete_user_books(username, id):
     mongo.db.users.update_one(
         {"username": username, "books_added.book_id": ObjectId(id)},
         {"$pull": {"books_added": {"book_id": ObjectId(id)}}}
     )
-    flash("removed from user", "success")
 
 
 # add a review in bookpage
@@ -450,11 +449,22 @@ def review_book(book_name):
                         "review_id": password,
                         "bookid": str(get_book["_id"]),
                         "username": session["user"]}}})
+            username = session["user"]
+            update_user_reviews(username, password)
             flash("Review was successfully saved.", "success")
         else:
             review = "No star ratings yet"
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
+
+
+# update user document with review_id
+def update_user_reviews(username, reviewid):
+    mongo.db.users.update_one(
+        {"username": username}, {
+            "$addToSet": {"reviews_added": {
+                "review_id": reviewid}}}
+    )
 
 
 # edit a review page
@@ -537,8 +547,18 @@ def delete_review(book_name, book_id, username, id):
         mongo.db.avgRatingAgg.remove({
             "_id": ObjectId(book_id)
             })
+        username == session["user"]
+        delete_user_review(username, id)
         return redirect(url_for(
             "bookpage", book_name=get_book.get("book_name")))
+
+
+def delete_user_review(username, id):
+    mongo.db.users.update_one(
+        {"username": username, "reviews_added.review_id": id},
+        {"$pull": {"reviews_added": {"review_id": id}}}
+    )
+    flash("review deleted user", "success")
 
 
 # manage genres page
