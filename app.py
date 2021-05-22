@@ -329,11 +329,22 @@ def add_book():
                 "created_by": session["user"],
             }
             mongo.db.books.insert_one(book)
+            updateuserbooks(book["created_by"], book["_id"])
             flash("Book was successfully added.", "success")
             return redirect(url_for("books_new"))
 
         genres = mongo.db.genres.find().sort("genre_name", 1)
-        return render_template("add_book.html", genres=genres)
+        return render_template(
+            "add_book.html",
+            genres=genres)
+
+
+# add book to user
+def updateuserbooks(username, bookid):
+    mongo.db.users.update_one(
+                {"username": username}, {
+                    "$addToSet": {"books_added": {
+                        "book_id": ObjectId(bookid)}}})
 
 
 # edit a book page
@@ -382,9 +393,19 @@ def delete_book(book_name, id):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
+        username = session["user"]
         mongo.db.books.remove({"_id": ObjectId(id)})
+        deleteuserbooks(username, id)
         flash("Book was sucessfully deleted.", "success")
         return redirect(url_for("books_new"))
+
+
+def deleteuserbooks(username, id):
+    mongo.db.users.update_one(
+        {"username": username, "books_added.book_id": ObjectId(id)},
+        {"$pull": {"books_added": {"book_id": ObjectId(id)}}}
+    )
+    flash("removed from user", "success")
 
 
 # add a review in bookpage
@@ -414,7 +435,8 @@ def review_book(book_name):
                             " Please edit or" +
                             "remove the existing review.", "error")
                         return redirect(url_for(
-                            "bookpage", book_name=get_book.get("book_name")))
+                            "bookpage",
+                            book_name=get_book.get("book_name")))
             #  else allow user to post review
             alphabet = string.ascii_letters + string.digits
             password = ''.join(secrets.choice(alphabet) for i in range(8))
