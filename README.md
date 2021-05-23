@@ -225,11 +225,11 @@ The following colour palette was used for inspiration:
     - A 'Reset' button is displayed, which redirects the user back to the homepage
 
 * **Pagination**
-    - Pagination is present on all three versions of the homepage. These include:
-    Sorted by
-    1. A-Z
-    2. Z-A
-    3. New-Old
+    - Pagination is present on all three versions of the homepage. 
+    - These include: Sorted by
+      1. A-Z
+      2. Z-A
+      3. New-Old
 
     - On each page, 12 book cards are displayed 
     - This allows for faster page-load time and a better user experience
@@ -255,11 +255,11 @@ The following colour palette was used for inspiration:
 
 * **Posted Reviews section**
   - Each review posted is displayed on a card. The following are included:
-  1. Review title
-  2. Summary
-  3. Review author
-  4. Date posted
-  5. Star rating
+    1. Review title
+    2. Summary
+    3. Review author
+    4. Date posted
+    5. Star rating
 
   - If a user is either **'Admin'** or the **review author** and they are logged in, the **edit** button is shown.
 
@@ -372,53 +372,94 @@ If a user has not added any reviews:
 - A card is dispalyed which notifies the user that the 4 most recent reviews will appear in this section
 - A quick link to the homepage is added
 
+#### 404 page
+- The 404 page is returned when a requested page cannot be found. This template incorporates the Book bar website styling and includes a link to the homepage.
+
+#### Access denied page
+- The access denied webspage is returned if a user requests a webpage which they do not permission to view. This template incorporates the Book bar website styling and includes a link to the homepage.
+
 ### Features Left to Implement
 The following are features were not included in this release. These may be developed in the future:
 
-* feature
+* Email authentication for account registration
+  - implement email authentication for users who are registering an account. This would be a requirement.
+
+* Admin role creation
+  - Create an 'administrator' role, which would give special permissions to users in this category.
+  - Currently there can be only one 'Admin' user, this is the account with the username of 'admin'. Unfortunately, this solution is not scaleable.
+
+* Search bar filters & sort by
+  - Attempted to implemented this at the beginning of the project. The plan was to include a fiter for 'category' and a 'sort by' function. After several days, I decided to move on with the project and to come back to it once my knowledge is more advance. 
+
+* Add verification on image, icon and 'Buy now' url:
+  - With the current set up, no instant verification is available on working links, images or icons before form submittion. This is true across the add and edit genre and book pages.
+  - This would ensure that no errors are made upon upload & would reduce website maintaince work load of the administrator. 
 
 ----------------------------
 
 ## Technology Used
+### Database
+
+* [MongoDB Atlas](https://www.mongodb.com/) - Used as the primary database for storing and retrieving the information in the website
+
+### Languages
 
 * [HTML5](https://www.w3schools.com/html/) - Used for structuring the site pages.
 
 * [CSS](https://www.w3schools.com/css/) - Used for styling the site pages.
 
-* [Bootstrap 4](https://getbootstrap.com/) - Framework used for building the site pages.
-
 * [Javascript](https://www.w3schools.com/js/DEFAULT.asp) - Used to make the website interactive.
+
+* [Python](https://www.python.org/) - Used to create database driven functionalities.
+
+### Libraries
 
 * [jQuery](https://jquery.com/) - Used to make the website interactive.
 
-* [Leaflet](https://leafletjs.com/) - Used to create the maps.
+* [PyMongo](https://pypi.org/project/pymongo/) - Used to make communication between MongoDB and Python.
 
-* [SweetAlert](https://sweetalert.js.org/) - Used to create pretty alert boxes.
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/) - Used to construct and render pages
 
-* [EmailJS](https://www.emailjs.com/) - Used to create the email service.
+* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - used in conjunction with flask to display data from the backend.
 
 * [Google Fonts](https://fonts.google.com/) - Used for typography.
 
-* [Adobe Photoshop](https://www.adobe.com/de/products/photoshop.html?sdid=88X75SKP&mv=search&ef_id=EAIaIQobChMI95Sd8Zyv7QIVA893Ch3SYQCaEAAYASAAEgI41vD_BwE:G:s&s_kwcid=AL!3085!3!341205896389!e!!g!!adobe%20photoshop!1419109629!54636022246&gclid=EAIaIQobChMI95Sd8Zyv7QIVA893Ch3SYQCaEAAYASAAEgI41vD_BwE) - Used to resize and edit images including the company logo and game tiles.
+* [Font Awesome](https://fontawesome.com/) - Used for footer Icons.
 
-* [Font Awesome](https://fontawesome.com/) - Used for all Icons.
+* [Google Icons](https://fonts.google.com/icons) - Used for all Icons (bar footer icons).
+
+* [LottieFiles](https://lottiefiles.com/) - all free animations are sourced from here.
+
+### Tools
 
 * [Gitpod](https://www.gitpod.io/docs/) - Used as a development environment.
+
+* [PIP](https://pip.pypa.io/en/stable/installing/) - Used for tool installions.
+
+* [Git](https://www.gitpod.io/docs/) - Used to handle version control.
 
 * [Github](https://github.com/) - Used for repository hosting.
 
 * [Github Pages](https://pages.github.com/) - Used for site deployment.
 
+* [Materialize](https://materializecss.com/about.html) - Used to develop the website design system.
+
+* [Adobe Photoshop](https://www.adobe.com/products/photoshop.html) - Used to resize and edit images.
+
+* [Favicon.io](https://favicon.io/favicon-converter/) - Used for flavicon creation.
+
 * [Chrome Dev tools](https://developers.google.com/web/tools/chrome-devtools) - Used for monitoring the responsiveness of the website.
 
 * [LamdaTest](https://www.lambdatest.com/) - Used for monitoring the responsiveness of the website.
 
-https://favicon.io/favicon-converter/ used to create flavicon
-canva icon used
+* [Am I Responsive](http://ami.responsivedesign.is/) - Used to create repsonsive images for different devices.
 
+### Deployment
+
+* [Heroku](https://id.heroku.com/login) - The cloud platform used to deploying the website.
 ----------------------------
 ## Testing
-All testing documentation is stored in a separate testing file, which can be accessed [here](https://github).
+All testing documentation is stored in a separate testing file, which can be accessed [here](https://github.com/emmahartedev/The-Book-bar/blob/master/testing.md).
 
 ----------------------------
 
