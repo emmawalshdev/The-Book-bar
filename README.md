@@ -2,9 +2,9 @@
 
 ## Data Centric Development Milestone Project
 
-[View the Live Site here.]()
+[View the Live Site here.](https://the-book-bar.herokuapp.com/)
 
-![ logo](logo/logo.png) 
+![logo](logo/logo.png) 
 
 ![Generated from Am I Responsive](assets/images/readme_files/amiresponsive.jpg)
 
@@ -444,6 +444,8 @@ The following are features were not included in this release. These may be devel
 
 * [Materialize](https://materializecss.com/about.html) - Used to develop the website design system.
 
+* [Canva](https://www.canva.com/) - Used to create the brand logo
+
 * [Adobe Photoshop](https://www.adobe.com/products/photoshop.html) - Used to resize and edit images.
 
 * [Favicon.io](https://favicon.io/favicon-converter/) - Used for flavicon creation.
@@ -533,23 +535,18 @@ SECRET_KEY | `<your_secret_key>`
 The following material is not my own. Sources have been listed alongside a description of the content used. 
 
 ### Content
+* [Python - secrets](https://docs.python.org/3/library/secrets.html) - used to generate random ids for each review
+
+* [Web Gradients](https://webgradients.com/) - Used for inspiration to create the linear-gradient background
+
 
 ### Code
-The following websites were used for inspiration and assistance:
-*
+The following code was used directly in this project:
+  * [codepen - hesguru](https://codepen.io/hesguru/pen/BaybqXv) - used to create the star rating bar for reviews
 
-The following scripts/plugins were used in the project:
-* 
+The following code has been modied in this project:
+  * [stackoverflow - dippas](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156) - used to change the color of the materialize input fields
 
-The following code has been directly used in this project:
-
-* 
-
-/* CREDIT https://codepen.io/dimitrisraptis96/pen/NWrrRLB*/
-body background
-
-https://docs.python.org/3/library/secrets.html
-generating passwords
 
 ###  Media
 The images used on this website were obtained from the following sources:
@@ -557,18 +554,25 @@ The images used on this website were obtained from the following sources:
 * The image alt attribute is used to describe each image below
 </strong>
 
-In README.md:
+README.md:
 * Colour palette: [Source](https://www.pinterest.de/pin/490681321896937815/)
 
-In bookpage.html: 
-* star [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
-user image on profile : https://www.flaticon.com/free-icon/user_747545?term=user&related_id=747545
+Homepage
+* No search results [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets7.lottiefiles.com%2Ftemp%2Flf20_aKAfIn.json)
 
-* lottie file: https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json
+Bookpage
+* Rating stars [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
 
-lottie file book: https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets7.lottiefiles.com%2Ftemp%2Flf20_aKAfIn.json
+* No ratings yet star git [Source] (https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json)
 
-profile - books section boy https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260
+Profile page
+* User icon [Source](https://www.flaticon.com/free-icon/user_747545?term=user&related_id=747545)
+
+* Stacked books icon [Source](https://www.flaticon.com/free-icon/books_167756?term=books&page=1&position=35&page=1&position=35&related_id=167756&origin=search)
+
+* No books added yet image [Source](books section boy https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)
+
+* No reviews added yet image [Source] https://www.pexels.com/photo/selective-focus-photography-of-person-using-iphone-x-1542252/
 
 
 ### Acknowledgments

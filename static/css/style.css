@@ -2,8 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@300;700&display=swap');
 
 /* ---------------------------background-------------------------------------*/
-/* CREDIT code for background gradient - https://codepen.io/dimitrisraptis96/pen/NWrrRLB 
-modified to create a custom design */
+
 html{ 
     background: 
       linear-gradient(180deg, rgba(13, 78, 65, 0) 20%, rgba(54, 168, 159, 0.1) 20%, rgba(120, 197, 207, 0.1) 40%, rgba(128, 191, 207, 0.493) 40%, rgba(126, 171, 207, 0.2) 60%, rgba(166, 182, 235, 0.4) 60%, rgba(117, 162, 199, 0.4) 80%, rgba(121, 150, 187, 0.5) 80%),
@@ -17,7 +16,6 @@ html{
     background-size: 100% 100%;
     min-height: 100%;
   }
-/* end credit */
 
 /* ---------------------------font styling-------------------------------------*/
 
@@ -402,7 +400,7 @@ nav ul a:hover,
 }
 
 /* ---------------------------materialise form colors-------------------------------------*/
-/* CREDIT https://stackoverflow.com/questions/44942347/change-the-default-color-of-materialize-css-input-fields-i-have-attached-screen 
+/* CREDIT https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156 
 modiefied slightly*/
 
 /* label color */
