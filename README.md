@@ -31,7 +31,7 @@ sales pitch
     * [Existing Features](#existing-features "goto existing features")
     * [Features Left to Implement](#features-left-to-implement "goto features left to implement")
 
-3. [Technology Used](#technology-used "goto technology used")
+3. [Technologies Used](#technologies-used "goto technology used")
 
 4. [Testing](https://github.com/emmahartedev/ms2-teachflow/blob/master/testing.md)
     
@@ -397,7 +397,7 @@ The following are features were not included in this release. These may be devel
 
 ----------------------------
 
-## Technology Used
+## Technologies Used
 ### Database
 
 * [MongoDB Atlas](https://www.mongodb.com/) - Used as the primary database for storing and retrieving the information in the website
@@ -464,6 +464,30 @@ All testing documentation is stored in a separate testing file, which can be acc
 ----------------------------
 
 ## Deployment
+
+### Heroku Deployment
+To deploy The Book bar to Heroku, follow the following steps:
+  1. create a ```requirements.txt``` file using the command ```pip freeze > requirements.txt```.
+  2. Create a ```Procfile``` using the command ```echo web: python app.py > Procfile```.
+  3. Add both files to Github by using ```git add```, then ```git commit -m "Add a relevent git message here'"``` and finally ```git push```.
+  4. Navigate to the [Heroku](https://id.heroku.com/login) website. On the dashboard page, click "New", then click "Create new app". Add a name and a region.
+  5. Connect the Heroku app to the Github repository. On the Heroku app dashboard, select the "Deploy" tab. Under "Deployment method", select "Github" and confirm.
+  6. Navigate to the "Settings" tab in the app dashboard. Under "Config Vars" click "Reveal Config Vars".
+  7. Set the following config vars:
+
+  | Key | Value |
+ --- | ---
+DEBUG | FALSE
+IP | 0.0.0.0
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
+PORT | 5000
+SECRET_KEY | `<your_secret_key>`
+
+8. In the Heroku app click on the "Deploy" tab and navigate to the "Manual Deployment" section. Confirm that the "master" brance is selected and click "Deply Branch".
+
+9. The website is now successfully deployed.
+
+
 The website was hosted on Github Pages. It was deployed by carrying out the following steps:
 
 1. login into Github.
@@ -474,26 +498,32 @@ The website was hosted on Github Pages. It was deployed by carrying out the foll
 The Live site deployed can be viewed on the following link: 
 [TeachFlow](https://emmahartedev.github.io/TeachFlow/)
 
-### Local
-To clone this project locally; a Chrome browser and Github account are required. 
+### How to run this project locally
+To run this project locally; a Chrome browser and Github account are required. 
+The following must be installed on your machine:
+
+  * [Python 3](https://www.python.org/download/releases/3.0/)
+  * [PIP](https://pypi.org/project/pip/)
+  * [Git](https://git-scm.com/)
+  * [A MongoDB Atlas account](https://www.mongodb.com/)
 
 The following steps can then be followed:
 1. Install the [Gitpod Browser Chrome Extention](https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki), restarting the browser after installation.
 2. Log into [Gitpod](https://gitpod.io/).
-3. Click on the following link to go to the [project repository](https://github.com/emmahartedev/TeachFlow).
+3. Click on the following link to go to the [project repository](https://github.com/emmahartedev/The-Book-bar).
 4. Click on the green 'Gitpod' button (which is located to the right of the repository) to launch a new workspace.
 5. The code can be worked on in this newly launched workspace. 
 
 To clone code within an IDE of your choice:
 
-1. Click on the following link to go to the [project repository](https://github.com/emmahartedev/page).
+1. Click on the following link to go to the [project repository](https://github.com/emmahartedev/The-Book-bar).
 2. Click 'Code' and in the Clone with HTTPs, copy the provided repository URL. 
 3. Open a terminal in your IDE.
 4. Change the current working directory to the location you wish to generate the cloned directory.
 5. Type ```git clone```, and then paste the URL from step 2. 
 
 ```
-git clone https://github.com/emmahartedev/ms2-page
+git clone https://github.com/emmahartedev/TeachFlow.git
 ```
 
 ----------------------------
