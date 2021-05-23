@@ -465,6 +465,46 @@ All testing documentation is stored in a separate testing file, which can be acc
 
 ## Deployment
 
+### Local Deployment
+To run this project on your own IDE, ensure that the following are installed on your machine:
+
+  * [Python 3](https://www.python.org/download/releases/3.0/)
+  * [PIP](https://pypi.org/project/pip/)
+  * [Git](https://git-scm.com/)
+  * [A MongoDB Atlas account](https://www.mongodb.com/)
+
+#### Forking the repository
+To fork the repository, the following steps must be followed:
+1. Navigate to the project repository [project repository](https://github.com/emmahartedev/The-Book-bar).
+
+2. Click "Fork"; located on the top right of the screen.
+
+3. You have successfully forked the repository. A copy of the original project will now be copied to your account.
+
+4. Create an env.py file to store environmental variables. Add this to .gitignore to ensure it is not uploaded.
+
+5. Run the application using the command: ```python 3 app.py```
+
+#### Cloning the repository
+To clone the repository, the following steps must be followed:
+
+1. Navigate to the project repository [project repository](https://github.com/emmahartedev/The-Book-bar).
+
+2. Click 'Code' and in the Clone with HTTPs, copy the provided repository URL. 
+
+3. Open a terminal in your IDE.
+
+4. Change the current working directory to the location you wish to generate the cloned directory.
+
+5. Type ```git clone```, and then paste the URL from step 2. 
+
+```
+git clone https://github.com/emmahartedev/TeachFlow.git
+```
+6. Create an env.py file to store environmental variables. Add this to .gitignore to ensure it is not uploaded.
+
+7. Run the application using the command: ```python 3 app.py```
+
 ### Heroku Deployment
 To deploy The Book bar to Heroku, follow the following steps:
   1. create a ```requirements.txt``` file using the command ```pip freeze > requirements.txt```.
@@ -486,45 +526,6 @@ SECRET_KEY | `<your_secret_key>`
 8. In the Heroku app click on the "Deploy" tab and navigate to the "Manual Deployment" section. Confirm that the "master" brance is selected and click "Deply Branch".
 
 9. The website is now successfully deployed.
-
-
-The website was hosted on Github Pages. It was deployed by carrying out the following steps:
-
-1. login into Github.
-2. Select the repository from the profile.
-3. go to 'settings' in the repository.
-4. In 'Github Pages' choose 'Master Branch' as Source and save.
-
-The Live site deployed can be viewed on the following link: 
-[TeachFlow](https://emmahartedev.github.io/TeachFlow/)
-
-### How to run this project locally
-To run this project locally; a Chrome browser and Github account are required. 
-The following must be installed on your machine:
-
-  * [Python 3](https://www.python.org/download/releases/3.0/)
-  * [PIP](https://pypi.org/project/pip/)
-  * [Git](https://git-scm.com/)
-  * [A MongoDB Atlas account](https://www.mongodb.com/)
-
-The following steps can then be followed:
-1. Install the [Gitpod Browser Chrome Extention](https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki), restarting the browser after installation.
-2. Log into [Gitpod](https://gitpod.io/).
-3. Click on the following link to go to the [project repository](https://github.com/emmahartedev/The-Book-bar).
-4. Click on the green 'Gitpod' button (which is located to the right of the repository) to launch a new workspace.
-5. The code can be worked on in this newly launched workspace. 
-
-To clone code within an IDE of your choice:
-
-1. Click on the following link to go to the [project repository](https://github.com/emmahartedev/The-Book-bar).
-2. Click 'Code' and in the Clone with HTTPs, copy the provided repository URL. 
-3. Open a terminal in your IDE.
-4. Change the current working directory to the location you wish to generate the cloned directory.
-5. Type ```git clone```, and then paste the URL from step 2. 
-
-```
-git clone https://github.com/emmahartedev/TeachFlow.git
-```
 
 ----------------------------
 
