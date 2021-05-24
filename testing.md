@@ -6,12 +6,12 @@ View site on [Heroku](https://the-book-bar.herokuapp.com/).
 
 ### Table of Contents
 
-1. [User Story Testing](#user-story-testing "goto user story testing")
-    * [Visitor stories](#Visitor-stories)
-    * [Site Owner Goals
+1. [User Story Testing](#user-stories "goto user stories")
+    * [Visitor stories](#visitor-stories)
+    * [Business stories](#business-stories)
 2. [Manual Testing](#manual-testing "goto manual testing")
-    * [Desktop]()
-    * [Mobile and Tablet]()
+    * [Desktop testing](#desktop-testing)
+    * [Mobile and Tablet testing](#mobile-and-tablet-testing)
 3. Further Testing 
     * [Browser Compatibility](#browser-compatibility "goto browser compatibility")
     * [Responsiveness](#responsiveness "goto responsiveness")
@@ -184,6 +184,215 @@ The following section re-evaluates the user stories defined in the UX section of
     - The 'admin' user has complete control over editing and deleting all content on the site.
     - The 'admin' user also has access to add both books and reviews.
 
+### Manual testing
+Manual testing was carried out on Desktop, tablet and mobile devices to ensure that the site working as expected. Below is an account of the findings.
+
+#### Desktop testing
+The following browsers were inlucded in desktop manual testing:
+    - Chrome
+    - Firefox 
+    - Microsoft Edge
+
+**Elements on all pages**
+1. Navbar
+    - When user is not logged in:
+        - Hover on each link, confirm that hover effects are applied
+        - Click The Book bar brand logo, confirm navigation to homepage
+        - Click register link, confirm navigation to register page
+        - Click Login link, confirm navigation to login page
+        - Click Login link, confirm that session cookie is active
+
+    - When a user is logged in:
+        - Click profile link, confirm navigation to profile page
+        - Click Add a Book page, confirm navigation to add book page
+        - Click logout, confirm redirect to login page and confirm that session cookie is removed
+
+    - When 'admin' is logged in:
+        - Click manage genres link, confirm navigation to genres page
+
+2. Footer
+    - Hover over each icon, confirm that hover effects are applied
+    - Click on copyright icon, confrim navigation to Github profile
+    - Click on copyright text, confrim navigation to Github profile
+    - Click on facebook icon, confrim navigation to facebook
+    - Click on facebook icon, confrim navigation to instagram
+    - Click on twitter icon, confrim navigation to twitter
+
+**Homepage**
+1. Search bar functionality
+    - Search by author first name, confirm correct results are returned
+    - Search by author last name, confirm correct results are returned
+    - Search by word in book title, confirm correct results are returned
+        - When results are returned, click on 'Reset' button. Confirm navigation to homepage
+    - Search by false keyword, confirm 'no results found' message and 'Reset' button are displayed
+        - Click on 'Reset' button, confirm navigation to homepage
+
+2. Sort by functionality
+    - Sort by 'A-Z', confirm that books are ordered correctly
+    - Sort by 'Z-A', confirm that books are ordered correctly
+    - Sort by 'New-Old', confirm that books are ordered correctly
+    - Search by keyword, confirm that 'Sort by' button dissapears
+    
+
+3. Pagination
+    - Click on all pages in 'New-Old', confirm that books are ordered correctly
+    - Click on all pages in 'A-Z', confirm that books are ordered correctly
+    - Click on all pages in 'Z-A', confirm that books are ordered correctly
+    - Confirm that each page displays 12 book cards 
+
+3. Book cards
+    - Confirm a consistent layout in book cards. All contain, a book image (where link has been successful), an average star rating (if review), book title, author, genre icon and read more button
+    - Confirm that the average star rating is correctly aligned with mongodb data
+    - Confirm that the book title and author are correctly aligned with mongodb data
+
+**Bookpage**
+1. Book section
+
+- For users logged out
+  - Confirm that the book information is correctly aligned with mongodb data
+  - Confirm that the average star rating is correct
+    - Where no review has yet been added, confirm that a toolip is added
+    
+- For users logged in
+  - Confirm that the 'Edit' button is not visable (unless the user is the creater)
+
+- For 'admin' user or content creater user
+    - confirm that 'Edit' button is present
+    - Click buttonm confirm navigation to edit book page
+
+2. Posted Reviews section
+
+- For users logged out
+    - If reviews exist, confirm that review cards are visable
+    - If no reviews exist, confirm that a placeholder card is displayed
+
+- For users logged in
+    - If reviews exist, confirm that review cards are visable
+    - If no reviews exist, confirm that a placeholder card is displayed
+    - On reviews, confirm that the 'Edit' button is not visable (unless the user is the creater)
+    - Confirm that the review information is correctly aligned with mongodb data
+    - Confirm that the date is included
+
+- For 'admin' user or content creater user
+    - Confirm that the 'Edit' button is present behind the review card
+
+3. Add a review section
+- For users logged out
+    - Confirm that the review form is not visable
+    - Confirm that a link to the login page is provided
+    - Click on link, confirm navigation to login page
+
+- For users (all user types) logged in
+    - Confirm that the review form is present
+    - Submit a review
+        - Attempt posting review without Title or Rating, confirm failure
+        - Post a review, confirm that the review card appears in the section above. 
+        - Post a review, confirm that the average rating updates in the book section
+        - Post a second review, confirm that a error message is displayed.
+
+**Edit book page**
+- The edit book page for each book is only accessible to logged in users. The user must be either the creater of the book or 'admin'.
+- Three pathways are possible on this page: 
+  - Save
+  - Cancel (go back)
+  - Delete
+- The 'Save' option updates the book document with the users' input in the form. All of the following fields can be edited and saved:
+  - Book Genre
+  - Book Title
+  - Author
+  - Image URL
+  - Blurb
+  - Buy Now URL
+- The cancel button redirects the user back to the bookpage.
+- The delete button removes the book document from the collection. on click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
+
+- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
+
+**Edit review page**
+- The edit review page for each review is only accessible to logged in users. The user must be either the creater of the review or 'admin'. 
+- As the book information may be useful for review editing, this section has been included in the template.
+- Three pathways are possible on this page: 
+  - Save
+  - Cancel (go back)
+  - Delete
+- The 'Save' option updates the review array object within the book document with the users' input in the form. All of the following fields can be edited and saved:
+  - Title
+  - Summary
+  - Star rating
+
+- Upon saving, the average star rating value is also updated through a python function upon rending the bookpage template. 
+
+- The cancel button redirects the user back to the bookpage
+
+- The delete button removes the review object from the book collection. On click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
+
+- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
+
+**Login page**
+- A link to the registration page is displayed for easy access
+
+- If the username exists in db, the password is checked.
+  - if the password inputted matches the hashed password, the user is directed to the profile page.
+  - If the password inputted does not match the hashed password, an error flash message is displayed and the usr is redirected to the login page
+
+- if the username does not exist in db, an error flash message is displayed and the usr is redirected to the login page
+
+**Register page**
+- If the username does not exists in db:
+  - A unique hashed password is generated
+  - The username and hashed password are inserted as a new document to the users collection
+  - The user is redirected to the login page
+
+- if the username exist in db
+  - An error flash message is displayed and the user is redirected to the login page
+
+**Manage genres**
+- The Manage Genres page is only accessible to the user 'admin', who must be logged in
+- Users have the option to 'Add' a genre or manage the existing genres. These are shown on cards
+
+1. Genre cards
+- The genre title & materialise icon is shown on each card, along with an 'Edit button'
+
+**Profile page**
+- The profile book page is only accessible to that particular logged in user. Python checks the authentifivation of the user by running if 
+''' if username == session["user"]:''''
+- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted
+
+1. Welcome section
+- The user is adressed by their usrname and is notified of how many days they have been a member of the bookbar
+
+2. Profile card
+- A summary of the users activity is displayed. Two statistics are included:
+  - **Books added:** An aggregation operation calcualted the count of books created by the user 
+  - **Review:** An aggregation operation calcualted the count of reviews created by the user 
+- A quick link to the homepage is provided
+
+3. Books added
+If a user has added books:
+- The 4 most recent books added by the user are shown
+- This view automatically updates once the user adds a new book
+
+If a user has not added any books:
+- A card is dispalyed which notifies the user that the 4 most recent book uploads will appear in this section
+- A quick link to the book upload page is added
+
+4. Reviews added
+If a user has added reviews:
+- The 4 most recent reviews added by the user are shown
+- This view automatically updates once the user adds a new review
+
+If a user has not added any reviews:
+- A card is dispalyed which notifies the user that the 4 most recent reviews will appear in this section
+- A quick link to the homepage is added
+
+**404 page**
+- The 404 page is returned when a requested page cannot be found. This template incorporates the Book bar website styling and includes a link to the homepage.
+
+**Access denied page**
+- The access denied webspage is returned if a user requests a webpage which they do not permission to view. This template incorporates the Book bar website styling and includes a link to the homepage.
+
+
+#### Mobile and Tablet testing
 
 ### Browser Compatibility
 [LamdaTest](https://www.lambdatest.com/) was used to test the website on the following browsers:

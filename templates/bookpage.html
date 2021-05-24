@@ -139,19 +139,12 @@
                 {% endfor %}
             {% else %}
             <div class="card">
-                <div class="card-content">
+                <div class="card-content center">
                     <div class="card-title center">No reviews yet!</div>
                     <!--lottie file-->
-                    <p> Why not give it a go?! By submitting reviews, you're helping the entire Book bar community. More reviews = better book finds and We'll drink to that.</p>
+                    <p> Why not give it a go?! By submitting reviews, you're helping the entire Book bar community.</p>
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                     <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_twYDL9.json"  background="transparent"  speed="1"  style="width: 150px; height: 100px;margin:auto;" hover   autoplay></lottie-player>
-                <!-- login-->
-                    {% if not session.user %}
-                    <p class="center">
-                        To add a review, please
-                        <a href="{{ url_for('login') }}" class="pink-hover">Login.</a>
-                    </p>
-                    {% endif %}
                 </div>
             </div>
             {% endif %}
@@ -207,6 +200,20 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row container">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content center">
+                    <span class="card-title">Add a Review</span>
+                    <p>
+                        To add a review, please
+                        <a href="{{ url_for('login') }}" class="pink-hover">Login.</a>
+                    </p>
                 </div>
             </div>
         </div>

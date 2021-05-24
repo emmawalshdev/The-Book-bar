@@ -435,7 +435,7 @@ def review_book(book_name):
                         flash(
                             "You previously reviewed this book." +
                             " Please edit or" +
-                            "remove the existing review.", "error")
+                            " remove the existing review.", "error")
                         return redirect(url_for(
                             "bookpage",
                             book_name=get_book.get("book_name")))
