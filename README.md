@@ -22,7 +22,9 @@ sales pitch
 ## Contents
 1. [UX](#ux "goto-ux")
     * [Overview](#overview "goto overview")
-    * [User Stories](#user-stories "goto user stories")
+      * [User Stories](#user-stories "goto user stories")
+      * [Visitor Stories](#visitor-stories)
+      * [Business Stories](#business-stories)
     * [Project Scope](#project-scope "goto project scope")
     * [Design](#design "goto design")
     * [Wireframes](#wireframes "goto wireframes")
@@ -59,32 +61,46 @@ Below are the results.
 
 ### User Stories
 
-#### External user’s goals:
-As an external user:
-* I want to be able to login or register for an account on the website, so that I can access my profile and add reviews.
+#### Visitor stories:
+**As an external user**:
 
-* I want to be able to upload a book (which does not already exist) to the website, so that I can then review it.
+1. I want to be able to search for a book by book title or author, so that I can find out more information. 
 
-* I want to be able to add a review for a book and give it a thumbs up or thumbs down, so that other users can quickly see what I thought about it.
+2. I want to be able to search the database by genre, so that I can find a suitable book.
 
-* I want to be able to edit and delete books and reviews I have added, in case I have made a mistake.
+3. I want to be able to sort the entire database, so that I can view all books.
 
-* I want to be able to search for a book by name of by author, so that I can view it's rating. 
+4. I want to be able to login or register for an account on the website, so that I can access my profile, upload books add reviews.
 
-* I want to be able to search the database by genre, so that I can find a suitable book.
+5. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
+
+6. I want to be able to upload a book to the website, so that I and others can then review it.
+
+7. I want to be able to make changes or delete a book that I have uploaded, in case an error has been made.
+
+8. I want to be able to review and rate any book on the website, so that other users can quickly see what I thought about it.
+
+9. I want to be able to edit and delete reviews that I have added, in case an error has been made.
+
+10. I want to know the average star rating for each books, as this will help me choose my next read.
 
 
-#### Site Owner Goals:
-As the website owner:
-* I want to be able to manage the book genres so that this does not become disorganised.
+#### Business stories:
+**As the website owner**:
 
-* I want to add an affiliate link to each book so that I can potentially make money off each book.
+1. I want to be able to add new book genres on the website, so that users can select these when uploading a book.
 
-* I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
+2. I want to be able to edit and delete book genres, in case an error has been made.
+
+3. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
+
+4. I want to add an 'Buy now' link to each book so that I can potentially make money off click through sales.
+
+5. I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
  
-* I only want registerd users to be able to add reviews and books, for monitoring reasons.
+6. I only want registered users (logged in) to be able to add reviews and books, for monitoring reasons.
 
-* I want to be able edit and delete all content created on the website, for monitoring reasons.
+7. I want to be able to edit and delete all content created on the website, for monitoring reasons.
 
 ### Project Scope
 Functional and content requirments were examined to define what was in and what was out of scope.
@@ -563,7 +579,7 @@ Homepage
 Bookpage
 * Rating stars [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
 
-* No ratings yet star git [Source] (https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json)
+* No ratings yet star git [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json)
 
 Profile page
 * User icon [Source](https://www.flaticon.com/free-icon/user_747545?term=user&related_id=747545)
@@ -572,7 +588,7 @@ Profile page
 
 * No books added yet image [Source](books section boy https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)
 
-* No reviews added yet image [Source] https://www.pexels.com/photo/selective-focus-photography-of-person-using-iphone-x-1542252/
+* No reviews added yet image [Source](https://www.pexels.com/photo/selective-focus-photography-of-person-using-iphone-x-1542252/
 
 
 ### Acknowledgments

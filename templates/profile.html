@@ -121,9 +121,9 @@
                                             </p>
                                             <!--read more button-->
                                             <div class="read-more-btn-wrapper">
-                                                <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}"
+                                                <a href="{{ url_for( 'edit_book', book_name=book.book_name, id=book._id) }}"
                                                     class="read-more-btn">
-                                                    read more
+                                                    Edit Book
                                                     <!--genre icon-->
                                                     <div class="right">
                                                         {% for genre in genres %}

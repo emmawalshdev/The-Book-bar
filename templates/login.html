@@ -11,6 +11,15 @@
     <div class="row">
         <form class="col s12 m8 offset-m2 l6 offset-l3" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel center">
+                <!--link to register page-->
+                <p class="mb3">
+                    Log in below & we'll take you straight to your profile.
+                <br>
+                    New to The Book bar? 
+                    <a href="{{ url_for('register') }}" class="pink-hover">
+                        Register here.
+                    </a>
+                </p>
                 <!--username row-->
                 <div class="row center">
                     <div class="input-field col s11">
@@ -35,17 +44,6 @@
                         <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
                             Login                    
                         </button>
-                    </div>
-                </div>
-                <!--link to register page-->
-                <div class="row">
-                    <div class="col s12">
-                        <p>
-                            New to The Book bar? 
-                            <a href="{{ url_for('register') }}" class="pink-hover">
-                                Register here.
-                            </a>
-                        </p>
                     </div>
                 </div>
              </div>
