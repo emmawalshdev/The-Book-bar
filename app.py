@@ -142,7 +142,7 @@ def register():
         # if user exists
         if existing_user:
             flash("This username is already in use." +
-                  "Please choose another.", "error")
+                  " Please choose another.", "error")
             return redirect(url_for("register"))
 
         # else
@@ -154,8 +154,7 @@ def register():
 
         # put user into session cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration successful. Please login to gain" +
-              "full access to The Book Bar site.", "success")
+        flash("Registration successful. Please login to continue.", "success")
         return render_template("login.html")
     return render_template("register.html")
 
@@ -185,12 +184,11 @@ def login():
                         _external=True, _scheme='https'))
             # if pw input != hashed password
             else:
-                flash("Password and/or Username is incorrect", "error")
+                flash("Password and/or username is incorrect", "error")
                 return redirect(url_for("login"))
         # if username does not exist in db
         else:
-            flash("Username and/or password is incorrect." +
-                  "Please try again.", "error")
+            flash("Username and/or password is incorrect.", "error")
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -225,14 +223,14 @@ def profile(username):
             if "books_added" in user:
                 books_added = user.get("books_added")
                 total_books = len(user['books_added'])
-                books_added = books_added[:4]
+                books_added = books_added[:5]
             else:
                 books_added = 0
                 total_books = 0
             if "reviews_added" in user:
                 reviews_added = user.get("reviews_added")
                 total_reviews = len(user['reviews_added'])
-                reviews_added = reviews_added[:2]
+                reviews_added = reviews_added[:5]
             else:
                 reviews_added = 0
                 total_reviews = 0
@@ -561,7 +559,6 @@ def delete_user_review(username, id):
         {"username": username, "reviews_added.review_id": id},
         {"$pull": {"reviews_added": {"review_id": id}}}
     )
-    flash("review deleted user", "success")
 
 
 # manage genres page

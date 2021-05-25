@@ -201,6 +201,7 @@ The following browsers were inlucded in desktop manual testing:
         - Click register link, confirm navigation to register page
         - Click Login link, confirm navigation to login page
         - Click Login link, confirm that session cookie is active
+        - Attempt to access the profile page, add a book page and manage genres page. Confirm redirect to access denied page.
 
     - When a user is logged in:
         - Click profile link, confirm navigation to profile page
@@ -291,60 +292,78 @@ The following browsers were inlucded in desktop manual testing:
         - Post a second review, confirm that a error message is displayed.
 
 **Edit book page**
-- The edit book page for each book is only accessible to logged in users. The user must be either the creater of the book or 'admin'.
-- Three pathways are possible on this page: 
-  - Save
-  - Cancel (go back)
-  - Delete
-- The 'Save' option updates the book document with the users' input in the form. All of the following fields can be edited and saved:
-  - Book Genre
-  - Book Title
-  - Author
-  - Image URL
-  - Blurb
-  - Buy Now URL
-- The cancel button redirects the user back to the bookpage.
-- The delete button removes the book document from the collection. on click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
+- Test access
+    - Attempt to access the edit book page url while logged out. Confirm redirect to access denied page.
 
-- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
+- Test pathways
+  - Input new data in all fields & click 'Save': 
+    - Confirm that success message appears
+    - Confirm redirect to bookpage
+    - Confirm that data on template is aligned with MongoDB data (updated data)
+
+  - Click 'Cancel'
+    - Confirm redirect to bookpage.
+
+  - Click 'Delete'
+    - Confirm that warning message appears
+    - Click 'No'
+        - Confirm that modal closes
+    - Click 'Yes
+        - Confirm that success message appears
+        - Confirm redirect to homepage
+        - Confirm that book document is removed from MongoDB collection.
+        - Confirm that 'Books Added' count on profile page updates
+        - Confirm that 'Your Recent Contributions' - 'Books added' book card dissapears
 
 **Edit review page**
-- The edit review page for each review is only accessible to logged in users. The user must be either the creater of the review or 'admin'. 
-- As the book information may be useful for review editing, this section has been included in the template.
-- Three pathways are possible on this page: 
-  - Save
-  - Cancel (go back)
-  - Delete
-- The 'Save' option updates the review array object within the book document with the users' input in the form. All of the following fields can be edited and saved:
-  - Title
-  - Summary
-  - Star rating
+- Test access
+    - Attempt to access the edit book page url while logged out. Confirm redirect to access denied page.
 
-- Upon saving, the average star rating value is also updated through a python function upon rending the bookpage template. 
+- Test pathways
+  - Input new data in all fields & click 'Save': 
+    - Confirm that success message appears
+    - Confirm redirect to bookpage
+    - Confirm that data on template is aligned with MongoDB data (updated data)
+    - Confirm that average star rating in book section updates
 
-- The cancel button redirects the user back to the bookpage
+  - Click 'Cancel'
+    - Confirm redirect to bookpage.
 
-- The delete button removes the review object from the book collection. On click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
+  - Click 'Delete'
+    - Confirm that warning message appears
 
-- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
+    - Click 'No'
+        - Confirm that modal closes
+
+    - Click 'Yes
+        - Confirm that success message appears
+        - Confirm redirect to bookpage
+        - Confirm that review object arrary is removed from MongoDB collection (book & user document).
+        - Confirm that 'Reviews Added' count on profile page updates
+        - Confirm that 'Your Recent Contributions' - 'Reviews added' review card dissapears
 
 **Login page**
-- A link to the registration page is displayed for easy access
+- Incorrect password
+    - Confirm error message 'Password and/or Username is incorrect.' appears
 
-- If the username exists in db, the password is checked.
-  - if the password inputted matches the hashed password, the user is directed to the profile page.
-  - If the password inputted does not match the hashed password, an error flash message is displayed and the usr is redirected to the login page
+- Incorrect username
+    - Confirm error message 'Password and/or Username is incorrect.' appears
 
-- if the username does not exist in db, an error flash message is displayed and the usr is redirected to the login page
+- incorrect username and password
+    - Confirm error message 'Password and/or Username is incorrect.' appears
+
+- Correct username and password
+    - Confirm redirect to profile page
 
 **Register page**
-- If the username does not exists in db:
+
+- if the username is in use
+  - Confirm error message 'This username is already in use. Please choose another.'
+
+- If the username is not in use
   - A unique hashed password is generated
   - The username and hashed password are inserted as a new document to the users collection
   - The user is redirected to the login page
-
-- if the username exist in db
-  - An error flash message is displayed and the user is redirected to the login page
 
 **Manage genres**
 - The Manage Genres page is only accessible to the user 'admin', who must be logged in

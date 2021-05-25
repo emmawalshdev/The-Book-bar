@@ -75,14 +75,13 @@
                     </div>
                 </div>
             </div>
-             <!--edit and delete buttons for admin or book creater-->
+             <!--edit button for admin or book creater-->
              {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
              <div class="col s12 mt2">
                  <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect btn edit-button">
                     Edit
                 </a>
-                 <a href = "{{ url_for('delete_book', book_name=get_book.book_name, id=get_book._id) }}"  class="waves-effect btn delete-button ">Delete</a>
-             </div>
+            </div>
              {% endif %}
         </div>
     </section>
