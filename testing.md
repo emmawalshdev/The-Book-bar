@@ -365,51 +365,92 @@ The following browsers were inlucded in desktop manual testing:
   - The username and hashed password are inserted as a new document to the users collection
   - The user is redirected to the login page
 
-**Manage genres**
-- The Manage Genres page is only accessible to the user 'admin', who must be logged in
-- Users have the option to 'Add' a genre or manage the existing genres. These are shown on cards
+**Manage genres page**
 
-1. Genre cards
-- The genre title & materialise icon is shown on each card, along with an 'Edit button'
+- Design confirmation
+    - Confirm that genre cards show both the title and materialise icon
+
+- Test access
+    - Attempt to access the edit book page url while logged out. Confirm redirect to access denied page.
+    - Confirm that navlink is not visable to non admin users
+    - Confirm that navlnk is visable for 'admin' user
+
+- Test pathways
+    - Cllick on 'Add' button, confirm redirect to add genre page
+    - Click on 'Edit' button on genre card, confirm redirect to specific edit genre page
+
+**Add genre page** 
+- Design confirmation
+    - Confirm that two fields are present (genre name and materialise icon)
+
+- Test pathways
+    - Add data and click 'Save'
+        - Confirm success flash image appears
+        - Confirm redirect to manage genres page
+        - confirm that newly added genre is present as a genre card, showing both the title and name
+
+    - Click 'Cancel'
+        - Confirm redirect to manage genres page
+
+
+**Edit genre page**
+- Design confirmation
+    - Confirm that two fields are present and pre-populated(genre name and materialise icon)
+
+- Test pathways
+    - Edit data and click 'Save'
+        - Confirm success flash image appears
+        - Confirm redirect to manage genre page
+        - confirm that data on genre card is updated and is aligned with MongoDB
+        
+    - Click 'Cancel'
+        - Confirm redirect to manage genres page
+    
+    - Click 'Delete'
+        - Click 'Yes'
+            - Confirm that success flash message appears
+            - Confirm redirect to manage genres page
+            - confirm that genre card has been removed and is aligned with MongoDB
 
 **Profile page**
-- The profile book page is only accessible to that particular logged in user. Python checks the authentifivation of the user by running if 
-''' if username == session["user"]:''''
-- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted
+- Test access
+    - Attempt to access a users profile by url while logged out. Confirm redirect to access denied page.
+    - Attempt to access a different users profile by url while logged in. Confirm redirect to access denied page.
 
-1. Welcome section
-- The user is adressed by their usrname and is notified of how many days they have been a member of the bookbar
+- Design confirmation
+    - Welcome section
+        - Confirm that correct username is displayed in welcome message
+        - confirm that duration of member in days is correct
+    
+    - Profile card
+        - Confirm that books count number is correct
+        - Confirm that reviews count number is correct
+        - Hover over 'Search Books' link, confirm hover effect is applied. 
+        - Click on 'Search Books' link, Confirm redirect to homepage.
 
-2. Profile card
-- A summary of the users activity is displayed. Two statistics are included:
-  - **Books added:** An aggregation operation calcualted the count of books created by the user 
-  - **Review:** An aggregation operation calcualted the count of reviews created by the user 
-- A quick link to the homepage is provided
+    - Books added section
+        - If 'books added' count is zero
+            - Confirm that placeholder image and text are present
+            - Hover over the card link, confirm that hover effects are applied 
 
-3. Books added
-If a user has added books:
-- The 4 most recent books added by the user are shown
-- This view automatically updates once the user adds a new book
+        - If 'books added' count is greater than zero
+            - Confirm that the most recent 4 books are displayed
 
-If a user has not added any books:
-- A card is dispalyed which notifies the user that the 4 most recent book uploads will appear in this section
-- A quick link to the book upload page is added
+    - Reviews added section
+        - If 'Reviews added' count is zero
+            - Confirm that placeholder image and text are present
+            - Hover over the card link, confirm that hover effects are applied            
 
-4. Reviews added
-If a user has added reviews:
-- The 4 most recent reviews added by the user are shown
-- This view automatically updates once the user adds a new review
-
-If a user has not added any reviews:
-- A card is dispalyed which notifies the user that the 4 most recent reviews will appear in this section
-- A quick link to the homepage is added
+        - If 'Reviews added' count is greater than zero
+            - Confirm that the most recent 4 reviews are displayed
 
 **404 page**
-- The 404 page is returned when a requested page cannot be found. This template incorporates the Book bar website styling and includes a link to the homepage.
+Test pathway using a false URL (eg https://the-book-bar.herokuapp.com/get_genres/crime)
+    - Confirm redirect to 404 page
 
 **Access denied page**
-- The access denied webspage is returned if a user requests a webpage which they do not permission to view. This template incorporates the Book bar website styling and includes a link to the homepage.
-
+Test pathway using a false URL (eg https://the-book-bar.herokuapp.com/get_genres/crime)
+    - Confirm redirect to 404 page
 
 #### Mobile and Tablet testing
 

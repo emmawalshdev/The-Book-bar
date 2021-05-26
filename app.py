@@ -568,8 +568,13 @@ def get_genres():
     Returns a list of gneres sorted alphabetically
     on genres.html.
     """
-    genres = list(mongo.db.genres.find().sort("genre_name", 1))
-    return render_template("genres.html", genres=genres)
+    loggedIn = True if 'user' in session else False
+
+    if not loggedIn:
+        return redirect(url_for("access_denied"))
+    else:
+        genres = list(mongo.db.genres.find().sort("genre_name", 1))
+        return render_template("genres.html", genres=genres)
 
 
 # add a genre page
