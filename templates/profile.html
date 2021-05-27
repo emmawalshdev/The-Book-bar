@@ -3,232 +3,232 @@
     User Profile
 {% endblock %}
 {% block content %}
-    
-    <!--page title-->
-    <section class="row conatiner">
-        <div class="col s12 center">
-            <div>
-                <h1>
-                    Welcome, {{ user.username }}.
-                </h1>
-                <p>Joined {{ user_duration }} ago</p>
-            </div>
-        </div>
-    </section>
-
-    <!--3 col card-->
-    <section class="row container">
-        <div class="col s12 card mt2">
-            <!--card row-->
-            <div class="row card-content">
-                <!--activity col-->
-                <div class="col s12 m4 center">
-                    <p class="blue-title-p">
-                        Your Activity
-                    </p>
-                    <p>
-                        Books Added: {{ bookcount }}<br>
-                        Reviews Added: {{ reviewcount }}<br>
-                    </p>
-                </div>
-                <!--user image-->
-                <div class="col s12 m4 center">
-                    <img src="../static/images/user.png" alt="stacked books" height="150">
-                </div>
-                <!--link to search books page-->
-                <div class="col s12 m4 center">
-                    <p class="blue-title-p">
-                        <a href="{{ url_for('books_new') }}" class="pink-hover">Search Books</a>
-                    </p>
-                    <a href="{{ url_for('books_new') }}">
-                        <img src="../static/images/stackedbooks.png" alt="stacked books" height="80">
-                    </a>
+    <main>
+        <!--page title-->
+        <section class="row conatiner">
+            <div class="col s12 center">
+                <div>
+                    <h1>
+                        Welcome, {{ user.username }}.
+                    </h1>
+                    <p>Joined {{ user_duration }} ago</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--recent contributions section-->
-    <section class="row container contributions-container">
-        <div class="col s12">
-            <!--contributions title-->
-            <div class="row">
-                <div class="col s12 center">
-                    <h2>
-                        Your Recent Contributions
-                    </h2>
-                </div>
-            </div>
-
-            <!--recent books added row-->
-            <div class="row">
-                <div class="col s12">
-                    <!--section title-->
-                    <div class="row">
-                        <div class="col s12">
-                            {% if bookcount > 0 %}
-                            <h3>Books added:</h3>
-                            {% else %}
-                            <div class="row card-panel">
-                                <div class="col s12 l6 center">
-                                    <h3 class="bold">No books added yet!</h3>
-                                    <p> Once you have uploaded a book, you'll find it here.
-                                        We'll update this section to show your 4 most recent uploads.
-                                        <br>
-                                        <a href="{{ url_for('add_book') }}" class="pink-hover">Upload a book now</a>
-                                    </p>
-                                </div>
-                                <div class="col s12 l6 center">
-                                    <img src="https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-                                        alt="a child reading a book" width="340">
-                                </div>
-                            </div>
-                            {% endif %}
-                        </div>
+        <!--3 col card-->
+        <section class="row container">
+            <div class="col s12 card mt2">
+                <!--card row-->
+                <div class="row card-content">
+                    <!--activity col-->
+                    <div class="col s12 m4 center">
+                        <p class="blue-title-p">
+                            Your Activity
+                        </p>
+                        <p>
+                            Books Added: {{ bookcount }}<br>
+                            Reviews Added: {{ reviewcount }}<br>
+                        </p>
                     </div>
-                    <!--book cards row-->
-                    {% if bookcount > 0 %}
-                    <div class="row">
-                        <!--book cards-->
-                        {% for book_added in books_added %}
-                        {% for book in books %}
-                        {% if book_added.book_id == book._id %}
-                        <!--if exists show max 4 books-->
-                        <div class="col s6 m6 xl3 ">
-                            <div class="book-card">
-                                <div class="card medium black">
-                                    <div class="card-image">
-                                        <img class="activator" src="{{ book.image_url }}" width="400px">
-                                    </div>
-                                    <div class="card-content book-card-content black">
-                                        <div class="white-text">
-                                            <!-- average rating-->
-                                            <div class="book-rating">
-                                                {% for avgrating in avgratings %}
-                                                {% if avgrating._id == book._id %}
-                                                <i class="material-icons star-icon-gold">star</i>&nbsp;
-                                                {{ avgrating.averageRating }}
-                                                {% endif %}
-                                                {% endfor %}
-                                            </div>
-                                            <!--book title-->
-                                            <p class="elipsed">
-                                                {{ book.book_name }}
-                                            </p>
-                                            <!--book author-->
-                                            <p class="elipsed">
-                                                - {{ book.author }}
-                                            </p>
-                                            <!--read more button-->
-                                            <div class="read-more-btn-wrapper">
-                                                <a href="{{ url_for( 'edit_book', book_name=book.book_name, id=book._id) }}"
-                                                    class="read-more-btn">
-                                                    Edit Book
-                                                    <!--genre icon-->
-                                                    <div class="right">
-                                                        {% for genre in genres %}
-                                                        {% if genre.genre_name == book.genre_name %}
-                                                        <p class="material-icons">
-                                                            {{ genre.genre_icon}}
-                                                        </p>
-                                                        {% endif %}
-                                                        {% endfor %}
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        {% endfor %}
+                    <!--user image-->
+                    <div class="col s12 m4 center">
+                        <img src="../static/images/user.png" alt="stacked books" height="150">
                     </div>
-                    {% endif %}
+                    <!--link to search books page-->
+                    <div class="col s12 m4 center">
+                        <p class="blue-title-p">
+                            <a href="{{ url_for('books_new') }}" class="pink-hover">Search Books</a>
+                        </p>
+                        <a href="{{ url_for('books_new') }}">
+                            <img src="../static/images/stackedbooks.png" alt="stacked books" height="80">
+                        </a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!--recent reviews added row-->
-            <div class="row">
-                <div class="col s12">
-                    <!--review section title-->
-                    <div class="row">
-                        <div class="col s12">
-                            {% if reviewcount > 0 %}
-                                <h3>Reviews added:</h3>
-                            {% else %}
+        <!--recent contributions section-->
+        <section class="row container contributions-container">
+            <div class="col s12">
+                <!--contributions title-->
+                <div class="row">
+                    <div class="col s12 center">
+                        <h2>
+                            Your Recent Contributions
+                        </h2>
+                    </div>
+                </div>
+
+                <!--recent books added row-->
+                <div class="row">
+                    <div class="col s12">
+                        <!--section title-->
+                        <div class="row">
+                            <div class="col s12">
+                                {% if bookcount > 0 %}
+                                <h3>Books added:</h3>
+                                {% else %}
                                 <div class="row card-panel">
                                     <div class="col s12 l6 center">
-                                        <img src="https://images.pexels.com/photos/1542252/pexels-photo-1542252.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="leaving a review on a phone" width="340">
-                                    </div>
-                                    <div class="col s12 l6 center">
-                                        <h3 class="bold">No reviews added yet!</h3>
-                                        <p>
-                                            Once you have reviewed a book, you'll find it here. 
+                                        <h3 class="bold">No books added yet!</h3>
+                                        <p> Once you have uploaded a book, you'll find it here.
                                             We'll update this section to show your 4 most recent uploads.
                                             <br>
-                                            <a href="{{ url_for('books_new') }}" class="pink-hover">Review a book now</a>
+                                            <a href="{{ url_for('add_book') }}" class="pink-hover">Upload a book now</a>
                                         </p>
                                     </div>
+                                    <div class="col s12 l6 center">
+                                        <img src="https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+                                            alt="a child reading a book" width="340">
+                                    </div>
                                 </div>
-                            {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
-                    <!--recent reviews-->
-                    {% if reviewcount > 0 %}
-                    <div class="row">
-                        {% for review_added in reviews_added %}
+                        <!--book cards row-->
+                        {% if bookcount > 0 %}
+                        <div class="row">
+                            <!--book cards-->
+                            {% for book_added in books_added %}
                             {% for book in books %}
-                                {% if book.review %}
-                                    {% for eachreview in book.review %}
-                                        {% if review_added.review_id == eachreview.review_id %}
-                                        <!--show books added by user-->
-                                        <div class="col s12 l6">
-                                            <div class="card medium black">
-                                                <div class="card-content white-text custom-text">
-                                                    <!--book title-->
-                                                    <p>
-                                                        {{book.book_name}}
-                                                    </p>
-                                                    <!--date-->
-                                                    <p>
-                                                        Reviewed by {{ eachreview.username }}<br>- {{ eachreview.date}}
-                                                    </p>
-                                                    <!--star rating-->
-                                                    <p>
-                                                        <i class="material-icons star-icon-gold small">star</i>&nbsp;
-                                                        {{ eachreview.rating }}/5
-                                                    </p>
-                                                    <!--review title-->
-                                                    <p class="elipsed">
-                                                        {{eachreview.title}}
-                                                    </p>
-                                                    <!--review description-->
-                                                    <div>
-                                                        <p class ="trimmed">
-                                                            {{eachreview.description}}
-                                                        </p>
-                                                    </div>
-                                                    <!--read more button-->
-                                                    <div>
-                                                        <a href="{{ url_for('edit_review', book_name=book.book_name, book_id=book._id, username=eachreview.username, id=eachreview.review_id) }}" class="read-more-btn">
-                                                            Edit
-                                                        </a>
-                                                    </div>
+                            {% if book_added.book_id == book._id %}
+                            <!--if exists show max 4 books-->
+                            <div class="col s6 m6 xl3 ">
+                                <div class="book-card">
+                                    <div class="card medium black">
+                                        <div class="card-image">
+                                            <img class="activator" src="{{ book.image_url }}" width="400px">
+                                        </div>
+                                        <div class="card-content book-card-content black">
+                                            <div class="white-text">
+                                                <!-- average rating-->
+                                                <div class="book-rating">
+                                                    {% for avgrating in avgratings %}
+                                                    {% if avgrating._id == book._id %}
+                                                    <i class="material-icons star-icon-gold">star</i>&nbsp;
+                                                    {{ avgrating.averageRating }}
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                                <!--book title-->
+                                                <p class="elipsed">
+                                                    {{ book.book_name }}
+                                                </p>
+                                                <!--book author-->
+                                                <p class="elipsed">
+                                                    - {{ book.author }}
+                                                </p>
+                                                <!--read more button-->
+                                                <div class="read-more-btn-wrapper">
+                                                    <a href="{{ url_for( 'edit_book', book_name=book.book_name, id=book._id) }}"
+                                                        class="read-more-btn">
+                                                        Edit Book
+                                                        <!--genre icon-->
+                                                        <div class="right">
+                                                            {% for genre in genres %}
+                                                            {% if genre.genre_name == book.genre_name %}
+                                                            <p class="material-icons">
+                                                                {{ genre.genre_icon}}
+                                                            </p>
+                                                            {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
                             {% endfor %}
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
+                </div>
+
+                <!--recent reviews added row-->
+                <div class="row">
+                    <div class="col s12">
+                        <!--review section title-->
+                        <div class="row">
+                            <div class="col s12">
+                                {% if reviewcount > 0 %}
+                                    <h3>Reviews added:</h3>
+                                {% else %}
+                                    <div class="row card-panel">
+                                        <div class="col s12 l6 center">
+                                            <img src="https://images.pexels.com/photos/1542252/pexels-photo-1542252.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="leaving a review on a phone" width="340">
+                                        </div>
+                                        <div class="col s12 l6 center">
+                                            <h3 class="bold">No reviews added yet!</h3>
+                                            <p>
+                                                Once you have reviewed a book, you'll find it here. 
+                                                We'll update this section to show your 4 most recent uploads.
+                                                <br>
+                                                <a href="{{ url_for('books_new') }}" class="pink-hover">Review a book now</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!--recent reviews-->
+                        {% if reviewcount > 0 %}
+                        <div class="row">
+                            {% for review_added in reviews_added %}
+                                {% for book in books %}
+                                    {% if book.review %}
+                                        {% for eachreview in book.review %}
+                                            {% if review_added.review_id == eachreview.review_id %}
+                                            <!--show books added by user-->
+                                            <div class="col s12 l6">
+                                                <div class="card medium black">
+                                                    <div class="card-content white-text custom-text">
+                                                        <!--book title-->
+                                                        <p>
+                                                            {{book.book_name}}
+                                                        </p>
+                                                        <!--date-->
+                                                        <p>
+                                                            Reviewed by {{ eachreview.username }}<br>- {{ eachreview.date}}
+                                                        </p>
+                                                        <!--star rating-->
+                                                        <p>
+                                                            <i class="material-icons star-icon-gold small">star</i>&nbsp;
+                                                            {{ eachreview.rating }}/5
+                                                        </p>
+                                                        <!--review title-->
+                                                        <p class="elipsed">
+                                                            {{eachreview.title}}
+                                                        </p>
+                                                        <!--review description-->
+                                                        <div>
+                                                            <p class ="trimmed">
+                                                                {{eachreview.description}}
+                                                            </p>
+                                                        </div>
+                                                        <!--read more button-->
+                                                        <div>
+                                                            <a href="{{ url_for('edit_review', book_name=book.book_name, book_id=book._id, username=eachreview.username, id=eachreview.review_id) }}" class="read-more-btn">
+                                                                Edit
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    {{ test}}
+        </section>
+    </main>
 {% endblock %}

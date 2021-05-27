@@ -3,172 +3,173 @@
     Edit Review
 {% endblock %}
 {% block content %}
-    <!-- book section-->
-    <section class="row pt2 container">
-        <!-- book image-->
-        <div class="col s12 m4">
-            <div class="grid card transparent shadow-box-none">
-                <img src="{{get_book.image_url }}" alt="book cover image" class="bookpage-cover-image">
-            </div>
-        </div>
-        <!--book description and info-->
-        <div class="col s12 m8">
-            <div class="card row">
-                <div class="card-content">
-                    <div class="col s12">
-                        <div class="flexbox-container-row">
-                            <!--book name-->
-                            <div class="bold">
-                                <h1 class="inner-page-h1">
-                                    {{ get_book.book_name }}
-                                </h1>
-                            </div>
-                            <!--avg rating-->
-                            <div class="flex-item-center">
-                                {% if review.averageRating %}
-                                    <i class="material-icons star-icon-gold">star</i>&nbsp;
-                                        <h5>{{ review.averageRating }}</h5>
-                                {% else %}
-                                    <i class="material-icons star-icon-black tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <!--buy now url-->
-                    {% if (get_book.buy_url != "") %}
-                        <div class="col s12 mt2">
-                            <p class="bold">
-                                <a href="{{get_book.buy_url}}" class="pink-hover">
-                                    Buy Now
-                                </a>                       
-                            </p>
-                        </div>
-                    {% endif %}
-                    <!--author-->
-                    <div class="col s12 mt2">
-                        <p>
-                            <span class= "bold">
-                                Author:
-                            </span>                                  
-                            {{ get_book.author }}
-                        </p>
-                    </div>
-                    <!--genre name-->
-                    <div class="col s12">
-                        <p>
-                            <span class="bold">
-                            Genre:                                   
-                            </span>
-                            {{ get_book.genre_name }}
-                        </p>
-                    </div>
-                    <!--book description-->
-                    <div class="col s12 pb1">
-                        <p>
-                            <br>
-                            <span class="center bold">
-                                Description:
-                            </span>
-                            <br>
-                            {{ get_book.description }}
-                        </p>
-                    </div>
+    <main>
+        <!-- book section-->
+        <section class="row pt2 container">
+            <!-- book image-->
+            <div class="col s12 m4">
+                <div class="grid card transparent shadow-box-none">
+                    <img src="{{get_book.image_url }}" alt="book cover image" class="bookpage-cover-image">
                 </div>
             </div>
-             <!--edit button for admin or book creater-->
-             {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
-             <div class="col s12 mt2">
-                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect btn edit-button">
-                    Edit
-                </a>
-            </div>
-             {% endif %}
-        </div>
-    </section>
-
-    <!-- edit your review section -->
-    <div class="row container">
-        <div class="col s12 center">
-            <h2>
-                Edit Your Review
-            </h2>
-        </div>
-    </div>
-    <div class="row container">
-        <div class="col s12">
-            <div class="card">
-                <div class="card-content">
-                    <form method="POST">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="review_title" name="review_title" type="text" class="validate" min-length="2"
-                                    max-length="25" value="{{ review.title }}">
-                                <label for="review_title">Title</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review" id="review"
-                                    rows="6">{{ review.description }}</textarea>
-                                <label for="review">Summary</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m4 offset-m4 rating-wrapper">
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" required {% if review.rating==5 %}
-                                        checked{% endif %} />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" {% if review.rating==4 %} checked{% endif
-                                        %} />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" {% if review.rating==3 %} checked{% endif
-                                        %} />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" {% if review.rating==2 %} checked{% endif
-                                        %} />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" {% if review.rating==1 %} checked{% endif
-                                        %} />
-                                    <label for="star1" title="text"></label>
+            <!--book description and info-->
+            <div class="col s12 m8">
+                <div class="card row">
+                    <div class="card-content">
+                        <div class="col s12">
+                            <div class="flexbox-container-row">
+                                <!--book name-->
+                                <div class="bold">
+                                    <h1 class="inner-page-h1">
+                                        {{ get_book.book_name }}
+                                    </h1>
+                                </div>
+                                <!--avg rating-->
+                                <div class="flex-item-center">
+                                    {% if review.averageRating %}
+                                        <i class="material-icons star-icon-gold">star</i>&nbsp;
+                                            <h5>{{ review.averageRating }}</h5>
+                                    {% else %}
+                                        <i class="material-icons star-icon-black tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col s12 center">
-                                <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
-                                    Submit
-                                </button>
-                                <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}"
-                                    class="waves-effect btn delete-button">
-                                    Cancel
-                                </a>
-                                <button class="btn delete-button modal-trigger" href="#modal-{{ review.review_id }}">
-                                    Delete
-                                </button>
+                        <!--buy now url-->
+                        {% if (get_book.buy_url != "") %}
+                            <div class="col s12 mt2">
+                                <p class="bold">
+                                    <a href="{{get_book.buy_url}}" class="pink-hover">
+                                        Buy Now
+                                    </a>                       
+                                </p>
                             </div>
+                        {% endif %}
+                        <!--author-->
+                        <div class="col s12 mt2">
+                            <p>
+                                <span class= "bold">
+                                    Author:
+                                </span>                                  
+                                {{ get_book.author }}
+                            </p>
                         </div>
-                    </form>
+                        <!--genre name-->
+                        <div class="col s12">
+                            <p>
+                                <span class="bold">
+                                Genre:                                   
+                                </span>
+                                {{ get_book.genre_name }}
+                            </p>
+                        </div>
+                        <!--book description-->
+                        <div class="col s12 pb1">
+                            <p>
+                                <br>
+                                <span class="center bold">
+                                    Description:
+                                </span>
+                                <br>
+                                {{ get_book.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--edit button for admin or book creater-->
+                {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
+                <div class="col s12 mt2">
+                    <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect btn edit-button">
+                        Edit
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- edit your review section -->
+        <div class="row container">
+            <div class="col s12 center">
+                <h2>
+                    Edit Your Review
+                </h2>
+            </div>
+        </div>
+        <div class="row container">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <form method="POST">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="review_title" name="review_title" type="text" class="validate" min-length="2"
+                                        max-length="25" value="{{ review.title }}">
+                                    <label for="review_title">Title</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review" id="review"
+                                        rows="6">{{ review.description }}</textarea>
+                                    <label for="review">Summary</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m4 offset-m4 rating-wrapper">
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate" value="5" required {% if review.rating==5 %}
+                                            checked{% endif %} />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rate" value="4" {% if review.rating==4 %} checked{% endif
+                                            %} />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rate" value="3" {% if review.rating==3 %} checked{% endif
+                                            %} />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rate" value="2" {% if review.rating==2 %} checked{% endif
+                                            %} />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rate" value="1" {% if review.rating==1 %} checked{% endif
+                                            %} />
+                                        <label for="star1" title="text"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 center">
+                                    <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
+                                        Submit
+                                    </button>
+                                    <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}"
+                                        class="waves-effect btn delete-button">
+                                        Cancel
+                                    </a>
+                                    <button class="btn delete-button modal-trigger" href="#modal-{{ review.review_id }}">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-        <!--confirm deletion modal -->
-    <div id="modal-{{ review.review_id }}" class="modal modalconfirm">
-        <div class="modal-content center">
-            <p class="flash-title warning-flash">
-                Confirm Deletion
-            </p>
-            <p>Once a review is deleted, it's gone for good.
-                <br> Are you sure?
-            </p>
+            <!--confirm deletion modal -->
+        <div id="modal-{{ review.review_id }}" class="modal modalconfirm">
+            <div class="modal-content center">
+                <p class="flash-title warning-flash">
+                    Confirm Deletion
+                </p>
+                <p>Once a review is deleted, it's gone for good.
+                    <br> Are you sure?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn add-button">No</a>
+                <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=review.username, id=review.review_id) }}" class="modal-close btn delete-button">Yes</a>
+            </div>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect btn add-button">No</a>
-            <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=review.username, id=review.review_id) }}" class="modal-close btn delete-button">Yes</a>
-        </div>
-    </div>
-        
+    </main>     
 
 {% endblock %}

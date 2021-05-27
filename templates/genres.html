@@ -3,62 +3,62 @@
     Manage Genres
 {% endblock %}
 {% block content %}
-
-    <!--page title-->
-    <section class="row container">
-        <div class="col s12 center">
-            <h1 > Manage Genres</h1>
-        </div>
-    </section>
-  
-    <!--description section-->
-    <section>
-        <!--genre description section-->
-        <div class="row container">
-            <div class = "col s12">
-                <p>
-                    All genres currently stored in the database are listed below. From here, you can easily edit or delete each item in the collection. 
-                </p>
+    <main>
+        <!--page title-->
+        <section class="row container">
+            <div class="col s12 center">
+                <h1 > Manage Genres</h1>
             </div>
-        </div>
-        <!--add genre button-->
-        <div class="row container">
-            <div class="col s12 m9 l10">
-                <p>
-                    To add a new genre instead, please click on the following button:
-                </p>
-            </div>
-            <div class="col s12 m3 l2">
-                <a href="{{ url_for('add_genre') }}" class="waves-effect btn add-button right">
-                    Add Genre
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!--genre cards-->
-    <section class="row container">
-        <!--genre card for each result-->
-        {% for genre in genres %}
-            <div class="col s6 m4 xl3 prl4">
-                <div class= "card small height-200 black center">
-                    <!--card content-->
-                    <div class="card-content black white-text">
-                        <!--genre-name-->
-                        <p class="card-genre-title">{{ genre.genre_name}}</p>
-                        <!--genre icon-->
-                        <p class="material-icons">
-                            {{ genre.genre_icon}}
-                        </p>
-                    </div>
-                    <!-- edit & delete buttons-->
-                    <div class="card-action">
-                        <a class="waves-effect btn edit-button" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
-                    </div>                                
-                </div>
-            </div>
-        {% endfor %}
         </section>
     
+        <!--description section-->
+        <section>
+            <!--genre description section-->
+            <div class="row container">
+                <div class = "col s12">
+                    <p>
+                        All genres currently stored in the database are listed below. From here, you can easily edit or delete each item in the collection. 
+                    </p>
+                </div>
+            </div>
+            <!--add genre button-->
+            <div class="row container">
+                <div class="col s12 m9 l10">
+                    <p>
+                        To add a new genre instead, please click on the following button:
+                    </p>
+                </div>
+                <div class="col s12 m3 l2">
+                    <a href="{{ url_for('add_genre') }}" class="waves-effect btn add-button right">
+                        Add Genre
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--genre cards-->
+        <section class="row container">
+            <!--genre card for each result-->
+            {% for genre in genres %}
+                <div class="col s6 m4 xl3 prl4">
+                    <div class= "card small height-200 black center">
+                        <!--card content-->
+                        <div class="card-content black white-text">
+                            <!--genre-name-->
+                            <p class="card-genre-title">{{ genre.genre_name}}</p>
+                            <!--genre icon-->
+                            <p class="material-icons">
+                                {{ genre.genre_icon}}
+                            </p>
+                        </div>
+                        <!-- edit & delete buttons-->
+                        <div class="card-action">
+                            <a class="waves-effect btn edit-button" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
+                        </div>                                
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
 
 {% endblock %}

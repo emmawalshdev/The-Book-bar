@@ -3,59 +3,59 @@
     Add Genre
 {% endblock %}
 {% block content %}
-
-    <!--page title-->
-    <section class="row container">
-        <div class="col s12 center">
-            <h1>Add Genre</h1>
-        </div>
-    </section>
-
-    <!--add genre card-->
-    <section class="row container">
-        <form class="col s12 card" method="POST" action="{{ url_for('add_genre') }}">
-            <div class="card-content center">
-                <!--card description-->
-                <div class="row">
-                    <div class="col s12">
-                        <p class="mb3">
-                            Once a genre has been successfully added, users will have the option to select it upon book upload.
-                        </p>
-                    </div>
-                </div>
-                <!--genre name-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="genre_name" name="genre_name" type="text" class="validate" min-length="2" max-length="50" placeholder="International" required>
-                        <label for="genre_name">Genre Name</label>
-                    </div>
-                </div>
-                <!--genre icon-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="genre_icon" name="genre_icon" type="text" class="validate" min-length="2" max-length="20" placeholder="translate" required>
-                        <label for="genre_icon">Icon Name</label>
-                        <p class="small-font">* Please note: only 
-                            <a href="https://fonts.google.com/icons" class="pink-hover">
-                                 Google icon
-                            </a> 
-                            names can be used. 
-                        </p>
-                    </div>
-                </div>
-                <!--submit button-->
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
-                            Save
-                        </button>
-                        <a href="{{ url_for('get_genres') }}" class="waves-effect btn delete-button">
-                            Cancel
-                        </a>
-                    </div>
-                </div>
+    <main>
+        <!--page title-->
+        <section class="row container">
+            <div class="col s12 center">
+                <h1>Add Genre</h1>
             </div>
-        </form>
-    </section>
+        </section>
 
+        <!--add genre card-->
+        <section class="row container">
+            <form class="col s12 card" method="POST" action="{{ url_for('add_genre') }}">
+                <div class="card-content center">
+                    <!--card description-->
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="mb3">
+                                Once a genre has been successfully added, users will have the option to select it upon book upload.
+                            </p>
+                        </div>
+                    </div>
+                    <!--genre name-->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="genre_name" name="genre_name" type="text" class="validate" min-length="2" max-length="50" placeholder="International" required>
+                            <label for="genre_name">Genre Name</label>
+                        </div>
+                    </div>
+                    <!--genre icon-->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="genre_icon" name="genre_icon" type="text" class="validate" min-length="2" max-length="20" placeholder="translate" required>
+                            <label for="genre_icon">Icon Name</label>
+                            <p class="small-font">* Please note: only 
+                                <a href="https://fonts.google.com/icons" class="pink-hover">
+                                    Google icon
+                                </a> 
+                                names can be used. 
+                            </p>
+                        </div>
+                    </div>
+                    <!--submit button-->
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
+                                Save
+                            </button>
+                            <a href="{{ url_for('get_genres') }}" class="waves-effect btn delete-button">
+                                Cancel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
 {% endblock %}

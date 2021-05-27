@@ -453,6 +453,18 @@ Test pathway using a false URL (eg https://the-book-bar.herokuapp.com/get_genres
     - Confirm redirect to 404 page
 
 #### Mobile and Tablet testing
+In order to test repsonsiveness on mobile and tablet devices, further manual testing was carried out. The following steps were carried out as part of this step.
+
+**Elements on all pages**
+
+1. Navbar (max width approx. 950px)
+    - Confirm that menu collapses into a burger icon
+    - Click burger icon, confirm that menu slides in from right
+
+2. Footer
+    - Confirm that copyright and social media links sections stack on small sized devices
+
+
 
 ### Browser Compatibility
 [LamdaTest](https://www.lambdatest.com/) was used to test the website on the following browsers:

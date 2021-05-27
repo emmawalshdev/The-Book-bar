@@ -3,223 +3,223 @@
     Bookpage
 {% endblock %}
 {% block content %}
-
-    <!-- book section-->
-    <section class="row pt2 container">
-        <!-- book image-->
-        <div class="col s12 m4">
-            <div class="grid card transparent shadow-box-none">
-                <img src="{{get_book.image_url }}" alt="book cover image" class="bookpage-cover-image">
+    <main>
+        <!-- book section-->
+        <section class="row pt2 container">
+            <!-- book image-->
+            <div class="col s12 m4">
+                <div class="grid card transparent shadow-box-none">
+                    <img src="{{get_book.image_url }}" alt="book cover image" class="bookpage-cover-image">
+                </div>
             </div>
-        </div>
-        <!--book description and info-->
-        <div class="col s12 m8">
-            <div class="card row">
-                <div class="card-content">
-                    <div class="col s12">
-                        <div class="flexbox-container-row">
-                            <!--book name-->
-                            <div>
-                                <h1 class="inner-page-h1">
-                                    {{ get_book.book_name }}
-                                </h1>
-                            </div>
-                            <!--avg rating-->
-                            <div class="flex-item-center">
-                                {% if review.averageRating %}
-                                    <i class="material-icons star-icon-gold">star</i>&nbsp;
-                                        <h5>{{ review.averageRating }}</h5>
-                                {% else %}
-                                    <i class="material-icons star-icon-black tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
-                                {% endif %}
+            <!--book description and info-->
+            <div class="col s12 m8">
+                <div class="card row">
+                    <div class="card-content">
+                        <div class="col s12">
+                            <div class="flexbox-container-row">
+                                <!--book name-->
+                                <div>
+                                    <h1 class="inner-page-h1">
+                                        {{ get_book.book_name }}
+                                    </h1>
+                                </div>
+                                <!--avg rating-->
+                                <div class="flex-item-center">
+                                    {% if review.averageRating %}
+                                        <i class="material-icons star-icon-gold">star</i>&nbsp;
+                                            <h5>{{ review.averageRating }}</h5>
+                                    {% else %}
+                                        <i class="material-icons star-icon-black tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--buy now url-->
-                    {% if (get_book.buy_url != "") %}
+                        <!--buy now url-->
+                        {% if (get_book.buy_url != "") %}
+                            <div class="col s12 mt2">
+                                <p class="bold">
+                                    <a href="{{get_book.buy_url}}" class="pink-hover">
+                                        Buy Now
+                                    </a>                                  
+                                </p>
+                            </div>
+                        {% endif %}
+                        <!--author-->
                         <div class="col s12 mt2">
-                            <p class="bold">
-                                <a href="{{get_book.buy_url}}" class="pink-hover">
-                                    Buy Now
-                                </a>                                  
+                            <p>
+                                <span class="bold">
+                                    Author: 
+                                </span>                                  
+                                {{ get_book.author }}
                             </p>
                         </div>
-                    {% endif %}
-                    <!--author-->
-                    <div class="col s12 mt2">
-                        <p>
-                            <span class="bold">
-                                Author: 
-                            </span>                                  
-                            {{ get_book.author }}
-                        </p>
-                    </div>
-                    <!--genre name-->
-                    <div class="col s12">
-                        <p>
-                            <span class="bold">
-                            Genre:                                   
-                            </span>
-                            {{ get_book.genre_name }}
-                        </p>
-                    </div>
-                    <!--book description-->
-                    <div class="col s12 pb1">
-                        <p>
-                            <br>
-                            <span class="center bold">
-                                Description:
-                            </span>
-                            <br>
-                            {{ get_book.description }}
-                        </p>
+                        <!--genre name-->
+                        <div class="col s12">
+                            <p>
+                                <span class="bold">
+                                Genre:                                   
+                                </span>
+                                {{ get_book.genre_name }}
+                            </p>
+                        </div>
+                        <!--book description-->
+                        <div class="col s12 pb1">
+                            <p>
+                                <br>
+                                <span class="center bold">
+                                    Description:
+                                </span>
+                                <br>
+                                {{ get_book.description }}
+                            </p>
+                        </div>
                     </div>
                 </div>
+                <!--edit and delete buttons for admin or book creater-->
+                {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
+                <div class="col s12 mt2">
+                    <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect btn-small edit-button">
+                        Edit
+                    </a>
+                </div>
+                {% endif %}
             </div>
-             <!--edit and delete buttons for admin or book creater-->
-             {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
-             <div class="col s12 mt2">
-                 <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="waves-effect btn-small edit-button">
-                    Edit
-                </a>
-             </div>
-             {% endif %}
-        </div>
-    </section>
+        </section>
 
-    <!--review section title-->
-    <div class="row container">
-        <div class="col s12 center">
-            <h2>
-                User Reviews
-            </h2>
+        <!--review section title-->
+        <div class="row container">
+            <div class="col s12 center">
+                <h2>
+                    User Reviews
+                </h2>
+            </div>
         </div>
-    </div>
-    <!--review card-->
-    <div class="row container">
-        <div class="col s12">
-            {% if get_book.review %}
-                {% for eachreview in get_book.review %}
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title"><strong>{{ eachreview.title }}</strong>
-                            {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
-                                <i class="material-icons right activator">more_horiz</i>
+        <!--review card-->
+        <div class="row container">
+            <div class="col s12">
+                {% if get_book.review %}
+                    {% for eachreview in get_book.review %}
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title"><strong>{{ eachreview.title }}</strong>
+                                {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
+                                    <i class="material-icons right activator">more_horiz</i>
+                                {% endif %}
+                            </span>
+                            <p>{{ eachreview.description }}</p>
+                            <p>Posted by: {{ eachreview.username }} </p>
+                            <p>Date: {{ eachreview.date }} </p>
+                            {% if eachreview.rating == 5 %} 
+                                <img src="../static/images/5stars.jpg" width="100px" alt="5 stars">
+                            {% elif eachreview.rating == 4 %}
+                                <img src="../static/images/4stars.jpg" width="100px" alt="4 stars">
+                            {% elif eachreview.rating == 3 %}
+                                <img src="../static/images/3stars.jpg" width="100px" alt="3 stars">
+                            {% elif eachreview.rating == 2 %}
+                                <img src="../static/images/2stars.jpg" width="100px" alt="2 stars">
+                            {% elif eachreview.rating == 1 %}
+                                <img src="../static/images/1star.jpg" width="100px" alt="5 stars">
                             {% endif %}
-                        </span>
-                        <p>{{ eachreview.description }}</p>
-                        <p>Posted by: {{ eachreview.username }} </p>
-                        <p>Date: {{ eachreview.date }} </p>
-                        {% if eachreview.rating == 5 %} 
-                            <img src="../static/images/5stars.jpg" width="100px" alt="5 stars">
-                        {% elif eachreview.rating == 4 %}
-                            <img src="../static/images/4stars.jpg" width="100px" alt="4 stars">
-                        {% elif eachreview.rating == 3 %}
-                            <img src="../static/images/3stars.jpg" width="100px" alt="3 stars">
-                        {% elif eachreview.rating == 2 %}
-                            <img src="../static/images/2stars.jpg" width="100px" alt="2 stars">
-                        {% elif eachreview.rating == 1 %}
-                            <img src="../static/images/1star.jpg" width="100px" alt="5 stars">
+                        </div>
+                        {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
+                        <div class="card-reveal">
+                            <span class = "card-title">
+                                <i class="material-icons right">close</i>
+                                Alter Review
+                            </span>
+                            <p class="mb3"> To make a change to this review, please choose from the options below.
+                            </p>
+                            <a href = "{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}" class="waves-effect btn edit-button">
+                                Edit
+                            </a>
+                        </div>
                         {% endif %}
                     </div>
-                    {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}
-                    <div class="card-reveal">
-                        <span class = "card-title">
-                            <i class="material-icons right">close</i>
-                            Alter Review
-                        </span>
-                        <p class="mb3"> To make a change to this review, please choose from the options below.
-                        </p>
-                        <a href = "{{ url_for('edit_review', book_name=get_book.book_name, book_id=get_book._id, username=eachreview.username, id=eachreview.review_id) }}" class="waves-effect btn edit-button">
-                            Edit
-                        </a>
+                    {% endfor %}
+                {% else %}
+                <div class="card">
+                    <div class="card-content center">
+                        <div class="card-title center">No reviews yet!</div>
+                        <!--lottie file-->
+                        <p> Why not give it a go?! By submitting reviews, you're helping the entire Book bar community.</p>
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_twYDL9.json"  background="transparent"  speed="1"  style="width: 150px; height: 100px;margin:auto;" hover   autoplay></lottie-player>
                     </div>
-                    {% endif %}
                 </div>
-                {% endfor %}
-            {% else %}
-            <div class="card">
-                <div class="card-content center">
-                    <div class="card-title center">No reviews yet!</div>
-                    <!--lottie file-->
-                    <p> Why not give it a go?! By submitting reviews, you're helping the entire Book bar community.</p>
-                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_twYDL9.json"  background="transparent"  speed="1"  style="width: 150px; height: 100px;margin:auto;" hover   autoplay></lottie-player>
-                </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
-    </div>
-    <!--if user is not logged in, state they must be logged in to add a review-->
-    <!--if user is logged in, show add a review card-->
-    {% if session.user %}
-    <div class="row container">
-        <div class="col s12">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Add a Review</span>
-                    <span>* Please note, only one user review for each book is permitted.</span>
-                    <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="review_title" name="review_title" type="text" class="validate" min-length="2" max-length="25"
-                                    required>
-                                <label for="review_title">Title</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review" id="review"
-                                    rows="6"></textarea>
-                                <label for="review">Summary</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 rating-wrapper">
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" required />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
-                                    <label for="star1" title="text">1 star</label>
+        <!--if user is not logged in, state they must be logged in to add a review-->
+        <!--if user is logged in, show add a review card-->
+        {% if session.user %}
+        <div class="row container">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Add a Review</span>
+                        <span>* Please note, only one user review for each book is permitted.</span>
+                        <form method="POST" ation="{{url_for('review_book', book_name=get_book.book_name) }}">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="review_title" name="review_title" type="text" class="validate" min-length="2" max-length="25"
+                                        required>
+                                    <label for="review_title">Title</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="center">
-                                    <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">
-                                        Submit
-                                    </button>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" minlength="20" maxlength="800" name="review" id="review"
+                                        rows="6"></textarea>
+                                    <label for="review">Summary</label>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="row">
+                                <div class="col s12 rating-wrapper">
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate" value="5" required />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rate" value="4" />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rate" value="3" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rate" value="2" />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rate" value="1" />
+                                        <label for="star1" title="text">1 star</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="center">
+                                        <button class="waves-effect btn add-button modal-trigger" href="#modal1" type="submit">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% else %}
-    <div class="row container">
-        <div class="col s12">
-            <div class="card">
-                <div class="card-content center">
-                    <span class="card-title">Add a Review</span>
-                    <p>
-                        To add a review, please
-                        <a href="{{ url_for('login') }}" class="pink-hover">Login.</a>
-                    </p>
+        {% else %}
+        <div class="row container">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content center">
+                        <span class="card-title">Add a Review</span>
+                        <p>
+                            To add a review, please
+                            <a href="{{ url_for('login') }}" class="pink-hover">Login.</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% endif %}
-
+        {% endif %}
+    </main>
 
 
 {% endblock %}

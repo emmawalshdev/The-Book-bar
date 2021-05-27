@@ -3,78 +3,78 @@
     Add Book
 {% endblock %}
 {% block content %}
-
-    <!--page title-->
-    <section class="row container">
-        <div class="col s12 center">
-            <h1 class="center m504"> Add a Book</h1>
-        </div>
-    </section>
-
-    <!--add a book card-->
-    <section class="row container">
-        <form class="card col s12" method="POST" action="{{ url_for('add_book') }}">
-            <div class="card-content center">
-                <p class="mb3">
-                    Looking to upload to <a href="{{ url_for('books_new') }}" class="pink-hover">the Book bar</a> database?
-                    <br>Simply add the details below.
-                </p>
-                <!-- genre-->
-                <div class="row">            
-                    <div class="input-field col s12">
-                        <select multiple id = "genre_name" name="genre_name" class="validate" required>
-                            <option value="" disabled selected>Choose Genre</option>
-                            {% for genre in genres %}
-                                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
-                            {% endfor %}
-                        </select>
-                        <label for="genre_name">Book Genre</label>
-                    </div>
-                </div>
-                <!-- book title & author -->
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="book_name" name="book_name" type="text" class="validate" maxlength="50" required>
-                        <label for="book_name">Book Title</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="author" name="author" type="text" class="validate" min-length="5" max-length="30" required>
-                        <label for="author">Author</label>
-                    </div>
-                </div>
-                <!-- image url -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="image_url" name="image_url" type="text" class="validate" min-length="5" max-length="150" required>
-                        <label for="image_url">Image Url</label>
-                    </div>
-                </div>
-                <!-- book description -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="description" name="description" class="materialize-textarea validate" min-length="20" max-length="790" required></textarea>
-                        <label for="description">Blurb </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="buy_url" name="buy_url" type="text" class="validate" min-length="5" max-length="150">
-                        <label for="buy_url">Buy now Url</label>
-                    </div>
-                </div>
-                <!-- submit button -->
-                <div class="row">
-                    <div class="col s12">
-                        <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
-                            Add Book
-                        </button>
-                        <a href="{{ url_for('books_new') }}" class="waves-effect btn delete-button">
-                            Cancel
-                        </a>
-                    </div>
-                </div>
+    <main>
+        <!--page title-->
+        <section class="row container">
+            <div class="col s12 center">
+                <h1 class="center m504"> Add a Book</h1>
             </div>
-        </form>
-    </section>
+        </section>
 
+        <!--add a book card-->
+        <section class="row container">
+            <form class="card col s12" method="POST" action="{{ url_for('add_book') }}">
+                <div class="card-content center">
+                    <p class="mb3">
+                        Looking to upload to <a href="{{ url_for('books_new') }}" class="pink-hover">the Book bar</a> database?
+                        <br>Simply add the details below.
+                    </p>
+                    <!-- genre-->
+                    <div class="row">            
+                        <div class="input-field col s12">
+                            <select multiple id = "genre_name" name="genre_name" class="validate" required>
+                                <option value="" disabled selected>Choose Genre</option>
+                                {% for genre in genres %}
+                                    <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="genre_name">Book Genre</label>
+                        </div>
+                    </div>
+                    <!-- book title & author -->
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="book_name" name="book_name" type="text" class="validate" maxlength="50" required>
+                            <label for="book_name">Book Title</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="author" name="author" type="text" class="validate" min-length="5" max-length="30" required>
+                            <label for="author">Author</label>
+                        </div>
+                    </div>
+                    <!-- image url -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="image_url" name="image_url" type="text" class="validate" min-length="5" max-length="150" required>
+                            <label for="image_url">Image Url</label>
+                        </div>
+                    </div>
+                    <!-- book description -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="description" name="description" class="materialize-textarea validate" min-length="20" max-length="790" required></textarea>
+                            <label for="description">Blurb </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="buy_url" name="buy_url" type="text" class="validate" min-length="5" max-length="150">
+                            <label for="buy_url">Buy now Url</label>
+                        </div>
+                    </div>
+                    <!-- submit button -->
+                    <div class="row">
+                        <div class="col s12">
+                            <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
+                                Add Book
+                            </button>
+                            <a href="{{ url_for('books_new') }}" class="waves-effect btn delete-button">
+                                Cancel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
 {% endblock %}
