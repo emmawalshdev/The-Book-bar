@@ -312,7 +312,7 @@ def bookpage(book_id):
     )
 
 
-#  add a book page
+# add a book page
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     """
@@ -400,8 +400,8 @@ def edit_book(book_id):
 
 
 # delete a book page
-@app.route("/delete_book/<book_name>/<id>")
-def delete_book(book_name, id):
+@app.route("/<book_id>/delete_book")
+def delete_book(book_id):
     """
     On click, deletes the book data from db.
     User is redirected back to the homepage.
@@ -412,22 +412,22 @@ def delete_book(book_name, id):
         return redirect(url_for("access_denied"))
     else:
         username = session["user"]
-        mongo.db.books.remove({"_id": ObjectId(id)})
-        delete_user_books(username, id)
+        mongo.db.books.remove({"_id": ObjectId(book_id)})
+        delete_user_books(username, book_id)
         flash("Book was sucessfully deleted.", "success")
         return redirect(url_for("books_new"))
 
 
-def delete_user_books(username, id):
+def delete_user_books(username, book_id):
     mongo.db.users.update_one(
-        {"username": username, "books_added.book_id": ObjectId(id)},
-        {"$pull": {"books_added": {"book_id": ObjectId(id)}}}
+        {"username": username, "books_added.book_id": ObjectId(book_id)},
+        {"$pull": {"books_added": {"book_id": ObjectId(book_id)}}}
     )
 
 
 # add a review in bookpage
-@app.route("/bookpage/<book_name>", methods=["POST"])
-def review_book(book_name):
+@app.route("/bookpage/<book_id>", methods=["POST"])
+def review_book(book_id):
     """
     Checks if method = POST.
     If true, checks if user has already posted a review on the book.
@@ -438,7 +438,7 @@ def review_book(book_name):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
-        get_book = mongo.db.books.find_one({"book_name": book_name})
+        get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         reviews = get_book.get("review")
         date = str(datetime.date.today())
         #  save the review if method is post
@@ -453,19 +453,19 @@ def review_book(book_name):
                             " remove the existing review.", "error")
                         return redirect(url_for(
                             "bookpage",
-                            book_name=get_book.get("book_name")))
+                            book_id=book_id))
             #  else allow user to post review
             alphabet = string.ascii_letters + string.digits
             password = ''.join(secrets.choice(alphabet) for i in range(8))
             mongo.db.books.update_one(
-                {"_id": ObjectId(get_book["_id"])}, {
+                {"_id": ObjectId(book_id)}, {
                     "$addToSet": {"review": {
                         "title": request.form.get("review_title"),
                         "description": request.form.get("review"),
                         "rating": int(request.form.get("rate")),
                         "date": date,
                         "review_id": password,
-                        "bookid": str(get_book["_id"]),
+                        "bookid": str(ObjectId(book_id)),
                         "username": session["user"]}}})
             username = session["user"]
             update_user_reviews(username, password)
@@ -473,7 +473,8 @@ def review_book(book_name):
         else:
             review = "No star ratings yet"
         return redirect(url_for(
-            "bookpage", book_name=get_book.get("book_name")))
+            "bookpage",
+            book_id=book_id))
 
 
 # update user document with review_id
@@ -486,9 +487,9 @@ def update_user_reviews(username, reviewid):
 
 
 # edit a review page
-@app.route("/<book_name>/<book_id>/<username>/<id>/editreview", methods=[
+@app.route("/<book_id>/<username>/<review_id>/editreview", methods=[
     "GET", "POST"])
-def edit_review(book_name, book_id, username, id):
+def edit_review(book_id, username, review_id):
     """
     Checks if user is admin or is the review author.
     If true, edit review.html is rendered.
@@ -504,9 +505,9 @@ def edit_review(book_name, book_id, username, id):
     else:
         username = mongo.db.users.find_one(
             {"username": session['user']})["username"]
-        get_book = mongo.db.books.find_one({"book_name": book_name})
+        get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         reviewarray = list(mongo.db.books.find(
-            {'review': {"$elemMatch": {"review_id": id}}}, {
+            {'review': {"$elemMatch": {"review_id": review_id}}}, {
                 "review.$": 1}))
         new_dict = {}
         for key, value in reviewarray[0].items():
@@ -518,18 +519,17 @@ def edit_review(book_name, book_id, username, id):
 
         if request.method == "POST":
             mongo.db.books.update(
-                {"_id": ObjectId(book_id), "review.review_id": id},
+                {"_id": ObjectId(book_id), "review.review_id": review_id},
                 {"$set": {
                     "review.$.title": request.form.get("review_title"),
                     "review.$.description": request.form.get("review"),
                     "review.$.rating": int(request.form.get("rate")),
-                    "review.$.bookid": str(
-                        get_book["_id"])  # remove this after
                     }}
             )
             flash("Review was successfully updated.", "success")
             return redirect(url_for(
-                "bookpage", book_name=get_book.get("book_name")))
+                "bookpage",
+                book_id=book_id))
 
         if session["user"] == username or session["user"] == "admin":
             return render_template(
@@ -543,8 +543,8 @@ def edit_review(book_name, book_id, username, id):
 
 
 # delete a review
-@app.route("/<book_name>/<book_id>/<username>/<id>/deletereview")
-def delete_review(book_name, book_id, username, id):
+@app.route("/<book_id>/<username>/<review_id>/deletereview")
+def delete_review(book_id, username, review_id):
     """
     On click, the review data from the book document is removed.
     the average rating value for that book is also removed.
@@ -556,25 +556,26 @@ def delete_review(book_name, book_id, username, id):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
-        get_book = mongo.db.books.find_one({"book_name": book_name})
+        get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         mongo.db.books.update(
-            {"_id": ObjectId(book_id), "review.review_id": id},
-            {"$pull": {"review": {"review_id": id}}})
+            {"_id": ObjectId(book_id), "review.review_id": review_id},
+            {"$pull": {"review": {"review_id": review_id}}})
         flash('Review was successfully removed.', "success")
-        {"_id": ObjectId(book_id), "review.review_id": id}
+        {"_id": ObjectId(book_id), "review.review_id": review_id}
         mongo.db.avgRatingAgg.remove({
             "_id": ObjectId(book_id)
             })
         username == session["user"]
-        delete_user_review(username, id)
+        delete_user_review(username, review_id)
         return redirect(url_for(
-            "bookpage", book_name=get_book.get("book_name")))
+            "bookpage",
+            book_id=book_id))
 
 
-def delete_user_review(username, id):
+def delete_user_review(username, review_id):
     mongo.db.users.update_one(
-        {"username": username, "reviews_added.review_id": id},
-        {"$pull": {"reviews_added": {"review_id": id}}}
+        {"username": username, "reviews_added.review_id": review_id},
+        {"$pull": {"reviews_added": {"review_id": review_id}}}
     )
 
 

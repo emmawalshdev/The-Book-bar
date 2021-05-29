@@ -74,7 +74,7 @@
                 <!--edit button for admin or book creater-->
                 {% if (session.user|lower == get_book.created_by|lower or session.user|lower == "admin"|lower) %}               
                 <div class="col s12 mt2">
-                    <a href = "{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}" class="right waves-effect btn edit-button">
+                    <a href = "{{ url_for('edit_book', book_id=get_book._id) }}" class="right waves-effect btn edit-button">
                         Edit
                     </a>
                 </div>
@@ -135,7 +135,7 @@
                                     <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
                                         Submit
                                     </button>
-                                    <a href="{{ url_for('bookpage', book_id=book._id) }}"
+                                    <a href="{{ url_for('bookpage', book_id=get_book._id) }}"
                                         class="waves-effect btn delete-button">
                                         Cancel
                                     </a>
@@ -162,7 +162,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect btn add-button">No</a>
-                <a href="{{ url_for('delete_review', book_name=get_book.book_name, book_id=get_book._id, username=review.username, id=review.review_id) }}" class="modal-close btn delete-button">Yes</a>
+                <a href="{{ url_for('delete_review', book_id=get_book._id, username=review.username, review_id=review.review_id) }}" class="modal-close btn delete-button">Yes</a>
             </div>
         </div>
     </main>     

@@ -121,7 +121,7 @@
                                                 </p>
                                                 <!--read more button-->
                                                 <div class="read-more-btn-wrapper">
-                                                    <a href="{{ url_for( 'edit_book', book_name=book.book_name, id=book._id) }}"
+                                                    <a href="{{ url_for( 'edit_book', book_id=book._id) }}"
                                                         class="read-more-btn">
                                                         Edit Book
                                                         <!--genre icon-->
@@ -212,7 +212,7 @@
                                                         </div>
                                                         <!--read more button-->
                                                         <div>
-                                                            <a href="{{ url_for('edit_review', book_name=book.book_name, book_id=book._id, username=eachreview.username, id=eachreview.review_id) }}" class="read-more-btn">
+                                                            <a href="{{ url_for('edit_review', book_id=book._id, username=eachreview.username, review_id=eachreview.review_id) }}" class="read-more-btn">
                                                                 Edit
                                                             </a>
                                                         </div>
