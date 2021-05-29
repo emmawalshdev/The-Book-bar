@@ -275,6 +275,10 @@ def bookpage(book_name):
 
     get_book = mongo.db.books.find_one({"book_name": book_name})
     reviews = get_book.get("review")
+    genres = list(mongo.db.genres.find())
+    for genre in genres:
+        if ObjectId(get_book["genre_id"]) == ObjectId(genre["_id"]):
+            genre_name = genre["genre_name"]
 
     #  add average rating aggregation to a new collection
     if reviews:
@@ -301,7 +305,10 @@ def bookpage(book_name):
     else:
         review = "No star ratings added yet."
     return render_template(
-        "bookpage.html", get_book=get_book, review=review
+        "bookpage.html",
+        get_book=get_book,
+        review=review,
+        genre_name=genre_name
     )
 
 
@@ -320,8 +327,13 @@ def add_book():
         return redirect(url_for("access_denied"))
     else:
         if request.method == "POST":
+            genres = list(mongo.db.genres.find())
+            genre_name = request.form.get("genre_name")
+            for genre in genres:
+                if genre["genre_name"] == genre_name:
+                    genre_id = ObjectId(genre["_id"])
             book = {
-                "genre_name": request.form.get("genre_name"),
+                "genre_id": genre_id,
                 "book_name": request.form.get("book_name"),
                 "author": request.form.get("author"),
                 "image_url": request.form.get("image_url"),
@@ -363,8 +375,13 @@ def edit_book(book_name, id):
     else:
         get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
         if request.method == "POST":
+            genres = list(mongo.db.genres.find())
+            genre_name = request.form.get("genre_name")
+            for genre in genres:
+                if genre["genre_name"] == genre_name:
+                    genre_id = ObjectId(genre["_id"])
             mongo.db.books.update({"_id": ObjectId(id)}, {"$set": {
-                "genre_name": request.form.get("genre_name"),
+                "genre_id": genre_id,
                 "book_name": request.form.get("book_name"),
                 "author": request.form.get("author"),
                 "image_url": request.form.get("image_url"),
@@ -619,6 +636,9 @@ def edit_genre(genre_id):
             save = {
                 "genre_name": request.form.get("genre_name"),
                 "genre_icon": request.form.get("genre_icon")
+            }
+            new_genre_name = {
+                "genre_name": request.form.get("genre_name")
             }
             mongo.db.genres.update({"_id": ObjectId(genre_id)}, save)
             flash("Genre was successfully updated.", "success")

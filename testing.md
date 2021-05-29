@@ -537,6 +537,8 @@ resolution
 
 remove top:-9999px from star rating, stops page jumping to the top.
 
+- remove invalid from selected droptop materialise input credit code institute
+
 #### Unsolved
 1. <strong>name</strong>
 Issue

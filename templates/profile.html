@@ -22,7 +22,7 @@
                 <!--card row-->
                 <div class="row card-content">
                     <!--activity col-->
-                    <div class="col s12 m4 center">
+                    <div class="col s12 m4 mtb30 center">
                         <p class="blue-title-p">
                             Your Activity
                         </p>
@@ -32,11 +32,11 @@
                         </p>
                     </div>
                     <!--user image-->
-                    <div class="col s12 m4 center">
+                    <div class="col s12 m4 center mtb30">
                         <img src="../static/images/user.png" alt="stacked books" height="150">
                     </div>
                     <!--link to search books page-->
-                    <div class="col s12 m4 center">
+                    <div class="col s12 m4 center mtb30">
                         <p class="blue-title-p">
                             <a href="{{ url_for('books_new') }}" class="pink-hover">Search Books</a>
                         </p>
@@ -94,7 +94,7 @@
                             {% for book in books %}
                             {% if book_added.book_id == book._id %}
                             <!--if exists show max 4 books-->
-                            <div class="col s6 m6 xl3 ">
+                            <div class="col s12 m6 xl3 ">
                                 <div class="book-card">
                                     <div class="card medium black">
                                         <div class="card-image">
