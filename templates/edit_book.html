@@ -15,7 +15,7 @@
 
         <!--edit book card-->
         <section class="row container">
-            <form class="card col s12" method="POST" action="{{ url_for('edit_book', book_name=get_book.book_name, id=get_book._id) }}">
+            <form class="card col s12" method="POST" action="{{ url_for('edit_book', book_id=get_book._id) }}">
                 <div class="card-content">
                     <!-- genre-->
                     <div class="row">            
@@ -74,7 +74,7 @@
                             <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
                                 Save
                             </button>
-                            <a href="{{ url_for('bookpage', book_id=book._id) }}" class="waves-effect btn delete-button">
+                            <a href="{{ url_for('bookpage', book_id=get_book._id) }}" class="waves-effect btn delete-button">
                                 Cancel
                             </a>
                             <button class="btn delete-button modal-trigger" href="#modal-{{ get_book._id }}">

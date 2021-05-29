@@ -361,8 +361,8 @@ def update_user_books(username, bookid):
 
 
 # edit a book page
-@app.route("/edit_book/<book_name>/<id>", methods=["GET", "POST"])
-def edit_book(book_name, id):
+@app.route("/<book_id>/edit_book", methods=["GET", "POST"])
+def edit_book(book_id):
     """
     Checks if method = POST.
     If true, the form data is used to update db.
@@ -373,14 +373,14 @@ def edit_book(book_name, id):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
-        get_book = mongo.db.books.find_one({"_id": ObjectId(id)})
+        get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         if request.method == "POST":
             genres = list(mongo.db.genres.find())
             genre_name = request.form.get("genre_name")
             for genre in genres:
                 if genre["genre_name"] == genre_name:
                     genre_id = ObjectId(genre["_id"])
-            mongo.db.books.update({"_id": ObjectId(id)}, {"$set": {
+            mongo.db.books.update({"_id": ObjectId(book_id)}, {"$set": {
                 "genre_id": genre_id,
                 "book_name": request.form.get("book_name"),
                 "author": request.form.get("author"),
@@ -392,11 +392,11 @@ def edit_book(book_name, id):
             )
             flash("Book was successfully updated.", "success")
             return redirect(url_for(
-                "bookpage", book_name=get_book.get("book_name")))
+                "bookpage", book_id=book_id))
 
         genres = mongo.db.genres.find().sort("genre_name", 1)
         return render_template(
-            "edit_book.html", get_book=get_book, genres=genres, id=id)
+            "edit_book.html", get_book=get_book, genres=genres)
 
 
 # delete a book page
