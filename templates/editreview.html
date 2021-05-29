@@ -135,7 +135,7 @@
                                     <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
                                         Submit
                                     </button>
-                                    <a href="{{ url_for( 'bookpage', book_name=get_book.book_name) }}"
+                                    <a href="{{ url_for('bookpage', book_id=book._id) }}"
                                         class="waves-effect btn delete-button">
                                         Cancel
                                     </a>

@@ -263,8 +263,8 @@ def logout():
 
 
 # bookpage for each book
-@app.route("/bookpage/<book_name>")
-def bookpage(book_name):
+@app.route("/bookpage/<book_id>")
+def bookpage(book_id):
     """
     Checks in the book has reviews.
     If true, the array is checked and an average rating is calculated.
@@ -273,7 +273,7 @@ def bookpage(book_name):
     the user is redirected to the bookpage
     """
 
-    get_book = mongo.db.books.find_one({"book_name": book_name})
+    get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     reviews = get_book.get("review")
     genres = list(mongo.db.genres.find())
     for genre in genres:

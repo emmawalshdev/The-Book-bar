@@ -12,10 +12,10 @@ View site on [Heroku](https://the-book-bar.herokuapp.com/).
 2. [Manual Testing](#manual-testing "goto manual testing")
     * [Desktop testing](#desktop-testing)
     * [Mobile and Tablet testing](#mobile-and-tablet-testing)
-3. Further Testing 
-    * [Browser Compatibility](#browser-compatibility "goto browser compatibility")
-    * [Responsiveness](#responsiveness "goto responsiveness")
-    * [Code Validation](#code-validation "goto code validation")
+3. [Browser Compatibility and Responsiveness](#Browser-compatibility-and-responsiveness) 
+    * [Browser Compatibility](#browser-compatibility)
+    * [Responsiveness](#responsiveness)
+    * [Code Validation](#code-validation)
     * 
 4. [Bugs](#bugs "goto bugs")
 
@@ -457,14 +457,24 @@ In order to test repsonsiveness on mobile and tablet devices, further manual tes
 
 **Elements on all pages**
 
-1. Navbar (max width approx. 950px)
+- Navbar (max width approx. 950px)
     - Confirm that menu collapses into a burger icon
     - Click burger icon, confirm that menu slides in from right
 
-2. Footer
+- Footer
     - Confirm that copyright and social media links sections stack on small sized devices
 
+**Homepage**
 
+- Pagination
+    - Confirm that pagination works on mobile and tablet devices
+
+**Bookpage**
+    - Confirm that tooptip appears on click of book star icon
+
+**All pages**
+    - Confirm that the layout is optimised for mobile and tablet devices
+    - Confirm that modal pop up behave as expected
 
 ### Browser Compatibility
 [LamdaTest](https://www.lambdatest.com/) was used to test the website on the following browsers:
@@ -475,10 +485,10 @@ In order to test repsonsiveness on mobile and tablet devices, further manual tes
 * Safari 
 * Opera
 
+No bugs were recoreded during the LamdaTest testing process.
 
 ### Responsiveness
 The website's responsiveness was tested using [Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools).
-CSS Media Queries were written as required to improve appearances. 
 
 The devices (and screen widths) tested with include: 
 * iPhone 5/SE (320px)
@@ -528,6 +538,9 @@ delay in modal pop up solved by stack overflow
 https://stackoverflow.com/questions/42430062/materialize-model-not-working
 
 overflow:hidden getting added to the page - added script to css
+
+schema issues reading in genre name from form and not id
+solution was to rewrite functions to id addbook and edit book
 
 
 #### Solved

@@ -71,7 +71,7 @@
                             <div class="card medium black">
                                 <!--book image-->
                                 <div class="card-image">
-                                    <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}">
+                                    <a href="{{ url_for('bookpage', book_id=book._id) }}">
                                         <img src="{{ book.image_url }}" width="400px">
                                     </a>
                                 </div>
@@ -97,7 +97,7 @@
                                     <!--read more button & genre icon-->
                                     <div class="read-more-btn-wrapper">
                                         <!--read more button-->
-                                        <a href="{{ url_for( 'bookpage', book_name=book.book_name) }}" class="read-more-btn">
+                                        <a href="{{ url_for('bookpage', book_id=book._id) }}" class="read-more-btn">
                                             read more
                                             <!--genre icon-->
                                             <div class="right">
