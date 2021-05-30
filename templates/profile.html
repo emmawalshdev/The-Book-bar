@@ -181,11 +181,10 @@
                         <!--recent reviews-->
                         {% if reviewcount > 0 %}
                         <div class="row">
-                            {% for review_added in reviews_added %}
+                            {% for each_review in reviews_added %}
                                 {% for book in books %}
-                                    {% if book.review %}
-                                        {% for eachreview in book.review %}
-                                            {% if review_added.review_id == eachreview.review_id %}
+                                    {% for eachreview in book.review %}
+                                        {% if each_review.reviews_added.review_id == eachreview.review_id %}
                                             <!--show books added by user-->
                                             <div class="col s12 l6">
                                                 <div class="card medium black">
@@ -222,9 +221,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
                                 {% endfor %}
                             {% endfor %}
                         </div>

@@ -233,7 +233,12 @@ def profile(username):
                 books_added = 0
                 total_books = 0
             if "reviews_added" in user:
-                reviews_added = user.get("reviews_added")
+                reviews_added  = list(mongo.db.users.aggregate([
+                    {"$match": {
+                        "username" : username}},
+                        {"$unwind": "$reviews_added"}, 
+		                {"$sort": {"reviews_added.added_date":-1}},
+                ]))
                 total_reviews = len(user['reviews_added'])
                 reviews_added = reviews_added[:4]
             else:
@@ -450,7 +455,7 @@ def review_book(book_id):
     else:
         get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         reviews = get_book.get("review")
-        date = str(datetime.date.today())
+        date = str(datetime.utcnow().strftime("%Y-%m-%d"))
         #  save the review if method is post
         if request.method == "POST":
             if reviews:
@@ -489,10 +494,13 @@ def review_book(book_id):
 
 # update user document with review_id
 def update_user_reviews(username, reviewid):
+    user = mongo.db.users.find_one({"username": session['user']})
+    today_review_added = datetime.today()
     mongo.db.users.update_one(
         {"username": username}, {
             "$addToSet": {"reviews_added": {
-                "review_id": reviewid}}}
+                "review_id": reviewid,
+                "added_date": today_review_added}}}
     )
 
 
