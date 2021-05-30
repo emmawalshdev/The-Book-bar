@@ -29,6 +29,9 @@
                         <p>
                             Books Added: {{ bookcount }}<br>
                             Reviews Added: {{ reviewcount }}<br>
+                            {% for each in books1 %}
+                                {{ each.books_added}}
+                            {% endfor %}
                         </p>
                     </div>
                     <!--user image-->
@@ -90,9 +93,9 @@
                         {% if bookcount > 0 %}
                         <div class="row">
                             <!--book cards-->
-                            {% for book_added in books_added %}
-                            {% for book in books %}
-                            {% if book_added.book_id == book._id %}
+                            {% for each_book in books_added %}
+                                {% for book in books %}
+                                    {% if each_book.books_added.book_id == book._id %}
                             <!--if exists show max 4 books-->
                             <div class="col s12 m6 xl3 ">
                                 <div class="book-card">

@@ -6,7 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 import math
-import datetime
+from datetime import datetime, date
 import string
 import secrets
 if os.path.exists("env.py"):
@@ -214,23 +214,28 @@ def profile(username):
     else:
         if username == session["user"]:
             user = mongo.db.users.find_one({"username": session['user']})
-            today = datetime.date.today()
+            today = date.today()
             date_joined = user["_id"].generation_time.date()
             user_duration = "%d days" % (today - date_joined).days
             books = list(mongo.db.books.find().sort('_id', -1))
             genres = list(mongo.db.genres.find().sort("genre", 1))
             avgrating = list(mongo.db.avgRatingAgg.find())
             if "books_added" in user:
-                books_added = user.get("books_added")
+                books_added  = list(mongo.db.users.aggregate([
+                    {"$match": {
+                        "username" : username}},
+                        {"$unwind": "$books_added"}, 
+		                {"$sort": {"books_added.added_date":-1}},
+                ]))
                 total_books = len(user['books_added'])
-                books_added = books_added[:5]
+                books_added = books_added[:4]
             else:
                 books_added = 0
                 total_books = 0
             if "reviews_added" in user:
                 reviews_added = user.get("reviews_added")
                 total_reviews = len(user['reviews_added'])
-                reviews_added = reviews_added[:5]
+                reviews_added = reviews_added[:4]
             else:
                 reviews_added = 0
                 total_reviews = 0
@@ -354,10 +359,15 @@ def add_book():
 
 # add book to user
 def update_user_books(username, bookid):
+    user = mongo.db.users.find_one({"username": session['user']})
+    today_book_added = datetime.today()
     mongo.db.users.update_one(
                 {"username": username}, {
                     "$addToSet": {"books_added": {
-                        "book_id": ObjectId(bookid)}}})
+                        "book_id": ObjectId(bookid),
+                        "added_date": today_book_added
+                        }}
+                    })
 
 
 # edit a book page
