@@ -1,30 +1,30 @@
 # The Book bar
 
-## Data Centric Development Milestone Project
+## Data Centric Development - Milestone Project
 
 [View the Live Site here.](https://the-book-bar.herokuapp.com/)
 
-![logo](logo/logo.png) 
+![logo](assets/images/readmeLogo.png) 
 
-![Generated from Am I Responsive](assets/images/readme_files/amiresponsive.jpg)
+![Generated from Am I Responsive](assets/images/TheBookbar.jpg)
 
 
-The Book bar website offers an online book review and recommendation service. 
-This project is data focused, allowing users to share their own data with the greater
-community of users.
+The Book bar was created by Emma Harte to serve readers worldwide.
+Data driven, the website assists users in finding their next great read; offering both a book upload and recommendation service.
+In this way, users are able to share opinions and knowledge with the greater Book bar community. 
 
-The website has two main goals. For the user, finding a suitable book based on recommendations will be acheived.
-For the website owner, a link will be added to each book uploaded which will allow them to earn money through each purchase.
-sales pitch
+In this project, full CRUD functionality is present. 
+Security features are also present. Such include user permissions for the 'admin' user and safe storage of passwords and security-sensitive information.
+
 
 ----------------------------
 
 ## Contents
-1. [UX](#ux "goto-ux")
-    * [Overview](#overview "goto overview")
-      * [User Stories](#user-stories "goto user stories")
-      * [Visitor Stories](#visitor-stories)
-      * [Business Stories](#business-stories)
+1. [UX](#ux)
+      * [Strategy](#strategy)
+      * [User Stories](#user-stories)
+        * [Visitor Stories](#visitor-stories)
+        * [Business Stories](#business-stories)
     * [Project Scope](#project-scope "goto project scope")
     * [Design](#design "goto design")
     * [Wireframes](#wireframes "goto wireframes")
@@ -49,14 +49,17 @@ sales pitch
 
 ## UX
 
-### The five plane
+### Strategy
+The following information was declared during UX research, as part of the 5 plane investigation:
 
-#### The Strategy plane
-* The target audience for this website will be book lovers, of an age between 15 and 55.
-The website aims to target tech-savy book lovers.
-* The content stored on each book will include only relevent fields such as title, author and  a link to a cover image.
-* Impportance v Feasibility was studied to ensure the most appropriate feature would be developed in this release.
-Below are the results.
+* The website will be created to target book lovers, of an age between 15 and 55.
+  More specifically, the website aims to target tech-savy book lovers.
+
+* Only useful, useable or essential data will be stored within the website.
+  E.g., for books, data fields will include title, author, a cover image URL etc.
+
+* In investigating in-scope features for this release, the Impportance v Feasibility was studied. Below is a graphic showcasing the results.
+
 ![ivf](assets/images/readmeFiles/ivf.jpg) 
 
 ### User Stories
@@ -70,7 +73,7 @@ Below are the results.
 
 3. I want to be able to sort the entire database, so that I can view all books.
 
-4. I want to be able to login or register for an account on the website, so that I can access my profile, upload books add reviews.
+4. I want to be able to login or register for an account on the website, so that I can access my profile, upload books and add reviews.
 
 5. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
 
@@ -82,7 +85,9 @@ Below are the results.
 
 9. I want to be able to edit and delete reviews that I have added, in case an error has been made.
 
-10. I want to know the average star rating for each books, as this will help me choose my next read.
+10. I want to know the average star rating for each book, as this will help me choose my next read.
+
+11. I want to know that my data is securely stored, as this is a worry of mine.
 
 
 #### Business stories:
@@ -94,7 +99,7 @@ Below are the results.
 
 3. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
 
-4. I want to add an 'Buy now' link to each book so that I can potentially make money off click through sales.
+4. I want to add a 'Buy now' link to each book so that I can potentially make money off click through sales.
 
 5. I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
  
@@ -103,47 +108,70 @@ Below are the results.
 7. I want to be able to edit and delete all content created on the website, for monitoring reasons.
 
 ### Project Scope
-Functional and content requirments were examined to define what was in and what was out of scope.
-For functional requirements, the problem was examined to find a best-fit solution.
-For content requirements, the following were considered: What type of content would fulfil the need 
-(image, video, text, mixed) and whether or not adequate resources were available to produce the content.
+As part of the 5 plane investigation, the project scrope was defined.
+During this process, the functional and content requirments were examined.
+In considering the functional requirements, each problem was examined to find a best-fit solution.
+In considering the content requirements, the following were questioned: 
+  a) What type of content would fulfil the need (image, video, text, mixed)
+  b) Whether or not adequate resources were available to produce the content.
+The following is a statement of the findings:
 
-In scope (features & content)
+**In scope (features & content)**
 
-* user login and account registration, only with this can books and reviews be added.
+* User login and account registration
+  - Only if a user is registered and logged in, can the user upload books and add reviews.
 
-* An admin account for the website owener, this allows the user to edit & delete all content. The user can also manage the book genres.
+* An admin account for the website owener
+  - Only with an 'admin' user account, can the user to edit & delete all content.
+  - This is essential for website management and maintenace.
 
-* A search bar, where users can search for a book by title or author name.
+* A search bar
+  - With search bar functionality, can a user find a book suitable to their needs.
 
-* A search by book genre functionality. 
+* A search by book genre functionality. (nice to have)
+  - By adding a search by genre layer, the user experience will be improved
+  - A nice to have, not essential but to be considered if time is not an issue.
 
-* Full CRUD functionality for users when dealing with the content they have created.
+* Full CRUD functionality.
+  - This should be present for two permission roles: 'admin' and non-admin users.
+  - The 'admin' user should have full CRUD functionality for all content. 
+  - Non-users should have full CRUD functionality for content they have created themselves.
+  - The users actions should be reflected immediately on the front-end.
 
-* Content will be mostly text and imagery, this data is data-focused with less emphasis on front-end development.
+* Content will be mostly text and imagery
+  - As this project is data-focused, less time will be spent on front-end development.
 
-* A link will be added to each new book uploaded. This will demonstrate how the website owner could profit from book sales.
+* A 'buy now' link will be added to each new book uploaded.  
+  - This will allow the website owner to profit from book sales.
 
-Out of scope (features & content)
+* Users will be able to add books and reviews
+  - This is essential in creating a functional book recommendation service 
 
-* A star stating out of 5 for books. The user will only be able to upvote or downvote a book.
+* A rating functionality will be added as part of each review
+  - This is essential in creating a functional book recommendation service 
 
-* A sophisticated recommendation algorithm, based on books upvoted by user.  
+**Out of scope (features & content)**
 
-* A customised dashboard for users. The user will not be shown on their profile: recommendations or past reviews.
+* A sophisticated recommendation algorithm, based on books upvoted by user.
+  - Not possible within the current time-frame and due to personal skillset
 
-* Video banners, striking imagery & dynamic front-end development. 
+* A customised dashboard for users. The user will not be shown on their profile: recommendations.
+    - Not possible within the current time-frame and due to personal skillset
+    - The dashboard will include less sophisticated information such as recent contributions.
+
+* Video banners, striking imagery & dynamic front-end development.
+  - As this project is data-focused, less time will be spent on front-end development.
 
 ### Wireframes
 All wireframes were created using the software [Balsamiq](https://balsamiq.com/). 
-Layouts were created following research on the five planes of UX, and before coding.\
+These layouts were created following research on the five planes of UX, and before coding.\
 \
 <strong>
 Please note, the final website layout contains slight variations to the original wireframes.
 Each of the following files contain wireframes for desktop, tablet, and mobile devices.
 </strong>
  
-Users - not admin
+**Users - not admin**
 * [Home](assets/images/readmeFiles/wireframes/home.png)
 * [Login](assets/images/readmeFiles/wireframes/login.png)
 * [Register](assets/images/readmeFiles/wireframes/register.png)
@@ -151,22 +179,23 @@ Users - not admin
 * [Add a book](assets/images/readmeFiles/wireframes/addABook.png)
 * [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
 
-User - admin only
+**User - admin only**
 * [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
 
 ### Design
 The website structure was designed to be consistent, predictable, learnable, visable and provide user feedback.
-A user journey was created to aid stucture design.
+A user journey for non-admin users was created to aid the stuctural design.
 
 ![user journey](assets/images/readmeFiles/userjourney.jpg) 
 
 
 #### Typography
-All fonts used are from [Google Fonts](https://fonts.google.com/). 
+All fonts used in this project derive from [Google Fonts](https://fonts.google.com/). 
 
 Fonts used include:
-* [Lato](https://fonts.google.com/specimen/Lato?query=lato)
-* [Raleway](https://fonts.google.com/specimen/Raleway?query=raleway)
+* [Raleway](https://fonts.google.com/specimen/Raleway?query=raleway) - used for h1 - h4
+* [Lato](https://fonts.google.com/specimen/Lato?query=lato) - used for h5 - h6 and all additional body text
+
 
 #### Colour Scheme
 A pink and blue colour palette was used in this design. Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.

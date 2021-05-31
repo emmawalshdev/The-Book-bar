@@ -52,7 +52,7 @@ The following section re-evaluates the user stories defined in the UX section of
         - As the database grows, it may become a requirement to add 'Sort by' to the results
         - This development will be considered if the requirment arises
 
-4. I want to be able to login or register for an account on the website, so that I can access my profile, upload books add reviews.
+4. I want to be able to login or register for an account on the website, so that I can access my profile, upload books and add reviews.
     - Register and login pages are clearly located on the navbar
         - A link to the login page is located on the regsiter page for users who have mistakenly navigated here
         - A link to the register page is located on the login page for users who have mistakenly navigated here
@@ -121,10 +121,12 @@ The following section re-evaluates the user stories defined in the UX section of
     - Within the edit page, the user has the option to delete the review
     - Clicking delete activates a modal which asks for confirmation before deletion
 
-10. I want to know the average star rating for each books, as this will help me choose my next read.
+10. I want to know the average star rating for each book, as this will help me choose my next read.
     - An average star rating is displayed for a book if at least one review has been posted
     - This is visable on both the book cards shown on the homepage and profile page, as well as the book page itself
     - The average star rating is updated each time a review is uploaded, editer or deleted
+
+11. I want to know that my data is securely stored, as this is a worry of mine.
 
 #### Business stories:
 **As the website owner**:
@@ -158,7 +160,7 @@ The following section re-evaluates the user stories defined in the UX section of
             - To quickly navigate to edit review page, the user can click on the 'Read More' button. 
             - if a user has not added any reviews yet, a placeholder image and some text is displayed
 
-4. I want to add an 'Buy now' link to each book so that I can potentially make money off click through sales.
+4. I want to add a 'Buy now' link to each book so that I can potentially make money off click through sales.
     - A 'Buy now' input field is provided as part of the upload book form submission
     - If blank, the 'Buy now' link will not appear on the bookpage
     - If provided, the 'Buy now' link will be published on the bookpage
