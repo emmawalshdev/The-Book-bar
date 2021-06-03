@@ -29,13 +29,17 @@ Security features are also present. Such include user permissions for the 'admin
     * [Wireframes](#wireframes)
     * [Design](#design)
 
-2. [Features](#features "goto features")
-    * [Existing Features](#existing-features "goto existing features")
-    * [Features Left to Implement](#features-left-to-implement "goto features left to implement")
+2. [Features](#features)
+    * [Existing Features](#existing-features)
+    * [Features Left to Implement](#features-left-to-implement)
 
-3. [Technologies Used](#technologies-used "goto technology used")
+3. [Technologies Used](#technologies-used)
+    * [Database](#database) 
+    * [Languages](#languages)
+    * [Libraries](#libraries)
+    * [Tools](#tools)
 
-4. [Testing](https://github.com/emmahartedev/ms2-teachflow/blob/master/testing.md)
+4. [Testing](https://github.com/emmahartedev/The-Book-bar/blob/master/testing.md)
     
 5. [Deployment](#deployment "goto deployment")
 
@@ -390,7 +394,7 @@ The following colour palette was used for inspiration:
     - if confirmed, the book document is removed from the books collection.
     - If the user does not confirm deletion, the modal closes and the user returns to the edit book page.
 
-#### Edit review page
+#### Edit review
 - Accessibility
   - To access the page, the user must be either the content creater or 'admin'. The user must also be logged in.
   - Users who are not logged in, and/or are not the content creater or 'admin', will be redirected to the access denied page.
@@ -558,28 +562,30 @@ The following colour palette was used for inspiration:
   - This template incorporates the Book bar website styling and includes a link to the homepage.
 
 ### Features Left to Implement
-The following are features were not included in this release. These may be developed in the future:
+The following are features which were not included in this release. Once adequate time and a developed skillset are available, these points will be revisted.
 
 * Email authentication for account registration
-  - implement email authentication for users who are registering an account. This would be a requirement.
+  - Implement email authentication for users who are registering an account. This would be a requirement.
 
 * Admin role creation
-  - Create an 'administrator' role, which would give special permissions to users in this category.
+  - Create an 'administrator' role, which could be applied to several user accounts.
+  - The role would grant users special permissions.
   - Currently there can be only one 'Admin' user, this is the account with the username of 'admin'. Unfortunately, this solution is not scaleable.
 
 * Search bar filters & sort by
-  - Attempted to implemented this at the beginning of the project. The plan was to include a fiter for 'category' and a 'sort by' function. After several days, I decided to move on with the project and to come back to it once my knowledge is more advance. 
+  - Attempted to implemented this at the beginning of the project. The plan was to include a fiter for 'category' and a 'sort by' function for results. After several days, I decided to move forward with the project and to leave this feature as a 'nice to have'. Unfortunately there was not enough time to revisit the task. 
 
-* Add verification on image, icon and 'Buy now' url:
-  - With the current set up, no instant verification is available on working links, images or icons before form submittion. This is true across the add and edit genre and book pages.
-  - This would ensure that no errors are made upon upload & would reduce website maintaince work load of the administrator. 
+* Add instant verification on book image, genre icon and 'Buy now' URL upload:
+  - With the current set up, no instant verification is available. The user does not know that the link entered is working until the template page has rendered. 
+  - With instant verification, the user would recieve feedback before they submit a form.  
+  - This would would reduce the workload for content moderation and improve the user experience. 
 
 ----------------------------
 
 ## Technologies Used
 ### Database
 
-* [MongoDB Atlas](https://www.mongodb.com/) - Used as the primary database for storing and retrieving the information in the website
+* [MongoDB Atlas](https://www.mongodb.com/) - Used as the primary database for storing and retrieving the information in the website.
 
 ### Languages
 
@@ -597,17 +603,9 @@ The following are features were not included in this release. These may be devel
 
 * [PyMongo](https://pypi.org/project/pymongo/) - Used to make communication between MongoDB and Python.
 
-* [Flask](https://flask.palletsprojects.com/en/2.0.x/) - Used to construct and render pages
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/) - Used to construct and render pages.
 
 * [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - used in conjunction with flask to display data from the backend.
-
-* [Google Fonts](https://fonts.google.com/) - Used for typography.
-
-* [Font Awesome](https://fontawesome.com/) - Used for footer Icons.
-
-* [Google Icons](https://fonts.google.com/icons) - Used for all Icons (bar footer icons).
-
-* [LottieFiles](https://lottiefiles.com/) - all free animations are sourced from here.
 
 ### Tools
 
@@ -623,18 +621,25 @@ The following are features were not included in this release. These may be devel
 
 * [Materialize](https://materializecss.com/about.html) - Used to develop the website design system.
 
-* [Canva](https://www.canva.com/) - Used to create the brand logo
+* [Canva](https://www.canva.com/) - Used to create the brand logo.
 
 * [Adobe Photoshop](https://www.adobe.com/products/photoshop.html) - Used to resize and edit images.
 
 * [Favicon.io](https://favicon.io/favicon-converter/) - Used for flavicon creation.
 
+* [Am I Responsive](http://ami.responsivedesign.is/) - Used to create repsonsive images for different devices.
+
+* [Google Fonts](https://fonts.google.com/) - Used for typography.
+
+* [Font Awesome](https://fontawesome.com/) - Used for footer Icons.
+
+* [Google Icons](https://fonts.google.com/icons) - Used for all Icons (bar footer icons).
+
+* [LottieFiles](https://lottiefiles.com/) - all free animations are sourced from here.
+
 * [Chrome Dev tools](https://developers.google.com/web/tools/chrome-devtools) - Used for monitoring the responsiveness of the website.
 
 * [LamdaTest](https://www.lambdatest.com/) - Used for monitoring the responsiveness of the website.
-
-* [Am I Responsive](http://ami.responsivedesign.is/) - Used to create repsonsive images for different devices.
-
 ### Deployment
 
 * [Heroku](https://id.heroku.com/login) - The cloud platform used to deploying the website.
@@ -652,19 +657,21 @@ To run this project on your own IDE, ensure that the following are installed on 
   * [Python 3](https://www.python.org/download/releases/3.0/)
   * [PIP](https://pypi.org/project/pip/)
   * [Git](https://git-scm.com/)
+
+Additionally, make sure that you also have the following set up: 
   * [A MongoDB Atlas account](https://www.mongodb.com/)
 
 #### Forking the repository
 To fork the repository, the following steps must be followed:
 1. Navigate to the project repository [project repository](https://github.com/emmahartedev/The-Book-bar).
 
-2. Click "Fork"; located on the top right of the screen.
+2. Click "Fork", located on the top right of the screen.
 
 3. You have successfully forked the repository. A copy of the original project will now be copied to your account.
 
-4. Create an env.py file to store environmental variables. Add this to .gitignore to ensure it is not uploaded.
+4. Create an [env.py](https://pypi.org/project/env.py/) file to store environmental variables. Add this to [.gitignore](https://git-scm.com/docs/gitignore/en) file to ensure it is not uploaded.
 
-5. Run the application using the command: ```python 3 app.py```
+5. Run the application using the command: ```python3 app.py```
 
 #### Cloning the repository
 To clone the repository, the following steps must be followed:
@@ -680,20 +687,26 @@ To clone the repository, the following steps must be followed:
 5. Type ```git clone```, and then paste the URL from step 2. 
 
 ```
-git clone https://github.com/emmahartedev/TeachFlow.git
+git clone https://github.com/emmahartedev/The-Book-bar.git
 ```
-6. Create an env.py file to store environmental variables. Add this to .gitignore to ensure it is not uploaded.
+6. Create an [env.py](https://pypi.org/project/env.py/) file to store environmental variables. Add this to [.gitignore](https://git-scm.com/docs/gitignore/en) to ensure it is not uploaded.
 
-7. Run the application using the command: ```python 3 app.py```
+7. Run the application using the command: ```python3 app.py```
 
 ### Heroku Deployment
-To deploy The Book bar to Heroku, follow the following steps:
-  1. create a ```requirements.txt``` file using the command ```pip freeze > requirements.txt```.
-  2. Create a ```Procfile``` using the command ```echo web: python app.py > Procfile```.
-  3. Add both files to Github by using ```git add```, then ```git commit -m "Add a relevent git message here'"``` and finally ```git push```.
+To deploy 'The Book bar' to Heroku, the following steps must be followed:
+  1. Create a [requirements.txt](https://blog.usejournal.com/why-and-how-to-make-a-requirements-txt-f329c685181e) file using the command ```pip freeze > requirements.txt```.
+
+  2. Create a [Procfile](https://devcenter.heroku.com/articles/procfile) using the command ```echo web: python app.py > Procfile```.
+
+  3. Add both files to Github by using ```git add```, then ```git commit -m "Add a relevent git message here"``` and finally ```git push```.
+
   4. Navigate to the [Heroku](https://id.heroku.com/login) website. On the dashboard page, click "New", then click "Create new app". Add a name and a region.
+
   5. Connect the Heroku app to the Github repository. On the Heroku app dashboard, select the "Deploy" tab. Under "Deployment method", select "Github" and confirm.
+
   6. Navigate to the "Settings" tab in the app dashboard. Under "Config Vars" click "Reveal Config Vars".
+
   7. Set the following config vars:
 
   | Key | Value |
@@ -703,7 +716,7 @@ IP | 0.0.0.0
 MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
 PORT | 5000
 SECRET_KEY | `<your_secret_key>`
-
+ 
 8. In the Heroku app click on the "Deploy" tab and navigate to the "Manual Deployment" section. Confirm that the "master" brance is selected and click "Deply Branch".
 
 9. The website is now successfully deployed.
@@ -714,45 +727,43 @@ SECRET_KEY | `<your_secret_key>`
 The following material is not my own. Sources have been listed alongside a description of the content used. 
 
 ### Content
-* [Python - secrets](https://docs.python.org/3/library/secrets.html) - used to generate random ids for each review
 
-* [Web Gradients](https://webgradients.com/) - Used for inspiration to create the linear-gradient background
+* [Web Gradients](https://webgradients.com/) - Used for inspiration to create the linear-gradient background.
 
 
 ### Code
 The following code was used directly in this project:
-  * [codepen - hesguru](https://codepen.io/hesguru/pen/BaybqXv) - used to create the star rating bar for reviews
+  * [Codepen - hesguru](https://codepen.io/hesguru/pen/BaybqXv) - used to create the star rating bar for reviews.
+  * [Python - secrets code](https://docs.python.org/3/library/secrets.html) - used to generate random ids for each review.
 
 The following code has been modied in this project:
-  * [stackoverflow - dippas](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156) - used to change the color of the materialize input fields
+  * [stackoverflow - dippas](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156) - used to change the color of the materialize input fields.
 
 
 ###  Media
 The images used on this website were obtained from the following sources:
-<strong>
-* The image alt attribute is used to describe each image below
-</strong>
+
 
 README.md:
-* Colour palette: [Source](https://www.pinterest.de/pin/490681321896937815/)
+* Colour palette - [Source](https://www.pinterest.de/pin/490681321896937815/)
 
 Homepage
-* No search results [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets7.lottiefiles.com%2Ftemp%2Flf20_aKAfIn.json)
+* No search results (book gif) - [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets7.lottiefiles.com%2Ftemp%2Flf20_aKAfIn.json)
 
 Bookpage
-* Rating stars [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
+* Static stars for rating (grey and gold) - [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
 
-* No ratings yet star git [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json)
+* No reviews yet (stars gif) - [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json)
 
 Profile page
-* User icon [Source](https://www.flaticon.com/free-icon/user_747545?term=user&related_id=747545)
+* Green and blue user icon - [Source](https://www.flaticon.com/free-icon/user_747545?term=user&related_id=747545)
 
-* Stacked books icon [Source](https://www.flaticon.com/free-icon/books_167756?term=books&page=1&position=35&page=1&position=35&related_id=167756&origin=search)
+* Stacked books icon - [Source](https://www.flaticon.com/free-icon/books_167756?term=books&page=1&position=35&page=1&position=35&related_id=167756&origin=search)
 
-* No books added yet image [Source](books section boy https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)
+* Added books section, no books added yet image - [Source](https://images.pexels.com/photos/3457273/pexels-photo-3457273.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)
 
-* No reviews added yet image [Source](https://www.pexels.com/photo/selective-focus-photography-of-person-using-iphone-x-1542252/
+* Added reviews section, no reviews added yet image - [Source](https://www.pexels.com/photo/selective-focus-photography-of-person-using-iphone-x-1542252/)
 
 
 ### Acknowledgments
-* 
+* Thanks to Gerald mcBride for the help and guidance thoughout this project
