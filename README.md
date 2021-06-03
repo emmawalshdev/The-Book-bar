@@ -25,9 +25,9 @@ Security features are also present. Such include user permissions for the 'admin
       * [User Stories](#user-stories)
         * [Visitor Stories](#visitor-stories)
         * [Business Stories](#business-stories)
-    * [Project Scope](#project-scope "goto project scope")
-    * [Design](#design "goto design")
-    * [Wireframes](#wireframes "goto wireframes")
+    * [Project Scope](#project-scope)
+    * [Wireframes](#wireframes)
+    * [Design](#design)
 
 2. [Features](#features "goto features")
     * [Existing Features](#existing-features "goto existing features")
@@ -194,15 +194,15 @@ All fonts used in this project derive from [Google Fonts](https://fonts.google.c
 
 Fonts used include:
 * [Raleway](https://fonts.google.com/specimen/Raleway?query=raleway) - used for h1 - h4
-* [Lato](https://fonts.google.com/specimen/Lato?query=lato) - used for h5 - h6 and all additional body text
+* [Lato](https://fonts.google.com/specimen/Lato?query=lato) - used for h5 - h6 and all other body text
 
 
 #### Colour Scheme
 A pink and blue colour palette was used in this design. Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.
 
 The following colour palette was used for inspiration:
-![colour palette](assets/images/readmeFiles/colorpal.jpg)
 
+![colour palette](assets/images/readmeFiles/colorpal.jpg)
 
 #### Design justifications
 * 
@@ -215,213 +215,347 @@ The following colour palette was used for inspiration:
 
 #### Elements on all pages
 
-* **NavBar**
-    - The navigation features The Book bar logo in the top left corner in desktop view. This switches to a center position on smaller screen sizes.
+- NavBar
+  - The navigation features The Book bar logo in the top left corner in desktop view. This switches to a center position on smaller screen sizes.
 
-    - '''if 'user' in session''' is used by Python to check the logged-in status of the user, before allowing access to the page. This information is then passed to the jinja template.
+  - Access rights
+    - Certain links are viewable only to a logged in user. To check if a user is logged in, ```if 'user' in session``` is used in Python. This information is then passed to the jinja template, to determine access rights.
 
-    To determine which links are shown to the user, the Flask session object is used.
-    Below are the lists of links shown for each user status.
+    - Centain links are only viewable to the 'admin' user. To determine access rights, ```if session.user|lower == "admin"|lower``` is used in the jinja template. 
 
-    - For non admin users who **are not** logged in, the following links are viewable:
-    1. Home 
-    2. Login
-    3. Register
+    - Below is a full list of navbar links shown for each user type.
 
-    - For non admin users who **are** logged in, the following links are viewable:
-    1. Home
-    2. Profile
-    3. Add a Book
-    4. Logout
+      - For **all users** who **are not logged in**, the following links are viewable:
+        1. Home 
+        2. Login
+        3. Register
 
-    - For admin users who **are** logged in, the following links are viewable:
-    1. Home
-    2. Profile
-    3. Add a Book
-    4. Manage Genres
-    4. Logout
+      - For **non admin users** who **are logged in**, the following links are viewable:
+        1. Home
+        2. Profile
+        3. Add a Book
+        4. Logout
+
+      - For an **admin user** who **is logged in**, the following links are viewable:
+        1. Home
+        2. Profile
+        3. Add a Book
+        4. Manage Genres
+        4. Logout
 
 
-* **Footer**
-    - The footer includes:
-      - Copyright formation with a Github link
-      - Social media links
+- Footer
+  - The footer includes the following:
+    - Copyright information with a Github link.
+    - Clickable Social media links.
 
 #### Homepage
 
-* **Search bar**
-    - The user is able to search by author or book name
-    - To search the entire database, a sort by function is available. The user can sort: 
+- Search bar
+  - Using the search bar, the user is able to return results by entering an author or book title.
+  - To search the entire database, a 'Sort by' function is available. 
+    - The user can sort the database in three ways: 
       1. A-Z
       2. Z-A
       3. New-Old
 
-    - Once a user makes a serach, the following occurs:
-
+  - Once a user clicks the submit button on the search bar, one of the following occurs:
     - No results found:
-      - No book cars are returned
-      - The 'Sort by' button disapears
-      - A no results message is displayed
-      - A 'Reset' button is displayed, which redirects the user back to the homepage
+      - No book cars are returned.
+      - The 'Sort by' button disapears.
+      - User feedback is returned. This states that the search was unsuccessful.
+      - An animated book gif is displayed.
+      - A 'Reset' button is displayed. If clicked, the user is redirected back to the homepage.
 
     - Results found:
-    - The matching book cards are returned
-    - The 'Sort by' button disapears
-    - A 'Reset' button is displayed, which redirects the user back to the homepage
+      - All book cards matching the keyword are returned
+      - The 'Sort by' button disapears
+      - A 'Reset' button is displayed. If clicked, the user is redirected back to the homepage.
 
-* **Pagination**
-    - Pagination is present on all three versions of the homepage. 
-    - These include: Sorted by
-      1. A-Z
-      2. Z-A
-      3. New-Old
+- Pagination
+  - Pagination is present on all three versions of the homepage (A-Z, Z-A and New-Old).
+  - On each page, 12 book cards are displayed.
+  - This allows for faster page-load time and a better user experience.
 
-    - On each page, 12 book cards are displayed 
-    - This allows for faster page-load time and a better user experience
+- Book cards
+  - All book cards are styled with a dark-mode theme for easy viewing.
+  - Each book card includes the following:
+    - The book cover image.
+    - The Book title and author.
+    - An average star rating
+    - An icon representing the genre type.
 
-* **Book cards**
-    - The book cards feature the book image, an average star rating, the book name, author and a genre icon.
-    - The average review rating is updated once a review is uploaded or edited.
-    - All card information is updated once a book is uploaded or edited.
-    - The cards are styled with a dark-mode theme for easy viewing.
+  - The data feaured on each book card derives from user input, which is stored is the database.
+    - The title, author, book image data is pulled from the books collection.
+    - The genre data is pulled from the genres collection.
+    - The average review rating is pulled from the AvgRatingAgg (average rating aggregation) collection.
+    - Once data is updated in a collection, the information displayed on the book card is automatically updated.
+
+#### Add a book
+- Accessibility
+  - To access the page, the user must be logged in.
+  - Users who are not logged in will be redirected to the access denied page.
+
+- User pathways
+  - Two pathways are possible on this page: 
+    - Add (submit data)
+    - Cancel (go back)
+
+  - Add (submit data)
+    - The following fields are included on the form:
+      - Book Title (required)
+      - Author (required)
+      - Blurb (required)
+      - Book Genre (required)
+      - Image URL (required)
+      - Buy Now URL
+  
+    - Upon submission, the book document is inserted into the books collection
+
+  - Cancel (go back)
+    - When clicked, the user is redirected back to the homepage.
 
 #### Bookpage
 * **Book section**
-  - The book image and book data are displayed in the first section
-  - The book data section contains the following:
+  - The relevent book data is displayed in the first section of the page.
+  - This data is pulled from the book, genre and AvgRatingAgg (average rating aggregation) collection.
+  - This data displayed on the front-end includes:
     * Book title
-    * Average star rating
-    * 'Buy Now' URL
     * Author
+    * Genre
+    * Book image
     * Description
-
-  - Only if a **user** or **Admin** is logged in, the 'Edit' button will show. 
-
-
+    * 'Buy Now' link
+    * Average star rating
+  
 * **Posted Reviews section**
-  - Each review posted is displayed on a card. The following are included:
+  - Each review posted is displayed on a card within the 'User Reviews' section.
+  - This data is pulled from an object of the 'review' array, within the book collection.
+  - An 'Edit' button appears behind the card, if the session user is the content creater or 'admin'. 
+  - The data displayed on the front-end includes:
     1. Review title
     2. Summary
     3. Review author
     4. Date posted
     5. Star rating
 
-  - If a user is either **'Admin'** or the **review author** and they are logged in, the **edit** button is shown.
-
 
 * **Add a review section**
-- The 'Add a Review' form is only accessible to users who are **logged in**
-  - if a user is **not logged in**, a message is displayed stating that they must log in to add a review.
+- Accessibility
+  - The 'Add a Review' form is only accessible to users who are **logged in**
+  - If a user is not logged in, feedback is returned. This states that the user must be logged in to add a review.
 
-- A user can only review each book, one time. This is noted on the review form. If a user tries to add a second review, they will also be notified
-- The form contains the following fields
-  1. Title
-  2. Summary
-  3. Select a star rating
+- Form content
+  - The form includes the following fields
+    1. Title (required)
+    2. Summary
+    3. Select a star rating (required)
 
-- Upon saving, the average star rating value is also updated through a python function upon rending the bookpage template.
+- Submission behaviour
+  - First review (per book by user)
+    - When submitted, the review lives as an object of the 'review' array within the book document.
+    - Upon submission, the user is redirected back to the bookpage. With this, the AvgRatingAgg document is also updated.
+    
+  - Multiple reviews (per book by user)
+    - Only one review per book is permitted by a user.
+    - This information is stated on the review form. 
+    - If a user attempts to add a second review, error feedback is returned.
 
+#### Edit book
+- Accessibility
+  - To access the page, the user must be either the content creater or 'admin'. The user must also be logged in.
+  - Users who are not logged in, and/or are not the content creater or 'admin', will be redirected to the access denied page.
 
-#### Edit book page
-- The edit book page for each book is only accessible to logged in users. The user must be either the creater of the book or 'admin'.
-- Three pathways are possible on this page: 
-  - Save
+- User pathways
+  - Three pathways are possible on this page: 
+    - Save (submit data changes)
+    - Cancel (go back)
+    - Delete (remove book document from collection)
+
+  - Save (submit data changes)
+    - Upon submission, the book document is immediately updated.
+    - The following fields can be edited and saved:
+      - Book Title
+      - Author
+      - Blurb
+      - Book Genre
+      - Image URL
+      - Buy Now URL
+
   - Cancel (go back)
-  - Delete
-- The 'Save' option updates the book document with the users' input in the form. All of the following fields can be edited and saved:
-  - Book Genre
-  - Book Title
-  - Author
-  - Image URL
-  - Blurb
-  - Buy Now URL
-- The cancel button redirects the user back to the bookpage.
-- The delete button removes the book document from the collection. on click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
-
-- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
+    - When clicked, the user is redirected back to the bookpage.
+  
+  - Delete (remove book document from collection)
+    - A modal appears, asking for confirmation of deletion.
+    - if confirmed, the book document is removed from the books collection.
+    - If the user does not confirm deletion, the modal closes and the user returns to the edit book page.
 
 #### Edit review page
-- The edit review page for each review is only accessible to logged in users. The user must be either the creater of the review or 'admin'. 
-- As the book information may be useful for review editing, this section has been included in the template.
-- Three pathways are possible on this page: 
-  - Save
+- Accessibility
+  - To access the page, the user must be either the content creater or 'admin'. The user must also be logged in.
+  - Users who are not logged in, and/or are not the content creater or 'admin', will be redirected to the access denied page.
+
+- Book section
+  - As the book information may be useful for review editing, this section has been included in the template.
+
+  - This data displayed here includes:
+    * Book title
+    * Author
+    * Genre
+    * Book image
+    * Description
+    * 'Buy Now' link
+    * Average star rating
+
+- User pathways
+  - Save (submit data changes)
   - Cancel (go back)
-  - Delete
-- The 'Save' option updates the review array object within the book document with the users' input in the form. All of the following fields can be edited and saved:
-  - Title
-  - Summary
-  - Star rating
+  - Delete (remove object from review array in book document)
 
-- Upon saving, the average star rating value is also updated through a python function upon rending the bookpage template. 
+  - Save (submit data changes)
+    - The following fields can be edited and saved:
+      - Review title
+      - Summary
+      - Star rating
+    - Upon submission, the review array object is immediately updated.
+    - Upon submission, the user is redirected back to the bookpage. With this, the AvgRatingAgg (average rating aggregation) collection is also updated.
 
-- The cancel button redirects the user back to the bookpage
+  - Cancel (go back)
+    - When clicked, the user is redirected back to the bookpage.
 
-- The delete button removes the review object from the book collection. On click, a modal apears asking for confirmation of deletion. From here, the user can decide to confirm the deletion or go back to the current page.
-
-- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted.
+  - Delete (remove object from review array in book document)
+    - A modal appears, asking for confirmation of deletion.
+    - if confirmed, that object in the review array is removed.
+    - If the user does not confirm deletion, the modal closes and the user returns to the edit review page.
 
 #### Login page
-- A link to the registration page is displayed for easy access
+ - Content
+  - A link to the registration page is displayed for easy access.
 
-- If the username exists in db, the password is checked.
-  - if the password inputted matches the hashed password, the user is directed to the profile page.
-  - If the password inputted does not match the hashed password, an error flash message is displayed and the usr is redirected to the login page
+- Submission behaviour
+  - If the username exists in the database
+    - The password is checked.
+    - If the password inputted matches the hashed password, the user is directed to the profile page.
+    - If the password inputted does not match the hashed password, an error flash message is displayed and the user is redirected to the login page
 
-- if the username does not exist in db, an error flash message is displayed and the usr is redirected to the login page
+  - if the username does not exist in the database
+    - An error flash message is displayed. The user is redirected back to the login page.
 
 #### Register page
-- If the username does not exists in db:
-  - A unique hashed password is generated
-  - The username and hashed password are inserted as a new document to the users collection
-  - The user is redirected to the login page
+- Submission behaviour
+  - If the username does not exists in the database:
+    - A unique hashed password is generated
+    - The username and hashed password are inserted as a new document to the users collection
+    - The user is redirected to the login page
 
-- if the username exist in db
-  - An error flash message is displayed and the user is redirected to the login page
+  - If the username exist in the database
+    - An error flash message is displayed and the user is redirected back to the register page
 
 #### Manage genres
-- The Manage Genres page is only accessible to the user 'admin', who must be logged in
-- Users have the option to 'Add' a genre or manage the existing genres. These are shown on cards
+- Accessibility
+  - The Manage Genres page is only accessible to an 'admin' user. The user must also be logged in.
 
-* **Genre cards**
-- The genre title & materialise icon is shown on each card, along with an 'Edit button'
+- Content
+  - Users have the option to 'Add' a genre or manage the existing genres.
+  - Existing genres are displayed on card. Each card contains the following:
+    - The genre title & a genre icon.
+    - An 'Edit button.'
 
+#### Add genre
+- Accessibility
+  - To access the page, the user must an 'admin' user. The user must also be logged in.
+  - Users who are not an 'admin' user, and/or who are not logged in; will be redirected to the access denied page.
+
+- User pathways
+  - Two pathways are possible on this page: 
+    - Add (submit data)
+    - Cancel (go back)
+
+  - Add (submit data)
+    - The following fields are included on the form:
+      - Genre Name (required)
+      - Icon Name (required)
+
+    - Upon submission, the genre document is inserted into the genres collection
+
+  - Cancel (go back)
+    - When clicked, the user is redirected back to the manage genres page.
+
+#### Edit genre
+- Accessibility
+  - To access the page, the user must be an 'admin' user. The user must also be logged in.
+  - Users who do not fulfil this requirement, will be redirected to the access denied page.
+
+- User pathways
+  - Three pathways are possible on this page: 
+    - Save (submit data changes)
+    - Cancel (go back)
+    - Delete (remove genre document from collection)
+
+  - Save (submit data changes)
+    - Upon submission, the genre document is immediately updated.
+    - The following fields can be edited and saved:
+      - Genre Name (required)
+      - Icon name (required)
+
+  - Cancel (go back)
+    - When clicked, the user is redirected back to the manage genres page.
+  
+  - Delete (remove genre document from collection)
+    - A modal appears, asking for confirmation of deletion.
+    - if confirmed, the book document is removed from the genres collection.
+    - If the user does not confirm deletion, the modal closes and the user returns to the manage genres page.
+  
 #### Profile page
-- The profile book page is only accessible to that particular logged in user. Python checks the authentifivation of the user by running if 
-''' if username == session["user"]:''''
-- Users who are not logged in or are not the creater or author, will be redirected to an access denied page if entering this page is attempted
+- Accessibility
+  - To access this page, a user must be logged in. 
+  - Each user's profile page can only be accessed by that user. To confirm that the user in session does indeed match the profile username, Python runs the following: 
+  ```if username == session["user"]:```
+  - Users who are not logged in or do not match details with the username stored, will be redirected to the access denied page.
 
-* **Welcome section**
-- The user is adressed by their usrname and is notified of how many days they have been a member of the bookbar
+- Welcome section
+  - A Welcome, username message is displayed.
+  - A date of memebership duration is displayed.
 
-* **Profile card**
-- A summary of the users activity is displayed. Two statistics are included:
-  - **Books added:** An aggregation operation calcualted the count of books created by the user 
-  - **Review:** An aggregation operation calcualted the count of reviews created by the user 
-- A quick link to the homepage is provided
+- Profile card
+  - A quick link to the homepage is provided
+  - A summary of the users activity is displayed. Two statistics are included:
+    - **Books added:**
+      - An aggregation operation calcualted the count of books created by the user 
+    - **Review:** 
+      - An aggregation operation calcualted the count of reviews created by the user 
 
-* **Books added**
-If a user has added books:
-- The 4 most recent books added by the user are shown
-- This view automatically updates once the user adds a new book
+- Books added section
+  - If a user has added books:
+    - The 4 most recent books added by the user are shown
+    - This view automatically updates once the user adds a new book
 
-If a user has not added any books:
-- A card is dispalyed which notifies the user that the 4 most recent book uploads will appear in this section
-- A quick link to the book upload page is added
+  - If a user has not added any books:
+    - A card is dispalyed which notifies the user that the 4 most recent book uploads will appear in this section
+    - A quick link to the book upload page is added
 
-* **Reviews added**
-If a user has added reviews:
-- The 4 most recent reviews added by the user are shown
-- This view automatically updates once the user adds a new review
+- Reviews added section
+  - If a user has added reviews:
+    - The 4 most recent reviews added by the user are shown
+    - This view automatically updates once the user adds a new review
 
-If a user has not added any reviews:
-- A card is dispalyed which notifies the user that the 4 most recent reviews will appear in this section
-- A quick link to the homepage is added
+  - If a user has not added any reviews:
+    - A card is dispalyed which notifies the user that the 4 most recent reviews will appear in this section
+    - A quick link to the homepage is added
 
 #### 404 page
-- The 404 page is returned when a requested page cannot be found. This template incorporates the Book bar website styling and includes a link to the homepage.
+- Behaviour
+  - The 404 page is returned when a requested page cannot be found
+
+- Content
+  - This template incorporates the Book bar website styling and includes a link to the homepage.
 
 #### Access denied page
-- The access denied webspage is returned if a user requests a webpage which they do not permission to view. This template incorporates the Book bar website styling and includes a link to the homepage.
+- Behaviour
+  - The access denied webspage is returned if a user requests a webpage which they do not permission to view.
+
+- Content
+  - This template incorporates the Book bar website styling and includes a link to the homepage.
 
 ### Features Left to Implement
 The following are features were not included in this release. These may be developed in the future:
