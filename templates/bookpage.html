@@ -54,6 +54,7 @@
                                 {{ get_book.author }}
                             </p>
                         </div>
+                        {% if genre_name != "I'm not sure" %}
                         <!--genre name-->
                         <div class="col s12">
                             <p>
@@ -63,6 +64,7 @@
                                 {{ genre_name }}
                             </p>
                         </div>
+                        {% endif %}
                         <!--book description-->
                         <div class="col s12 pb1">
                             <p>

@@ -727,6 +727,13 @@ def delete_genre(genre_id):
         return redirect(url_for("access_denied"))
     else:
         mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+        books = list(mongo.db.books.find())
+        for book in books:
+            if 'genre_id' in book:
+                if book['genre_id']== ObjectId(genre_id):
+                    mongo.db.books.update({"_id": ObjectId(book["_id"])}, {
+                        "$set": {
+                            "genre_id": ObjectId('60b8ffd932ba1aaef52551e0')}})
         flash("Genre was successfully deleted.", "success")
         return redirect(url_for("get_genres"))
 

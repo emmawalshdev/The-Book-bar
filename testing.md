@@ -272,34 +272,34 @@ The following browsers were inlucded in desktop manual testing:
 **Bookpage**
 1. Book section
 
-- For users logged out:
-  - Confirm that the book information is correctly aligned with mongodb data.
-  - Confirm that the average star rating is correct.
-    - Where no review has yet been added, confirm that a toolip is added.
-    
-- For users logged in:
-  - Confirm that the 'Edit' button is not visable (unless the user is the content creater or 'admin')
+    - For users logged out:
+        - Confirm that the book information is correctly aligned with mongodb data.
+        - Confirm that the average star rating is correct.
+        - Where no review has yet been added, confirm that a toolip is added.
+        
+    - For users logged in:
+        - Confirm that the 'Edit' button is not visable (unless the user is the content creater or 'admin')
 
-- For 'admin' user or content creater user:
-    - Confirm that 'Edit' button is present.
-    - Click button, confirm navigation to edit book page.
+    - For 'admin' user or content creater user:
+        - Confirm that 'Edit' button is present.
+        - Click button, confirm navigation to edit book page.
 
 2. Posted Reviews section
 
-- For users logged out
-    - If reviews exist, confirm that review cards are visable.
-    - If no reviews exist, confirm that a placeholder card is displayed.
+    - For users logged out
+        - If reviews exist, confirm that review cards are visable.
+        - If no reviews exist, confirm that a placeholder card is displayed.
 
-- For users logged in
-    - If reviews exist, confirm that review cards are visable.
-    - If no reviews exist, confirm that a placeholder card is displayed.
-    - On review cards, confirm that the 'Edit' button is not visable (unless the user is the content creater or 'admin').
-    - Confirm that the review information is correctly aligned with mongodb data.
-    - Confirm that the date is included.
+    - For users logged in
+        - If reviews exist, confirm that review cards are visable.
+        - If no reviews exist, confirm that a placeholder card is displayed.
+        - On review cards, confirm that the 'Edit' button is not visable (unless the user is the content creater or 'admin').
+        - Confirm that the review information is correctly aligned with mongodb data.
+        - Confirm that the date is included.
 
-- For 'admin' user or content creater user:
-    - Confirm that the 'Edit' button is present behind the review card.
-    - Click on 'Edit', confirm navigation to edit review page.
+    - For 'admin' user or content creater user:
+        - Confirm that the 'Edit' button is present behind the review card.
+        - Click on 'Edit', confirm navigation to edit review page.
 
 3. Add a review section
     - For users logged out:
@@ -322,10 +322,10 @@ The following browsers were inlucded in desktop manual testing:
     - Attempt to access the edit book page url while logged out. Confirm redirect to access denied page.
 
 - Test pathways
-  - Input new data in all fields & click 'Save': 
-    - Confirm that a success message appears.
-    - Confirm redirect to bookpage.
-    - Confirm that the data on the page template is aligned with MongoDB data (updated data).
+    - Input new data in all fields & click 'Save': 
+        - Confirm that a success message appears.
+        - Confirm redirect to bookpage.
+        - Confirm that the data on the page template is aligned with MongoDB data (updated data).
 
   - Click 'Cancel'
     - Confirm redirect to bookpage.
@@ -418,7 +418,6 @@ The following browsers were inlucded in desktop manual testing:
 
     - Click 'Cancel'
         - Confirm redirect to 'manage genres' page
-
 
 **Edit genre page**
 - Design confirmation
