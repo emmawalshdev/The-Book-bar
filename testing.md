@@ -6,11 +6,11 @@
 
 ### Table of Contents
 
-1. [User Story Testing](#user-stories "goto user stories")
+1. [User Story Testing](#user-stories)
     * [Visitor stories](#visitor-stories)
     * [Business stories](#business-stories)
 
-2. [Manual Testing](#manual-testing "goto manual testing")
+2. [Manual Testing](#manual-testing)
     * [Desktop testing](#desktop-testing)
     * [Mobile and Tablet testing](#mobile-and-tablet-testing)
 
@@ -25,9 +25,11 @@
         - [Javascript](#javascript)
         - [Python](#python)
 
-4. [Known Bugs](#known-bugs "goto bugs")
+4. [Known Bugs](#known-bugs)
     - [Solved](#solved)
     - [Unsolved](#unsolved)
+
+5. [Further Testing](#further-testing)
 
 ### User Stories
 The following section re-evaluates the user stories which were defined in the UX section of [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md).
@@ -597,27 +599,70 @@ This helped to ensure that responsiveness was optimised across a range of device
 
     
 ### Known bugs 
-delay in modal pop up solved by stack overflow
-https://stackoverflow.com/questions/42430062/materialize-model-not-working
-
-overflow:hidden getting added to the page - added script to css
-
-schema issues reading in genre name from form and not id
-solution was to rewrite functions to id addbook and edit book
-
 
 #### Solved
-1. <strong>name</strong>
-Issue
-resolution 
+1. Modal pop-ups not working.
+    - Issue:
+        - Targeting the modal from within an ```<a>``` element did not cause the modal to pop up.
 
-remove top:-9999px from star rating, stops page jumping to the top.
+    - Resolution:
+        - Solved by changing the ```<a>``` element to a ```<button>``` element. 
+        - Thanks to the code institute slack channel for assistance on this.
+        ![Code from Slack](assets/images/readmeFiles/modalCodeHelp.PNG)
 
-- remove invalid from selected droptop materialise input credit code institute
+2.  Clicking on five star rating bar causes a page to jump.
+    - Issue:
+        - When adding a review, a five star rating bar was created. On click of this, the page immediately jumped to the top. Ideally, the star rating would become sticky after clicking and the page remain in position.
 
-fix bug delete genre casing an error to be thrown in bookpage
+    - Resolution:
+        - After researching, I discovered that the reload bevhavior was caused by a line of CSS code.
+        - The following code line was removed ```top:-9999px ```
+        - Thank you to Pravin Waychal on stack overflow for assisting on this.
+            - [Code from Slack](https://stackoverflow.com/questions/22881587/prevent-page-to-go-back-on-top-when-selecting-a-star-rating)
+
+3. Invalid color incorrectly applied to select dropdown field.
+    - Issue:
+        - The select dropdown field is required in the 'add a book' and 'edit book' page templates. Even when a selection was made, the invalid class was applied.
+
+    - Resolution:
+        - Custom Jquery was added to prevent correct this behaviour.
+        - Thank you to code institute for providing this insight as part of the Milestone Three curriculum.
+
+4. Delay on modal pop-up.
+    - Issue:
+        - A large delay between clicking on the modal trigger element and the modal pop-up was apparent. With this, it was not clear if the modal trigger was working correctly.
+
+    - Resolution:
+        - After researching, I discovered that the modal had not been initialised correctly.
+        - I solved this by adding the following code: ```$('#modal1').modal().modal('open');```
+        - Thank you to Denis Tsoi on stack overflow for assisting on this.
+            - [Code from Slack](https://stackoverflow.com/questions/42430062/materialize-model-not-working)
+
+5. Problematic URL structures.
+    - Issue:
+        - For each book the content creater or 'admin' user can edit the data. All book data is editable.
+        - The book title is passed to the URL for the bookpage. 
+        - If a user updated the book name, upon submission the bookpage re-loaded. This caused a Jinja error, due to the change in data.
+
+    - Resolution:
+        - The book title was removed from the URL.
+        - The book _id was instead passed to the URL. As this data would not be updated in the edit page, this ensures that the no issues occur.
+
+6. Deleting a genre when this is required for each book.
+    - Issue:
+        - As part of CRUD operations, the 'admin' user needs to be able to delete a genre.
+        - Once deleted, the genre_id also gets deleted in all books where it is featured.
+        - Genre is a required field to 'add a book'. If the user tried to edit a book with a deleted genre, the select dropdown field is strangely preselected to a random existing genre.
+
+    - Resolution:
+        - An 'I'm not sure' option was added to the genre dropdown field. 
+        - This genre was hidden on the 'manage genres' page and on the 'bookpage'.
+        - Once a genre is deleted, the genre_id in the book document is replaced with the genre_id for the 'I'm not sure' document.
+        - As this is hidden elsewhere in the site, the value is only visable from within the 'edit book' page. 
+
 #### Unsolved
-1. <strong>name</strong>
-Issue
-resolution 
+- No unsolved bugs are currently recorded.
+
+### Further testing
+- Asked family members and friends to test the website on their devices and record any bugs.
 ----------------------------
