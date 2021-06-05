@@ -40,23 +40,25 @@
         <section class="row container">
             <!--genre card for each result-->
             {% for genre in genres %}
-                <div class="col s6 m4 xl3 prl4">
-                    <div class= "card small height-200 black center">
-                        <!--card content-->
-                        <div class="card-content black white-text">
-                            <!--genre-name-->
-                            <p class="card-genre-title">{{ genre.genre_name}}</p>
-                            <!--genre icon-->
-                            <p class="material-icons">
-                                {{ genre.genre_icon}}
-                            </p>
+                {% if genre.genre_name != "I'm not sure" %}
+                    <div class="col s6 m4 xl3 prl4">
+                        <div class= "card small height-200 black center">
+                            <!--card content-->
+                            <div class="card-content black white-text">
+                                <!--genre-name-->
+                                <p class="card-genre-title">{{ genre.genre_name}}</p>
+                                <!--genre icon-->
+                                <p class="material-icons">
+                                    {{ genre.genre_icon}}
+                                </p>
+                            </div>
+                            <!-- edit & delete buttons-->
+                            <div class="card-action">
+                                <a class="waves-effect btn edit-button" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
+                            </div>                                
                         </div>
-                        <!-- edit & delete buttons-->
-                        <div class="card-action">
-                            <a class="waves-effect btn edit-button" href="{{ url_for('edit_genre', genre_id=genre._id) }}">Edit</a>
-                        </div>                                
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         </section>
     </main>

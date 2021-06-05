@@ -273,6 +273,12 @@ nav ul a:hover,
       box-shadow: none;
 }
 
+/* ---------------------------image styling------------------------------*/
+
+.nothing-added-wrapper img{
+    max-width: 100%;
+    max-height: 100%;
+}
 /* ---------------------------buttons-------------------------------------*/
 
 /* color for all btns */

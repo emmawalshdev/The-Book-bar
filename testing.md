@@ -516,10 +516,13 @@ In order to test repsonsiveness on mobile and tablet devices, further manual tes
 * Safari 
 * Opera
 
-No bugs were recoreded during the LamdaTest testing process.
+All CRUD operations were carried out on each browser. No bugs were recoreded during the LamdaTest testing process.
 
 ### Responsiveness
-The website's responsiveness was tested using [Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools).
+
+#### Chrome DevTools
+The website's responsiveness was tested using [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) throughout development.
+This helped to ensure that responsiveness was optimised across a range of devices.
 
 The devices (and screen widths) tested with include: 
 * iPhone 5/SE (320px)
@@ -529,8 +532,9 @@ The devices (and screen widths) tested with include:
 * iPad Pro (1024px)
 * Laptop (1200px)
 * Desktop (1920px)
-    
-In addition to this, [Lighthouse](https://developers.google.com/web/tools/lighthouse) was run in Chrome Dev Tools regularly throughout developement, to generate reports on the quality of the website.
+
+#### Lighthouse
+[Lighthouse](https://developers.google.com/web/tools/lighthouse) was run in Chrome Dev Tools regularly throughout developement, to generate reports on the quality of the website.
 Primarily mobile reports were focused upon. 
 
 The following report was generated before changes were made:
@@ -583,6 +587,7 @@ remove top:-9999px from star rating, stops page jumping to the top.
 
 - remove invalid from selected droptop materialise input credit code institute
 
+fix bug delete genre casing an error to be thrown in bookpage
 #### Unsolved
 1. <strong>name</strong>
 Issue

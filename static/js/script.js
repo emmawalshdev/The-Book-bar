@@ -2,8 +2,6 @@
     $('.sidenav').sidenav({edge: "right"});
     $('select').formSelect();
     $('.dropdown-trigger').dropdown();
-    $('#textarea1').val('New Text');
-    M.textareaAutoResize($('#textarea1'));
     $('.tooltipped').tooltip();
     $('#modal1').modal().modal('open');
     $('.modalconfirm').modal().modal('close');

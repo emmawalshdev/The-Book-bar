@@ -35,12 +35,12 @@
                     </div>
                     <!-- book title & author -->
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s12 m6">
                             <input id="book_name" name="book_name" type="text" class="validate" maxlength="50" required
                                 value ="{{ get_book.book_name }}">
                                 <label for="book_name">Book Title</label>
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s12 m6">
                             <input id="author" name="author" type="text" class="validate" min-length="5" max-length="30" required
                                 value ="{{ get_book.author }}">
                             <label for="author">Author</label>
@@ -49,7 +49,7 @@
                     <!-- image url -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="image_url" name="image_url" type="text" class="validate" required
+                            <input id="image_url" name="image_url" type="text" class="validate" placeholder="Paste an image address here" min-length="5" max-length="150" required
                                 value ="{{ get_book.image_url }}">
                             <label for="image_url">Image Url</label>
                         </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="buy_url" name="buy_url" type="text" class="validate" min-length="5" max-length="150"
+                            <input id="buy_url" name="buy_url" type="text" class="validate" placeholder="Paste a direct shopping link here" min-length="5" max-length="150"
                                 value ="{{ get_book.buy_url }}">
                             <label for="buy_url">Buy now Url</label>
                         </div>
