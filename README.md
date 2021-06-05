@@ -4,9 +4,9 @@
 
 [View the Live Site here.](https://the-book-bar.herokuapp.com/)
 
-![logo](assets/images/readmeLogo.png) 
+![logo](assets/images/readmeFiles/readmeLogo.png) 
 
-![Generated from Am I Responsive](assets/images/TheBookbar.jpg)
+![Generated from Am I Responsive](assets/images/readmeFiles/TheBookbar.jpg)
 
 
 The Book bar was created by Emma Harte to serve readers worldwide.

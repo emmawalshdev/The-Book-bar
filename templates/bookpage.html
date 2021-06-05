@@ -113,15 +113,15 @@
                             <p>Posted by: {{ eachreview.username }} </p>
                             <p>Date: {{ eachreview.date }} </p>
                             {% if eachreview.rating == 5 %} 
-                                <img src="../static/images/5stars.jpg" width="100px" alt="5 stars">
+                                <img src="../static/images/5stars.jpg" width="100" alt="5 stars">
                             {% elif eachreview.rating == 4 %}
-                                <img src="../static/images/4stars.jpg" width="100px" alt="4 stars">
+                                <img src="../static/images/4stars.jpg" width="100" alt="4 stars">
                             {% elif eachreview.rating == 3 %}
-                                <img src="../static/images/3stars.jpg" width="100px" alt="3 stars">
+                                <img src="../static/images/3stars.jpg" width="100" alt="3 stars">
                             {% elif eachreview.rating == 2 %}
-                                <img src="../static/images/2stars.jpg" width="100px" alt="2 stars">
+                                <img src="../static/images/2stars.jpg" width="100" alt="2 stars">
                             {% elif eachreview.rating == 1 %}
-                                <img src="../static/images/1star.jpg" width="100px" alt="5 stars">
+                                <img src="../static/images/1star.jpg" width="100" alt="5 stars">
                             {% endif %}
                         </div>
                         {% if (session.user|lower == eachreview.username|lower or session.user|lower == "admin"|lower) %}

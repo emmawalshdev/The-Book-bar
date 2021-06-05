@@ -17,9 +17,17 @@
 3. [Browser Compatibility and Responsiveness](#Browser-compatibility-and-responsiveness) 
     * [Browser Compatibility](#browser-compatibility)
     * [Responsiveness](#responsiveness)
+        - [Chrome DevTools](#chrome-devtools)
+        - [Lighthouse](#lighthouse)
     * [Code Validation](#code-validation)
+        - [HTML](#html)
+        - [CSS](#css)
+        - [Javascript](#javascript)
+        - [Python](#python)
 
-4. [Bugs](#bugs "goto bugs")
+4. [Known Bugs](#known-bugs "goto bugs")
+    - [Solved](#solved)
+    - [Unsolved](#unsolved)
 
 ### User Stories
 The following section re-evaluates the user stories which were defined in the UX section of [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md).
@@ -508,44 +516,62 @@ In order to test repsonsiveness on mobile and tablet devices, further manual tes
     - Confirm that all modal pop-ups behave as expected.
 
 ### Browser Compatibility
-[LamdaTest](https://www.lambdatest.com/) was used to test the website on the following browsers:
+- [LamdaTest](https://www.lambdatest.com/) was used to test the website on the following browsers.
+All CRUD operations were carried out on each browser.
+    - Google Chrome
+    - Firefox
+    - Microsoft Edge
+    - Safari 
+    - Opera
 
-* Google Chrome
-* Firefox
-* Microsoft Edge
-* Safari 
-* Opera
-
-All CRUD operations were carried out on each browser. No bugs were recoreded during the LamdaTest testing process.
+-  No bugs were recoreded during the LamdaTest testing process.
 
 ### Responsiveness
 
 #### Chrome DevTools
-The website's responsiveness was tested using [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) throughout development.
+- The website's responsiveness was tested using [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) throughout development.
 This helped to ensure that responsiveness was optimised across a range of devices.
 
-The devices (and screen widths) tested with include: 
-* iPhone 5/SE (320px)
-* iPhone 6/7/8 (375px)
-* iPhone 6/7/8 Plus (414px)
-* iPad (768px)
-* iPad Pro (1024px)
-* Laptop (1200px)
-* Desktop (1920px)
+- The devices (and screen widths) tested with include: 
+    - iPhone 5/SE (320px)
+    - iPhone 6/7/8 (375px)
+    - iPhone 6/7/8 Plus (414px)
+    - iPad (768px)
+    - iPad Pro (1024px)
+    - Laptop (1200px)
+    - Desktop (1920px)
 
 #### Lighthouse
-[Lighthouse](https://developers.google.com/web/tools/lighthouse) was run in Chrome Dev Tools regularly throughout developement, to generate reports on the quality of the website.
-Primarily mobile reports were focused upon. 
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse) was run in Chrome Dev Tools regularly throughout developement, to generate reports on the quality of the website.
+- Reports were run for both mobile and desktop.
 
-The following report was generated before changes were made:
+- The following screenshots show the final lighthouse reports. 
 
-![Lighthouse Mobile Report ](assets/images/readme_files/lighthouse-before.png)
+    - **Desktop**
+        ![Lighthouse Desktop Report ](assets/images/readmeFiles/desktopLighthouse.PNG)
+
+
+    - **Mobile**
+        ![Lighthouse Mobile Report ](assets/images/readmeFiles/mobileLighthouse.PNG)
+
+- Errors logged to the console
+    - Two errors were logged to the console during testing:
+        - GET https://the-book-bar.herokuapp.com/robots.txt 404 (NOT FOUND)
+        - No Textarea element found
+    - These have been documented in the below Bugs section.
+
 
 
 ### Code Validation
 #### HTML 
-* All HTML code was checked using [The W3C Markup Validation Service](https://validator.w3.org/).
-* 
+- All HTML code was checked using [The W3C Markup Validation Service](https://validator.w3.org/).
+
+- Changes made:
+    - Stray start tag script - Moved script tags to within the body tag.
+    - Remove href from button elements
+
+- Considerations for the future:
+    - Add h2-h6 elements within each section, to create a stronger semantic structure. 
 
 #### CSS
 * All CSS code was checked using [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).
@@ -554,6 +580,9 @@ The following report was generated before changes were made:
 #### Javascript
 * All Javascript code was checked using [JSHint](https://jshint.com/). 
 * 
+
+#### Python
+- PEP8 compliance
 
 #### General 
    * All javascript variables were logged to the console in Testing.
@@ -568,7 +597,7 @@ Test logout by checking session cookie in application tab on dev tools
 * feature
     * how tested
     
-### Bugs 
+### Known bugs 
 delay in modal pop up solved by stack overflow
 https://stackoverflow.com/questions/42430062/materialize-model-not-working
 
