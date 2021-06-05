@@ -49,12 +49,13 @@ def books_new(page=1):
         page = page
     counter = math.ceil((len(books))/(12))
 
-    return render_template("books.html",
-        books=booklist,
-        genres=genres,
-        pages=counter,
-        avgratings=avgratings,
-        page=page)
+    return render_template(
+            "books.html",
+            books=booklist,
+            genres=genres,
+            pages=counter,
+            avgratings=avgratings,
+            page=page)
 
 
 # homepage search bar
@@ -72,12 +73,12 @@ def search():
     query = request.form.get("query")
 
     return render_template(
-        "books.html",
-        books=books,
-        genres=genres,
-        avgratings=avgratings,
-        query=query,
-        post=True)
+            "books.html",
+            books=books,
+            genres=genres,
+            avgratings=avgratings,
+            query=query,
+            post=True)
 
 
 # A-Z sort by in homepage: including pagination pages
@@ -105,12 +106,12 @@ def books_a_to_z(page=1):
     counter = math.ceil((len(books))/(12))
 
     return render_template(
-        "books-a-to-z.html",
-        books=booklist,
-        genres=genres,
-        avgratings=avgratings,
-        pages=counter,
-        page=page)
+            "books-a-to-z.html",
+            books=booklist,
+            genres=genres,
+            avgratings=avgratings,
+            pages=counter,
+            page=page)
 
 
 # A-Z sort by in homepage: including pagination pages
@@ -138,12 +139,12 @@ def books_z_to_a(page=1):
     counter = math.ceil((len(books))/(12))
 
     return render_template(
-        "books-z-to-a.html",
-        books=booklist,
-        genres=genres,
-        avgratings=avgratings,
-        pages=counter,
-        page=page)
+            "books-z-to-a.html",
+            books=booklist,
+            genres=genres,
+            avgratings=avgratings,
+            pages=counter,
+            page=page)
 
 
 # register page
@@ -152,10 +153,10 @@ def register():
     """
     If method = GET, then register.html is rendered.
     If method = POST, the username entered is checked.
-    If this username already exists in db, a flash message is shown, 
+    If this username already exists in db, a flash message is shown,
     & the user is redirected back to register.html.
-    if the username is not in use, the data is saved to db & the user is redirected
-    to login.html.
+    if the username is not in use, the data is saved to db &
+    the user is redirected to login.html.
 
     """
     if request.method == "POST":
@@ -176,7 +177,8 @@ def register():
         flash("Registration successful. Please login to continue.", "success")
         return redirect(url_for("login"))
     else:
-        return render_template("register.html")
+        return render_template(
+                "register.html")
 
 
 # login page
@@ -185,7 +187,8 @@ def login():
     """
     If method = GET, then login.html is rendered.
     If method = POST, the username & password are checked.
-    If both match the data in db, the user is logged in and redirected to profile.html.
+    If both match the data in db, the user is logged in and redirected
+    to profile.html.
     if one or both are incorrect, the user is redirected to login.html.
     If the username does not exist in db, the user is redirected to login.html.
     """
@@ -195,9 +198,9 @@ def login():
 
         if existing_user:
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    return redirect(url_for(
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for(
                         "profile", username=session["user"],
                         _external=True, _scheme='https'))
             else:
@@ -205,9 +208,11 @@ def login():
                 return redirect(url_for("login"))
         else:
             flash("Username and/or password is incorrect.", "error")
-            return redirect(url_for("login"))
+            return redirect(
+                    url_for("login"))
 
-    return render_template("login.html")
+    return render_template(
+            "login.html")
 
 
 # profile page
@@ -217,7 +222,8 @@ def profile(username):
     Checks if the user is in session.
     If true, the member time duration of membership is calculated.
     Next, it is checked if the user has added books to db.
-    If true, the count is calculated & the most recent 4 books added are returned.
+    If true, the count is calculated & the most recent 4 books added
+    are returned.
     If false, the length is set to 0 & no books are returned.
     This same process if followed for reviews added'.
     Finally the user is redirected to profile.html.
@@ -237,11 +243,10 @@ def profile(username):
             genres = list(mongo.db.genres.find())
             avgrating = list(mongo.db.avgRatingAgg.find())
             if "books_added" in user:
-                books_added  = list(mongo.db.users.aggregate([
-                    {"$match": {
-                        "username" : username}},
-                        {"$unwind": "$books_added"}, 
-		                {"$sort": {"books_added.added_date":-1}},
+                books_added = list(mongo.db.users.aggregate([
+                    {"$match": {"username": username}},
+                    {"$unwind": "$books_added"},
+                    {"$sort": {"books_added.added_date": -1}},
                 ]))
                 total_books = len(user['books_added'])
                 books_added = books_added[:4]
@@ -249,11 +254,10 @@ def profile(username):
                 books_added = 0
                 total_books = 0
             if "reviews_added" in user:
-                reviews_added  = list(mongo.db.users.aggregate([
-                    {"$match": {
-                        "username" : username}},
-                        {"$unwind": "$reviews_added"}, 
-		                {"$sort": {"reviews_added.added_date":-1}},
+                reviews_added = list(mongo.db.users.aggregate([
+                    {"$match": {"username": username}},
+                    {"$unwind": "$reviews_added"},
+                    {"$sort": {"reviews_added.added_date": -1}},
                 ]))
                 total_reviews = len(user['reviews_added'])
                 reviews_added = reviews_added[:4]
@@ -261,18 +265,19 @@ def profile(username):
                 reviews_added = 0
                 total_reviews = 0
             return render_template(
-                "profile.html",
-                user=user,
-                books=books,
-                user_duration=user_duration,
-                books_added=books_added,
-                reviews_added=reviews_added,
-                bookcount=total_books,
-                reviewcount=total_reviews,
-                genres=genres,
-                avgratings=avgrating)
+                    "profile.html",
+                    user=user,
+                    books=books,
+                    user_duration=user_duration,
+                    books_added=books_added,
+                    reviews_added=reviews_added,
+                    bookcount=total_books,
+                    reviewcount=total_reviews,
+                    genres=genres,
+                    avgratings=avgrating)
         else:
-            return redirect(url_for("access_denied"))
+            return redirect(
+                url_for("access_denied"))
 
 
 # logout
@@ -284,7 +289,8 @@ def logout():
     """
     session.pop("user")
     flash("You have successfully been logged out.", "success")
-    return redirect(url_for("login", _external=True, _scheme='https'))
+    return redirect(
+        url_for("login", _external=True, _scheme='https'))
 
 
 # bookpage
@@ -329,11 +335,10 @@ def bookpage(book_id):
         review = "No star ratings added yet."
 
     return render_template(
-        "bookpage.html",
-        get_book=get_book,
-        review=review,
-        genre_name=genre_name
-    )
+            "bookpage.html",
+            get_book=get_book,
+            review=review,
+            genre_name=genre_name)
 
 
 # add a book page
@@ -373,8 +378,8 @@ def add_book():
 
         genres = mongo.db.genres.find().sort("genre_name", -1)
         return render_template(
-            "add_book.html",
-            genres=genres)
+                "add_book.html",
+                genres=genres)
 
 
 # update books_added object array in user document
@@ -432,9 +437,9 @@ def edit_book(book_id):
                 book_id=book_id))
 
         return render_template(
-            "edit_book.html",
-            get_book=get_book,
-            genres=genres)
+                "edit_book.html",
+                get_book=get_book,
+                genres=genres)
 
 
 # delete a book page
@@ -455,8 +460,8 @@ def delete_book(book_id):
         mongo.db.books.remove({"_id": ObjectId(book_id)})
         delete_user_books(username, book_id)
         flash("Book was sucessfully deleted.", "success")
-        return redirect(url_for("books_new"))
-
+        return redirect(url_for(
+            "books_new"))
 
 
 # delete books_added array object in user document
@@ -471,17 +476,17 @@ def delete_user_books(username, book_id):
 
 
 # add a review in bookpage
-@app.route("/bookpage/<book_id>", methods=["GET","POST"])
+@app.route("/bookpage/<book_id>", methods=["GET", "POST"])
 def review_book(book_id):
     """
     Checks if the user is in session. If False, the user
     is redirected to access_denied.html.
     If True and the method = GET, then bookpage.html is rendered.
-    If True and the method = POST, checks if the user has already 
+    If True and the method = POST, checks if the user has already
     posted a review on the book. This produces an error flash message and
     a redirect to bookpage.html
-    If it is the users first review, then the data is saved to db and a redirect
-    to the bookpage is passed. 
+    If it is the users first review, then the data is saved to db and
+    a redirect to the bookpage is passed.
     """
     loggedIn = True if 'user' in session else False
 
@@ -593,7 +598,8 @@ def edit_review(book_id, username, review_id):
             )
         else:
             return redirect(url_for(
-                "bookpage", book_name=get_book.get("book_name")))
+                "bookpage",
+                book_name=get_book.get("book_name")))
 
 
 # delete a review
@@ -652,7 +658,9 @@ def get_genres():
         return redirect(url_for("access_denied"))
     else:
         genres = list(mongo.db.genres.find().sort("genre_name", 1))
-        return render_template("genres.html", genres=genres)
+        return render_template(
+                "genres.html",
+                genres=genres)
 
 
 # add a genre page
@@ -678,7 +686,8 @@ def add_genre():
             flash("Genre was successfully added.", "success")
             return redirect(url_for("get_genres"))
 
-        return render_template("add_genre.html")
+        return render_template(
+                "add_genre.html")
 
 
 # edit a genre page
@@ -708,8 +717,8 @@ def edit_genre(genre_id):
 
         genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
         return render_template(
-            "edit_genre.html",
-            genre=genre)
+                "edit_genre.html",
+                genre=genre)
 
 
 # delete a genre
@@ -730,12 +739,13 @@ def delete_genre(genre_id):
         books = list(mongo.db.books.find())
         for book in books:
             if 'genre_id' in book:
-                if book['genre_id']== ObjectId(genre_id):
+                if book['genre_id'] == ObjectId(genre_id):
                     mongo.db.books.update({"_id": ObjectId(book["_id"])}, {
                         "$set": {
                             "genre_id": ObjectId('60b8ffd932ba1aaef52551e0')}})
         flash("Genre was successfully deleted.", "success")
-        return redirect(url_for("get_genres"))
+        return redirect(url_for(
+            "get_genres"))
 
 
 # 404 error
@@ -744,7 +754,8 @@ def page_not_found(e):
     """
     Renders the 404.html template.
     """
-    return render_template('404.html'), 404
+    return render_template(
+            '404.html'), 404
 
 
 # access denied page
@@ -753,7 +764,8 @@ def access_denied():
     """
     Renders the access_denied.html template.
     """
-    return render_template("access_denied.html")
+    return render_template(
+            "access_denied.html")
 
 
 if __name__ == "__main__":

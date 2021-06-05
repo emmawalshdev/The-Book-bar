@@ -566,36 +566,35 @@ This helped to ensure that responsiveness was optimised across a range of device
 #### HTML 
 - All HTML code was checked using [The W3C Markup Validation Service](https://validator.w3.org/).
 
-- Changes made:
-    - Stray start tag script - Moved script tags to within the body tag.
-    - Remove href from button elements
+    - Changes made:
+        - Stray start tag script - Moved script tags to within the body tag.
+        - Remove href from button elements - ammeded button element code.
 
-- Considerations for the future:
-    - Add h2-h6 elements within each section, to create a stronger semantic structure. 
+    - Considerations for the future:
+        - Add h2-h6 elements within each section, to create a stronger semantic structure. 
 
 #### CSS
-* All CSS code was checked using [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).
-* 
+- All CSS code was checked using [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).
+    - Errors present:
+        - No errors were found, the document validates as CSS level 3 + SVG.
 
 #### Javascript
 * All Javascript code was checked using [JSHint](https://jshint.com/). 
-* 
+    - Metrics:
+        - There are 7 functions in this script.js.
+        - The function with the largest signature take 0 arguments, while the median is 0.
+        - The largest function has 8 statements in it, while the median is 3.
+        - The most complex function has a cyclomatic complexity value of 3 while the median is 2.
+
+    - Errors present:
+        - No errors were found
+        - Two warnings regarding the use of 'let' were issued. As these are not critical, no action was taken.
 
 #### Python
-- PEP8 compliance
+- All Python code was checked for using the online [PEP8 compliance](http://pep8online.com/) tool.
+    - Changes made:
+        - General changed were made to the code. These included, Indentation corrections, removal of training whitespace and ensuring that two spaces were present between functions.
 
-#### General 
-   * All javascript variables were logged to the console in Testing.
-
-* feature
-    * tested how
-
-
-Test logout by checking session cookie in application tab on dev tools
-#### index.html
-
-* feature
-    * how tested
     
 ### Known bugs 
 delay in modal pop up solved by stack overflow
