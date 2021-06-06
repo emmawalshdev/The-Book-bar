@@ -37,26 +37,26 @@ The following section re-evaluates the user stories which were defined in the UX
 #### Visitor stories:
 **As an external user**:
 
-1. I want to be able to search for a book by book title or author, so that I can find out more information. 
+1. I want to be able to search for a book by book title or author so that I can find out more information. 
     - A search index has been created.
         - This allows users to search by both book title and author.
 
     - If a search returns results:
         - The book cards are returned.
-        - The book title and author are displayed on each bookcard, for easy readability.
-        - By clicking on a card, the user can visit the bookpage.
+        - The book title and author are displayed on each book card, for easy readability.
+        - By clicking on a card, the user can visit the book page.
 
     - If no results are returned:
         - The user is notified that no results were matched with the keyword used to search.
         - A reset button is displayed.
 
-2. I want to be able to search the database by genre, so that I can find a suitable book.
+2. I want to be able to search the database by genre so that I can find a suitable book.
 
     - This feature has not been developed in this release:
         - This is noted in [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md) under 'Features Left to Implement'.
-        - With a more advanced understanding of this concept, development will be reconsidered at a later stage.
+        - With a more advanced understanding of this concept, the development will be reconsidered at a later stage.
 
-3. I want to be able to sort the entire database, so that I can view all books.
+3. I want to be able to sort the entire database so that I can view all books.
     - A 'Sort by' button is displayed on the homepage
     - The user can sort the collection by:
         - A-Z
@@ -65,22 +65,22 @@ The following section re-evaluates the user stories which were defined in the UX
 
     - The 'Sort by' feature only sorts the entire collection:
         - Once a user searches by keyword, the 'Sort by' button disappears.
-        - As the database grows, it may become a requirement to apply'Sort by' to the results.
-        - This development will be considered if the requirment arises.
+        - As the database grows, it may become a requirement to apply 'Sort by' to the results.
+        - This development will be considered if the requirement arises.
 
-4. I want to be able to login or register for an account on the website, so that I can access my profile, upload books and add reviews.
+4. I want to be able to log in or register for an account on the website, so that I can access my profile, upload books and add reviews.
 
     - Register and login pages are clearly located on the navbar:
         - A link to the login page is located on the register page, for users who have mistakenly navigated here.
         - A link to the register page is located on the login page, for users who have mistakenly navigated here
 
     - The register page contains clear messages:
-        - Benefits of registering are displayed on the first line.
+        - The benefits of registering are displayed on the first line.
         - A link to the login page is included.
         - Username and password criteria are listed.
 
     - The register page contains clear feedback messages for form submission:
-        - An error message is shown if the username is aleardy in use.
+        - An error message is shown if the username is already in use.
         - An error message is shown if the password is too short.
         - A Success message is shown if registration is successful.
     
@@ -89,7 +89,7 @@ The following section re-evaluates the user stories which were defined in the UX
         - A welcome message is displayed on the profile page if registration is successful.
 
 
-5. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
+5. I want to see a snapshot of activity on my profile so that I can quickly see my recent contributions.
 
     - A welcome message is displayed:
         - The username is displayed.
@@ -109,40 +109,38 @@ The following section re-evaluates the user stories which were defined in the UX
             - To quickly navigate to edit review page, the user can click on the 'Read More' button. 
             - if a user has not added any reviews yet, a placeholder image and some text is displayed.
 
-6. I want to be able to upload a book to the website, so that I and others can then review it.
-    - The 'Add a Book' navlink is clearly visable on navbar.
+6. I want to be able to upload a book to the website so that I and others can then review it.
+    - The 'Add a Book' navlink is clearly visible on navbar.
     - The user can enter the following information on a book:
         - Book title
         - Author
         - Genre
-        - An image URL
+        - Book image URL
         - Blurb
-        - Buy now url
+        - Buy now URL
 
 7. I want to be able to make changes or delete a book that I have uploaded, in case an error has been made.
-    - An 'Edit' button is displayed within the bookpage if the user has uploaded the book. This is also displayed for the 'admin'.
+    - An Edit button is displayed within the book page if the user has uploaded the book. This is also displayed for the 'admin'.
     - Within the edit page, the user has the option to delete the book.
-    - Clicking delete activates a modal which asks for confirmation. before deletion
+    - Clicking delete activates a modal that asks for confirmation. before deletion
 
-8. I want to be able to review and rate any book on the website, so that other users can quickly see what I thought about it.
-    - All users who are logged in, can add a review to a book.
-    - The review card cantains the following fields:
+8. I want to be able to review and rate any book on the website so that other users can quickly see what I thought about it.
+    - All users who are logged in can add a review to a book.
+    - The review card contains the following fields:
         - Title
         - Summary
         - Star rating
-    - An average star rating is updated with every review upload (upload load of the bookpage). With this aggregation, the user can quickly see what others thought of the book.
+    - An average star rating is updated with every review upload (upload load of the book page). With this aggregation, the user can quickly see what others thought of the book.
 
 9. I want to be able to edit and delete reviews that I have added, in case an error has been made.
-    - An 'Edit' button is displayed behind a review card for the user has uploaded the review. This is also displayed for the 'admin' user.
+    - An Edit button is displayed behind a review card for the user who has uploaded the review. This is also displayed for the 'admin' user.
     - Within the edit review page, the user has the option to delete the review.
-    - Clicking delete activates a modal which asks for confirmation before deletion.
+    - Clicking delete activates a modal that asks for confirmation before deletion.
 
 10. I want to know the average star rating for each book, as this will help me choose my next read.
     - An average star rating is displayed for a book if at least one review has been posted
-    - This is visable on both the book cards shown on the homepage and profile page, as well as on the book page itself.
-    - The average star rating is updated each time a review is uploaded, editer or deleted.
-
-11. I want to know that my data is securely stored, as this is a worry of mine.
+    - This is visible on both the book cards shown on the homepage and profile page, as well as on the book page itself.
+    - The average star rating is updated each time a review is uploaded, edited, or deleted.
 
 #### Business stories:
 **As the website owner**:
@@ -164,55 +162,55 @@ The following section re-evaluates the user stories which were defined in the UX
         - The user's username is displayed.
         - The duration of time the user has been a member is displayed.
 
-    - A snapshot of the user's activity is displayed. This icludes:
+    - A snapshot of the user's activity is displayed. This includes:
         - The total number of books the user has added
         - The total number of reviews the user has added
         - A quick link to the homepage
     
     - A 'Recent Contributions' section is displayed. This includes:
 
-        - The four most recent books added by the user.
+        - The four most recent books that were added by the user.
             - To quickly navigate to the edit book page, the user can click on the 'Edit Book' button. 
             - if a user has not added any books yet, a placeholder image and some text is displayed.
 
-        - The four most recent reviews added by the user.
-            - To quickly navigate to edit review page, the user can click on the 'Read More' button. 
+        - The four most recent reviews that were added by the user.
+            - To quickly navigate to the edit review page, the user can click on the 'Read More' button. 
             - if a user has not added any reviews yet, a placeholder image and some text is displayed.
 
-4. I want to add a 'Buy now' link to each book so that I can potentially make money off click through sales.
+4. I want to add a 'Buy now' link to each book so that I can potentially make money off click-through sales.
 
     - A 'Buy now' input field is provided as part of the upload book form submission
-    - If blank, the 'Buy now' link will not appear on the bookpage
-    - If provided, the 'Buy now' link will be published on the bookpage.
-    - Verification of the link as not been developed in this release:
+    - If blank, the 'Buy now' link will not appear on the book page
+    - If provided, the 'Buy now' link will be published on the book page.
+    - Verification of the link has not been developed in this release:
         - This is noted in [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md) under Features Left to Implement.
-        - With a more advanced understanding of this concept, development of this feature will be revisited at a later stage.
+        - With a more advanced understanding of this concept, the development of this feature will be revisited at a later stage.
 
 5. I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
 
     - This feature has not been developed in this release:
         - This is noted in [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md) under Features Left to Implement.
-        - With a more advanced understand of this concept, development of this feature will be revisited at a later stage.
+        - With a more advanced understanding of this concept, the development of this feature will be revisited at a later stage.
  
 6. I only want registered users (logged in) to be able to add reviews and books, for monitoring reasons.
 
     - Access to the book and review upload links has been restricted
-    - If a logged out user attempts to access these pages, they will be redirected to an access denied page
+    - If a logged-out user attempts to access these pages, they will be redirected to an access denied page
     - On the access denied page, a link to the homepage is displayed to direct users back to the site
 
 7. I want to be able to edit and delete all content created on the website, for monitoring reasons.
 
-    - An 'Edit' button is displayed behind every review card and bookpage for the 'admin' user.
+    - An Edit button is displayed behind every review card and book page for the 'admin' user.
     - Within the edit (book, review, genre) page, the user has the option to delete the review or book.
-    - Clicking delete activates a modal which asks for confirmation before deletion.
+    - Clicking delete activates a modal that asks for confirmation before deletion.
     - The 'admin' user has complete control over editing and deleting all content on the site.
     - The 'admin' user also has access to add both books and reviews.
 
 ### Manual testing
-Manual testing was carried out on desktop, tablet and mobile devices to ensure that the site works as expected. Below is an account of the findings.
+Manual testing was carried out on desktop, tablet, and mobile devices to ensure that the site works as expected. Below is an account of the findings.
 
 #### Desktop testing
-The following browsers were inlucded in desktop manual testing:
+The following browsers were included in desktop manual testing:
 
     - Chrome
     - Firefox 
@@ -221,50 +219,50 @@ The following browsers were inlucded in desktop manual testing:
 
 **Elements on all pages**
 1. Navbar
-    - When user is not logged in:
+    - When the user is not logged in:
         - Hover on each link, confirm that hover effects are applied.
-        - Click The Book bar brand logo, confirm navigation to homepage.
-        - Click 'register' link, confirm navigation to register page.
-        - Click 'Login' link, confirm navigation to login page.
-        - Click 'Login' link, confirm that session cookie is active.
-        - Attempt to access the 'profile' page, 'add a book' page and 'manage genres' page. Confirm redirect to access denied page.
+        - Click The Book bar brand logo, confirm navigation to the homepage.
+        - Click the Register link, confirm navigation to the register page.
+        - Click the Login link, confirm navigation to the login page.
+        - Click the Login link, confirm that a session cookie is active.
+        - Attempt to access the Profile page, Add a book page and Manage genres page. Confirm a redirect to the Access denied page.
 
     - When a user is logged in:
-        - Click 'profile' link, confirm navigation to the correct profile page.
-        - Click 'Add a Book' link, confirm navigation to add book page.
-        - Click 'logout', confirm redirect to login page and confirm that session cookie is removed.
+        - Click the Profile link, confirm navigation to the correct profile page.
+        - Click the Add a Book link, confirm navigation to the Add a book page.
+        - Click Logout, confirm a redirect to the Login page and confirm that a session cookie is removed.
 
     - When 'admin' is logged in:
-        - Click 'manage genres' link, confirm navigation to genres page.
+        - Click the Manage genres link, confirm navigation to the Manage genres page.
 
 2. Footer
-    - Hover over each icon, confirm that hover effects are applied.
-    - Click on copyright icon, confrim navigation to Github profile.
-    - Click on copyright text, confrim navigation to Github profile.
-    - Click on facebook icon, confrim navigation to facebook.
-    - Click on facebook icon, confrim navigation to instagram.
-    - Click on twitter icon, confrim navigation to twitter.
+    - Hover over each icon, confirm that the hover effects are applied.
+    - Click on the copyright icon, confirm navigation to Github profile.
+    - Click on the copyright text, confirm navigation to Github profile.
+    - Click on the facebook icon, confirm navigation to facebook.
+    - Click on the facebook icon, confirm navigation to instagram.
+    - Click on the twitter icon, confirm navigation to twitter.
 
 **Homepage**
 1. Search bar functionality
-    - Search by author first name, confirm correct results are returned.
-    - Search by author last name, confirm correct results are returned.
-    - Search by word in book title, confirm correct results are returned.
-        - When results are returned, click on 'Reset' button. Confirm navigation to homepage.
-    - Search by false keyword, confirm 'no results found' message and 'Reset' button are displayed.
-        - Click on 'Reset' button, confirm navigation to homepage.
+    - Search by Author's first name, confirm that the correct results are returned.
+    - Search by the Author's last name, confirm that the correct results are returned.
+    - Search by a word in book title, confirm that the correct results are returned.
+        - When results are returned, click on the Reset button. Confirm navigation to the homepage.
+    - Search by a false keyword, confirm that a No results found message and a Reset button appear.
+        - Click on the Reset button, confirm navigation to the homepage.
 
 2. Sort by functionality
-    - Sort by 'A-Z', confirm that books are ordered correctly.
-    - Sort by 'Z-A', confirm that books are ordered correctly.
-    - Sort by 'New-Old', confirm that books are ordered correctly.
-    - Search by keyword, confirm that 'Sort by' button dissapears.
+    - Sort by 'A-Z', confirm that the books are ordered correctly.
+    - Sort by 'Z-A', confirm that the books are ordered correctly.
+    - Sort by 'New-Old', confirm that the books are ordered correctly.
+    - Search by a keyword, confirm that the 'Sort by' button dissapears.
     
 
 3. Pagination
-    - Click on all pages in 'New-Old', confirm that books are ordered correctly.
-    - Click on all pages in 'A-Z', confirm that books are ordered correctly.
-    - Click on all pages in 'Z-A', confirm that books are ordered correctly.
+    - Click on all pages in 'New-Old', confirm that the books are ordered correctly.
+    - Click on all pages in 'A-Z', confirm that the books are ordered correctly.
+    - Click on all pages in 'Z-A', confirm that the books are ordered correctly.
     - Confirm that each page displays 12 book cards.
 
 3. Book cards
@@ -276,56 +274,56 @@ The following browsers were inlucded in desktop manual testing:
         - Genre icon
         - Read more button
 
-    - Confirm that the average star rating is correctly aligned with mongodb data.
-    - Confirm that the book title and author are correctly aligned with mongodb data.
+    - Confirm that the average star rating is correctly aligned with the mongodb data.
+    - Confirm that the book title and author are correctly aligned with the mongodb data.
 
 **Bookpage**
 1. Book section
 
     - For users logged out:
-        - Confirm that the book information is correctly aligned with mongodb data.
+        - Confirm that the book information is correctly aligned with the mongodb data.
         - Confirm that the average star rating is correct.
         - Where no review has yet been added, confirm that a toolip is added.
         
     - For users logged in:
-        - Confirm that the 'Edit' button is not visable (unless the user is the content creater or 'admin')
+        - Confirm that the Edit button is not visible (unless the user is the content creator or 'admin')
 
-    - For 'admin' user or content creater user:
-        - Confirm that 'Edit' button is present.
-        - Click button, confirm navigation to edit book page.
+    - For the 'admin' user or content creator:
+        - Confirm that the Edit button is present.
+        - Click the Edit button, confirm navigation to the Edit book page.
 
 2. Posted Reviews section
 
-    - For users logged out
-        - If reviews exist, confirm that review cards are visable.
+    - For users logged out:
+        - If reviews exist, confirm that the review cards are visable.
         - If no reviews exist, confirm that a placeholder card is displayed.
 
-    - For users logged in
-        - If reviews exist, confirm that review cards are visable.
+    - For users logged in:
+        - If reviews exist, confirm that the review cards are visible.
         - If no reviews exist, confirm that a placeholder card is displayed.
-        - On review cards, confirm that the 'Edit' button is not visable (unless the user is the content creater or 'admin').
-        - Confirm that the review information is correctly aligned with mongodb data.
+        - On review cards, confirm that the 'Edit' button is not visible (unless the user is the content creator or 'admin').
+        - Confirm that the review information is correctly aligned with the mongodb data.
         - Confirm that the date is included.
 
-    - For 'admin' user or content creater user:
-        - Confirm that the 'Edit' button is present behind the review card.
-        - Click on 'Edit', confirm navigation to edit review page.
+    - For 'admin' user or the content creator:
+        - Confirm that the Edit button is present behind the review card.
+        - Click on the Edit button, confirm navigation to the Edit review page.
 
 3. Add a review section
     - For users logged out:
-        - Confirm that the review form is not visable.
-        - Confirm that a link to the login page is provided.
-        - Click on link, confirm navigation to login page.
+        - Confirm that the review form is not visible.
+        - Confirm that a link to the log in page is provided.
+            - Click on the link, confirm navigation to login page.
 
     - For users (all user types) logged in:
         - Confirm that the review form is present.
         - Submit a review:
-            - Attempt posting review without Title or Rating, confirm failure.
+            - Attempt posting review without a Title or Rating, confirm failure.
             - Post a successful review.
                 - Confirm that a success message appears. 
                 - Confirm that the review card appears in the section above.
-                - Confirm that the average rating updates in the book section
-            - Post a second review, confirm that a error message is displayed.
+                - Confirm that the average rating updates in the book section.
+            - Post a second review, confirm that an error message is displayed.
 
 **Edit book page**
 - Test access

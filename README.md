@@ -10,8 +10,8 @@
 
 
 The Book bar was created by Emma Harte to serve readers worldwide.
-Data driven, the website assists users in finding their next great read; offering both a book upload and recommendation service.
-In this way, users are able to share opinions and knowledge with the greater Book bar community. 
+Data-driven, the website assists users in finding their next great read; offering both a book upload and recommendation service.
+In this way, users can share opinions and knowledge with the greater Book bar community. 
 
 In this project, full CRUD functionality is present. 
 Security features are also present. Such include user permissions for the 'admin' user and safe storage of passwords and security-sensitive information.
@@ -66,13 +66,13 @@ Security features are also present. Such include user permissions for the 'admin
 ### Strategy
 The following information was declared during UX research, as part of the 5 plane investigation:
 
-* The website will be created to target book lovers, of an age between 15 and 55.
-  More specifically, the website aims to target tech-savy book lovers.
+* The website will be created to target book lovers, aged between 15 and 55.
+  More specifically, the website aims to target tech-savvy book lovers.
 
-* Only useful, useable or essential data will be stored within the website.
-  E.g., for books, data fields will include title, author, a cover image URL etc.
+* Only useful, useable, and essential data will be stored within the website.
+  E.g., for books, data fields will include title, author, a cover image URL, etc.
 
-* In investigating in-scope features for this release, the Impportance v Feasibility was studied. Below is a graphic showcasing the results.
+* In investigating in-scope features for this release, the Importance v Feasibility was studied. Below is a graphic showcasing the results.
 
 ![ivf](assets/images/readmeFiles/ivf.jpg) 
 
@@ -81,39 +81,36 @@ The following information was declared during UX research, as part of the 5 plan
 #### Visitor stories:
 **As an external user**:
 
-1. I want to be able to search for a book by book title or author, so that I can find out more information. 
+1. I want to be able to search for a book by book title or author so that I can find out more information. 
 
-2. I want to be able to search the database by genre, so that I can find a suitable book.
+2. I want to be able to search the database by genre so that I can find a suitable book.
 
-3. I want to be able to sort the entire database, so that I can view all books.
+3. I want to be able to sort the entire database so that I can view all books.
 
-4. I want to be able to login or register for an account on the website, so that I can access my profile, upload books and add reviews.
+4. I want to be able to log in or register for an account on the website so that I can access my profile upload books, and add reviews.
 
-5. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
+5. I want to see a snapshot of activity on my profile so that I can quickly see my recent contributions.
 
-6. I want to be able to upload a book to the website, so that I and others can then review it.
+6. I want to be able to upload a book to the website so that I and others can then review it.
 
 7. I want to be able to make changes or delete a book that I have uploaded, in case an error has been made.
 
-8. I want to be able to review and rate any book on the website, so that other users can quickly see what I thought about it.
+8. I want to be able to review and rate any book on the website so that other users can quickly see what I thought about it.
 
 9. I want to be able to edit and delete reviews that I have added, in case an error has been made.
 
 10. I want to know the average star rating for each book, as this will help me choose my next read.
 
-11. I want to know that my data is securely stored, as this is a worry of mine.
-
-
 #### Business stories:
 **As the website owner**:
 
-1. I want to be able to add new book genres on the website, so that users can select these when uploading a book.
+1. I want to be able to add new book genres on the website so that users can select these when uploading a book.
 
 2. I want to be able to edit and delete book genres, in case an error has been made.
 
-3. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
+3. I want to see a snapshot of activity on my profile so that I can quickly see my recent contributions.
 
-4. I want to add a 'Buy now' link to each book so that I can potentially make money off click through sales.
+4. I want to add a 'Buy now' link to each book so that I can potentially make money off click-through sales.
 
 5. I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
  
@@ -122,8 +119,8 @@ The following information was declared during UX research, as part of the 5 plan
 7. I want to be able to edit and delete all content created on the website, for monitoring reasons.
 
 ### Project Scope
-As part of the 5 plane investigation, the project scrope was defined.
-During this process, the functional and content requirments were examined.
+As part of the 5 plane investigation, the project scope was defined.
+During this process, the functional and content requirements were examined.
 In considering the functional requirements, each problem was examined to find a best-fit solution.
 In considering the content requirements, the following were questioned: 
   a) What type of content would fulfil the need (image, video, text, mixed)
@@ -135,12 +132,12 @@ The following is a statement of the findings:
 * User login and account registration
   - Only if a user is registered and logged in, can the user upload books and add reviews.
 
-* An admin account for the website owener
-  - Only with an 'admin' user account, can the user to edit & delete all content.
-  - This is essential for website management and maintenace.
+* An admin account for the website owner
+  - Only with an 'admin' user account, can the user edit & delete all content.
+  - This is essential for website management and maintenance.
 
 * A search bar
-  - With search bar functionality, can a user find a book suitable to their needs.
+  - With search bar functionality, a user can find a book suitable to their needs.
 
 * A search by book genre functionality. (nice to have)
   - By adding a search by genre layer, the user experience will be improved
@@ -149,8 +146,8 @@ The following is a statement of the findings:
 * Full CRUD functionality.
   - This should be present for two permission roles: 'admin' and non-admin users.
   - The 'admin' user should have full CRUD functionality for all content. 
-  - Non-users should have full CRUD functionality for content they have created themselves.
-  - The users actions should be reflected immediately on the front-end.
+  - Non-users should have full CRUD functionality for the content they have created themselves.
+  - The users' actions should be reflected immediately on the front-end.
 
 * Content will be mostly text and imagery
   - As this project is data-focused, less time will be spent on front-end development.
@@ -166,11 +163,11 @@ The following is a statement of the findings:
 
 #### Out of scope
 
-* A sophisticated recommendation algorithm, based on books upvoted by user.
-  - Not possible within the current time-frame and due to personal skillset
+* A sophisticated recommendation algorithm, based on books that have been highly rated by the user.
+  - Not possible within the current time frame and due to personal skillset
 
-* A customised dashboard for users. The user will not be shown on their profile: recommendations.
-    - Not possible within the current time-frame and due to personal skillset
+* A customized dashboard for users. The user will not be shown on their profile: recommendations.
+    - Not possible within the current timeframe and due to personal skillset
     - The dashboard will include less sophisticated information such as recent contributions.
 
 * Video banners, striking imagery & dynamic front-end development.
@@ -198,15 +195,15 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 **User - admin only**
 - [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
   - The 'add genre' book page will be a direct copy of the 'add a book' page.
-    - It will contain two fields: genre title and an icon name.
+    - It will contain two fields: a genre title and an icon name.
   - The 'Edit genre' will be a direct copy of the 'add genre' page. 
     - The fields will be pre-selected.
 
 ### Design
 
 #### User journey
-- The website structure was designed to be consistent, predictable, learnable, visable and provide user feedback.
-- A user journey for non-admin users was created to aid the stuctural design.
+- The website structure was designed to be consistent, predictable, learnable, visible, and provide user feedback.
+- A user journey for non-admin users was created to aid the structural design.
   ![user journey](assets/images/readmeFiles/userjourney.jpg) 
 
 
@@ -218,10 +215,10 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
   - [Lato](https://fonts.google.com/specimen/Lato?query=lato) - used for h5 - h6 and all other body text
 
 
-#### Colour scheme
-- A pink and blue colour palette was used in this design.
-- Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.
-- The following colour palette was used for inspiration:
+#### Color scheme
+- A pink and blue color palette was used in this design.
+- Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colors create a positive mood.
+- The following color palette was used for inspiration:
   ![colour palette](assets/images/readmeFiles/colorpal.jpg)
 
 --------------------------------------------------------------------------------------------
@@ -236,9 +233,9 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
   - The navigation features The Book bar logo in the top left corner in desktop view. This switches to a center position on smaller screen sizes.
 
   - Access rights:
-    - Certain links are viewable only to a logged in user. To check if a user is logged in, ```if 'user' in session``` is used in Python. This information is then passed to the jinja template, to determine access rights.
+    - Certain links are viewable only to a logged-in user. To check if a user is logged in ```if 'user' in session``` is used in Python. This information is then passed to the jinja template, to determine access rights.
 
-    - Centain links are only viewable to the 'admin' user. To determine access rights, ```if session.user|lower == "admin"|lower``` is used in the jinja template. 
+    - Certain links are only viewable to the 'admin' user. To determine access rights, ```if session.user|lower == "admin"|lower``` is used in the jinja template. 
 
     - Below is a full list of navbar links shown for each user type.
 
@@ -247,7 +244,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
         2. Login
         3. Register
 
-      - For **non admin users** who **are logged in**, the following links are viewable:
+      - For **non-admin users** who **are logged in**, the following links are viewable:
         1. Home
         2. Profile
         3. Add a Book
@@ -269,7 +266,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 #### Homepage
 
 - Search bar
-  - Using the search bar, the user is able to return results by entering an author or book title.
+  - Using the search bar, the user can return results by entering an author or book title.
   - To search the entire database, a 'Sort by' function is available. 
     - The user can sort the database in three ways: 
       1. A-Z
@@ -279,30 +276,30 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
   - Once a user clicks the submit button on the search bar, one of the following occurs:
     - No results found:
       - No book cars are returned.
-      - The 'Sort by' button disapears.
+      - The 'Sort by' button disappears.
       - User feedback is returned. This states that the search was unsuccessful.
       - An animated book gif is displayed.
       - A 'Reset' button is displayed. If clicked, the user is redirected back to the homepage.
 
     - Results found:
-      - All book cards matching the keyword are returned
-      - The 'Sort by' button disapears
+      - All book cards matching the keyword are returned.
+      - The 'Sort by' button disappears.
       - A 'Reset' button is displayed. If clicked, the user is redirected back to the homepage.
 
 - Pagination
-  - Pagination is present on all three versions of the homepage (A-Z, Z-A and New-Old).
+  - Pagination is present on all three versions of the homepage (A-Z, Z-A, and New-Old).
   - On each page, 12 book cards are displayed.
-  - This allows for faster page-load time and a better user experience.
+  - This allows for faster page load time and a better user experience.
 
 - Book cards
   - All book cards are styled with a dark-mode theme for easy viewing.
   - Each book card includes the following:
     - The book cover image.
-    - The Book title and author.
-    - An average star rating
+    - The book title and author.
+    - An average star rating.
     - An icon representing the genre type.
 
-  - The data feaured on each book card derives from user input, which is stored is the database. Fields include:
+  - The data featured on each book card derives from user input, which is stored in the database. Fields include:
     - The title, author, book image data is pulled from the books collection.
     - The genre data is pulled from the genres collection.
     - The average review rating is pulled from the AvgRatingAgg (average rating aggregation) collection.
@@ -332,10 +329,10 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
   - Cancel (go back)
     - When clicked, the user is redirected back to the homepage.
 
-#### Bookpage
+#### Book page
 * **Book section**
-  - The relevent book data is displayed in the first section of the page.
-  - This data is pulled from the book, genre and AvgRatingAgg (average rating aggregation) collection.
+  - The relevant book data is displayed in the first section of the page.
+  - This data is pulled from the book, genre, and AvgRatingAgg (average rating aggregation) collection.
   - This data displayed on the front-end includes:
     * Book title
     * Author
@@ -348,7 +345,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 * **Posted Reviews section**
   - Each review posted is displayed on a card within the 'User Reviews' section.
   - This data is pulled from an object of the 'review' array, within the book collection.
-  - An 'Edit' button appears behind the card, if the session user is the content creater or 'admin'. 
+  - An Edit button appears behind the card if the session user is the content creator or 'admin'. 
   - The data displayed on the front-end includes:
     1. Review title
     2. Summary
@@ -368,10 +365,10 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
       2. Summary
       3. Select a star rating (required)
 
-  - Submission behaviour
-    - First review (per book by user):
+  - Submission behavior
+    - The first review (per book by user):
       - When submitted, the review lives as an object of the 'review' array within the book document.
-      - Upon submission, the user is redirected back to the bookpage. With this, the AvgRatingAgg document is also updated.
+      - Upon submission, the user is redirected back to the book page. With this, the AvgRatingAgg document is also updated.
       
     - Multiple reviews (per book by user):
       - Only one review per book is permitted by a user.
@@ -380,8 +377,8 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 
 #### Edit book
 - Accessibility
-  - To access the page, the user must be either the content creater or 'admin'. The user must also be logged in.
-  - Users who are not logged in, and/or are not the content creater or 'admin', will be redirected to the access denied page.
+  - To access the page, the user must be either the content creator or 'admin'. The user must also be logged in.
+  - Users who are not logged in, and/or are not the content creator or 'admin', will be redirected to the access denied page.
 
 - User pathways
   - Three pathways are possible on this page: 
@@ -400,17 +397,17 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
       - Buy Now URL
 
   - Cancel (go back)
-    - When clicked, the user is redirected back to the bookpage.
+    - When clicked, the user is redirected back to the book page.
   
   - Delete (remove book document from collection)
-    - A modal appears, asking for confirmation of deletion.
+    - A modal appears, asking for confirmation of the deletion.
     - if confirmed, the book document is removed from the books collection.
-    - If the user does not confirm deletion, the modal closes and the user returns to the edit book page.
+    - If the user does not confirm the deletion, the modal closes and the user returns to the edit book page.
 
 #### Edit review
 - Accessibility
-  - To access the page, the user must be either the content creater or 'admin'. The user must also be logged in.
-  - Users who are not logged in, and/or are not the content creater or 'admin', will be redirected to the access denied page.
+  - To access the page, the user must be either the content creator or 'admin'. The user must also be logged in.
+  - Users who are not logged in, and/or are not the content creator or 'admin', will be redirected to the access denied page.
 
 - Book section
   - As the book information may be useful for review editing, this section has been included in the template.
@@ -427,7 +424,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 - User pathways
   - Save (submit data changes)
   - Cancel (go back)
-  - Delete (remove object from review array in book document)
+  - Delete (remove the object from review array in book document)
 
   - Save (submit data changes)
     - The following fields can be edited and saved:
@@ -435,37 +432,37 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
       - Summary
       - Star rating
     - Upon submission, the review array object is immediately updated.
-    - Upon submission, the user is redirected back to the bookpage. With this, the AvgRatingAgg (average rating aggregation) collection is also updated.
+    - Upon submission, the user is redirected back to the book page. With this, the AvgRatingAgg (average rating aggregation) collection is also updated.
 
   - Cancel (go back)
-    - When clicked, the user is redirected back to the bookpage.
+    - When clicked, the user is redirected back to the book page.
 
-  - Delete (remove object from review array in book document)
+  - Delete (remove the object from review array in book document)
     - A modal appears, asking for confirmation of deletion.
     - if confirmed, that object in the review array is removed.
-    - If the user does not confirm deletion, the modal closes and the user returns to the edit review page.
+    - If the user does not confirm the deletion, the modal closes and the user returns to the edit review page.
 
 #### Login page
  - Content
   - A link to the registration page is displayed for easy access.
 
-- Submission behaviour
+- Submission behavior
   - If the username exists in the database:
     - The password is checked.
-    - If the password inputted matches the hashed password, the user is directed to the profile page.
-    - If the password inputted does not match the hashed password, an error flash message is displayed and the user is redirected to the login page
+    - If the password input matches the hashed password, the user is directed to the profile page.
+    - If the password input does not match the hashed password, an error flash message is displayed and the user is redirected to the login page
 
   - if the username does not exist in the database:
     - An error flash message is displayed. The user is redirected back to the login page.
 
 #### Register page
-- Submission behaviour
-  - If the username does not exists in the database:
+- Submission behavior
+  - If the username does not exist in the database:
     - A unique hashed password is generated
     - The username and hashed password are inserted as a new document to the users collection
     - The user is redirected to the login page
 
-  - If the username exist in the database:
+  - If the username exists in the database:
     - An error flash message is displayed and the user is redirected back to the register page
 
 #### Manage genres
@@ -474,7 +471,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 
 - Content
   - Users have the option to 'Add' a genre or manage the existing genres.
-  - Existing genres are displayed on card. Each card contains the following:
+  - Existing genres are displayed on the card. Each card contains the following:
     - The genre title & a genre icon.
     - An 'Edit button.'
 
@@ -501,7 +498,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 #### Edit genre
 - Accessibility
   - To access the page, the user must be an 'admin' user. The user must also be logged in.
-  - Users who do not fulfil this requirement, will be redirected to the access denied page.
+  - Users who do not fulfill this requirement will be redirected to the access denied page.
 
 - User pathways
   - Three pathways are possible on this page: 
@@ -519,28 +516,28 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
     - When clicked, the user is redirected back to the manage genres page.
   
   - Delete (remove genre document from collection)
-    - A modal appears, asking for confirmation of deletion.
+    - A modal appears, asking for confirmation of the deletion.
     - if confirmed, the book document is removed from the genres collection.
-    - If the user does not confirm deletion, the modal closes and the user returns to the manage genres page.
+    - If the user does not confirm the deletion, the modal closes and the user returns to the manage genres page.
   
 #### Profile page
 - Accessibility
   - To access this page, a user must be logged in. 
   - Each user's profile page can only be accessed by that user. To confirm that the user in session does indeed match the profile username, Python runs the following: 
   ```if username == session["user"]:```
-  - Users who are not logged in or do not match details with the username stored, will be redirected to the access denied page.
+  - Users who are not logged in or do not match details with the username stored will be redirected to the access denied page.
 
 - Welcome section
   - A Welcome, username message is displayed.
-  - A date of memebership duration is displayed.
+  - Date of membership duration is displayed.
 
 - Profile card
   - A quick link to the homepage is provided
-  - A summary of the users activity is displayed. Two statistics are included:
+  - A summary of the user's activity is displayed. Two statistics are included:
     - **Books added:**
-      - An aggregation operation calcualted the count of books created by the user 
+      - An aggregation operation calculated the count of books created by the user 
     - **Review:** 
-      - An aggregation operation calcualted the count of reviews created by the user 
+      - An aggregation operation calculated the count of reviews created by the user 
 
 - Books added section
   - If a user has added books:
@@ -548,7 +545,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
     - This view automatically updates once the user adds a new book
 
   - If a user has not added any books:
-    - A card is dispalyed which notifies the user that the 4 most recent book uploads will appear in this section
+    - A card is displayed which notifies the user that the 4 most recent book uploads will appear in this section
     - A quick link to the book upload page is added
 
 - Reviews added section
@@ -557,25 +554,25 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
     - This view automatically updates once the user adds a new review
 
   - If a user has not added any reviews:
-    - A card is dispalyed which notifies the user that the 4 most recent reviews will appear in this section
+    - A card is displayed which notifies the user that the 4 most recent reviews will appear in this section
     - A quick link to the homepage is added
 
 #### 404 page
-- Behaviour
+- Behavior
   - The 404 page is returned when a requested page cannot be found
 
 - Content
   - This template incorporates the Book bar website styling and includes a link to the homepage.
 
 #### Access denied page
-- Behaviour
+- Behavior
   - The access denied webspage is returned if a user requests a webpage which they do not permission to view.
 
 - Content
   - This template incorporates the Book bar website styling and includes a link to the homepage.
 
 ### Features Left to Implement
-The following are features which were not included in this release. Once adequate time and a developed skillset are available, these points will be revisted.
+The following are features that were not included in this release. Once the adequate time and a developed skillset are available, these points will be revisited.
 
 * Email authentication for account registration
   - Implement email authentication for users who are registering an account. This would be a requirement.
@@ -583,15 +580,15 @@ The following are features which were not included in this release. Once adequat
 * Admin role creation
   - Create an 'administrator' role, which could be applied to several user accounts.
   - The role would grant users special permissions.
-  - Currently there can be only one 'Admin' user, this is the account with the username of 'admin'. Unfortunately, this solution is not scaleable.
+  - Currently, there can be only one 'Admin' user, this is the account with the username of 'admin'. Unfortunately, this solution is not scalable.
 
 * Search bar filters & sort by
-  - Attempted to implemented this at the beginning of the project. The plan was to include a fiter for 'category' and a 'sort by' function for results. After several days, I decided to move forward with the project and to leave this feature as a 'nice to have'. Unfortunately there was not enough time to revisit the task. 
+  - Attempted to implement this at the beginning of the project. The plan was to include a filter for 'category' and a 'sort by' function for results. After several days, I decided to move forward with the project and to leave this feature as a 'nice to have'. Unfortunately, there was not enough time to revisit the task. 
 
-* Add instant verification on book image, genre icon and 'Buy now' URL upload:
-  - With the current set up, no instant verification is available. The user does not know that the link entered is working until the template page has rendered. 
-  - With instant verification, the user would recieve feedback before they submit a form.  
-  - This would would reduce the workload for content moderation and improve the user experience. 
+* Add instant verification on the book image, genre icon, and the 'Buy now' URL upload:
+  - With the current setup, no instant verification is available. The user does not know that the link entered is working until the template page has been rendered. 
+  - With instant verification, the user would receive feedback before they submit a form.  
+  - This would reduce the workload for content moderation and improve the user experience. 
 
 ## Information Architecture
 
@@ -601,9 +598,9 @@ The following are features which were not included in this release. Once adequat
   - MongoDB allows users to use “unstructured data.” This means you can build your application without having to first define the schema.
   - The MongoDB database was chosen, as this is a requirement for the Milestone Three, code institute project.
 
-- Take-away houghts:
+- Take-away thoughts:
   - A pre-defined schema would have simplified the development of the overall project.
-  - Due to the drawbacks of the non ACID compliance of NoSQL, an A SQL database structure would have suited this project better.
+  - Due to the drawbacks of the non-ACID compliance of NoSQL, an A SQL database structure would have suited this project better.
 
 ### Datatypes
   - The datatypes utilized in this project include the following:
@@ -681,7 +678,7 @@ Average Star Rating | averageRating | radio | double
 
 * [Javascript](https://www.w3schools.com/js/DEFAULT.asp) - Used to make the website interactive.
 
-* [Python](https://www.python.org/) - Used to create database driven functionalities.
+* [Python](https://www.python.org/) - Used to create database-driven functionalities.
 
 ### Libraries
 
@@ -697,7 +694,7 @@ Average Star Rating | averageRating | radio | double
 
 * [Gitpod](https://www.gitpod.io/docs/) - Used as a development environment.
 
-* [PIP](https://pip.pypa.io/en/stable/installing/) - Used for tool installions.
+* [PIP](https://pip.pypa.io/en/stable/installing/) - Used for tool installations.
 
 * [Git](https://www.gitpod.io/docs/) - Used to handle version control.
 
@@ -711,9 +708,9 @@ Average Star Rating | averageRating | radio | double
 
 * [Adobe Photoshop](https://www.adobe.com/products/photoshop.html) - Used to resize and edit images.
 
-* [Favicon.io](https://favicon.io/favicon-converter/) - Used for flavicon creation.
+* [Favicon.io](https://favicon.io/favicon-converter/) - Used for favicon creation.
 
-* [Am I Responsive](http://ami.responsivedesign.is/) - Used to create repsonsive images for different devices.
+* [Am I Responsive](http://ami.responsivedesign.is/) - Used to create responsive images for different devices.
 
 * [Google Fonts](https://fonts.google.com/) - Used for typography.
 
@@ -749,7 +746,7 @@ Additionally, make sure that you also have the following set up:
 
 #### Forking the repository
 To fork the repository, the following steps must be followed:
-1. Navigate to the project repository [project repository](https://github.com/emmahartedev/The-Book-bar).
+1. Navigate to the [project repository](https://github.com/emmahartedev/The-Book-bar).
 
 2. Click "Fork", located on the top right of the screen.
 
@@ -762,9 +759,9 @@ To fork the repository, the following steps must be followed:
 #### Cloning the repository
 To clone the repository, the following steps must be followed:
 
-1. Navigate to the project repository [project repository](https://github.com/emmahartedev/The-Book-bar).
+1. Navigate to the [project repository](https://github.com/emmahartedev/The-Book-bar).
 
-2. Click 'Code' and in the Clone with HTTPs, copy the provided repository URL. 
+2. Click 'Code' and in the Clone with HTTPS, copy the provided repository URL. 
 
 3. Open a terminal in your IDE.
 
@@ -775,7 +772,7 @@ To clone the repository, the following steps must be followed:
 ```
 git clone https://github.com/emmahartedev/The-Book-bar.git
 ```
-6. Create an [env.py](https://pypi.org/project/env.py/) file to store environmental variables. Add this to [.gitignore](https://git-scm.com/docs/gitignore/en) to ensure it is not uploaded.
+6. Create an [env.py](https://pypi.org/project/env.py/) file to store environmental variables. Add this to the [.gitignore](https://git-scm.com/docs/gitignore/en) to ensure it is not uploaded.
 
 7. Run the application using the command: ```python3 app.py```
 
@@ -785,7 +782,7 @@ To deploy 'The Book bar' to Heroku, the following steps must be followed:
 
   2. Create a [Procfile](https://devcenter.heroku.com/articles/procfile) using the command ```echo web: python app.py > Procfile```.
 
-  3. Add both files to Github by using ```git add```, then ```git commit -m "Add a relevent git message here"``` and finally ```git push```.
+  3. Add both files to Github by using ```git add```, then ```git commit -m "Add a relevant git message here"``` and finally ```git push```.
 
   4. Navigate to the [Heroku](https://id.heroku.com/login) website. On the dashboard page, click "New", then click "Create new app". Add a name and a region.
 
@@ -803,7 +800,7 @@ MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.ne
 PORT | 5000
 SECRET_KEY | `<your_secret_key>`
  
-8. In the Heroku app click on the "Deploy" tab and navigate to the "Manual Deployment" section. Confirm that the "master" brance is selected and click "Deply Branch".
+8. In the Heroku app click on the "Deploy" tab and navigate to the "Manual Deployment" section. Confirm that the "master" branch is selected and click "Deploy Branch".
 
 9. The website is now successfully deployed.
 
@@ -822,13 +819,12 @@ The following code was used directly in this project:
   * [Codepen - hesguru](https://codepen.io/hesguru/pen/BaybqXv) - used to create the star rating bar for reviews.
   * [Python - secrets code](https://docs.python.org/3/library/secrets.html) - used to generate random ids for each review.
 
-The following code has been modied in this project:
-  * [stackoverflow - dippas](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156) - used to change the color of the materialize input fields.
+The following code has been modified in this project:
+  * [StackOverflow - dippas](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156) - used to change the color of the materialize input fields.
 
 
 ###  Media
 The images used on this website were obtained from the following sources:
-
 
 README.md:
 * Colour palette - [Source](https://www.pinterest.de/pin/490681321896937815/)
@@ -836,10 +832,12 @@ README.md:
 Homepage
 * No search results (book gif) - [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets7.lottiefiles.com%2Ftemp%2Flf20_aKAfIn.json)
 
-Bookpage
-* Static stars for rating (grey and gold) - [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
+Book page
+* Static stars for the rating (grey and gold) - [Source](https://www.freepik.com/free-vector/star-rating-with-two-different-backgrounds_1014851.htm#page=1&query=star%20rating&position=2)
 
 * No reviews yet (stars gif) - [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json)
+
+* Book cover image for URLS which fail to load - [Source](https://www.pexels.com/photo/crop-faceless-woman-reading-book-on-bed-4170629/)
 
 Profile page
 * Green and blue user icon - [Source](https://www.flaticon.com/free-icon/user_747545?term=user&related_id=747545)
@@ -852,4 +850,4 @@ Profile page
 
 
 ### Acknowledgments
-* Thank you to Gerald mcBride for his help and guidance thoughout this project.
+* Thank you to Gerald McBride for his help and guidance throughout this project.

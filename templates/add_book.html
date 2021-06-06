@@ -44,12 +44,12 @@
                     </div>
                     <!-- image url -->
                     <div class="row">
-                        <div class="input-field col s2">
+                        <div class="input-field col s3">
                             <input disabled id="image_url_domain" value= "https://" name="image_url_domain" type="text">
                         </div>
-                        <div class="input-field col s10">
+                        <div class="input-field col s9">
                             <input id="image_url" name="image_url" type="text" class="validate" placeholder="www.birds.com/finch-image.jpg" min-length="5" max-length="150" required>
-                            <label for="image_url">Image Url</label>
+                            <label for="image_url">Book Image Link</label>
                         </div>
                     </div>
                     <!-- book description -->
@@ -59,13 +59,22 @@
                             <label for="description">Blurb </label>
                         </div>
                     </div>
+                    <!--shopping link-->
                     <div class="row">
-                        <div class="input-field col s2">
+                        <div class="input-field col s3">
                             <input disabled id="buy_url_domain" value= "https://" name="buy_url_domain" type="text">
                         </div>
-                        <div class="input-field col s10">
+                        <div class="input-field col s9">
                             <input id="buy_url" name="buy_url" type="text" class="validate" placeholder="www.amason.de/the-finch" min-length="5" max-length="150">
                             <label for="buy_url">Shopping Link</label>
+                        </div>
+                    </div>
+                    <!-- information on pre-filled links-->
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="small-font">
+                                <span class="bold"> * Important:</span> we've pre-filled 'https://' in both of the link fields above. No need to repeat this!
+                            </p>
                         </div>
                     </div>
                     <!-- submit button -->
