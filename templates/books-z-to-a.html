@@ -82,7 +82,7 @@
                                         {% for avgrating in avgratings %}
                                             {% if avgrating._id == book._id %}
                                                 <i class="material-icons star-icon-gold">star</i>&nbsp;
-                                                {{ avgrating.averageRating }}
+                                                {{ avgrating.averageRating|round(1,'floor') }}
                                             {% endif %}
                                         {% endfor %}
                                     </div>

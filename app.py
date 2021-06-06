@@ -318,13 +318,17 @@ def bookpage(book_id):
                     "$unwind": "$review"},
                     {"$match": {'review.bookid': book_id_in_review}},
                     {"$group": {
-                        "_id": "$_id", "averageRating": {
-                            "$avg": '$review.rating'}}},
-                    {"$merge": {
-                        "into": "avgRatingAgg",
+                        "_id": "$_id", "averageRating": 
+                        {
+                            "$avg": '$review.rating'
+                        }
+                    }},
+                    {"$merge": 
+                    {"into": "avgRatingAgg",
                         "on": "_id",
                         "whenMatched": "replace",
-                        "whenNotMatched": "insert"}}
+                        "whenNotMatched": "insert"
+                    }}
                 ]))
                 review = mongo.db.avgRatingAgg.find_one({
                     "_id": ObjectId(get_book["_id"])

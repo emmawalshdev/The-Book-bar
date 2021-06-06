@@ -28,7 +28,7 @@
                                 <div class="flex-item-center">
                                     {% if review.averageRating %}
                                         <i class="material-icons star-icon-gold">star</i>&nbsp;
-                                            <h5>{{ review.averageRating }}</h5>
+                                            <h5>{{ review.averageRating|round(1,'floor') }}</h5>
                                     {% else %}
                                         <i class="material-icons star-icon-black tooltipped" data-position="right" data-tooltip= "{{ review }}" >star</i>&nbsp;
                                     {% endif %}
