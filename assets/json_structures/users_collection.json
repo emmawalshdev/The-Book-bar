@@ -1,0 +1,27 @@
+[{
+    "_id":{
+        "$oid":"<objectid>"
+    },
+    "username":"<string>",
+    "password":"<hashed_password_string>",
+    "books_added":
+        [{
+            "book_id":{
+                "$oid":"<objectid>"
+            },
+            "added_date":{
+                "$date":{
+                    "$numberLong":"<date>"
+                }
+            }
+        }],
+    "reviews_added":
+        [{
+            "review_id":"<string>",
+            "added_date":{
+                "$date":{
+                    "$numberLong":"<date>"
+                }
+            }
+        }]
+}]

@@ -21,33 +21,43 @@ Security features are also present. Such include user permissions for the 'admin
 
 ## Contents
 1. [UX](#ux)
-      * [Strategy](#strategy)
-      * [User Stories](#user-stories)
-        * [Visitor Stories](#visitor-stories)
-        * [Business Stories](#business-stories)
-    * [Project Scope](#project-scope)
-    * [Wireframes](#wireframes)
-    * [Design](#design)
+      - [Strategy](#strategy)
+      - [User Stories](#user-stories)
+        - [Visitor Stories](#visitor-stories)
+        - [Business Stories](#business-stories)
+    - [Project Scope](#project-scope)
+      - [In Scope](#in-scope)
+      - [Out of Scope](#out-of-scope)
+    - [Wireframes](#wireframes)
+    - [Design](#design)
+      - [User journey](#user-journey)
+      - [Typography](#typography)
+      - [Color Scheme](color-scheme)
 
 2. [Features](#features)
-    * [Existing Features](#existing-features)
-    * [Features Left to Implement](#features-left-to-implement)
+    - [Existing Features](#existing-features)
+    - [Features Left to Implement](#features-left-to-implement)
 
-3. [Technologies Used](#technologies-used)
-    * [Database](#database) 
-    * [Languages](#languages)
-    * [Libraries](#libraries)
-    * [Tools](#tools)
+3. [Information Architecture](#information-architecture)
+    - [Database information](#database-information)
+    - [Datatypes](#datatypes)
+    - [Collections information](#collection-information)
 
-4. [Testing](https://github.com/emmahartedev/The-Book-bar/blob/master/testing.md)
+4. [Technologies Used](#technologies-used)
+    - [Database](#database) 
+    - [Languages](#languages)
+    - [Libraries](#libraries)
+    - [Tools](#tools)
+
+5. [Testing](https://github.com/emmahartedev/The-Book-bar/blob/master/testing.md)
     
-5. [Deployment](#deployment "goto deployment")
+6. [Deployment](#deployment "goto deployment")
 
-6. [Credits](#credits "goto credits")
-    * [Content](#content "goto Content")
-    * [Code](#code "goto code")
-    * [Media](#media "goto media")
-    * [Acknowledgments](#acknowledgments "goto acknowledgments")
+7. [Credits](#credits "goto credits")
+    - [Content](#content "goto Content")
+    - [Code](#code "goto code")
+    - [Media](#media "goto media")
+    - [Acknowledgments](#acknowledgments "goto acknowledgments")
 
 ----------------------------
 
@@ -120,7 +130,7 @@ In considering the content requirements, the following were questioned:
   b) Whether or not adequate resources were available to produce the content.
 The following is a statement of the findings:
 
-**In scope (features & content)**
+#### In scope
 
 * User login and account registration
   - Only if a user is registered and logged in, can the user upload books and add reviews.
@@ -154,7 +164,7 @@ The following is a statement of the findings:
 * A rating functionality will be added as part of each review
   - This is essential in creating a functional book recommendation service 
 
-**Out of scope (features & content)**
+#### Out of scope
 
 * A sophisticated recommendation algorithm, based on books upvoted by user.
   - Not possible within the current time-frame and due to personal skillset
@@ -175,41 +185,44 @@ Please note, the final website layout contains slight variations to the original
 Each of the following files contain wireframes for desktop, tablet, and mobile devices.
 </strong>
  
-**Users - not admin**
-* [Home](assets/images/readmeFiles/wireframes/home.png)
-* [Login](assets/images/readmeFiles/wireframes/login.png)
-* [Register](assets/images/readmeFiles/wireframes/register.png)
-* [Profile](assets/images/readmeFiles/wireframes/profile.png)
-* [Add a book](assets/images/readmeFiles/wireframes/addABook.png)
-* [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
+**Users - non admin**
+- [Homepage](assets/images/readmeFiles/wireframes/home.png)
+- [Login](assets/images/readmeFiles/wireframes/login.png)
+- [Register](assets/images/readmeFiles/wireframes/register.png)
+- [Profile](assets/images/readmeFiles/wireframes/profile.png)
+- [Add a book](assets/images/readmeFiles/wireframes/addABook.png)
+  - The edit book page will be a direct copy of the 'add a book' page.
+  - The fields will be pre-selected.
+- [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
 
 **User - admin only**
-* [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
+- [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
+  - The 'add genre' book page will be a direct copy of the 'add a book' page.
+    - It will contain two fields: genre title and an icon name.
+  - The 'Edit genre' will be a direct copy of the 'add genre' page. 
+    - The fields will be pre-selected.
 
 ### Design
-The website structure was designed to be consistent, predictable, learnable, visable and provide user feedback.
-A user journey for non-admin users was created to aid the stuctural design.
 
-![user journey](assets/images/readmeFiles/userjourney.jpg) 
+#### User journey
+- The website structure was designed to be consistent, predictable, learnable, visable and provide user feedback.
+- A user journey for non-admin users was created to aid the stuctural design.
+  ![user journey](assets/images/readmeFiles/userjourney.jpg) 
 
 
 #### Typography
-All fonts used in this project derive from [Google Fonts](https://fonts.google.com/). 
+- All fonts used in this project derive from [Google Fonts](https://fonts.google.com/). 
 
-Fonts used include:
-* [Raleway](https://fonts.google.com/specimen/Raleway?query=raleway) - used for h1 - h4
-* [Lato](https://fonts.google.com/specimen/Lato?query=lato) - used for h5 - h6 and all other body text
+- Fonts used include:
+  - [Raleway](https://fonts.google.com/specimen/Raleway?query=raleway) - used for h1 - h4
+  - [Lato](https://fonts.google.com/specimen/Lato?query=lato) - used for h5 - h6 and all other body text
 
 
-#### Colour Scheme
-A pink and blue colour palette was used in this design. Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.
-
-The following colour palette was used for inspiration:
-
-![colour palette](assets/images/readmeFiles/colorpal.jpg)
-
-#### Design justifications
-* 
+#### Colour scheme
+- A pink and blue colour palette was used in this design.
+- Although contrasting, pink is associated with romance and lightness and blue creates a feeling of calmness. Used together, these colours create a positive mood.
+- The following colour palette was used for inspiration:
+  ![colour palette](assets/images/readmeFiles/colorpal.jpg)
 
 --------------------------------------------------------------------------------------------
 
@@ -222,7 +235,7 @@ The following colour palette was used for inspiration:
 - NavBar
   - The navigation features The Book bar logo in the top left corner in desktop view. This switches to a center position on smaller screen sizes.
 
-  - Access rights
+  - Access rights:
     - Certain links are viewable only to a logged in user. To check if a user is logged in, ```if 'user' in session``` is used in Python. This information is then passed to the jinja template, to determine access rights.
 
     - Centain links are only viewable to the 'admin' user. To determine access rights, ```if session.user|lower == "admin"|lower``` is used in the jinja template. 
@@ -289,7 +302,7 @@ The following colour palette was used for inspiration:
     - An average star rating
     - An icon representing the genre type.
 
-  - The data feaured on each book card derives from user input, which is stored is the database.
+  - The data feaured on each book card derives from user input, which is stored is the database. Fields include:
     - The title, author, book image data is pulled from the books collection.
     - The genre data is pulled from the genres collection.
     - The average review rating is pulled from the AvgRatingAgg (average rating aggregation) collection.
@@ -345,25 +358,25 @@ The following colour palette was used for inspiration:
 
 
 * **Add a review section**
-- Accessibility
-  - The 'Add a Review' form is only accessible to users who are **logged in**
-  - If a user is not logged in, feedback is returned. This states that the user must be logged in to add a review.
+  - Accessibility
+    - The 'Add a Review' form is only accessible to users who are **logged in**
+    - If a user is not logged in, feedback is returned. This states that the user must be logged in to add a review.
 
-- Form content
-  - The form includes the following fields
-    1. Title (required)
-    2. Summary
-    3. Select a star rating (required)
+  - Form content
+    - The form includes the following fields:
+      1. Title (required)
+      2. Summary
+      3. Select a star rating (required)
 
-- Submission behaviour
-  - First review (per book by user)
-    - When submitted, the review lives as an object of the 'review' array within the book document.
-    - Upon submission, the user is redirected back to the bookpage. With this, the AvgRatingAgg document is also updated.
-    
-  - Multiple reviews (per book by user)
-    - Only one review per book is permitted by a user.
-    - This information is stated on the review form. 
-    - If a user attempts to add a second review, error feedback is returned.
+  - Submission behaviour
+    - First review (per book by user):
+      - When submitted, the review lives as an object of the 'review' array within the book document.
+      - Upon submission, the user is redirected back to the bookpage. With this, the AvgRatingAgg document is also updated.
+      
+    - Multiple reviews (per book by user):
+      - Only one review per book is permitted by a user.
+      - This information is stated on the review form. 
+      - If a user attempts to add a second review, error feedback is returned.
 
 #### Edit book
 - Accessibility
@@ -437,12 +450,12 @@ The following colour palette was used for inspiration:
   - A link to the registration page is displayed for easy access.
 
 - Submission behaviour
-  - If the username exists in the database
+  - If the username exists in the database:
     - The password is checked.
     - If the password inputted matches the hashed password, the user is directed to the profile page.
     - If the password inputted does not match the hashed password, an error flash message is displayed and the user is redirected to the login page
 
-  - if the username does not exist in the database
+  - if the username does not exist in the database:
     - An error flash message is displayed. The user is redirected back to the login page.
 
 #### Register page
@@ -452,7 +465,7 @@ The following colour palette was used for inspiration:
     - The username and hashed password are inserted as a new document to the users collection
     - The user is redirected to the login page
 
-  - If the username exist in the database
+  - If the username exist in the database:
     - An error flash message is displayed and the user is redirected back to the register page
 
 #### Manage genres
@@ -580,9 +593,82 @@ The following are features which were not included in this release. Once adequat
   - With instant verification, the user would recieve feedback before they submit a form.  
   - This would would reduce the workload for content moderation and improve the user experience. 
 
+## Information Architecture
+
+### Database information
+- MongoDB (a project requirement):
+  - This project utilizes MongoDB; a NoSQL database.
+  - MongoDB allows users to use “unstructured data.” This means you can build your application without having to first define the schema.
+  - The MongoDB database was chosen, as this is a requirement for the Milestone Three, code institute project.
+
+- Take-away houghts:
+  - A pre-defined schema would have simplified the development of the overall project.
+  - Due to the drawbacks of the non ACID compliance of NoSQL, an A SQL database structure would have suited this project better.
+
+### Datatypes
+  - The datatypes utilized in this project include the following:
+    - ObjectId
+    - String
+    - Boolean
+    - DateTime
+    - Object
+
+### Collections information
+'The Book bar' involves 4 database collections. The details of each collection are detailed below.
+
+  #### Users collection
+
+| Title | Key in db | form validation type | Data type |
+--- | --- | --- | --- 
+Account ID | _id | None | ObjectId 
+Username | username | text, `maxlength="15"` | string
+Password | password | text, `maxlength="15"` | string
+Books Added by User | books_added | none | array
+Reviews Added by User | reviews_added | none | array
+
+[Example JSON from the users collection](assets/json_structures/users_collection.json)
+
+#### Genres collection
+
+| Title | Key in db | form validation type | Data type |
+--- | --- | --- | --- 
+Genre ID | _id | None | ObjectId 
+Genre name | genre_name |text, `maxlength="50"` | string
+Genre icon | genre_icon | text, `maxlength="20"` | string
+
+[Example JSON from the genres collection](assets/json_structures/genres_collection.json)
+
+ #### Books collection
+
+ | Title | Key in db | form validation type | Data type |
+--- | --- | --- | --- 
+Book ID | _id | None | ObjectId 
+Genre ID | genre_id | None | ObjectId
+Book Title | book_name | text, `maxlength="50"` | string
+Book Author | author | text, `maxlength="30"` | string 
+Book Description | description | text, `maxlength="790"` | string
+URL for Cover Image | image_url | text, `maxlength="150"` | string
+URL to Shop the Book | buy_url | text, `maxlength="150"` | string
+Uploaded by | created_by| none | string 
+Password | password | text, `maxlength="15"` | string
+Review array | review | none | array
+
+[Example JSON from the genres collection](assets/json_structures/book_collection.json)
+
+
+ #### avgRatingAgg collection (average rating aggregation))
+
+ | Title | Key in db | form validation type | Data type |
+--- | --- | --- | --- 
+Book ID | _id | None | ObjectId 
+Average Star Rating | averageRating | radio | double
+
+[Example JSON from the genres collection](aassets/json_structures/avgRatingAgg_collection.json)
+
 ----------------------------
 
 ## Technologies Used
+
 ### Database
 
 * [MongoDB Atlas](https://www.mongodb.com/) - Used as the primary database for storing and retrieving the information in the website.
@@ -766,4 +852,4 @@ Profile page
 
 
 ### Acknowledgments
-* Thanks to Gerald mcBride for the help and guidance thoughout this project
+* Thank you to Gerald mcBride for his help and guidance thoughout this project.

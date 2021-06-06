@@ -1,0 +1,7 @@
+[{
+    "_id":{
+            "$oid":"<objectid>"
+        },
+        "genre_name":"<string>",
+        "genre_icon":"<string>"
+}]
