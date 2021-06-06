@@ -493,13 +493,14 @@ def review_book(book_id):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
+        get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        reviews = get_book.get("review")
+        date = str(datetime.utcnow().strftime("%Y-%m-%d"))
         #  save the review if method is post
         if request.method == "POST":
-            get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-            reviews = get_book.get("review")
-            date = str(datetime.utcnow().strftime("%Y-%m-%d"))
             if reviews:
                 for review in reviews:
+                    #  if user has already posted a review, stop them
                     if review["username"] == session["user"]:
                         flash(
                             "You previously reviewed this book." +
@@ -508,25 +509,26 @@ def review_book(book_id):
                         return redirect(url_for(
                             "bookpage",
                             book_id=book_id))
-            else:
-                alphabet = string.ascii_letters + string.digits
-                password = ''.join(secrets.choice(alphabet) for i in range(8))
-                mongo.db.books.update_one(
-                    {"_id": ObjectId(book_id)}, {
-                        "$addToSet": {"review": {
-                            "title": request.form.get("review_title"),
-                            "description": request.form.get("review"),
-                            "rating": int(request.form.get("rate")),
-                            "date": date,
-                            "review_id": password,
-                            "bookid": str(ObjectId(book_id)),
-                            "username": session["user"]}}})
-                username = session["user"]
-                update_user_reviews(username, password)
-                flash("Review was successfully saved.", "success")
+            #  else allow user to post review
+            alphabet = string.ascii_letters + string.digits
+            password = ''.join(secrets.choice(alphabet) for i in range(8))
+            mongo.db.books.update_one(
+                {"_id": ObjectId(get_book["_id"])}, {
+                    "$addToSet": {"review": {
+                        "title": request.form.get("review_title"),
+                        "description": request.form.get("review"),
+                        "rating": int(request.form.get("rate")),
+                        "date": date,
+                        "review_id": password,
+                        "bookid": str(ObjectId(book_id)),
+                        "username": session["user"]}}})
+            username = session["user"]
+            update_user_reviews(username, password)
+            flash("Review was successfully saved.", "success")
+        else:
+            review = "No star ratings yet"
         return redirect(url_for(
-            "bookpage",
-            book_id=book_id))
+            "bookpage", book_id=book_id))
 
 
 # update reviews_added object array in user document
