@@ -72,7 +72,7 @@
                                 <!--book image-->
                                 <div class="card-image">
                                     <a href="{{ url_for('bookpage', book_id=book._id) }}">
-                                        <img src="{{ book.image_url }}" alt="book cover image" width="400">
+                                        <img src="{{ book.image_url }}" alt="book cover image" width="400" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/4170629/pexels-photo-4170629.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260';">
                                     </a>
                                 </div>
                                 <!--card content-->

@@ -370,9 +370,9 @@ def add_book():
                 "genre_id": genre_id,
                 "book_name": request.form.get("book_name"),
                 "author": request.form.get("author"),
-                "image_url": request.form.get("image_url"),
+                "image_url": "https://" + request.form.get("image_url"),
                 "description": request.form.get("description"),
-                "buy_url": request.form.get("buy_url"),
+                "buy_url": "https://" + request.form.get("buy_url"),
                 "created_by": session["user"],
             }
             mongo.db.books.insert_one(book)
@@ -429,9 +429,9 @@ def edit_book(book_id):
                 "genre_id": genre_id,
                 "book_name": request.form.get("book_name"),
                 "author": request.form.get("author"),
-                "image_url": request.form.get("image_url"),
+                "image_url": "https://" + request.form.get("image_url"),
                 "description": request.form.get("description"),
-                "buy_url": request.form.get("buy_url"),
+                "buy_url": "https://" + request.form.get("buy_url"),
                 "created_by": session["user"]
                 }}
             )
