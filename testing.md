@@ -305,7 +305,7 @@ The following browsers were included in desktop manual testing:
         - Confirm that the review information is correctly aligned with the mongodb data.
         - Confirm that the date is included.
 
-    - For 'admin' user or the content creator:
+    - For the 'admin' user or the content creator:
         - Confirm that the Edit button is present behind the review card.
         - Click on the Edit button, confirm navigation to the Edit review page.
 
@@ -327,54 +327,54 @@ The following browsers were included in desktop manual testing:
 
 **Edit book page**
 - Test access
-    - Attempt to access the edit book page url while logged out. Confirm redirect to access denied page.
+    - Attempt to access the edit book page URL while logged out. Confirm a redirect to the Access denied page.
 
 - Test pathways
-    - Input new data in all fields & click 'Save': 
+    - Input new data in all fields & click Save: 
         - Confirm that a success message appears.
-        - Confirm redirect to bookpage.
-        - Confirm that the data on the page template is aligned with MongoDB data (updated data).
+        - Confirm a redirect to the book page.
+        - Confirm that the data on the page template is aligned with the MongoDB data (updated data).
 
-  - Click 'Cancel'
-    - Confirm redirect to bookpage.
+  - Click Cancel:
+    - Confirm a redirect to the book page.
 
-  - Click 'Delete'
+  - Click Delete:
     - Confirm that a warning message appears.
-    - Click 'No'
-        - Confirm that modal closes.
-    - Click 'Yes
-        - Confirm that success message appears.
-        - Confirm redirect to homepage.
+    - Click No:
+        - Confirm that the modal closes.
+    - Click Yes:
+        - Confirm that a success message appears.
+        - Confirm a redirect to the homepage.
         - Confirm that the correct book document is removed from the MongoDB books collection.
-        - Confirm that 'Books Added' count on profile page updates.
-        - Confirm that 'Your Recent Contributions' -> 'Books added' -> book card dissapears.
+        - Confirm that the Books added count on the profile page has updated.
+        - Confirm that the book card within the Books added section on the profile page dissapears.
 
 **Edit review page**
 - Test access
-    - Attempt to access the edit book page url while logged out. Confirm redirect to access denied page.
+    - Attempt to access the edit book page URL while logged out. Confirm a redirect to the Access denied page.
 
 - Test pathways
-  - Input new data in all fields & click 'Save': 
+  - Input new data in all fields & click Save: 
     - Confirm that a success message appears.
-    - Confirm redirect to bookpage.
-    - Confirm that data on the page template is aligned with MongoDB data (updated data).
-    - Confirm that the average star rating in the book section updates.
+    - Confirm a redirect to book page.
+    - Confirm that the data on the book page is aligned with the MongoDB data (updated data).
+    - Confirm that the average star rating in the book section has updated.
 
-  - Click 'Cancel'
+  - Click Cancel:
     - Confirm redirect to bookpage.
 
-  - Click 'Delete'
+  - Click Delete:
     - Confirm that a warning message appears.
 
-    - Click 'No'
+    - Click No:
         - Confirm that the modal closes.
 
-    - Click 'Yes
+    - Click Yes:
         - Confirm that a success message appears.
-        - Confirm redirect to bookpage.
-        - Confirm that the correct review object arrary is removed from the MongoDB book collection.
-        - Confirm that 'Reviews Added' count on profile page updates.
-        - Confirm that 'Your Recent Contributions' -> 'Reviews added' -> review card dissapears.
+        - Confirm redirect to book page.
+        - Confirm that the correct review object array has been removed from the MongoDB book collection.
+        - Confirm that Reviews added count on profile page updates.
+        - Confirm that review card within the Reviews added section dissapears.
 
 **Login page**
 - Incorrect password:
@@ -397,142 +397,142 @@ The following browsers were included in desktop manual testing:
 - If the username is not in use:
   - Confirm that a unique hashed password is generated.
   - Confirm that the username and hashed password are inserted as a new document to the users collection.
-  - Confirm redirect to login page.
+  - Confirm a redirect to the login page.
 
 **Manage genres page**
 
 - Design confirmation:
-    - Confirm that genre cards show both the title and materialise icon.
+    - Confirm that the genre cards show both the title and materialize icon.
 
 - Test access
-    - Confirm that navlink is not visable to non admin users
-    - Confirm that navlnk is visable for 'admin' user
-    - Attempt to access the edit book page url while logged out. Confirm redirect to access denied page.
+    - Confirm that the Manage genres navlink is not visible to non-admin users.
+    - Confirm that navlnk is visable for 'admin' user.
+    - Attempt to access the edit book page URL while logged out. Confirm redirect to access denied page.
 
 - Test pathways
-    - Cllick on 'Add' genre button, confirm redirect to add genre page.
-    - Click on 'Edit' button on genre card, confirm redirect to that specific edit genre page.
+    - Click on the Add genre button, confirm a redirect to the add genre page.
+    - Click on the Edit button on a genre card, confirm a redirect to that specific edit genre page.
 
 **Add genre page** 
 - Design confirmation
-    - Confirm that two fields are present (genre name and materialise icon)
+    - Confirm that two fields are present (genre name and materialize icon).
 
 - Test pathways
-    - Add data and click 'Save'
+    - Add data and click Save:
         - Confirm that a success flash message appears.
-        - Confirm redirect to 'manage genres' page.
-        - Confirm that the newly added genre is present as a genre card, showing both the title and name.
-        - Confirm that the newly added genre is visable in the dropdown field in the 'add a book' page.
+        - Confirm a redirect to 'manage genres' page.
+        - Confirm that the newly added genre is present as a genre card, showing both the title and icon name.
+        - Confirm that the newly added genre is visible in the dropdown field on the Add a book page.
 
-    - Click 'Cancel'
-        - Confirm redirect to 'manage genres' page
+    - Click Cancel:
+        - Confirm a redirect to the Manage genres page.
 
 **Edit genre page**
 - Design confirmation
-    - Confirm that two fields are present and pre-populated (genre name and materialise icon).
+    - Confirm that two fields are present and pre-populated (genre name and the materialize icon).
 
 - Test pathways
-    - Edit data and click 'Save'
+    - Edit data and click Save:
         - Confirm that a success flash message appears.
-        - Confirm redirect to 'manage genre' page.
-        - Confirm that the data on each genre card is updated and is aligned with MongoDB data.
+        - Confirm a redirect to the Manage genres page.
+        - Confirm that the data on each genre card is updated and aligned with the MongoDB data.
         
-    - Click 'Cancel'
-        - Confirm redirect to 'manage genres' page
+    - Click Cancel:
+        - Confirm a redirect to the Manage genres page.
     
-    - Click 'Delete'
-        - Click 'Yes'
+    - Click Delete:
+        - Click Yes:
             - Confirm that a success flash message appears.
             - Confirm redirect to 'manage genres' page
             - Confirm that the correct genre card has been removed and is aligned with MongoDB data.
-            - Confirm that genre name and icon have been removed from all other areas on the site (books cards on homepage, bookpage etc.)
+            - Confirm that genre name and icon have been removed from all other areas on the site (books cards on homepage, book page etc.).
 
 **Profile page**
 - Test access
-    - Attempt to access a users profile by url while logged out. Confirm redirect to access denied page.
-    - Attempt to access a different users profile by url while logged in. Confirm redirect to access denied page.
+    - Attempt to access a users profile by URL while logged out. Confirm a redirect to access denied page.
+    - Attempt to access a different users profile by URL while logged in. Confirm a redirect to access denied page.
 
 - Design confirmation
     - Welcome section:
         - Confirm that the correct username is displayed in the welcome message.
-        - Confirm that duration of membership figure is correct.
+        - Confirm that the duration of membership displayed is correct.
     
     - Profile card
-        - Confirm that the 'books added' count is correct.
-        - Confirm that the 'reviews added' count is correct.
-        - Hover over 'Search Books' link, confirm hover effect is applied. 
-        - Click on 'Search Books' link, Confirm redirect to homepage.
+        - Confirm that the Books added count is correct.
+        - Confirm that the Reviews added count is correct.
+        - Hover over the Search books link, confirm that the hover effects are applied. 
+        - Click on the Search books link, Confirm a redirect to home page.
 
     - Books added section
-        - If 'books added' count is zero:
+        - If the Books added count = zero:
             - Confirm that a placeholder image and text are present.
-            - Hover over the card link, confirm hover effect is applied.
+            - Hover over the card link, confirm that the hover effects are applied.
 
-        - If 'books added' count is greater than zero
+        - If the Books added count > zero:
             - Confirm that the most recent 4 books added are displayed.
 
     - Reviews added section
-        - If 'Reviews added' count is zero:
-            - Confirm that placeholder image and text are present
-            - Hover over the card link, confirm that hover effects are applied            
+        - If the Reviews added count = zero:
+            - Confirm that a placeholder image and text are present.
+            - Hover over the card link, confirm thatthe hover effects are applied.            
 
-        - If 'Reviews added' count is greater than zero
+        - If the Reviews added count > zero:
             - Confirm that the most recent 4 reviews added are displayed.
 
 **404 page**
 - Test pathway 
     - Search using a false URL (eg https://the-book-bar.herokuapp.com/get_genres/crime).
-    - Confirm redirect to 404 page.
+    - Confirm a redirect to the 404 page.
 
 **Access denied page**
 - Test pathway
-    - Seach using a disallowed URL (eg https://the-book-bar.herokuapp.com//profile/emmaharte).
-    - Confirm redirect to access denied page.
+    - Search using a disallowed URL (eg https://the-book-bar.herokuapp.com//profile/emmaharte).
+    - Confirm a redirect to access denied page.
 
 #### Mobile and Tablet testing
-In order to test repsonsiveness on mobile and tablet devices, further manual testing was carried out. The following steps were carried out as part of this process.
+To test responsiveness on mobile and tablet devices, further manual testing was carried out. The following steps were carried out as part of this process.
 
 **Elements on all pages**
 
-- Navbar (max width approx. 950px)
-    - Confirm that menu collapses into a burger icon.
-    - Click burger icon, confirm that menu slides in from the right.
+- Navbar (max-width approx. 950px)
+    - Confirm that the menu collapses into a burger icon.
+    - Click on the burger icon, confirm that the menu slides in from the right.
 
 - Footer
-    - Confirm that the copyright and social media links sections stack on small sized devices.
+    - Confirm that the copyright and social media links sections stack on mobile devices.
 
 **Homepage**
 
 - Pagination
-    - Confirm that pagination works on mobile and tablet devices.
+    - Confirm that the pagination works on mobile and tablet devices.
 
-**Bookpage**
+**Book page**
 - Book section:
-    - Confirm that tooptip appears on click of book star icon
+    - Confirm that the tooltip appears when the star icon (book section) is clicked.
 
 **All pages**
 - Content:
-    - Confirm that the layout is optimised for mobile and tablet devices.
+    - Confirm that the layout is optimized for mobile and tablet devices.
     - Confirm that all modal pop-ups behave as expected.
 
 ### Browser Compatibility
-- [LamdaTest](https://www.lambdatest.com/) was used to test the website on the following browsers.
-All CRUD operations were carried out on each browser.
+- [LamdaTest](https://www.lambdatest.com/) was used to test browser compatibility.
+- All CRUD operations were carried out on each browser.
+- The following browsers were tested:
     - Google Chrome
     - Firefox
     - Microsoft Edge
     - Safari 
     - Opera
 
--  No bugs were recoreded during the LamdaTest testing process.
+-  No bugs were recorded during the LamdaTest testing process.
 
 ### Responsiveness
 
 #### Chrome DevTools
 - The website's responsiveness was tested using [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) throughout development.
-This helped to ensure that responsiveness was optimised across a range of devices.
-
-- The devices (and screen widths) tested with include: 
+- This helped to ensure that responsiveness was optimized across a range of devices.
+- The devices (and screen widths) tested include: 
     - iPhone 5/SE (320px)
     - iPhone 6/7/8 (375px)
     - iPhone 6/7/8 Plus (414px)
@@ -542,22 +542,23 @@ This helped to ensure that responsiveness was optimised across a range of device
     - Desktop (1920px)
 
 #### Lighthouse
-- [Lighthouse](https://developers.google.com/web/tools/lighthouse) was run in Chrome Dev Tools regularly throughout developement, to generate reports on the quality of the website.
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse) was run in Chrome Dev Tools regularly throughout development, to test the quality of the website.
 - Reports were run for both mobile and desktop.
 
 - The following screenshots show the final lighthouse reports. 
 
     - **Desktop**
+
         ![Lighthouse Desktop Report ](assets/images/readmeFiles/desktopLighthouse.PNG)
 
 
     - **Mobile**
+
         ![Lighthouse Mobile Report ](assets/images/readmeFiles/mobileLighthouse.PNG)
 
-- Errors logged to the console
-    - Two errors were logged to the console during testing:
-        - GET https://the-book-bar.herokuapp.com/robots.txt 404 (NOT FOUND)
-        - No Textarea element found
+- Errors logged to the console:
+    - GET https://the-book-bar.herokuapp.com/robots.txt 404 (NOT FOUND).
+    - No Textarea element found.
     - These have been documented in the below Bugs section.
 
 
@@ -567,8 +568,8 @@ This helped to ensure that responsiveness was optimised across a range of device
 - All HTML code was checked using [The W3C Markup Validation Service](https://validator.w3.org/).
 
     - Changes made:
-        - Stray start tag script - Moved script tags to within the body tag.
-        - Remove href from button elements - ammeded button element code.
+        - **Stray start tag script**- Moved script tags to within the body tag.
+        - **Remove ````href```` from button elements** - amended button element code.
 
     - Considerations for the future:
         - Add h2-h6 elements within each section, to create a stronger semantic structure. 
@@ -582,7 +583,7 @@ This helped to ensure that responsiveness was optimised across a range of device
 * All Javascript code was checked using [JSHint](https://jshint.com/). 
     - Metrics:
         - There are 7 functions in this script.js.
-        - The function with the largest signature take 0 arguments, while the median is 0.
+        - The function with the largest signature takes 0 arguments, while the median is 0.
         - The largest function has 8 statements in it, while the median is 3.
         - The most complex function has a cyclomatic complexity value of 3 while the median is 2.
 
@@ -593,7 +594,7 @@ This helped to ensure that responsiveness was optimised across a range of device
 #### Python
 - All Python code was checked for using the online [PEP8 compliance](http://pep8online.com/) tool.
     - Changes made:
-        - General changed were made to the code. These included, Indentation corrections, removal of training whitespace and ensuring that two spaces were present between functions.
+        - General changed were made to the code. These included indentation corrections, removal of trailing whitespace, and ensuring that two spaces were present between functions.
 
     
 ### Known bugs 
@@ -608,55 +609,57 @@ This helped to ensure that responsiveness was optimised across a range of device
         - Thanks to the code institute slack channel for assistance on this.
         ![Code from Slack](assets/images/readmeFiles/modalCodeHelp.PNG)
 
-2.  Clicking on five star rating bar causes a page to jump.
+2.  Clicking on the five-star rating bar causes a page to jump.
     - Issue:
-        - When adding a review, a five star rating bar was created. On click of this, the page immediately jumped to the top. Ideally, the star rating would become sticky after clicking and the page remain in position.
+        - When adding a review, adding a star rating is required. On click of a star, the page immediately jumped back up to the top of the page. Ideally, the star rating would become sticky after clicking and the page would remain in position.
 
     - Resolution:
-        - After researching, I discovered that the reload bevhavior was caused by a line of CSS code.
+        - After researching, I discovered that the reload behavior was caused by a line of CSS code.
         - The following code line was removed ```top:-9999px ```
         - Thank you to Pravin Waychal on stack overflow for assisting on this.
             - [Code from Slack](https://stackoverflow.com/questions/22881587/prevent-page-to-go-back-on-top-when-selecting-a-star-rating)
 
 3. Invalid color incorrectly applied to select dropdown field.
     - Issue:
-        - The select dropdown field is required in the 'add a book' and 'edit book' page templates. Even when a selection was made, the invalid class was applied.
+        - The select dropdown field is required in the Add a book and Edit book page templates. Even when a selection was made, the invalid class was applied.
 
     - Resolution:
-        - Custom Jquery was added to prevent correct this behaviour.
+        - Custom Jquery was added to correct this behavior.
         - Thank you to code institute for providing this insight as part of the Milestone Three curriculum.
 
-4. Delay on modal pop-up.
+4. Delay on all modal pop-ups.
     - Issue:
-        - A large delay between clicking on the modal trigger element and the modal pop-up was apparent. With this, it was not clear if the modal trigger was working correctly.
+        - A large delay between clicking on the modal trigger element and the modal pop-up was apparent. With this, it was not clear if submission/deletion or cancellation had been successful.
 
     - Resolution:
-        - After researching, I discovered that the modal had not been initialised correctly.
+        - After researching, I discovered that the modal had not been initialized correctly.
         - I solved this by adding the following code: ```$('#modal1').modal().modal('open');```
         - Thank you to Denis Tsoi on stack overflow for assisting on this.
             - [Code from Slack](https://stackoverflow.com/questions/42430062/materialize-model-not-working)
 
 5. Problematic URL structures.
     - Issue:
-        - For each book the content creater or 'admin' user can edit the data. All book data is editable.
-        - The book title is passed to the URL for the bookpage. 
-        - If a user updated the book name, upon submission the bookpage re-loaded. This caused a Jinja error, due to the change in data.
+        - For each book, data is editable by the content creator or 'admin' user.
+        - At the time, the book title was passed into the book page URL. 
+        - If a user updated the book title, upon submission they would be redirected to the book page.
+        - The redirect caused a Jinja error. The URL was now invalid due to the changed book title.
 
     - Resolution:
-        - The book title was removed from the URL.
-        - The book _id was instead passed to the URL. As this data would not be updated in the edit page, this ensures that the no issues occur.
+        - The book title was removed from the book page URL.
+        - The book _id was instead passed to the book page URL.
+        - This ensured that no URL issues could occur, as each ID is pernament to a document.
 
 6. Deleting a genre when this is required for each book.
     - Issue:
-        - As part of CRUD operations, the 'admin' user needs to be able to delete a genre.
+        - As part of the CRUD operations, the 'admin' user needs to be able to delete a genre.
         - Once deleted, the genre_id also gets deleted in all books where it is featured.
-        - Genre is a required field to 'add a book'. If the user tried to edit a book with a deleted genre, the select dropdown field is strangely preselected to a random existing genre.
+        - If the user tried to edit a book with a deleted genre, the select dropdown field is strangely preselected to a random existing genre.
 
     - Resolution:
         - An 'I'm not sure' option was added to the genre dropdown field. 
-        - This genre was hidden on the 'manage genres' page and on the 'bookpage'.
+        - This genre was hidden on the Manage genres page and the Book page.
         - Once a genre is deleted, the genre_id in the book document is replaced with the genre_id for the 'I'm not sure' document.
-        - As this is hidden elsewhere in the site, the value is only visable from within the 'edit book' page. 
+        - As this is hidden elsewhere in the site, the value is only visible from within the Edit book page. 
 
 #### Unsolved
 - No unsolved bugs are currently recorded.
