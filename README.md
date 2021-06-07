@@ -32,7 +32,7 @@ Security features are also present. Such include user permissions for the 'admin
     - [Design](#design)
       - [User journey](#user-journey)
       - [Typography](#typography)
-      - [Color Scheme](color-scheme)
+      - [Color Scheme](#color-scheme)
 
 2. [Features](#features)
     - [Existing Features](#existing-features)
@@ -41,17 +41,20 @@ Security features are also present. Such include user permissions for the 'admin
 3. [Information Architecture](#information-architecture)
     - [Database information](#database-information)
     - [Datatypes](#datatypes)
-    - [Collections information](#collection-information)
+    - [Collections information](#collections-information)
 
 4. [Technologies Used](#technologies-used)
     - [Database](#database) 
     - [Languages](#languages)
     - [Libraries](#libraries)
     - [Tools](#tools)
+    - [Deployment](#deployment-heroku)
 
 5. [Testing](https://github.com/emmahartedev/The-Book-bar/blob/master/testing.md)
     
-6. [Deployment](#deployment "goto deployment")
+6. [Deployment](#deployment)
+    - [Local Deployment](#local-deployment)
+    - [Heroku Deployment](#heroku-deployment)
 
 7. [Credits](#credits "goto credits")
     - [Content](#content "goto Content")
@@ -188,22 +191,21 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 - [Register](assets/images/readmeFiles/wireframes/register.png)
 - [Profile](assets/images/readmeFiles/wireframes/profile.png)
 - [Add a book](assets/images/readmeFiles/wireframes/addABook.png)
-  - The edit book page will be a direct copy of the 'add a book' page.
-  - The fields will be pre-selected.
+  - The edit book page will be a direct copy of the Add a book page. The fields will be pre-selected.
 - [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
 
 **User - admin only**
 - [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
-  - The 'add genre' book page will be a direct copy of the 'add a book' page.
+  - The 'add genre' book page will be a direct copy of the Add a book page.
     - It will contain two fields: a genre title and an icon name.
-  - The 'Edit genre' will be a direct copy of the 'add genre' page. 
-    - The fields will be pre-selected.
+  - The Edit genre will be a direct copy of the Add genre page. The fields will be pre-selected.
 
 ### Design
 
 #### User journey
 - The website structure was designed to be consistent, predictable, learnable, visible, and provide user feedback.
 - A user journey for non-admin users was created to aid the structural design.
+
   ![user journey](assets/images/readmeFiles/userjourney.jpg) 
 
 
@@ -650,7 +652,7 @@ Uploaded by | created_by| none | string
 Password | password | text, `maxlength="15"` | string
 Review array | review | none | array
 
-[Example JSON from the genres collection](assets/json_structures/book_collection.json)
+[Example JSON from the books collection](assets/json_structures/book_collection.json)
 
 
  #### avgRatingAgg collection (average rating aggregation))
@@ -660,7 +662,7 @@ Review array | review | none | array
 Book ID | _id | None | ObjectId 
 Average Star Rating | averageRating | radio | double
 
-[Example JSON from the genres collection](aassets/json_structures/avgRatingAgg_collection.json)
+[Example JSON from the avgRatingAgg collection](assets/json_structures/avgRatingAgg_collection.json)
 
 ----------------------------
 
@@ -700,8 +702,6 @@ Average Star Rating | averageRating | radio | double
 
 * [Github](https://github.com/) - Used for repository hosting.
 
-* [Github Pages](https://pages.github.com/) - Used for site deployment.
-
 * [Materialize](https://materializecss.com/about.html) - Used to develop the website design system.
 
 * [Canva](https://www.canva.com/) - Used to create the brand logo.
@@ -723,7 +723,7 @@ Average Star Rating | averageRating | radio | double
 * [Chrome Dev tools](https://developers.google.com/web/tools/chrome-devtools) - Used for monitoring the responsiveness of the website.
 
 * [LamdaTest](https://www.lambdatest.com/) - Used for monitoring the responsiveness of the website.
-### Deployment
+### Deployment (Heroku)
 
 * [Heroku](https://id.heroku.com/login) - The cloud platform used to deploying the website.
 ----------------------------
@@ -816,11 +816,11 @@ The following material is not my own. Sources have been listed alongside a descr
 
 ### Code
 The following code was used directly in this project:
-  * [Codepen - hesguru](https://codepen.io/hesguru/pen/BaybqXv) - used to create the star rating bar for reviews.
+  * [Codepen - hesguru](https://codepen.io/hesguru/pen/BaybqXv) - used to create the five-star rating bar for reviews.
   * [Python - secrets code](https://docs.python.org/3/library/secrets.html) - used to generate random ids for each review.
 
 The following code has been modified in this project:
-  * [StackOverflow - dippas](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156) - used to change the color of the materialize input fields.
+  * [Stack Overflow - dippas](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework/37127156) - used to change the color of the materialize input fields.
 
 
 ###  Media

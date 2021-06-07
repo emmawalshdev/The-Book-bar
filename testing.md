@@ -7,29 +7,29 @@
 ### Table of Contents
 
 1. [User Story Testing](#user-stories)
-    * [Visitor stories](#visitor-stories)
-    * [Business stories](#business-stories)
+    - [Visitor stories](#visitor-stories)
+    - [Business stories](#business-stories)
 
 2. [Manual Testing](#manual-testing)
-    * [Desktop testing](#desktop-testing)
-    * [Mobile and Tablet testing](#mobile-and-tablet-testing)
+    - [Desktop testing](#desktop-testing)
+    - [Mobile and Tablet testing](#mobile-and-tablet-testing)
 
-3. [Browser Compatibility and Responsiveness](#Browser-compatibility-and-responsiveness) 
-    * [Browser Compatibility](#browser-compatibility)
-    * [Responsiveness](#responsiveness)
-        - [Chrome DevTools](#chrome-devtools)
-        - [Lighthouse](#lighthouse)
-    * [Code Validation](#code-validation)
-        - [HTML](#html)
-        - [CSS](#css)
-        - [Javascript](#javascript)
-        - [Python](#python)
+3. [Browser Compatibility](#browser-compatibility)
+4. [Responsiveness](#responsiveness)
+    - [Chrome DevTools](#chrome-devtools)
+    - [Lighthouse](#lighthouse)
 
-4. [Known Bugs](#known-bugs)
+4.  [Code Validation](#code-validation)
+    - [HTML](#html)
+    - [CSS](#css)
+    - [Javascript](#javascript)
+    - [Python](#python)
+
+5. [Known Bugs](#known-bugs)
     - [Solved](#solved)
     - [Unsolved](#unsolved)
 
-5. [Further Testing](#further-testing)
+6. [Further Testing](#further-testing)
 
 ### User Stories
 The following section re-evaluates the user stories which were defined in the UX section of [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md).
@@ -616,8 +616,8 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
     - Resolution:
         - After researching, I discovered that the reload behavior was caused by a line of CSS code.
         - The following code line was removed ```top:-9999px ```
-        - Thank you to Pravin Waychal on stack overflow for assisting on this.
-            - [Code from Slack](https://stackoverflow.com/questions/22881587/prevent-page-to-go-back-on-top-when-selecting-a-star-rating)
+        - Thank you to Pravin Waychal on Stack Overflow for assisting on this.
+            - [Code from Stack Overflow](https://stackoverflow.com/questions/22881587/prevent-page-to-go-back-on-top-when-selecting-a-star-rating)
 
 3. Invalid color incorrectly applied to select dropdown field.
     - Issue:
@@ -634,8 +634,8 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
     - Resolution:
         - After researching, I discovered that the modal had not been initialized correctly.
         - I solved this by adding the following code: ```$('#modal1').modal().modal('open');```
-        - Thank you to Denis Tsoi on stack overflow for assisting on this.
-            - [Code from Slack](https://stackoverflow.com/questions/42430062/materialize-model-not-working)
+        - Thank you to Denis Tsoi on Stack Overflow for assisting on this.
+            - [Code from Stack Overflow](https://stackoverflow.com/questions/42430062/materialize-model-not-working)
 
 5. Problematic URL structures.
     - Issue:
