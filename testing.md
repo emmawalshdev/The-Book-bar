@@ -53,19 +53,19 @@ The following section re-evaluates the user stories which were defined in the UX
 2. I want to be able to search the database by genre so that I can find a suitable book.
 
     - This feature has not been developed in this release:
-        - This is noted in [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md) under 'Features Left to Implement'.
+        - This is noted in [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md) under the Features left to implement section.
         - With a more advanced understanding of this concept, the development will be reconsidered at a later stage.
 
 3. I want to be able to sort the entire database so that I can view all books.
-    - A 'Sort by' button is displayed on the homepage
+    - A Sort by button is displayed on the homepage
     - The user can sort the collection by:
         - A-Z
         - Z-A
         - New-Old
 
-    - The 'Sort by' feature only sorts the entire collection:
-        - Once a user searches by keyword, the 'Sort by' button disappears.
-        - As the database grows, it may become a requirement to apply 'Sort by' to the results.
+    - The Sort by feature only sorts the entire collection:
+        - Once a user searches by keyword, the Sort by button disappears.
+        - As the database grows, it may become a requirement to apply Sort by to the results.
         - This development will be considered if the requirement arises.
 
 4. I want to be able to log in or register for an account on the website, so that I can access my profile, upload books and add reviews.
@@ -82,11 +82,11 @@ The following section re-evaluates the user stories which were defined in the UX
     - The register page contains clear feedback messages for form submission:
         - An error message is shown if the username is already in use.
         - An error message is shown if the password is too short.
-        - A Success message is shown if registration is successful.
+        - A success message is shown if registration is successful.
     
     - The login page contains clear feedback messages with submission:
         - An error message is displayed if the password or username is incorrect.
-        - A welcome message is displayed on the profile page if registration is successful.
+        - A welcome message is displayed on the Profile page if registration is successful.
 
 
 5. I want to see a snapshot of activity on my profile so that I can quickly see my recent contributions.
@@ -100,17 +100,17 @@ The following section re-evaluates the user stories which were defined in the UX
         - The total number of reviews the user has added.
         - A quick link to the homepage.
     
-    - A 'Recent Contributions' section is displayed. This includes:
+    - A Recent contributions section is displayed. This includes:
         - The four most recent books added by the user.
-            - To quickly navigate to the edit book page, the user can click on the 'Edit Book' button. 
+            - To quickly navigate to the Edit book page, the user can click on the 'Edit Book' button. 
             - if a user has not added any books yet, a placeholder image and some text is displayed.
 
         - The four most recent reviews added by the user.
-            - To quickly navigate to edit review page, the user can click on the 'Read More' button. 
+            - To quickly navigate to the Edit review page, the user can click on the Read More button. 
             - if a user has not added any reviews yet, a placeholder image and some text is displayed.
 
 6. I want to be able to upload a book to the website so that I and others can then review it.
-    - The 'Add a Book' navlink is clearly visible on navbar.
+    - The Add a Book navlink is clearly visible on navbar.
     - The user can enter the following information on a book:
         - Book title
         - Author
@@ -120,8 +120,8 @@ The following section re-evaluates the user stories which were defined in the UX
         - Buy now URL
 
 7. I want to be able to make changes or delete a book that I have uploaded, in case an error has been made.
-    - An Edit button is displayed within the book page if the user has uploaded the book. This is also displayed for the 'admin'.
-    - Within the edit page, the user has the option to delete the book.
+    - An Edit button is displayed within the Book page if the user has uploaded the book. This is also displayed for the 'admin' user.
+    - Within the Edit page, the user has the option to delete the book.
     - Clicking delete activates a modal that asks for confirmation. before deletion
 
 8. I want to be able to review and rate any book on the website so that other users can quickly see what I thought about it.
@@ -134,27 +134,27 @@ The following section re-evaluates the user stories which were defined in the UX
 
 9. I want to be able to edit and delete reviews that I have added, in case an error has been made.
     - An Edit button is displayed behind a review card for the user who has uploaded the review. This is also displayed for the 'admin' user.
-    - Within the edit review page, the user has the option to delete the review.
+    - Within the Edit review page, the user has the option to delete the review.
     - Clicking delete activates a modal that asks for confirmation before deletion.
 
-10. I want to know the average star rating for each book, as this will help me choose my next read.
+10. I want to know the average rating for each book, as this will help me choose my next read.
     - An average star rating is displayed for a book if at least one review has been posted
-    - This is visible on both the book cards shown on the homepage and profile page, as well as on the book page itself.
+    - This is visible on both the book cards shown on the homepage and Profile page, as well as on the Book page itself.
     - The average star rating is updated each time a review is uploaded, edited, or deleted.
 
 #### Business stories:
 **As the website owner**:
 
 1. I want to be able to add new book genres on the website, so that users can select these when uploading a book.
-    - A 'Manage Genres' page is accessible only for the 'admin' user.
+    - The Manage genres page is accessible only for the 'admin' user.
     - The link is clearly located on the navbar.
-    - Within this page, the 'admin' can add, edit, view and delete genres.
+    - Within this page, the 'admin' user can add, edit, view and delete genres.
 
 2. I want to be able to edit and delete book genres, in case an error has been made.
-    - On the 'Manage Genres' page, the user is presented with a list of the current genres. The genre title, icon and 'Edit' button are displayed.
-    - by clicking 'Edit', the user navigates to the edit genre page. Here the user has the option to save changes, go back or delete the genre.
-    - If changes are submitted on the edit genre page, they immediately take effect across the entire site. (book cards on homepage, bookpage etc.)
-    - Clicking delete activates a modal which asks for confirmation before deletion
+    - On the Manage genres page, the user is presented with a list of the current genres. The genre title, icon and an Edit button are displayed.
+    - by clicking Edit, the user navigates to the Edit genre page. Here the user has the option to save changes, go back or delete the genre.
+    - If changes are submitted on the Edit genre page, they immediately take effect across the entire site. (book cards on homepage, Book page etc.)
+    - Clicking delete activates a modal which asks for confirmation before deletion.
 
 3. I want to see a snapshot of activity on my profile, so that I can quicky see my recent contributions.
 
@@ -167,24 +167,25 @@ The following section re-evaluates the user stories which were defined in the UX
         - The total number of reviews the user has added
         - A quick link to the homepage
     
-    - A 'Recent Contributions' section is displayed. This includes:
+    - A Recent Contributions section is displayed. This includes:
 
         - The four most recent books that were added by the user.
-            - To quickly navigate to the edit book page, the user can click on the 'Edit Book' button. 
+            - To quickly navigate to the Edit book page, the user can click on the Edit book button. 
             - if a user has not added any books yet, a placeholder image and some text is displayed.
 
         - The four most recent reviews that were added by the user.
-            - To quickly navigate to the edit review page, the user can click on the 'Read More' button. 
-            - if a user has not added any reviews yet, a placeholder image and some text is displayed.
+            - To quickly navigate to the Edit review page, the user can click on the Read more button. 
+            - If a user has not added any reviews yet, a placeholder image and some text is displayed.
 
-4. I want to add a 'Buy now' link to each book so that I can potentially make money off click-through sales.
+4. I want to add a Buy now link to each book so that I can potentially make money off click-through sales.
 
-    - A 'Buy now' input field is provided as part of the upload book form submission
-    - If blank, the 'Buy now' link will not appear on the book page
-    - If provided, the 'Buy now' link will be published on the book page.
+    - A Buy now input field is provided as part of the upload book form submission
+    - If blank, the Buy now link will not appear on the book page.
+    - If provided, the Buy now link will be published on the book page.
     - Verification of the link has not been developed in this release:
         - This is noted in [README.md](https://github.com/emmahartedev/The-Book-bar/blob/master/README.md) under Features Left to Implement.
         - With a more advanced understanding of this concept, the development of this feature will be revisited at a later stage.
+        - For now, it is ensured that "https://" is added to every shopping link. This prevents the user from entering a URL which will throw a Jinja error.
 
 5. I do not want to allow duplicate book titles to be published, this would lead to a bad customer experience.
 
@@ -194,14 +195,14 @@ The following section re-evaluates the user stories which were defined in the UX
  
 6. I only want registered users (logged in) to be able to add reviews and books, for monitoring reasons.
 
-    - Access to the book and review upload links has been restricted
-    - If a logged-out user attempts to access these pages, they will be redirected to an access denied page
-    - On the access denied page, a link to the homepage is displayed to direct users back to the site
+    - Access to the Add a book and review upload links has been restricted.
+    - If a logged-out user attempts to access these pages, they will be redirected to the Access denied page.
+    - On the Access denied page, a link to the homepage is displayed to direct users back to the site.
 
 7. I want to be able to edit and delete all content created on the website, for monitoring reasons.
 
     - An Edit button is displayed behind every review card and book page for the 'admin' user.
-    - Within the edit (book, review, genre) page, the user has the option to delete the review or book.
+    - Within the Edit (book, review, genre) page, the user has the option to delete the review or book.
     - Clicking delete activates a modal that asks for confirmation before deletion.
     - The 'admin' user has complete control over editing and deleting all content on the site.
     - The 'admin' user also has access to add both books and reviews.
@@ -222,13 +223,13 @@ The following browsers were included in desktop manual testing:
     - When the user is not logged in:
         - Hover on each link, confirm that hover effects are applied.
         - Click The Book bar brand logo, confirm navigation to the homepage.
-        - Click the Register link, confirm navigation to the register page.
-        - Click the Login link, confirm navigation to the login page.
+        - Click the Register link, confirm navigation to the Register page.
+        - Click the Login link, confirm navigation to the Login page.
         - Click the Login link, confirm that a session cookie is active.
         - Attempt to access the Profile page, Add a book page and Manage genres page. Confirm a redirect to the Access denied page.
 
     - When a user is logged in:
-        - Click the Profile link, confirm navigation to the correct profile page.
+        - Click the Profile link, confirm navigation to the correct Profile page.
         - Click the Add a Book link, confirm navigation to the Add a book page.
         - Click Logout, confirm a redirect to the Login page and confirm that a session cookie is removed.
 
@@ -247,7 +248,7 @@ The following browsers were included in desktop manual testing:
 1. Search bar functionality
     - Search by Author's first name, confirm that the correct results are returned.
     - Search by the Author's last name, confirm that the correct results are returned.
-    - Search by a word in book title, confirm that the correct results are returned.
+    - Search by a word from the book title, confirm that the correct results are returned.
         - When results are returned, click on the Reset button. Confirm navigation to the homepage.
     - Search by a false keyword, confirm that a No results found message and a Reset button appear.
         - Click on the Reset button, confirm navigation to the homepage.
@@ -256,7 +257,7 @@ The following browsers were included in desktop manual testing:
     - Sort by 'A-Z', confirm that the books are ordered correctly.
     - Sort by 'Z-A', confirm that the books are ordered correctly.
     - Sort by 'New-Old', confirm that the books are ordered correctly.
-    - Search by a keyword, confirm that the 'Sort by' button dissapears.
+    - Search by a keyword, confirm that the Sort by button dissapears.
     
 
 3. Pagination
@@ -267,8 +268,8 @@ The following browsers were included in desktop manual testing:
 
 3. Book cards
     - Confirm that a consistent layout in book cards is present. All contain:
-        - A book image (where link has been successful)
-        - An average star rating (if review)
+        - A book image (where link has been successful, otherwise a placeholder image will show)
+        - An average star rating (if a review exists)
         - Book title
         - Author
         - Genre icon
@@ -295,13 +296,13 @@ The following browsers were included in desktop manual testing:
 2. Posted Reviews section
 
     - For users logged out:
-        - If reviews exist, confirm that the review cards are visable.
+        - If reviews exist, confirm that the review cards are visible.
         - If no reviews exist, confirm that a placeholder card is displayed.
 
     - For users logged in:
         - If reviews exist, confirm that the review cards are visible.
         - If no reviews exist, confirm that a placeholder card is displayed.
-        - On review cards, confirm that the 'Edit' button is not visible (unless the user is the content creator or 'admin').
+        - On review cards, confirm that the Edit button is not visible (unless the user is the content creator or 'admin').
         - Confirm that the review information is correctly aligned with the mongodb data.
         - Confirm that the date is included.
 
@@ -313,12 +314,12 @@ The following browsers were included in desktop manual testing:
     - For users logged out:
         - Confirm that the review form is not visible.
         - Confirm that a link to the log in page is provided.
-            - Click on the link, confirm navigation to login page.
+            - Click on the link, confirm navigation to the Login page.
 
     - For users (all user types) logged in:
         - Confirm that the review form is present.
         - Submit a review:
-            - Attempt posting review without a Title or Rating, confirm failure.
+            - Attempt posting a review without a title or rating, confirm failure.
             - Post a successful review.
                 - Confirm that a success message appears. 
                 - Confirm that the review card appears in the section above.
@@ -327,16 +328,16 @@ The following browsers were included in desktop manual testing:
 
 **Edit book page**
 - Test access
-    - Attempt to access the edit book page URL while logged out. Confirm a redirect to the Access denied page.
+    - Attempt to access the Edit book page URL while logged out. Confirm a redirect to the Access denied page.
 
 - Test pathways
     - Input new data in all fields & click Save: 
         - Confirm that a success message appears.
-        - Confirm a redirect to the book page.
+        - Confirm a redirect to the Book page.
         - Confirm that the data on the page template is aligned with the MongoDB data (updated data).
 
   - Click Cancel:
-    - Confirm a redirect to the book page.
+    - Confirm a redirect to the Book page.
 
   - Click Delete:
     - Confirm that a warning message appears.
@@ -346,8 +347,8 @@ The following browsers were included in desktop manual testing:
         - Confirm that a success message appears.
         - Confirm a redirect to the homepage.
         - Confirm that the correct book document is removed from the MongoDB books collection.
-        - Confirm that the Books added count on the profile page has updated.
-        - Confirm that the book card within the Books added section on the profile page dissapears.
+        - Confirm that the Books added count on the Profile page has updated.
+        - Confirm that the book card within the Books added section on the Profile page dissapears.
 
 **Edit review page**
 - Test access
@@ -356,12 +357,12 @@ The following browsers were included in desktop manual testing:
 - Test pathways
   - Input new data in all fields & click Save: 
     - Confirm that a success message appears.
-    - Confirm a redirect to book page.
-    - Confirm that the data on the book page is aligned with the MongoDB data (updated data).
+    - Confirm a redirect to Book page.
+    - Confirm that the data on the Book page is aligned with the MongoDB data (updated data).
     - Confirm that the average star rating in the book section has updated.
 
   - Click Cancel:
-    - Confirm redirect to bookpage.
+    - Confirm redirect to Book page.
 
   - Click Delete:
     - Confirm that a warning message appears.
@@ -371,9 +372,9 @@ The following browsers were included in desktop manual testing:
 
     - Click Yes:
         - Confirm that a success message appears.
-        - Confirm redirect to book page.
+        - Confirm redirect to Book page.
         - Confirm that the correct review object array has been removed from the MongoDB book collection.
-        - Confirm that Reviews added count on profile page updates.
+        - Confirm that the Reviews added count on Profile page updates.
         - Confirm that review card within the Reviews added section dissapears.
 
 **Login page**
@@ -387,7 +388,7 @@ The following browsers were included in desktop manual testing:
     - Confirm error message 'Password and/or Username is incorrect.' appears.
 
 - Correct username and password:
-    - Confirm redirect to profile page.
+    - Confirm a redirect to Profile page.
 
 **Register page**
 
@@ -397,7 +398,7 @@ The following browsers were included in desktop manual testing:
 - If the username is not in use:
   - Confirm that a unique hashed password is generated.
   - Confirm that the username and hashed password are inserted as a new document to the users collection.
-  - Confirm a redirect to the login page.
+  - Confirm a redirect to the Login page.
 
 **Manage genres page**
 
@@ -406,12 +407,12 @@ The following browsers were included in desktop manual testing:
 
 - Test access
     - Confirm that the Manage genres navlink is not visible to non-admin users.
-    - Confirm that navlnk is visable for 'admin' user.
-    - Attempt to access the edit book page URL while logged out. Confirm redirect to access denied page.
+    - Confirm that the Manage genres navlnk is visible for the 'admin' user.
+    - Attempt to access the Edit book page URL while logged out. Confirm a redirect to Access denied page.
 
 - Test pathways
-    - Click on the Add genre button, confirm a redirect to the add genre page.
-    - Click on the Edit button on a genre card, confirm a redirect to that specific edit genre page.
+    - Click on the Add genre button, confirm a redirect to the Add genre page.
+    - Click on the Edit button on a genre card, confirm a redirect to that specific Edit genre page.
 
 **Add genre page** 
 - Design confirmation
@@ -420,7 +421,7 @@ The following browsers were included in desktop manual testing:
 - Test pathways
     - Add data and click Save:
         - Confirm that a success flash message appears.
-        - Confirm a redirect to 'manage genres' page.
+        - Confirm a redirect to Manage genres page.
         - Confirm that the newly added genre is present as a genre card, showing both the title and icon name.
         - Confirm that the newly added genre is visible in the dropdown field on the Add a book page.
 
@@ -443,14 +444,14 @@ The following browsers were included in desktop manual testing:
     - Click Delete:
         - Click Yes:
             - Confirm that a success flash message appears.
-            - Confirm redirect to 'manage genres' page
+            - Confirm a redirect to Manage genres page.
             - Confirm that the correct genre card has been removed and is aligned with MongoDB data.
-            - Confirm that genre name and icon have been removed from all other areas on the site (books cards on homepage, book page etc.).
+            - Confirm that genre name and icon have been removed from all other areas on the site (books cards on homepage, Book page etc.).
 
 **Profile page**
 - Test access
-    - Attempt to access a users profile by URL while logged out. Confirm a redirect to access denied page.
-    - Attempt to access a different users profile by URL while logged in. Confirm a redirect to access denied page.
+    - Attempt to access a users profile by URL while logged out. Confirm a redirect to Access denied page.
+    - Attempt to access a different users profile by URL while logged in. Confirm a redirect to Access denied page.
 
 - Design confirmation
     - Welcome section:
@@ -461,7 +462,7 @@ The following browsers were included in desktop manual testing:
         - Confirm that the Books added count is correct.
         - Confirm that the Reviews added count is correct.
         - Hover over the Search books link, confirm that the hover effects are applied. 
-        - Click on the Search books link, Confirm a redirect to home page.
+        - Click on the Search books link, Confirm a redirect to homepage.
 
     - Books added section
         - If the Books added count = zero:
@@ -474,7 +475,7 @@ The following browsers were included in desktop manual testing:
     - Reviews added section
         - If the Reviews added count = zero:
             - Confirm that a placeholder image and text are present.
-            - Hover over the card link, confirm thatthe hover effects are applied.            
+            - Hover over the card link, confirm that the hover effects are applied.            
 
         - If the Reviews added count > zero:
             - Confirm that the most recent 4 reviews added are displayed.
@@ -487,7 +488,7 @@ The following browsers were included in desktop manual testing:
 **Access denied page**
 - Test pathway
     - Search using a disallowed URL (eg https://the-book-bar.herokuapp.com//profile/emmaharte).
-    - Confirm a redirect to access denied page.
+    - Confirm a redirect to Access denied page.
 
 #### Mobile and Tablet testing
 To test responsiveness on mobile and tablet devices, further manual testing was carried out. The following steps were carried out as part of this process.
@@ -557,9 +558,10 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
         ![Lighthouse Mobile Report ](assets/images/readmeFiles/mobileLighthouse.PNG)
 
 - Errors logged to the console:
-    - GET https://the-book-bar.herokuapp.com/robots.txt 404 (NOT FOUND).
-    - No Textarea element found.
-    - These have been documented in the below Bugs section.
+    - **GET https://the-book-bar.herokuapp.com/robots.txt 404 (NOT FOUND)**:
+        - No robots.txt file has been added to the project in this release. This will be added at a later stage.
+    - **No Textarea element found**: 
+        - These have been documented in the below Bugs section.
 
 
 
@@ -568,8 +570,10 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
 - All HTML code was checked using [The W3C Markup Validation Service](https://validator.w3.org/).
 
     - Changes made:
-        - **Stray start tag script**- Moved script tags to within the body tag.
-        - **Remove ````href```` from button elements** - amended button element code.
+        - **Stray start tag script**
+            -  Moved script tags to within the body tag.
+        - **Remove ````href```` from button elements** 
+            - Amended button element code.
 
     - Considerations for the future:
         - Add h2-h6 elements within each section, to create a stronger semantic structure. 
@@ -582,20 +586,19 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
 #### Javascript
 * All Javascript code was checked using [JSHint](https://jshint.com/). 
     - Metrics:
-        - There are 7 functions in this script.js.
+        - There are 7 functions in the script.js.
         - The function with the largest signature takes 0 arguments, while the median is 0.
         - The largest function has 8 statements in it, while the median is 3.
         - The most complex function has a cyclomatic complexity value of 3 while the median is 2.
 
     - Errors present:
-        - No errors were found
+        - No errors were found.
         - Two warnings regarding the use of 'let' were issued. As these are not critical, no action was taken.
 
 #### Python
-- All Python code was checked for using the online [PEP8 compliance](http://pep8online.com/) tool.
+- All Python code was checked using the online [PEP8 compliance](http://pep8online.com/) tool.
     - Changes made:
         - General changed were made to the code. These included indentation corrections, removal of trailing whitespace, and ensuring that two spaces were present between functions.
-
     
 ### Known bugs 
 
@@ -606,7 +609,7 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
 
     - Resolution:
         - Solved by changing the ```<a>``` element to a ```<button>``` element. 
-        - Thanks to the code institute slack channel for assistance on this.
+        - Thank you to the code institute slack channel for assistance on this.
         ![Code from Slack](assets/images/readmeFiles/modalCodeHelp.PNG)
 
 2.  Clicking on the five-star rating bar causes a page to jump.
@@ -625,7 +628,7 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
 
     - Resolution:
         - Custom Jquery was added to correct this behavior.
-        - Thank you to code institute for providing this insight as part of the Milestone Three curriculum.
+        - Thank you to the code institute for providing this insight as part of the Milestone Three curriculum.
 
 4. Delay on all modal pop-ups.
     - Issue:
@@ -641,11 +644,11 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
     - Issue:
         - For each book, data is editable by the content creator or 'admin' user.
         - At the time, the book title was passed into the book page URL. 
-        - If a user updated the book title, upon submission they would be redirected to the book page.
-        - The redirect caused a Jinja error. The URL was now invalid due to the changed book title.
+        - If a user updated the book title, upon submission they would be redirected to the Book page.
+        - The redirect caused a Jinja error. The URL was then invalid due to the changed book title.
 
     - Resolution:
-        - The book title was removed from the book page URL.
+        - The book title was removed from the Book page URL.
         - The book _id was instead passed to the book page URL.
         - This ensured that no URL issues could occur, as each ID is pernament to a document.
 
@@ -653,7 +656,7 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
     - Issue:
         - As part of the CRUD operations, the 'admin' user needs to be able to delete a genre.
         - Once deleted, the genre_id also gets deleted in all books where it is featured.
-        - If the user tried to edit a book with a deleted genre, the select dropdown field is strangely preselected to a random existing genre.
+        - If the user tried to edit a book with a deleted genre, the select dropdown field was strangely preselected to a random existing genre.
 
     - Resolution:
         - An 'I'm not sure' option was added to the genre dropdown field. 
