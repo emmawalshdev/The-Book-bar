@@ -36,7 +36,7 @@
                     </div>
                     <!--user image-->
                     <div class="col s12 m4 center mtb30">
-                        <img src="https://img-premium.flaticon.com/png/512/747/747545.png?token=exp=1622993639~hmac=b4f5f5d927312d467bdf0494e41f9290" alt="stacked books" height="150">
+                        <img src="https://img-premium.flaticon.com/png/512/747/747545.png?token=exp=1623230814~hmac=f9e646387524f99d9e75d57d7ac9ddb3" alt="stacked books" height="150">
                     </div>
                     <!--link to search books page-->
                     <div class="col s12 m4 center mtb30">
@@ -44,7 +44,7 @@
                             <a href="{{ url_for('books_new') }}" class="pink-hover">Search Books</a>
                         </p>
                         <a href="{{ url_for('books_new') }}">
-                            <img src="https://img-premium.flaticon.com/png/512/167/167756.png?token=exp=1622993582~hmac=b0c98cb5c78473d0ac1accdd06ea4ab5" alt="stacked books" height="80">
+                            <img src="https://img-premium.flaticon.com/png/512/167/167756.png?token=exp=1623230937~hmac=121ebb9c41dc0e20e7dfe19b1ce318d1" alt="stacked books" height="80">
                         </a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                                                     {% for avgrating in avgratings %}
                                                     {% if avgrating._id == book._id %}
                                                     <i class="material-icons star-icon-gold">star</i>&nbsp;
-                                                    {{ avgrating.averageRating }}
+                                                    {{ avgrating.averageRating|round(1,'floor') }}
                                                     {% endif %}
                                                     {% endfor %}
                                                 </div>
@@ -124,7 +124,7 @@
                                                 </p>
                                                 <!--read more button-->
                                                 <div class="read-more-btn-wrapper">
-                                                    <a href="{{ url_for( 'edit_book', book_id=book._id) }}"
+                                                    <a href="{{ url_for( 'edit_book', book_id=book._id, username=book.created_by) }}"
                                                         class="read-more-btn">
                                                         Edit Book
                                                         <!--genre icon-->

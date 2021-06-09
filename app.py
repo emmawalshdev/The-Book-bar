@@ -361,7 +361,7 @@ def add_book():
         return redirect(url_for("access_denied"))
     else:
         if request.method == "POST":
-            genres = list(mongo.db.genres.find())
+            genres = list(mongo.db.genres.find().sort("genre_name", -1))
             genre_name = request.form.get("genre_name")
             for genre in genres:
                 if genre["genre_name"] == genre_name:
@@ -380,7 +380,7 @@ def add_book():
             flash("Book was successfully added.", "success")
             return redirect(url_for("books_new"))
 
-        genres = mongo.db.genres.find().sort("genre_name", -1)
+        genres = mongo.db.genres.find().sort("genre_name", 1)
         return render_template(
                 "add_book.html",
                 genres=genres)
@@ -404,8 +404,8 @@ def update_user_books(username, bookid):
 
 
 # edit a book page
-@app.route("/<book_id>/edit_book", methods=["GET", "POST"])
-def edit_book(book_id):
+@app.route("/<book_id>/<username>/edit_book", methods=["GET", "POST"])
+def edit_book(book_id, username):
     """
     Checks if the user is in session. If False, the user
     is redirected to access_denied.html.
@@ -419,31 +419,35 @@ def edit_book(book_id):
         return redirect(url_for("access_denied"))
     else:
         get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        genres = list(mongo.db.genres.find())
-        if request.method == "POST":
-            genre_name = request.form.get("genre_name")
-            for genre in genres:
-                if genre["genre_name"] == genre_name:
-                    genre_id = ObjectId(genre["_id"])
-            mongo.db.books.update({"_id": ObjectId(book_id)}, {"$set": {
-                "genre_id": genre_id,
-                "book_name": request.form.get("book_name"),
-                "author": request.form.get("author"),
-                "image_url": "https://" + request.form.get("image_url"),
-                "description": request.form.get("description"),
-                "buy_url": "https://" + request.form.get("buy_url"),
-                "created_by": session["user"]
-                }}
-            )
-            flash("Book was successfully updated.", "success")
-            return redirect(url_for(
-                "bookpage",
-                book_id=book_id))
+        if username == "admin" or username == get_book["created_by"]:
+            genres = mongo.db.genres.find().sort("genre_name", 1)
+            if request.method == "POST":
+                genre_name = request.form.get("genre_name")
+                for genre in genres:
+                    if genre["genre_name"] == genre_name:
+                        genre_id = ObjectId(genre["_id"])
+                mongo.db.books.update({"_id": ObjectId(book_id)}, {"$set": {
+                    "genre_id": genre_id,
+                    "book_name": request.form.get("book_name"),
+                    "author": request.form.get("author"),
+                    "image_url": "https://" + request.form.get("image_url"),
+                    "description": request.form.get("description"),
+                    "buy_url": "https://" + request.form.get("buy_url"),
+                    "created_by": session["user"]
+                    }}
+                )
+                flash("Book was successfully updated.", "success")
+                return redirect(url_for(
+                    "bookpage",
+                    book_id=book_id))
 
-        return render_template(
-                "edit_book.html",
-                get_book=get_book,
-                genres=genres)
+            return render_template(
+                    "edit_book.html",
+                    get_book=get_book,
+                    genres=genres)
+        else:
+            return redirect(url_for(
+                "access_denied"))
 
 
 # delete a book page
@@ -660,8 +664,9 @@ def get_genres():
     """
     loggedIn = True if 'user' in session else False
 
-    if not loggedIn:
-        return redirect(url_for("access_denied"))
+    if not loggedIn or session["user"] != "admin":
+        return redirect(url_for(
+            "access_denied"))
     else:
         genres = list(mongo.db.genres.find().sort("genre_name", 1))
         return render_template(
@@ -680,7 +685,7 @@ def add_genre():
     """
     loggedIn = True if 'user' in session else False
 
-    if not loggedIn:
+    if not loggedIn or session["user"] != "admin":
         return redirect(url_for("access_denied"))
     else:
         if request.method == "POST":
@@ -708,7 +713,7 @@ def edit_genre(genre_id):
     """
     loggedIn = True if 'user' in session else False
 
-    if not loggedIn:
+    if not loggedIn or session["user"] != "admin":
         return redirect(url_for("access_denied"))
     else:
         if request.method == "POST":
