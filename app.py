@@ -568,51 +568,47 @@ def edit_review(book_id, username, review_id):
     redirected to bookpage.html.
     If user is not admin or review author, redirect to bookpage.html.
     """
+
     loggedIn = True if 'user' in session else False
 
     if not loggedIn:
-        return redirect(url_for(
-            "access_denied"))
+        return redirect(url_for("access_denied"))
+
     else:
+        user = mongo.db.users.find_one(
+            {"username": session['user']})["username"]
         get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        if session["user"] == "admin" or username == get_book["created_by"] and username == session["user"]:
-            username = mongo.db.users.find_one(
-                {"username": session['user']})["username"]
-            reviewarray = list(mongo.db.books.find(
-                {'review': {"$elemMatch": {"review_id": review_id}}}, {
-                    "review.$": 1}))
-            target_review_array = {}
-            for key, value in reviewarray[0].items():
-                if key == "review":
-                    target_review_array[key] = value
-                for k in target_review_array:
-                    for x in target_review_array[k]:
-                        review = x
+        reviewarray = list(mongo.db.books.find(
+            {'review': {"$elemMatch": {"review_id": review_id}}}, {
+                "review.$": 1}))
+        target_review_array = {}
+        for key, value in reviewarray[0].items():
+            if key == "review":
+                target_review_array[key] = value
+            for k in target_review_array:
+                for x in target_review_array[k]:
+                    review = x
 
-            if request.method == "POST":
-                mongo.db.books.update(
-                    {"_id": ObjectId(book_id), "review.review_id": review_id},
-                    {"$set": {
-                        "review.$.title": request.form.get("review_title"),
-                        "review.$.description": request.form.get("review"),
-                        "review.$.rating": int(request.form.get("rate")),
-                        }}
-                )
-                flash("Review was successfully updated.", "success")
-                return redirect(url_for(
-                    "bookpage",
-                    book_id=book_id))
+        if request.method == "POST":
+            mongo.db.books.update(
+                {"_id": ObjectId(book_id), "review.review_id": review_id},
+                {"$set": {
+                    "review.$.title": request.form.get("review_title"),
+                    "review.$.description": request.form.get("review"),
+                    "review.$.rating": int(request.form.get("rate")),
+                    }}
+            )
+            flash("Review was successfully updated.", "success")
+            return redirect(url_for(
+                "bookpage",
+                book_id=book_id))
 
-            if session["user"] == username or session["user"] == "admin":
-                return render_template(
-                    "editreview.html",
-                    get_book=get_book,
-                    review=review,
-                )
-            else:
-                return redirect(url_for(
-                    "bookpage",
-                    book_name=get_book.get("book_name")))
+        if user == username or user == "admin":
+            return render_template(
+                "editreview.html",
+                get_book=get_book,
+                review=review,
+            )
         else:
             return redirect(url_for(
                 "access_denied"))
