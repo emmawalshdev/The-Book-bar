@@ -418,8 +418,9 @@ def edit_book(book_id, username):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
+        print(session["user"])
         get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        if username == "admin" or username == get_book["created_by"]:
+        if session["user"] == "admin" or username == get_book["created_by"] and username == session["user"]:
             genres = mongo.db.genres.find().sort("genre_name", 1)
             if request.method == "POST":
                 genre_name = request.form.get("genre_name")
