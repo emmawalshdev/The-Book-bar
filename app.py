@@ -638,7 +638,6 @@ def delete_review(book_id, username, review_id):
         mongo.db.avgRatingAgg.remove({
             "_id": ObjectId(book_id)
             })
-        username == session["user"]
         delete_user_review(username, review_id)
         return redirect(url_for(
             "bookpage",
