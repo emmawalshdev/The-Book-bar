@@ -452,8 +452,8 @@ def edit_book(book_id, username):
 
 
 # delete a book page
-@app.route("/<book_id>/delete_book")
-def delete_book(book_id):
+@app.route("/<book_id>/<username>/delete_book")
+def delete_book(book_id, username):
     """
     Checks if the user is in session. If False, the user
     is redirected to access_denied.html.
@@ -465,7 +465,6 @@ def delete_book(book_id):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
-        username = session["user"]
         mongo.db.books.remove({"_id": ObjectId(book_id)})
         delete_user_books(username, book_id)
         flash("Book was sucessfully deleted.", "success")
