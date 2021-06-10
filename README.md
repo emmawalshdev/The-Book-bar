@@ -715,6 +715,8 @@ Average Star Rating | averageRating | radio | double
 
 * [Canva](https://www.canva.com/) - Used to create the brand logo.
 
+* [IMgBB](https://imgbb.com/) - Used to store images.
+
 * [Adobe Photoshop](https://www.adobe.com/products/photoshop.html) - Used to resize and edit images.
 
 * [Favicon.io](https://favicon.io/favicon-converter/) - Used for favicon creation.
