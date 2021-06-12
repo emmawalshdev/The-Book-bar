@@ -111,8 +111,18 @@
                                 {% endif %}
                             </span>
                             <p>{{ eachreview.description }}</p>
-                            <p>Posted by: {{ eachreview.username }} </p>
-                            <p>Date: {{ eachreview.date }} </p>
+                            <div class="p1">
+                                <em>
+                                    <p>
+                                        Posted by:
+                                        {{ eachreview.username }}
+                                    </p>
+                                    <p>
+                                        Date:
+                                        {{ eachreview.date }}
+                                    </p>
+                                </em>
+                            </div>
                             {% if eachreview.rating == 5 %} 
                                 <img src="../static/images/5stars.jpg" width="100" alt="5 stars">
                             {% elif eachreview.rating == 4 %}

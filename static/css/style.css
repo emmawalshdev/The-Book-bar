@@ -138,6 +138,10 @@ p{
     padding-bottom:1.0933333333rem !important;
 }
 
+.p1{
+    padding:1rem 0;
+}
+
 /* custom heights */
 .height-200{
     height:200px !important;
