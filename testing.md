@@ -662,7 +662,22 @@ To test responsiveness on mobile and tablet devices, further manual testing was 
         - An 'I'm not sure' option was added to the genre dropdown field. 
         - This genre was hidden on the Manage genres page and the Book page.
         - Once a genre is deleted, the genre_id in the book document is replaced with the genre_id for the 'I'm not sure' document.
-        - As this is hidden elsewhere in the site, the value is only visible from within the Edit book page. 
+        - As this is hidden elsewhere in the site, the value is only visible from within the Edit book page.
+
+7. Modal error logged to console on submission buttons.
+    - Issue:
+        - Upon click of a Submit button an error was logged to the console.
+        - Error message:
+            - "materialize.min.js:6 Uncaught TypeError: Cannot read property 'M_Modal' of null
+            at HTMLBodyElement.value (materialize.min.js:6).
+        - Error was present when all submit buttons were tested.
+    
+    - Resolution:
+        - I first wrapped all submit buttons is an anchor tag, this did not work.
+        - I next removed the following class from the buttons ```modal-trigger```.
+        - This solved the issue, no errors were printed the console and it worked as it should.
+        - Thanks to the following thread on GitHub for helping me to solve this bug:
+            - [GitHub thread](https://github.com/InfomediaLtd/angular2-materialize/issues/335)
 
 #### Unsolved
 - No unsolved bugs are currently recorded.

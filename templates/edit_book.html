@@ -75,11 +75,11 @@
                             <label for="buy_url">Shopping Link</label>
                         </div>
                     </div>
-                    <!-- information on pre-filled links-->
+                    <!-- information on prefilled links-->
                     <div class="row">
                         <div class="col s12">
                             <p class="small-font">
-                                <span class="bold"> * Important:</span> we've pre-filled 'https://' in both of the link fields above. No
+                                <span class="bold"> * Important:</span> we've prefilled 'https://' in both of the link fields above. No
                                 need to repeat this!
                             </p>
                         </div>
@@ -87,15 +87,19 @@
                     <!-- buttons row -->
                     <div class="row">
                         <div class="col s12 center">
-                            <button type="submit" class="waves-effect btn add-button modal-trigger" href="#modal1">
-                                Save
-                            </button>
+                            <a href="#modal1">
+                                <button type="submit" class="waves-effect btn add-button">
+                                    Save
+                                </button>
+                            </a>
                             <a href="{{ url_for('bookpage', book_id=get_book._id) }}" class="waves-effect btn delete-button">
                                 Cancel
                             </a>
-                            <button class="btn delete-button modal-trigger" href="#modal-{{ get_book._id }}">
-                                Delete
-                            </button>
+                            <a href="#modal-{{ get_book._id }}" class="modal-trigger">
+                                <button class="btn delete-button">
+                                    Delete
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

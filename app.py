@@ -69,7 +69,12 @@ def search():
     genres = list(mongo.db.genres.find())
     avgratings = list(mongo.db.avgRatingAgg.find())
     books = list(mongo.db.books.find(
-        {"$text": {"$search": request.form.get("query")}}))
+        {
+            "$text": {
+                "$search": request.form.get("query")
+            }
+        }
+    ))
     query = request.form.get("query")
 
     return render_template(
@@ -244,9 +249,19 @@ def profile(username):
             avgrating = list(mongo.db.avgRatingAgg.find())
             if "books_added" in user:
                 books_added = list(mongo.db.users.aggregate([
-                    {"$match": {"username": username}},
-                    {"$unwind": "$books_added"},
-                    {"$sort": {"books_added.added_date": -1}},
+                    {
+                        "$match": {
+                            "username": username
+                        }
+                    },
+                    {
+                        "$unwind": "$books_added"
+                    },
+                    {
+                        "$sort": {
+                            "books_added.added_date": -1
+                        }
+                    },
                 ]))
                 total_books = len(user['books_added'])
                 books_added = books_added[:4]
@@ -255,9 +270,19 @@ def profile(username):
                 total_books = 0
             if "reviews_added" in user:
                 reviews_added = list(mongo.db.users.aggregate([
-                    {"$match": {"username": username}},
-                    {"$unwind": "$reviews_added"},
-                    {"$sort": {"reviews_added.added_date": -1}},
+                    {
+                        "$match": {
+                            "username": username
+                        }
+                    },
+                    {
+                        "$unwind": "$reviews_added"
+                    },
+                    {
+                        "$sort": {
+                            "reviews_added.added_date": -1
+                        }
+                    },
                 ]))
                 total_reviews = len(user['reviews_added'])
                 reviews_added = reviews_added[:4]
@@ -315,19 +340,23 @@ def bookpage(book_id):
             if review:
                 book_id_in_review = review["bookid"]
                 review = list(mongo.db.books.aggregate([
-                    {"$unwind": "$review"
-                    },
-                    {"$match": {
-                        'review.bookid': book_id_in_review
-                    }},
-                    {"$group": {
-                        "_id": "$_id", "averageRating":
-                        {
-                            "$avg": '$review.rating'
+                    {"$unwind": "$review"},
+                    {
+                        "$match": {
+                            'review.bookid': book_id_in_review
                         }
-                    }},
-                    {"$merge":
-                        {"into": "avgRatingAgg",
+                    },
+                    {
+                        "$group": {
+                            "_id": "$_id", "averageRating":
+                                {
+                                    "$avg": '$review.rating'
+                                }
+                        }
+                    },
+                    {
+                        "$merge": {
+                            "into": "avgRatingAgg",
                             "on": "_id",
                             "whenMatched": "replace",
                             "whenNotMatched": "insert"
@@ -399,12 +428,18 @@ def update_user_books(username, bookid):
     user = mongo.db.users.find_one({"username": session['user']})
     today_book_added = datetime.today()
     mongo.db.users.update_one(
-                {"username": username}, {
-                    "$addToSet": {"books_added": {
-                        "book_id": ObjectId(bookid),
-                        "added_date": today_book_added
-                        }}
-                    })
+                {
+                    "username": username
+                },
+                {
+                    "$addToSet": {
+                        "books_added": {
+                            "book_id": ObjectId(bookid),
+                            "added_date": today_book_added
+                        }
+                    }
+                }
+    )
 
 
 # edit a book page
@@ -424,22 +459,34 @@ def edit_book(book_id, username):
     else:
         print(session["user"])
         get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        if session["user"] == "admin" or username == get_book["created_by"] and username == session["user"]:
+        if session["user"] == "admin" \
+            or username == get_book["created_by"] and \
+                username == session["user"]:
             genres = mongo.db.genres.find().sort("genre_name", 1)
             if request.method == "POST":
                 genre_name = request.form.get("genre_name")
                 for genre in genres:
                     if genre["genre_name"] == genre_name:
                         genre_id = ObjectId(genre["_id"])
-                mongo.db.books.update({"_id": ObjectId(book_id)}, {"$set": {
-                    "genre_id": genre_id,
-                    "book_name": request.form.get("book_name"),
-                    "author": request.form.get("author"),
-                    "image_url": "https://" + request.form.get("image_url"),
-                    "description": request.form.get("description"),
-                    "buy_url": "https://" + request.form.get("buy_url"),
-                    "created_by": session["user"]
-                    }}
+                mongo.db.books.update(
+                    {
+                        "_id": ObjectId(book_id)
+                    },
+                    {
+                        "$set": {
+                            "genre_id": genre_id,
+                            "book_name": request.form.get("book_name"),
+                            "author": request.form.get("author"),
+                            "image_url": (
+                                "https://" + request.form.get("image_url")
+                            ),
+                            "description": request.form.get("description"),
+                            "buy_url": (
+                                "https://" + request.form.get("buy_url")
+                            ),
+                            "created_by": session["user"]
+                        }
+                    }
                 )
                 flash("Book was successfully updated.", "success")
                 return redirect(url_for(
@@ -482,8 +529,17 @@ def delete_user_books(username, book_id):
     Remove the books_added array object from the user document.
     """
     mongo.db.users.update_one(
-        {"username": username, "books_added.book_id": ObjectId(book_id)},
-        {"$pull": {"books_added": {"book_id": ObjectId(book_id)}}}
+        {
+            "username": username,
+            "books_added.book_id": ObjectId(book_id)
+        },
+        {
+            "$pull": {
+                "books_added": {
+                    "book_id": ObjectId(book_id)
+                }
+            }
+        }
     )
 
 
@@ -505,7 +561,11 @@ def review_book(book_id):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
-        get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        get_book = mongo.db.books.find_one(
+            {
+                "_id": ObjectId(book_id)
+            }
+        )
         reviews = get_book.get("review")
         date = str(datetime.utcnow().strftime("%Y-%m-%d"))
         #  save the review if method is post
@@ -525,15 +585,24 @@ def review_book(book_id):
             alphabet = string.ascii_letters + string.digits
             password = ''.join(secrets.choice(alphabet) for i in range(8))
             mongo.db.books.update_one(
-                {"_id": ObjectId(get_book["_id"])}, {
-                    "$addToSet": {"review": {
-                        "title": (request.form.get("review_title")).capitalize(),
-                        "description": request.form.get("review"),
-                        "rating": int(request.form.get("rate")),
-                        "date": date,
-                        "review_id": password,
-                        "bookid": str(ObjectId(book_id)),
-                        "username": session["user"]}}})
+                {
+                    "_id": ObjectId(get_book["_id"])
+                },
+                {
+                    "$addToSet": {
+                        "review": {
+                            "title": (
+                                request.form.get("review_title")).capitalize(),
+                            "description": request.form.get("review"),
+                            "rating": int(request.form.get("rate")),
+                            "date": date,
+                            "review_id": password,
+                            "bookid": str(ObjectId(book_id)),
+                            "username": session["user"]
+                        }
+                    }
+                }
+            )
             username = session["user"]
             update_user_reviews(username, password)
             flash("Review was successfully saved.", "success")
@@ -552,10 +621,15 @@ def update_user_reviews(username, reviewid):
     user = mongo.db.users.find_one({"username": session['user']})
     today_review_added = datetime.today()
     mongo.db.users.update_one(
-        {"username": username}, {
-            "$addToSet": {"reviews_added": {
-                "review_id": reviewid,
-                "added_date": today_review_added}}}
+        {"username": username},
+        {
+            "$addToSet": {
+                "reviews_added": {
+                    "review_id": reviewid,
+                    "added_date": today_review_added
+                }
+            }
+        }
     )
 
 
@@ -582,8 +656,17 @@ def edit_review(book_id, username, review_id):
             {"username": session['user']})["username"]
         get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         reviewarray = list(mongo.db.books.find(
-            {'review': {"$elemMatch": {"review_id": review_id}}}, {
-                "review.$": 1}))
+            {
+                'review': {
+                    "$elemMatch": {
+                        "review_id": review_id
+                    }
+                }
+            },
+            {
+                "review.$": 1
+            }
+        ))
         target_review_array = {}
         for key, value in reviewarray[0].items():
             if key == "review":
@@ -594,12 +677,18 @@ def edit_review(book_id, username, review_id):
 
         if request.method == "POST":
             mongo.db.books.update(
-                {"_id": ObjectId(book_id), "review.review_id": review_id},
-                {"$set": {
-                    "review.$.title": (request.form.get("review_title")).capitalize(),
-                    "review.$.description": request.form.get("review"),
-                    "review.$.rating": int(request.form.get("rate")),
-                    }}
+                {
+                    "_id": ObjectId(book_id),
+                    "review.review_id": review_id
+                },
+                {
+                    "$set": {
+                        "review.$.title": (
+                            request.form.get("review_title")).capitalize(),
+                        "review.$.description": request.form.get("review"),
+                        "review.$.rating": int(request.form.get("rate")),
+                    }
+                }
             )
             flash("Review was successfully updated.", "success")
             return redirect(url_for(
@@ -635,13 +724,26 @@ def delete_review(book_id, username, review_id):
     else:
         get_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         mongo.db.books.update(
-            {"_id": ObjectId(book_id), "review.review_id": review_id},
-            {"$pull": {"review": {"review_id": review_id}}})
+            {
+                "_id": ObjectId(book_id), "review.review_id": review_id
+            },
+            {
+                "$pull": {
+                    "review": {
+                        "review_id": review_id
+                    }
+                }
+            }
+        )
         flash('Review was successfully removed.', "success")
-        {"_id": ObjectId(book_id), "review.review_id": review_id}
-        mongo.db.avgRatingAgg.remove({
-            "_id": ObjectId(book_id)
-            })
+        {
+            "_id": ObjectId(book_id), "review.review_id": review_id
+        }
+        mongo.db.avgRatingAgg.remove(
+            {
+                "_id": ObjectId(book_id)
+            }
+        )
         delete_user_review(username, review_id)
         return redirect(url_for(
             "bookpage",
@@ -654,8 +756,17 @@ def delete_user_review(username, review_id):
     Remove the reviews_added array object from the user document.
     """
     mongo.db.users.update_one(
-        {"username": username, "reviews_added.review_id": review_id},
-        {"$pull": {"reviews_added": {"review_id": review_id}}}
+        {
+            "username": username,
+            "reviews_added.review_id": review_id
+        },
+        {
+            "$pull": {
+                "reviews_added": {
+                    "review_id": review_id
+                }
+            }
+        }
     )
 
 
@@ -725,12 +836,19 @@ def edit_genre(genre_id):
                 "genre_name": request.form.get("genre_name"),
                 "genre_icon": (request.form.get("genre_icon")).lower()
             }
-            mongo.db.genres.update({"_id": ObjectId(genre_id)}, save)
+            mongo.db.genres.update(
+                {
+                    "_id": ObjectId(genre_id)
+                }, save)
             flash("Genre was successfully updated.", "success")
             return redirect(url_for(
                 "get_genres"))
 
-        genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
+        genre = mongo.db.genres.find_one(
+            {
+                "_id": ObjectId(genre_id)
+            }
+        )
         return render_template(
                 "edit_genre.html",
                 genre=genre)
@@ -750,14 +868,26 @@ def delete_genre(genre_id):
     if not loggedIn:
         return redirect(url_for("access_denied"))
     else:
-        mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+        mongo.db.genres.remove(
+            {
+                "_id": ObjectId(genre_id)
+            }
+        )
         books = list(mongo.db.books.find())
         for book in books:
             if 'genre_id' in book:
                 if book['genre_id'] == ObjectId(genre_id):
-                    mongo.db.books.update({"_id": ObjectId(book["_id"])}, {
-                        "$set": {
-                            "genre_id": ObjectId('60b8ffd932ba1aaef52551e0')}})
+                    mongo.db.books.update(
+                        {
+                            "_id": ObjectId(book["_id"])
+                        },
+                        {
+                            "$set": {
+                                "genre_id": ObjectId(
+                                    '60b8ffd932ba1aaef52551e0')
+                            }
+                        }
+                    )
         flash("Genre was successfully deleted.", "success")
         return redirect(url_for(
             "get_genres"))
