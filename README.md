@@ -126,7 +126,7 @@ As part of the 5 plane investigation, the project scope was defined.
 During this process, the functional and content requirements were examined.
 In considering the functional requirements, each problem was examined to find a best-fit solution.
 In considering the content requirements, the following were questioned: 
-  1. What type of content would fulfil the need (image, video, text, mixed)
+  1. What type of content would fulfill the need (image, video, text, mixed)
   2. Whether or not adequate resources were available to produce the content.
 
 The following is a statement of the defined scope:
@@ -186,7 +186,7 @@ Please note, the final website layout contains slight variations to the original
 Each of the following files contain wireframes for desktop, tablet, and mobile devices.
 </strong>
  
-**Users - non admin**
+**Users: non-admin**
 - [Homepage](assets/images/readmeFiles/wireframes/home.png)
 - [Login](assets/images/readmeFiles/wireframes/login.png)
 - [Register](assets/images/readmeFiles/wireframes/register.png)
@@ -195,7 +195,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
   - The edit book page will be a direct copy of the Add a book page. The fields will be pre-selected.
 - [Book page](assets/images/readmeFiles/wireframes/bookPage.png)
 
-**User - admin only**
+**User: admin only**
 - [Manage categories](assets/images/readmeFiles/wireframes/manageGenresAdmin.png)
   - The 'add genre' book page will be a direct copy of the Add a book page.
     - It will contain two fields: a genre title and an icon name.
@@ -304,7 +304,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
     - An icon representing the genre type.
 
   - The data featured on each book card derives from user input, which is stored in the database. Fields include:
-    - The title, author and book image data is pulled from the books collection.
+    - The title, author and book image data are pulled from the books collection.
     - The genre data is pulled from the genres collection.
     - The average review rating is pulled from the AvgRatingAgg (average rating aggregation) collection.
     - Once data is updated in a collection, the information displayed on the book card is automatically updated.
@@ -312,7 +312,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 #### Add a book
 - Accessibility
   - To access the page, the user must be logged in.
-  - Users who are not logged in will be redirected to the Aaccess denied page.
+  - Users who are not logged in will be redirected to the Access denied page.
 
 - User pathways
   - Two pathways are possible on this page: 
@@ -372,7 +372,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
   - Submission behavior
     - The first review (per book by user):
       - When submitted, the review lives as an object of the 'review' array within the book document.
-      - Upon submission, the user is redirected back to the book page. With this, the AvgRatingAgg document is also updated.
+      - Upon submission, the user is redirected back to the Book page. With this, the AvgRatingAgg document is also updated.
       
     - Multiple reviews (per book by user):
       - Only one review per book is permitted by a user.
@@ -443,7 +443,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
     - When clicked, the user is redirected back to the Book page.
 
   - Delete (remove the object from review array in book document)
-    - A modal appears, asking for confirmation of deletion.
+    - A modal appears, asking for confirmation of the deletion.
     - if confirmed, that object in the review array is removed.
     - If the user does not confirm the deletion, the modal closes and the user returns to the Edit review page.
 
@@ -518,7 +518,7 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
       - Icon name (required)
 
   - Cancel (go back)
-    - When clicked, the user is redirected back to the manage genres page.
+    - When clicked, the user is redirected back to the Manage genres page.
   
   - Delete (remove genre document from collection)
     - A modal appears, asking for confirmation of the deletion.
@@ -528,13 +528,13 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 #### Profile page
 - Accessibility
   - To access this page, a user must be logged in. 
-  - Each user's profile page can only be accessed by that user. To confirm that the user in session does indeed match the profile username, Python runs the following: 
+  - Each user's Profile page can only be accessed by that user. To confirm that the user in session does indeed match the profile username, Python runs the following: 
   ```if username == session["user"]:```
-  - Users who are not logged in or those whose detailed do not match the details stored will be redirected to the Access denied page.
+  - Users who are not logged in or those whose details do not match the details stored will be redirected to the Access denied page.
 
 - Welcome section
   - A Welcome, username message is displayed.
-  - Date of membership duration is displayed.
+  - The date of membership duration is displayed.
 
 - Profile card
   - A quick link to the homepage is provided.
@@ -571,13 +571,13 @@ Each of the following files contain wireframes for desktop, tablet, and mobile d
 
 #### Access denied page
 - Behavior
-  - The Access denied webspage is returned if a user requests a webpage which they do not have permission to view.
+  - The Access denied webpage is returned if a user requests a webpage that they do not have permission to view.
 
 - Content
   - This template incorporates the Book bar website styling and includes a link to the homepage.
 
 ### Features Left to Implement
-The following are features that were not included in this release. Once the adequate time and a developed skillset are available, these points will be revisited.
+The following are features that were not included in this release. Once adequate time and a developed skillset are available, these points will be revisited.
 
 * Email authentication for account registration
   - Implement email authentication for users who are registering an account. This would be a requirement.
@@ -848,7 +848,7 @@ Book page
 
 * No reviews yet (stars gif) - [Source](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets4.lottiefiles.com%2Fpackages%2Flf20_twYDL9.json)
 
-* Book cover image for URLS which fail to load - [Source](https://www.pexels.com/photo/crop-faceless-woman-reading-book-on-bed-4170629/)
+* Book cover image for URLS that fail to load - [Source](https://www.pexels.com/photo/crop-faceless-woman-reading-book-on-bed-4170629/)
 
 Profile page
 * Green and blue user icon - [Source](https://www.flaticon.com/free-icon/user_747545?term=user&related_id=747545)
