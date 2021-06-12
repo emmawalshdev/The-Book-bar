@@ -527,7 +527,7 @@ def review_book(book_id):
             mongo.db.books.update_one(
                 {"_id": ObjectId(get_book["_id"])}, {
                     "$addToSet": {"review": {
-                        "title": request.form.get("review_title"),
+                        "title": (request.form.get("review_title")).capitalize(),
                         "description": request.form.get("review"),
                         "rating": int(request.form.get("rate")),
                         "date": date,
@@ -596,7 +596,7 @@ def edit_review(book_id, username, review_id):
             mongo.db.books.update(
                 {"_id": ObjectId(book_id), "review.review_id": review_id},
                 {"$set": {
-                    "review.$.title": request.form.get("review_title"),
+                    "review.$.title": (request.form.get("review_title")).capitalize(),
                     "review.$.description": request.form.get("review"),
                     "review.$.rating": int(request.form.get("rate")),
                     }}

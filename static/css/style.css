@@ -237,9 +237,7 @@ nav ul a:hover,
 }
 
 /* ---------------------------card styling-------------------------------------*/
-.card .card-content .card-title {
-    text-transform: capitalize;
-}
+
 .activator{
     cursor: pointer;
 }
