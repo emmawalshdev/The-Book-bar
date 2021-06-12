@@ -314,21 +314,25 @@ def bookpage(book_id):
         for review in reviews:
             if review:
                 book_id_in_review = review["bookid"]
-                review = list(mongo.db.books.aggregate([{
-                    "$unwind": "$review"},
-                    {"$match": {'review.bookid': book_id_in_review}},
+                review = list(mongo.db.books.aggregate([
+                    {"$unwind": "$review"
+                    },
+                    {"$match": {
+                        'review.bookid': book_id_in_review
+                    }},
                     {"$group": {
-                        "_id": "$_id", "averageRating": 
+                        "_id": "$_id", "averageRating":
                         {
                             "$avg": '$review.rating'
                         }
                     }},
-                    {"$merge": 
-                    {"into": "avgRatingAgg",
-                        "on": "_id",
-                        "whenMatched": "replace",
-                        "whenNotMatched": "insert"
-                    }}
+                    {"$merge":
+                        {"into": "avgRatingAgg",
+                            "on": "_id",
+                            "whenMatched": "replace",
+                            "whenNotMatched": "insert"
+                        }
+                    }
                 ]))
                 review = mongo.db.avgRatingAgg.find_one({
                     "_id": ObjectId(get_book["_id"])
@@ -691,7 +695,7 @@ def add_genre():
         if request.method == "POST":
             genre = {
                 "genre_name": request.form.get("genre_name"),
-                "genre_icon": request.form.get("genre_icon")
+                "genre_icon": (request.form.get("genre_icon")).lower()
             }
             mongo.db.genres.insert_one(genre)
             flash("Genre was successfully added.", "success")
@@ -719,7 +723,7 @@ def edit_genre(genre_id):
         if request.method == "POST":
             save = {
                 "genre_name": request.form.get("genre_name"),
-                "genre_icon": request.form.get("genre_icon")
+                "genre_icon": (request.form.get("genre_icon")).lower()
             }
             mongo.db.genres.update({"_id": ObjectId(genre_id)}, save)
             flash("Genre was successfully updated.", "success")
