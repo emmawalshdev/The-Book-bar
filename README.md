@@ -2,7 +2,7 @@
 
 ## Data Centric Development - Milestone Project
 
-[View the Live Site here.](https://the-book-bar.herokuapp.com/)
+[View the Live Site here.](https://the-book-bar.onrender.com/)
 
 ![logo](assets/images/readmeFiles/readmeLogo.png) 
 
